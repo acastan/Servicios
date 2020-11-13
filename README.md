@@ -20,6 +20,8 @@
 
 ## Samba
 
+## Impresión
+
 ## Active Directory
 
 ## OpenLDAP
