@@ -1,5 +1,7 @@
 # Instalación y administración de servicios de red
 
+tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07 
+
 ## Repaso de conceptos previos
 
 ## Enrutamiento
