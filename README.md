@@ -32,4 +32,12 @@
 
 ## Streaming
 
-## SGBDR MySQL / MariaDB
+## Acceso remoto con SSH
+
+## Control remoto con VNC y RDP
+
+## VPN
+
+## NIDS
+
+## Administración de SGBDR MySQL / MariaDB
