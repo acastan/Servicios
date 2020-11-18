@@ -65,20 +65,4 @@ PREGUNTAS
 PRÁCTICA
 --------
 
-  - Con la herramienta de diagramas Dia, crear un esquema de la red local, donde aparezca router, switches, servidores con nombre de servicios, y máquinas cliente.
-
-  - A las máquinas virtuales que creamos en el ejercicio anterior, configurad su modo de trabajo en red interna.
-
-
-
-
-
-REFERENCIAS
------------
-
-  - <http://en.wikipedia.org/wiki/Proxy_server>
-
-  - <http://en.wikipedia.org/wiki/Network_address_translation>
-
-  - <http://en.wikipedia.org/wiki/SOCKS>
-
+Con la herramienta de diagramas Dia, crear un esquema de la red local, donde aparezca router, switches, servidores con nombre de servicios, y máquinas cliente.
