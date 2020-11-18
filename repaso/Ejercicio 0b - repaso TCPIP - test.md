@@ -115,4 +115,3 @@
     d) TCP.
 
 25. Algunos dominios DNS de alto nivel son .com, .edu, y .org. (C/F)
-
