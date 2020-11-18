@@ -1,36 +1,36 @@
-01. ¿Cuantos bytes tiene una dirección de IP versión 4?
-    a) 2
-    b) 4
-    c) 32
+01. ¿Cuantos bytes tiene una dirección de IP versión 4?  
+    a) 2  
+    b) 4  
+    c) 32  
 
-02. ¿A qué clase pertenece la dirección 116.34.200.19?
-    a) A
-    b) B
-    c) C
+02. ¿A qué clase pertenece la dirección 116.34.200.19?  
+    a) A  
+    b) B  
+    c) C  
 
-03. Una dirección de clase C utiliza:
-    a) 24 bits para la dirección de red y 8 bits para la dirección del equipo.
-    b) 16 bits para la dirección de red y 16 bits para la dirección del equipo.
-    c) 32 bits para la dirección de red y 0 bits para la dirección del equipo.
-    d) 24 bits para la dirección de red y 24 bits para la dirección del equipo.
+03. Una dirección de clase C utiliza:  
+    a) 24 bits para la dirección de red y 8 bits para la dirección del equipo.  
+    b) 16 bits para la dirección de red y 16 bits para la dirección del equipo.  
+    c) 32 bits para la dirección de red y 0 bits para la dirección del equipo.  
+    d) 24 bits para la dirección de red y 24 bits para la dirección del equipo.  
 
 04. La máscara de red sirve para obtener qué bits de una dirección IP identifican la red y qué bits identifican el equipo. (C/F)
 
-05. ¿Cuál de las siguientes representa la máscara de red por defecto para una red clase C?
-    a) 255.255.0.0
-    b) 255.255.232.0
-    c) 255.255.255.0
+05. ¿Cuál de las siguientes representa la máscara de red por defecto para una red clase C?  
+    a) 255.255.0.0  
+    b) 255.255.232.0  
+    c) 255.255.255.0  
 
-06. ¿Cuántos equipos pueden existir en una red clase C?
-    a) 256
-    b) 254
-    c) 128
+06. ¿Cuántos equipos pueden existir en una red clase C?  
+    a) 256  
+    b) 254  
+    c) 128  
 
 07. ¿Para qué se utiliza el protocolo ARP en una red Ethernet?
-    a) Obtiene la dirección MAC de un nodo a partir de su dirección IP.
-    b) Obtiene la dirección IP de un nodo a partir de su dirección MAC.
-    c) Obtiene un protocolo a partir de su dirección IP.
-    d) Obtiene el fabricante de la tarjeta de red a partir de su dirección MAC.
+    a. Obtiene la dirección MAC de un nodo a partir de su dirección IP.
+    b. Obtiene la dirección IP de un nodo a partir de su dirección MAC.
+    c. Obtiene un protocolo a partir de su dirección IP.
+    d. Obtiene el fabricante de la tarjeta de red a partir de su dirección MAC.
 
 08. ¿Cuál es la función de ICMP?
     a) Establece la relación entre direcciones de IP y direcciones de MAC.
