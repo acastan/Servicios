@@ -4,6 +4,8 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Repaso de conceptos previos
 
+  * [Apuntes de virtualización con Docker](blob/master/repaso/Ejercicio%200a%20-%20repaso%20Virtualización%20-%20Docker.pdf) 
+
 ## Enrutamiento
 
 ## Cortafuegos
