@@ -1,8 +1,8 @@
-Para saber como funciona cualquier comando, deberéis buscar ayuda escribiendo `man nombre_del_comando`.
+Para saber como funciona cualquier comando, debes buscar ayuda escribiendo `man nombre_del_comando`.
 
-Podéis encontrar un buen curso sobre el funcionamiento de Linux y sus comandos en <http://linuxjourney.com/>
+Puedes encontrar un buen curso sobre el funcionamiento de Linux y sus comandos en <http://linuxjourney.com/>
 
-Recordad que algunos comandos necesitan permisos de superusuario para ser ejecutados:
+Recuerda que algunos comandos necesitan permisos de superusuario para ser ejecutados:
 
 ![sudo](https://imgs.xkcd.com/comics/sandwich.png)
 
