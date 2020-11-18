@@ -11,7 +11,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  1. **Comunicación TCP**
+ 01. **Comunicación TCP**
 
      Analizaremos una petición de página web a un servidor. Repasad rápidamente los pasos necesarios para establecer, mantener y finalizar una comunicación TCP. A continuación abrid un navegador. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. Solicitad en la barra de direcciones del navegador una página web que contenga poca información, como www.google.es. Finalizad la captura.
 
@@ -23,7 +23,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  2. **Comunicación UDP**
+ 02. **Comunicación UDP**
 
      Analizaremos la navegación por el entorno de red de Windows. Repasad rápidamente los pasos necesarios para establecer, mantener y finalizar una comunicación UDP. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado.  A continuación abrid el entorno de red y comenzad a explorar algunas máquinas que se encuentran en vuestro grupo de trabajo, en busca de carpetas compartidas. Finalizad la captura.
 
@@ -35,7 +35,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  3. **DNS**
+ 03. **DNS**
 
      Analizaremos una solicitud DNS. Repasad rápidamente en que consiste dicho protocolo. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. A continuación abrid una consola y ejecutad el comando `nslookup www.w3.org`. Finalizad la captura.
 
@@ -47,7 +47,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  4. **Ping**
+ 04. **Ping**
 
      Analizaremos una solicitud de respuesta (“ping”). Repasad rápidamente en que consisten dichas solicitudes. A continuación abrid una consola. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. Escribid en la consola `ping www.google.es -n 1`. Finalizad la captura.
 
@@ -61,7 +61,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  5. **Traceroute**
+ 05. **Traceroute**
 
      Analizaremos una petición de trazado de ruta (“traceroute”). Repasad rápidamente en que consisten dichas solicitudes. A continuación abrid una consola. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. Escribid en la consola `tracert -d www.google.es`. Finalizad la captura.
 
@@ -73,7 +73,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  6. **ARP**
+ 06. **ARP**
 
      Analizaremos una solicitud ARP. Repasad rápidamente en que consiste dicho protocolo. A continuación abrid una consola y ejecutad el comando `ip neigh` o bién `arp -n` para ver la tabla de vuestro ordenador que memoriza direcciones de red asociadas a direcciones IP. Borrad dicha tabla con el comando `sudo ip neigh flush ip_a_borrar` o bién `sudo arp -d ip_a_borrar`. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. Escribid en la consola `ping 192.168.0.1`. Finalizad la captura.
 
@@ -83,7 +83,7 @@ Cuando comencemos a capturar paquetes se abrirá un pequeño cuadro con informac
 
 
 
-  7. **Análisis de puertos**
+ 07. **Análisis de puertos**
 
      Utilizando el analizador de puertos que descargamos el día anterior en clase (¿superscan, portscan, nmap?) veremos las huellas que un análisis de puertos deja en nuestro sniffer. Comenzad a capturar paquetes con Wireshark, utilizando el filtro adecuado. Pedid a los compañeros del ordenador más cercano que realicen un escaneo de los 20 primeros puertos de vuestro ordenador. Cuando hayan acabado finalizad la captura de paquetes. Después iniciad el programa analizador de puertos para realizar el correspondiente escaneo sobre vuestros vecinos.
 
