@@ -1,7 +1,7 @@
 Instalación de Linux
 --------------------
 
-Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. Recomiendo Debian Estable, Ubuntu Server LTS y CentOS. En este manual yo utilizaré Ubuntu Server.
+Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. Recomiendo Debian Stable, Ubuntu Server LTS o CentOS. En este manual yo utilizaré Ubuntu Server y Debian.
 
 Encontrarás unos detallados tutoriales para la instalación en:
 
