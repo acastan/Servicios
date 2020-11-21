@@ -80,94 +80,98 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Proxy-caché
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Web
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## FTP
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## NFS
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Samba
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Impresión
 
-  * []()
+  * [Servidor de impresión (ejercicio)](impresion/Ejercicio%2013%20-%20Servidor%20Impresi%C3%B3n%20-%20soluci%C3%B3n.md)
 
 
 
 ## Directorio
 
-  * []()
+  * [Servidor de directorio (ejercicio)](directorio/Ejercicio%202%20-%20Servidor%20DND.md)
+
+  * [Servidor de OpenLDAP (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20OpenLDAP.pdf)
+
+  * [Servidor de integrar clientes Linux en Active Directory (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20Integrar%20Linux%20en%20ADDS.pdf)
 
 
 
 ## Correo
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Mensajería
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Streaming
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Acceso remoto con SSH
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Control remoto con VNC y RDP
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## VPN
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## NIDS
 
-  * []()
+  * [Work in Progress]()
 
 
 
 ## Administración de SGBDR MySQL / MariaDB
 
-  * []()
+  * [Administración de MySQL (antiguo)](http://www.xtec.cat/~acastan/textos/Administracion%20de%20MySQL.html)
 
 
 
 ## Otros
 
-  * []()
+  * [Optimizar LAMP (antiguo)](http://www.xtec.cat/~acastan/textos/Tuning%20LAMP.pdf)
