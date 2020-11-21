@@ -50,25 +50,31 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Compartir Internet, Proxy y Enrutamiento
 
-  * []()
+  * [Proxy y enrutamiento (ejercicio)](router/Ejercicio%201%20-%20compartir%20internet%20y%20enrutamiento.md)
+
+  * [Proxy y enrutamiento (solución)](router/Ejercicio%201%20-%20compartir%20internet%20y%20enrutamiento%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## Cortafuegos
 
-  * []()
+  * [Cortafuegos (ejercicio)](firewall/Ejercicio%2011%20-%20Cortafuegos.md)
 
 
 
 ## DHCP
 
-  * []()
+  * [Servidor de DHCP (ejercicio)](dhcp/Ejercicio%202%20-%20Servidor%20DHCP.md)
+
+  * [Servidor de DHCP (solución)](dhcp/Ejercicio%202%20-%20Servidor%20DHCP%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## DNS
 
-  * []()
+  * [Servidor de DNS (ejercicio)](dns/Ejercicio%202%20-%20Servidor%20DND.md)
+
+  * [Servidor de DNS (solución)](dns/Ejercicio%202%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
 
 
 
@@ -108,13 +114,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 
 
-## Active Directory
-
-  * []()
-
-
-
-## OpenLDAP
+## Directorio
 
   * []()
 
