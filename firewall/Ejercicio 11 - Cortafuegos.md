@@ -23,9 +23,9 @@ PREGUNTAS
 
      b) Escribe las reglas del cortafuegos en la siguiente tabla:
 
-     red origen | puerto origen | red destino | puerto destino | protocolo | estado | acción
-     ---------- | ------------- | ----------- | -------------- | --------- | ------ | ------
-                |               |             |                |           |        |
+        | red origen | puerto origen | red destino | puerto destino | protocolo | estado | acción |
+        | ---------- | ------------- | ----------- | -------------- | --------- | ------ | ------ |
+        |            |               |             |                |           |        |        |
 
  10. En el ejercicio anterior que normas añadirías al cortafuegos para impedir que los usuarios de nuestra red accedan al exterior excepto a un servidor de correo que utiliza IMAP y SMTP en los puertos estándar.
 
