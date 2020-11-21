@@ -120,7 +120,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Servidor de OpenLDAP (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20OpenLDAP.pdf)
 
-  * [Servidor de integrar clientes Linux en Active Directory (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20Integrar%20Linux%20en%20ADDS.pdf)
+  * [Integrar clientes Linux en Active Directory (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20Integrar%20Linux%20en%20ADDS.pdf)
 
 
 
