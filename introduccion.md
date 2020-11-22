@@ -6,11 +6,11 @@ Otro programa en otro ordenador (cliente) realiza peticiones por red al servidor
 
 Es de vital importancia de que el servidor esté siempre disponible, 24/7/365, y en el caso que almacene datos de la empresa, que estos nunca se pierdan.
 
-Tanto en hardware como en software, las características asociadas a un servidor són redundancia, estabilidad y escalabilidad: responder todo el tiempo, independintemente de los fallos, independientemente de la carga, y no perder nunca los datos.
+Tanto en hardware como en software, las características asociadas a un servidor són redundancia, estabilidad y escalabilidad: responder todo el tiempo, independientemente de los fallos, independientemente de la carga, y no perder nunca los datos.
 
-En caso de servicios cuya respuesta pueda tardar cierto tiempo (por ej. descarga de un gran fichero) se usa multiproceso para no dejar otros clientes a la espera.
+En caso de servicios cuya respuesta pueda tardar cierto tiempo (por ej. descarga de un gran fichero) se usa multiproceso en el servidor para no dejar otros clientes a la espera.
 
-En el servidor dependerá del servicio la cantidad de ram, la velocidad de cpu, la capacidad de disco duro.
+Dependerá del servicio la cantidad de ram, la velocidad de cpu, la capacidad de disco duro que necesitemos en el servidor.
 
 
 
@@ -120,4 +120,3 @@ Enlaces
    <http://openaccess.uoc.edu/webapps/o2/handle/10609/60686>  
    <https://learning.lpi.org/en/learning-materials/learning-materials/>  
    <http://www.ibm.com/developerworks/linux/lpi/>
-
