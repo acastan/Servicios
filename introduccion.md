@@ -25,8 +25,8 @@ Hardware
  - Cloud Computing (Iaas)
 
 
-SS.OO.
-------
+Sistema Operativo
+-----------------
 Buscamos: estabilidad; actualizaciones por mucho tiempo; respuesta "lineal" a la carga; no el último software pero sí muy probado; núcleo optimizado para servicios en segundo plano y no para multimedia; posibilidad de trabajar sin interfaz gráfica y con "lo mínimo" (menos software => menos carga y menos exposición a fallos).
  - SSOO: ¿Cuáles conoces? Linux, Solaris, BSDs, Windows Server, ...
  - Distribuciones Linux: ¿Cuáles conoces? CentOS (Red Hat), Debian Stable, Ubuntu Server, Suse Enterprise, ...
