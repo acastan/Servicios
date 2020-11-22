@@ -6,7 +6,7 @@ Otro programa en otro ordenador (cliente) realiza peticiones por red al servidor
 
 Es de vital importancia de que el servidor esté siempre disponible, 24/7/365, y en el caso que almacene datos de la empresa, que estos nunca se pierdan.
 
-Tanto en hardware como en software, las características asociadas a un servidor són redundancia, estabilidad y escalabilidad: responder todo el tiempo, independientemente de los fallos, independientemente de la carga, y no perder nunca los datos.
+Tanto en hardware como en software, las características asociadas a un servidor son redundancia, estabilidad y escalabilidad: responder todo el tiempo, independientemente de los fallos, independientemente de la carga, y no perder nunca los datos.
 
 En caso de servicios cuya respuesta pueda tardar cierto tiempo (por ej. descarga de un gran fichero) se usa multiproceso en el servidor para no dejar otros clientes a la espera.
 
@@ -36,8 +36,8 @@ Buscamos: estabilidad; actualizaciones por mucho tiempo; respuesta "lineal" a la
 
 
 
-Temas preeliminares
--------------------
+Temas preliminares
+------------------
  - Conectividad a Internet
  - Legislación: RGPD, LSSI, LPI
  - Virtualización
