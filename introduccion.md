@@ -116,7 +116,7 @@ Enlaces
    <http://debian-handbook.info/browse/stable/>  
    <http://www.alcancelibre.org/filemgmt/index.php?id=1>
 
- - Administración Linux y LPI:
+ - Administración Linux y LPI:  
    <http://openaccess.uoc.edu/webapps/o2/handle/10609/60686>  
    <https://learning.lpi.org/en/learning-materials/learning-materials/>  
    <http://www.ibm.com/developerworks/linux/lpi/>
