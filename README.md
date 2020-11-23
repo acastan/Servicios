@@ -80,37 +80,35 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Servidor de DNS (ejercicio)](dns/Ejercicio%202%20-%20Servidor%20DNS.md)
 
-  * [Servidor de DNS (solución)](dns/Ejercicio%202%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de DNS (solución - a renovar)](dns/Ejercicio%202%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## Proxy-caché
 
-  * []()
+  * [Servidor de DNS (ejercicio - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9.md)
+
+  * [Servidor de DNS (solución - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## Web
 
-  * []()
+  * [Servidor web (ejercicio - a renovar)](web/Ejercicio%205%20-%20Servidor%20web.md)
+
+  * [Servidor web (solución - a renovar)](web/Ejercicio%205%20-%20Servidor%20web%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## Servidor de ficheros
 
-  * [Servidor de ficheros (ejercicio)](ficheros/Ejercicio%2012%20-%20Servidor%20Directorio.md)
+  * [Servidor de FTP (ejercicio - a renovar)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP.md)
 
+  * [Servidor de FTP (solución - a renovar)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP%20-%20soluci%C3%B3n.pdf)
 
+  * [Servidor de NFS (solución - a renovar)](ficheros/Ejercicio%206b%20-%20Servidor%20ficheros%20NFS%20-%20soluci%C3%B3n.md)
 
-## NFS
-
-  * []()
-
-
-
-## Samba
-
-  * []()
+  * [Servidor de SMB (solución - a renovar)](ficheros/Ejercicio%206c%20-%20Servidor%20ficheros%20SMB%20-%20soluci%C3%B3n.md)
 
 
 
@@ -132,43 +130,39 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Correo
 
-  * []()
+  * [Servidor de correo (ejercicio - a renovar)](correo/Ejercicio%207%20-%20Servidor%20correo.md)
+
+  * [Servidor de correo (solución - a renovar)](correo/Ejercicio%207%20-%20Servidor%20correo%20-%20soluci%C3%B3n.pdf)
 
 
 
-## Mensajería
+## Comunicaciones
 
-  * []()
+  * [Servidor de mensajería (ejercicio)](comunicaciones/Ejercicio%209%20-%20Servidor%20Mensajer%C3%ADa.md)
 
+  * [Servidor de mensajería (solución)](comunicaciones/Ejercicio%209%20-%20Servidor%20Mensajer%C3%ADa.pdf)
 
+  * [Servidores de streaming y de videoconferencia (ejercicio)](comunicaciones/Ejercicio%2010%20-%20Streaming%20y%20Videoconferencia.md)
 
-## Streaming
-
-  * []()
-
-
-
-## Acceso remoto con SSH
-
-  * []()
+  * Servidor de telefonía VoIP (por hacer)
 
 
 
-## Control remoto con VNC y RDP
+## Acceso y control remoto con SSH
 
-  * []()
+  * [Acceso remoto con SSH y control remoto con VNC y RDP (ejercicio)](remoto/Ejercicio%208%20-%20Control%20Remoto.md)
 
 
 
 ## VPN
 
-  * []()
+  * Proyecto (por hacer)
 
 
 
 ## NIDS
 
-  * []()
+  * Proyecto con Snort y Suricata (por hacer)
 
 
 
