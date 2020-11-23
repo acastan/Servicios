@@ -78,7 +78,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## DNS
 
-  * [Servidor de DNS (ejercicio)](dns/Ejercicio%202%20-%20Servidor%20DND.md)
+  * [Servidor de DNS (ejercicio)](dns/Ejercicio%202%20-%20Servidor%20DNS.md)
 
   * [Servidor de DNS (solución)](dns/Ejercicio%202%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
 
@@ -96,9 +96,9 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 
 
-## FTP
+## Servidor de ficheros
 
-  * []()
+  * [Servidor de ficheros (ejercicio)](ficheros/Ejercicio%2012%20-%20Servidor%20Directorio.md)
 
 
 
@@ -122,7 +122,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Directorio
 
-  * [Servidor de directorio (ejercicio)](directorio/Ejercicio%202%20-%20Servidor%20DND.md)
+  * [Servidor de directorio (ejercicio)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio.md)
 
   * [Servidor de OpenLDAP (solución)](directorio/Ejercicio%2012%20-%20Servidor%20Directorio%20-%20soluci%C3%B3n%20OpenLDAP.pdf)
 
