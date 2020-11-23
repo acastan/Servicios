@@ -78,17 +78,17 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## DNS
 
-  * [Servidor de DNS (ejercicio)](dns/Ejercicio%202%20-%20Servidor%20DNS.md)
+  * [Servidor de DNS (ejercicio)](dns/Ejercicio%203%20-%20Servidor%20DNS.md)
 
-  * [Servidor de DNS (solución - a renovar)](dns/Ejercicio%202%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de DNS (solución - a renovar)](dns/Ejercicio%203%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## Proxy-caché
 
-  * [Servidor de DNS (ejercicio - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9.md)
+  * [Servidor de Proxy-caché (ejercicio - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9.md)
 
-  * [Servidor de DNS (solución - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de Proxy-caché (solución - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9%20-%20soluci%C3%B3n.pdf)
 
 
 
