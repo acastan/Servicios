@@ -156,7 +156,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## VPN
 
-  * Proyecto con WireGuard (por hacer)
+  * Proyecto con WireGuard, y quizás con OpenVPN e IPSec también (por hacer)
 
 
 
