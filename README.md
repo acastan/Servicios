@@ -80,7 +80,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Servidor de DNS (ejercicio)](dns/Ejercicio%203%20-%20Servidor%20DNS.md)
 
-  * [Servidor de DNS (solución - a renovar)](dns/Ejercicio%203%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de DNS (solución)](dns/Ejercicio%203%20-%20Servidor%20DNS%20-%20soluci%C3%B3n.pdf)
 
 
 
