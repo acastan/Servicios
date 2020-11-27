@@ -61,7 +61,7 @@ EDITOR DE TEXTO
 
      vi → Modo de comandos, insertar, reemplazar, dd, :w , :q , :wq , :q!
 
-     nano → ctrl+O , ctrl+X , ctrl+K ,  ctrl+U ,  ctrl+Q
+     nano → ctrl+O , ctrl+X , ctrl+K , ctrl+U , ctrl+Q
 
  10. Crea en tu directorio personal con el procesador de textos una carta a un amigo. A la carta llámala micarta.txt.
 
@@ -306,11 +306,11 @@ PROCESOS
 
  42. Monitoriza los puertos abiertos a la escucha en tu ordenador.
 
-         netstat -tupane | grep ESCUCHAR
+         netstat -plunt
 
      o bien
 
-         ss -tupane | grep LISTEN
+         ss -plunt
 
  43. ¿Qué versión del núcleo Linux tenemos? ¿Cómo podemos ver sus mensajes?
 
