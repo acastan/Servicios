@@ -113,10 +113,12 @@ Enlaces
  - Otras guías de servidores:  
    <https://ubuntu.com/server/docs>  
    <https://help.ubuntu.com/community/Servers>  
-   <http://debian-handbook.info/browse/stable/>  
+   <https://debian-handbook.info/browse/stable/>  
+   <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/index>  
    <http://www.alcancelibre.org/filemgmt/index.php?id=1>
 
  - Administración Linux y LPI:  
    <http://openaccess.uoc.edu/webapps/o2/handle/10609/60686>  
    <https://learning.lpi.org/en/learning-materials/learning-materials/>  
    <http://www.ibm.com/developerworks/linux/lpi/>
+
