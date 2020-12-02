@@ -79,7 +79,7 @@ Sea _tu-ip_ un número que te repartirá el profesor. En nuestro caso será el �
 
  01. Instala un servidor DHCP con los siguientes requisitos:
 
-     - El servidor DHCP tendrá tres tarjetas de red: una en modo NAT y dos en modo red interna, asignadas a redes internas diferentes, "red1" i "red2", respectivamente.
+     - El servidor DHCP tendrá tres tarjetas de red: una en modo NAT y dos en modo red interna, asignadas a redes internas diferentes, "red1" y "red2", respectivamente.
 
      - La tarjeta de red del servidor en "red1" tiene IP estática 192.168._tu-ip_.1
 
