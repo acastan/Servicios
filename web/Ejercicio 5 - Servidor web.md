@@ -160,7 +160,7 @@ Genera un certificado digital e intégralo en el servidor web para que lo utilic
 
  03. Generar un certificado.
 
-     Para que tu servidor "intranet.mired.org" pueda servir páginas seguras con el protocolo HTTPS, necesita un certificado. Dicho certificado permitirá que tu servidor utilice cifrado asimétrico para intercambiar las claves de cifrado con los clientes, antes de iniciar una trasmisión segura de información. Inicialmente, el cliente deberá aceptar el certificado del servidor, ya que generaremos un certificado autofirmado. Si queremos evitarlo, deberíamos contratar un certificado a una entidad certificadora confiable, pero tiene un precio que no merece la pena pagar en un entorno educativo. (Si quieres aprender un poco más visita la página <http://httpd.apache.org/docs/2.4/ssl/>) 
+     Para que tu servidor "intranet.mired.org" pueda servir páginas seguras con el protocolo HTTPS, necesita un certificado. Dicho certificado permitirá que tu servidor utilice cifrado asimétrico para intercambiar las claves de cifrado con los clientes, antes de iniciar una trasmisión segura de información. Inicialmente, el cliente deberá aceptar el certificado del servidor, ya que generaremos un certificado autofirmado. Si queremos evitarlo, deberíamos contratar un certificado a una entidad certificadora confiable, pero tiene un precio que no merece la pena pagar en un entorno educativo. (Si quieres aprender un poco más visita la página <http://httpd.apache.org/docs/current/ssl/>) 
 
      ¿Cómo utilizas los comandos `make-ssl-cert` y/o `openssl` para crear un certificado?
 
