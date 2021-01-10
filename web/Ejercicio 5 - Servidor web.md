@@ -112,7 +112,7 @@ PRÁCTICA LINUX: HOSTS VIRTUALES
 
 Configura el servidor para que sirva páginas de dos nombres de dominio diferentes mediante hosts virtuales, por ejemplo www.mired.org e intranet.mired.org.
 
- 01. En la máquina virtual donde has instalado Apache, crea dentro de /var/www/html dos carpetas: "sitio1" y "sitio2", cada una con un fichero "index.html" que contendrá una página diferente, por ejemplo "Sitio1 de _nombre apellidos_" la primera página, y "Sitio2 de _nombre apellidos_" la segunda página.
+ 01. En la máquina virtual donde has instalado Apache, crea dentro de /var/www/html dos carpetas: "sitio1" y "sitio2", cada una con un fichero "index.html" que contendrá una página diferente, por ejemplo "Bienvenido a sitio1 de _nombre apellidos_" la primera página, y "Bienvenido a sitio2 de _nombre apellidos_" la segunda página.
 
      Entrega captura de pantalla de las carpetas creadas con los ficheros dentro.
 
@@ -133,7 +133,7 @@ Configura el servidor para que sirva páginas de dos nombres de dominio diferent
 
      Entrega captura de pantalla del fichero de configuración del servidor DNS.
 
-     ( En caso de no tener servidor de DNS, puedes hacer un "apaño" con el fichero "[hosts](https://es.wikipedia.org/wiki/Archivo_hosts)" del cliente )
+     ( En caso de no tener servidor de DNS, puedes hacer un "apaño" con el fichero "[hosts](https://en.wikipedia.org/wiki/Hosts_(file))" del cliente )
 
      Entrega captura de pantalla del navegador accediendo a las páginas "www.mired.org" e "intranet.mired.org".
 
@@ -156,7 +156,7 @@ Genera un certificado digital e intégralo en el servidor web para que lo utilic
 
      ¿Con qué comando compruebas que ahora Apache escucha por el puerto 443?
 
- 02. Genera un certificado. Para que tu servidor "intranet.mired.org" pueda servir páginas seguras con el protocolo HTTPS, necesita un certificado. Dicho certificado permitirá que tu servidor utilice cifrado asimétrico para intercambiar las claves de cifrado con los clientes, antes de iniciar una trasmisión segura de información. Inicialmente, el cliente deberá aceptar el certificado del servidor, ya que generaremos un certificado autofirmado. Si queremos evitarlo, deberíamos contratar un certificado a una entidad certificadora confiable, pero tiene un precio que no merece la pena pagar en un entorno educativo. (Si quieres aprender un poco más visita la página <http://httpd.apache.org/docs/current/ssl/>) 
+ 02. Genera un certificado. Para que tu servidor "intranet.mired.org" pueda servir páginas seguras con el protocolo HTTPS, necesita un certificado. Dicho certificado permitirá que tu servidor utilice cifrado para iniciar una trasmisión segura de información. El cliente deberá aceptar el certificado directamente del servidor, ya que generaremos un certificado "autofirmado". Si queremos evitarlo, deberíamos comprar un certificado a una entidad certificadora confiable, pero tiene un precio que no merece la pena pagar en un entorno educativo. (Si quieres aprender un poco más visita la página <http://httpd.apache.org/docs/current/ssl/>) 
 
      ¿Cómo utilizas los comandos `make-ssl-cert` y/o `openssl` para crear un certificado?
 
@@ -174,7 +174,7 @@ Genera un certificado digital e intégralo en el servidor web para que lo utilic
 
      Entrega capturas de pantalla de un cliente (a) aceptando el certificado, y (b) navegando por dicha pàgina.
 
- 04. Haz que http://intranet.mired.org/ redirija a https://intranet.mired.org/
+ 04. Intenta que http://intranet.mired.org/ redirija a https://intranet.mired.org/
 
 
 
