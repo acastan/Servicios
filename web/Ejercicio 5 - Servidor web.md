@@ -90,49 +90,165 @@ PRÁCTICA WINDOWS
 
 
 
-PRÁCTICA LINUX
---------------
+PRÁCTICA LINUX BÁSICA
+---------------------
 
- 01. Instala Apache. Pruébalo navegando des de un cliente sobre una página web. Explora los ficheros de configuración.
+Instala Apache. Pruébalo navegando des de un cliente sobre una página web. Explora los ficheros de configuración.
 
- 02. Configura el servidor para que sirva páginas de dos nombres de dominio diferentes mediante hosts virtuales.
+ 01. En una máquina virtual Linux instala el servidor web apache2. Entrega captura de pantalla de la instalación.
 
- 03. Genera un certificado digital e intégralo en el servidor web para que lo utilice en HTTPS con un sitio web.
+ 02. Crea una sencilla página web con tu nombre y apellidos en este equipo, en la carpeta donde el servidor web guarda por defecto las páginas web. Entrega captura de pantalla de la carpeta donde dejas tu página web.
+
+ 03. Entrega captura de pantalla del navegador de la máquina anfitrión accediendo a la página web vía el servidor web de la máquina virtual.
+
+ 04. Accede al directorio de configuración de Apache y explica qué función tienen los diferentes archivos y carpetas que allá se encuentran.
+
+
+
+
+
+PRÁCTICA LINUX: HOSTS VIRTUALES
+-------------------------------
+
+Configura el servidor para que sirva páginas de dos nombres de dominio diferentes mediante hosts virtuales, por ejemplo www.mired.org e intranet.mired.org.
+
+ 01. En la máquina virtual donde has instalado Apache, crea dentro de /var/www/html dos carpetas: "sitio1" y "sitio2", cada una con un fichero "index.html" que contendrá una página diferente, por ejemplo "Sitio1 de _nombre apellidos_" la primera página, y "Sitio2 de _nombre apellidos_" la segunda página.
+
+     Entrega captura de pantalla de las carpetas creadas con los ficheros dentro.
+
+ 02. En la carpeta "sites-available" de Apache crea dos ficheros, "sitio1.conf" y "sitio2.conf" que contendrán la configuración de los respectivas webs. Para la configuración puedes usar esta plantilla:
+
+         <VirtualHost *:80>
+           ServerName sitio
+           DocumentRoot /ruta_a_carpeta
+         </VirtualHost>
+
+     Entrega captura de pantalla de la configuración que has escrito en estos ficheros.
+
+ 03. Habilita las dos webs ¿Con qué comando se activa una web en Apache?
+
+     Entrega captura de pantalla del listado del directorio "sites-enabled" de Apache.
+
+ 04. Haz los canvios necesarios en tu servidor DNS para que los nombres de host "www.mired.org" i "intranet.mired.org" apunten a la IP del servidor DNS, que también es el servidor web.
+
+     Entrega captura de pantalla del fichero de configuración del servidor DNS.
+
+     ( En caso de no tener servidor de DNS, puedes hacer un "apaño" con el fichero "[hosts](https://es.wikipedia.org/wiki/Archivo_hosts)" del cliente )
+
+     Entrega captura de pantalla del navegador accediendo a las páginas "www.mired.org" e "intranet.mired.org".
+
+
+
+
+
+PRÁCTICA LINUX: HTTPS
+---------------------
+
+Genera un certificado digital e intégralo en el servidor web para que lo utilice en HTTPS con un sitio web.
+
+ 01. Habilita el módulo de HTTPS para Apache.
+
+     ¿Con qué comando habilitas el módulo "ssl"?
+
+     ¿Con qué comando puedes reiniciar apache?
+
+     ¿Cón qué comando puedes recargar la configuración de Apache sin tener que reiniciarlo?
+
+ 02. Asegurarte que Apache escucha por el puerto 443.
+
+     ¿Con qué comando compruebas que ahora Apache escucha por el puerto 443?
+
+ 03. Generar un certificado.
+
+     Para que tu servidor "intranet.mired.org" pueda servir páginas seguras con el protocolo HTTPS, necesita un certificado. Dicho certificado permitirá que tu servidor utilice cifrado asimétrico para intercambiar las claves de cifrado con los clientes, antes de iniciar una trasmisión segura de información. Inicialmente, el cliente deberá aceptar el certificado del servidor, ya que generaremos un certificado autofirmado. Si queremos evitarlo, deberíamos contratar un certificado a una entidad certificadora confiable, pero tiene un precio que no merece la pena pagar en un entorno educativo. (Si quieres aprender un poco más visita la página <http://httpd.apache.org/docs/2.4/ssl/>) 
+
+     ¿Cómo utilizas los comandos `make-ssl-cert` y/o `openssl` para crear un certificado?
+
+     ¿En qué directorio guardas el fichero con el certificado?
+
+ 04. Configurar tu página para que utilice dicho certificado.
+
+     ¿Qué líneas debes añadir a esta nueva configuración de la intranet para que utilice el certificado?
+
+         <VirtualHost *:443>
+           ServerName intranet.mired.org
+           DocumentRoot /var/www/html/sitio2
+           ...
+         </VirtualHost>
+
+     Entrega capturas de pantalla de un cliente (a) aceptando el certificado, y (b) navegando por dicha pàgina.
+
+ 05. Haz que http://intranet.mired.org/ redirija a https://intranet.mired.org/
+
+
+
+
+
+PRÁCTICA LINUX: SERVIDOR WEB DINÁMICO
+-------------------------------------
+
+Instala PHP y MySQL. Integra Apache y PHP, para que el servidor pueda ejecutar páginas dinámicas PHP. Pruébalo instalando y administrando gestores de contenido.
+
+ 01. Instala PHP. Integra Apache y PHP, para que el servidor pueda ejecutar páginas dinámicas PHP.
+
+     Pruébalo con esta página llamada index.php en uno de los sitios web que ya tienes:
+
+         <?php
+            phpinfo();
+         ?>
+
+     Entrega comandos, pantallas de configuración, y pantalla de prueba de phpinfo.
+
+ 02. Instala MySQL/MariaDB. Configura los parámetros de seguridad de acceso: usuarios que pueden acceder / acceder des de red o no / IPs que pueden acceder
+
+     Prueba a instalar PHPMyAdmin, y entonces accedera la gestión de las bases de datos desde un navegador.
+
+     Entrega comandos, pantallas de configuración, y pantalla de prueba de phpmyadmin
   
- 04. Instala PHP y MySQL. Integra Apache y PHP, para que el servidor pueda ejecutar páginas dinámicas php.
-  
- 05. Prueba el servidor web dinàmico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, PHPMyAdmin, etc.
+ 03. Prueba el servidor web dinàmico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, PHPMyAdmin, etc.
 
- 06. Instala en el servidor el módulo de Webmin para administrar Apache.
+     Entrega todos los pasos para la instalación y configuración del gestor de contenido.
+
+
+
+
+
+PRÁCTICAS LINUX EXTRA
+---------------------
+
+ 01. (Extra) Instala en el servidor el módulo de Webmin para administrar Apache.
+
+ 02. (Extra) Modifica Apache para que un sitio web trabaje con el protocolo HTTP/2 en lugar de HTTP/1.1 , utilizando el módulo http2.
  
- 07. (Extra) Elimina o cambia la información de versión de Apache.
+ 03. (Extra) Modifica Apache para que automáticamente cada usuario del sistema tenga una página web personal en su "home", utilizando el módulo userdir.
+
+ 04. (Extra) Elimina o cambia la información de versión de Apache.
 
      <https://tecadmin.net/hide-apache-version-from-http-header/>
 
- 08. (Extra) Cambia la página de error 404 que viene por defecto. Por ejemplo: <http://www.lego.com/jjj>
+ 05. (Extra) Cambia la página de error 404 que viene por defecto. Por ejemplo: <http://www.lego.com/jjj>
 
      <https://httpd.apache.org/docs/current/custom-error.html>
 
- 09. (Extra) Redirige al usuario que visita tu página a otra url. Por ejemplo, que al acceder a http://localhost/vete vaya a https://www.gnu.org/
+ 06. (Extra) Redirige al usuario que visita tu página a otra url. Por ejemplo, que al acceder a http://localhost/vete vaya a https://www.gnu.org/
 
      <https://httpd.apache.org/docs/current/urlmapping.html#redirect>
 
- 10. (Extra) Configura el servidor web para que no liste el contenido de un determinado directorio. Crea antes un par de ficheros en dicho directorio.
+ 07. (Extra) Configura el servidor web para que no liste el contenido de un determinado directorio. Crea antes un par de ficheros en dicho directorio.
 
      <https://wiki.apache.org/httpd/DirectoryListings>
 
- 11. (Extra) Configura el servidor web para que al entrar a un directorio concreto pida autorización de usuario y contraseña. ¿Viaja la autorización encriptada?
+ 08. (Extra) Configura el servidor web para que al entrar a un directorio concreto pida autorización de usuario y contraseña. ¿Viaja la autorización encriptada?
 
      <https://httpd.apache.org/docs/current/howto/auth.html>
 
- 12. (Extra) Crea una carpeta fuera del directorio raíz de Apache i "mapeala" a la URL http://localhost/carpetaExterna/
+ 09. (Extra) Crea una carpeta fuera del directorio raíz de Apache i "mapeala" a la URL http://localhost/carpetaExterna/
 
      <https://httpd.apache.org/docs/current/urlmapping.html#outside>
 
- 13. (Extra) ¿Qué es "leeching" o "hot linking", y cómo puede perjudicar a tu servidor? Añade las directivas oportunas a tu fichero de configuración para que si alguien enlaza a tus imágenes des de una página externa, tu servidor muestre una imagen alternativa.
+ 10. (Extra) ¿Qué es "leeching" o "hot linking", y cómo puede perjudicar a tu servidor? Añade las directivas oportunas a tu fichero de configuración para que si alguien enlaza a tus imágenes des de una página externa, tu servidor muestre una imagen alternativa.
 
      <https://httpd.apache.org/docs/current/rewrite/access.html#blocked-inline-images>
-
 
 
 
@@ -154,6 +270,15 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Comparison_of_web_server_software>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_lightweight_web_servers>
-  
+
+  - <http://www.xtec.net/~acastan/textos/Tuning%20LAMP.pdf>
+
   - <https://jvns.ca/blog/2017/01/31/whats-tls/>
 
+  - <https://www.tecmint.com/apache-security-tips/>
+
+  - <https://www.apachecon.eu/>
+
+  - <https://geekflare.com/apache-web-server-hardening-security/>
+
+  - <https://wiki.debian.org/Apache/Hardening>
