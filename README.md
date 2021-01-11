@@ -94,9 +94,9 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Web
 
-  * [Servidor web (ejercicio - a renovar)](web/Ejercicio%205%20-%20Servidor%20web.md)
+  * [Servidor web (ejercicio)](web/Ejercicio%205%20-%20Servidor%20web.md)
 
-  * [Servidor web (solución - a renovar)](web/Ejercicio%205%20-%20Servidor%20web%20-%20soluci%C3%B3n.pdf)
+  * [Servidor web (solución)](web/Ejercicio%205%20-%20Servidor%20web%20-%20soluci%C3%B3n.pdf)
 
 
 
