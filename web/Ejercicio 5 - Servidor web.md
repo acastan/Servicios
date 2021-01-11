@@ -172,6 +172,10 @@ Genera un certificado digital e intégralo en el servidor web para que lo utilic
            ...
          </VirtualHost>
 
+     Aviso: algunas directivas (`SSLCertificateFile`, `SSLCertificateKeyFile`, `SSLCertificateChainFile`, ...) serán necesarias o no dependiendo del tipo de certificado que hayas generado.
+
+     Entrega captura de pantalla del fichero de configuración de la intranet.
+
      Entrega capturas de pantalla de un cliente (a) aceptando el certificado, y (b) navegando por dicha pàgina.
 
  04. Intenta que http://intranet.mired.org/ redirija a https://intranet.mired.org/
@@ -195,15 +199,32 @@ Instala PHP y MySQL. Integra Apache y PHP, para que el servidor pueda ejecutar p
 
      Entrega comandos, pantallas de configuración, y pantalla de prueba de phpinfo.
 
- 02. Instala MySQL/MariaDB. Configura los parámetros de seguridad de acceso: usuarios que pueden acceder / acceder des de red o no / IPs que pueden acceder
+ 02. Instala MySQL/MariaDB. Configura los parámetros de seguridad de acceso: usuarios que pueden acceder / acceder des de red o no / IPs que pueden acceder.
 
-     Prueba a instalar PHPMyAdmin, y entonces accedera la gestión de las bases de datos desde un navegador.
+     Prueba a instalar PHPMyAdmin, y entonces acceder a la gestión de las bases de datos desde un navegador.
 
-     Entrega comandos, pantallas de configuración, y pantalla de prueba de phpmyadmin
+     Entrega comandos, pantallas de configuración, y pantalla de prueba de PHPMyAdmin.
   
- 03. Prueba el servidor web dinàmico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, PHPMyAdmin, etc.
+ 03. Prueba el servidor web dinámico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, PHPMyAdmin, etc.
 
      Entrega todos los pasos para la instalación y configuración del gestor de contenido.
+
+
+
+
+
+PRÁCTICA LINUX: SEGURIDAD
+-------------------------
+
+Realiza un estudio de las directivas y módulos de Apache que ayudan a fortalecer la seguridad en el servidor web.
+
+  - <https://www.tecmint.com/apache-security-tips/>
+
+  - <https://www.apachecon.eu/>
+
+  - <https://geekflare.com/apache-web-server-hardening-security/>
+
+  - <https://wiki.debian.org/Apache/Hardening>
 
 
 
@@ -215,7 +236,7 @@ PRÁCTICAS LINUX EXTRA
  01. (Extra) Instala en el servidor el módulo de Webmin para administrar Apache.
 
  02. (Extra) Modifica Apache para que un sitio web trabaje con el protocolo HTTP/2 en lugar de HTTP/1.1 , utilizando el módulo http2.
- 
+
  03. (Extra) Modifica Apache para que automáticamente cada usuario del sistema tenga una página web personal en su "home", utilizando el módulo userdir.
 
  04. (Extra) Elimina o cambia la información de versión de Apache.
@@ -259,22 +280,16 @@ REFERENCIAS
 
   - <http://en.wikipedia.org/wiki/Media_type>
 
-  - <https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/MIME_types>
+  - <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP>
 
   - <http://news.netcraft.com/archives/web_server_survey.html>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_web_server_software>
 
-  - <http://en.wikipedia.org/wiki/Comparison_of_lightweight_web_servers>
+  - <https://jvns.ca/blog/2017/01/31/whats-tls/>
 
   - <http://www.xtec.net/~acastan/textos/Tuning%20LAMP.pdf>
 
-  - <https://jvns.ca/blog/2017/01/31/whats-tls/>
+  - <https://blog.avast.com/create-a-secure-web-server-avast>
 
-  - <https://www.tecmint.com/apache-security-tips/>
-
-  - <https://www.apachecon.eu/>
-
-  - <https://geekflare.com/apache-web-server-hardening-security/>
-
-  - <https://wiki.debian.org/Apache/Hardening>
+  - <https://mythemeshop.com/blog/web-server-security/>
