@@ -13,9 +13,9 @@ PREGUNTAS
 
  06. ¿Qué son los registros A, AAAA, CNAME, NS, MX, PTR y SOA?
  
- 07. Al instalar un servidor de DNS en una pequeña red local, ¿Qué parámetros a configurar piensas que serán los más importantes?
+ 07. Al instalar un servidor de DNS en una red local, ¿Qué parámetros a configurar piensas que serán los más importantes?
 
- 08. Al instalar un servidor de DNS en una pequeña red local, ¿Qué pruebas piensas que deberás hacer para comprobar el buen funcionamiento?
+ 08. Al instalar un servidor de DNS en una red local, ¿Qué pruebas piensas que deberás hacer para comprobar el buen funcionamiento?
 
  09. ¿De qué tres maneras se puede integrar el servicio de DHCP con el de DNS para conseguir que el servidor de DNS resuelva nombres de máquinas cuya IP fue dada por un servidor de DHCP?
 
