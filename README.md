@@ -156,7 +156,9 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## VPN
 
-  * Proyecto con WireGuard, y quizás también con OpenVPN e IPSec (por hacer)
+  * [Redes Privadas Virtuales (ejercicio)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales.md)
+
+  * Redes Privadas Virtuales (solución - por hacer)
 
 
 
