@@ -117,8 +117,8 @@ En una oficina de la empresa "mired.org" tenemos el despacho de los administrati
 
 
 
-MÁS PRÁCTICAS
--------------
+PRÁCTICAS EXTRA
+---------------
 
 Más prácticas: gestionar y delegar subdominios.
 
