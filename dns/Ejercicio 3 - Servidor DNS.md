@@ -112,7 +112,14 @@ En una oficina de la empresa "mired.org" tenemos el despacho de los administrati
  06. Integra el servidor de DNS con el servidor de DHCP para que cuándo el servidor de DHCP conceda IPs a los equipos, el servidor de DNS actualice el fichero de zona.
 
      Serán los clientes los que informen al servidor de DHCP de cuáĺ es su nombre, y el servidor de DHCP el que informe al servidor de DNS de las IPs concedida y del nombre del cliente.
- 
+
+
+
+
+
+MÁS PRÁCTICAS
+-------------
+
 Más prácticas: gestionar y delegar subdominios.
 
 Más prácticas: ejercicios anteriores con software DNSMasq en vez de con Bind.
