@@ -126,7 +126,7 @@ Más prácticas: ejercicios anteriores con software DNSMasq en vez de con Bind.
 
 Más prácticas: registrar dominio gratuito en FreeNom para tus máquinas virtuales en la nube, y administrar tus registros DNS con Amazon Route53 , Oracle Cloud DNS , o tu propio servidor DNS en la nube.
 
-Más prácticas: registrar dominio para red de casa con DynDNS y configurar para actualizar el registro DNS cuando tu proveedor cambia la IP pública de tu router doméstico.
+Más prácticas: registrar dominio para red de casa con DynDNS / NO-IP / DuckDNS y configurar para actualizar el registro DNS cuando tu proveedor cambia la IP pública de tu router doméstico.
 
 
 
