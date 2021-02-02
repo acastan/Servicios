@@ -205,7 +205,7 @@ Instala PHP y MySQL. Integra Apache y PHP, para que el servidor pueda ejecutar p
 
      Entrega comandos, pantallas de configuración, y pantalla de prueba de PHPMyAdmin.
   
- 03. Prueba el servidor web dinámico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, PHPMyAdmin, etc.
+ 03. Prueba el servidor web dinámico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, Moodle, Alfresco, Prestashop, SeaFile, NextCloud, GitLab, Mantis-bt, Glpi, RackTables, OpenStack, etc.
 
      Entrega todos los pasos para la instalación y configuración del gestor de contenido.
 
