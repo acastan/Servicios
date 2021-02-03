@@ -14,7 +14,7 @@ PREGUNTAS
  06. ¿Cuál es el software de proxy-caché más conocido para Linux?
 
  07. Al instalar un servicio de proxy-caché, ¿Qué parámetros a configurar piensas que serán los más importantes?
-
+ 
  08. En la red local de nuestro centro la mayor parte del ancho de banda se la comen las actualizaciones de Windows, de antivirus, de Linux. Estudia diferentes métodos que podemos utilizar para cachear dichas actualizaciones y así liberar el ancho de banda. Pistas:
 
      - Microsoft Windows Server Update Services.
@@ -86,15 +86,38 @@ PRÁCTICA LINUX
 
  07. ¿Cómo harás para indicar al proxy que las páginas del dominio mired.org no las guarde en la caché?
 
- 08. (extra) Instala *Webmin* y utilízalo para configurar gráficamente *Squid* desde un navegador
+ 08. Instala *Webmin* y utilízalo para configurar gráficamente *Squid* desde un navegador
 
- 09. (extra) En la máquina que hace de router con *IPFire*, activa y configura el módulo de proxy-caché
 
-     <https://wiki.ipfire.org/configuration/network/proxy/wui_conf>
 
- 10. (extra) Instala y configura en tu servidor una caché de paquetes con *apt-cacher-ng*, y configura un cliente con *Debian* o *Ubuntu* para que se actualice a través de él
 
-     <https://blog.ichasco.com/apt-cache-ng-repositorio-local-cacheado/>
+
+PRÁCTICA IPFIRE
+---------------
+
+En la máquina que hace de router con *IPFire*, activa y configura el módulo de proxy-caché
+
+<https://wiki.ipfire.org/configuration/network/proxy/wui_conf>
+
+
+
+
+
+PRÁCTICA CACHE DE PAQUETES .DEB
+-------------------------------
+
+Instala y configura en tu servidor una caché de paquetes con *apt-cacher-ng*, y configura un cliente con *Debian* o *Ubuntu* para que se actualice a través de él
+
+<https://blog.ichasco.com/apt-cache-ng-repositorio-local-cacheado/>
+
+
+
+
+
+PRÁCTICA SALTAR FILTRADO DEL PROXY XTEC
+---------------------------------------
+
+La red de la XTEC está protegida por un proxy para evitar el acceso des de las escuelas a páginas de piratería, pornografía, y hacking. También está filtrado Tor y el acceso a proxys públicos. Esto a veces es un engorro cuando no nos deja acceder a páginas que necesitamos para la materia de Seguridad Informática. Aprovechando que disponemos de servidores en Internet (Oracle Cloud y Amazon AWS) ¿Cómo podemos pasar las restricciones de dicho proxy?
 
 
 
@@ -192,4 +215,3 @@ REFERENCIAS
   - [Configuraciones de ejemplo de Squid](http://wiki.squid-cache.org/ConfigExamples/)
 
   - [Configuraciones de ejemplo de Squid](https://ioc.xtec.cat/materials/FP/Materials/2201_SMX/SMX_2201_M07/web/html/WebContent/u3/a2/continguts.html#instal_lacio_del_programari_squid_per_a_linux)
-
