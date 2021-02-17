@@ -73,20 +73,58 @@ PRÁCTICA LINUX
  03. Configura el servicio de FTP para que un par de usuarios que crearás tenga acceso de lectura y escritura autentificado (con nombre de usuario y contraseña) al directorio de sus páginas web. Los usuarios del servidor FTP no deben tener acceso a la línea de comandos del sistema.
  
  04. Instala en el servidor el módulo de Webmin para administrar proFTPd.
- 
- 05. (Extra) Crea una máquina virtual donde instalarás FreeNAS u OpenMediaVault.
 
-     - Explora la administrador web del servidor NAS.
+
+
+
+
+PRÁCTICA SFTP
+-------------
+
+ 01. Aprovechando que tenemos un servidor con IP pública en Oracle Cloud, instala en dicho servidor el paquete `openssh-sftp-server`
+
+ 02. ¿Dónde está su fichero de configuración?
+
+ 03. ¿Cómo accederás con un cliente remoto por SFTP?
+
+ 04. Adjunta captura de pantalla accediendo por línea de comandos y también con el cliente gráfico Filezilla.
+
+
+
+
+
+PRÁCTICA NAS
+------------
+
+ 01. Crea una máquina virtual donde instalarás FreeNAS u OpenMediaVault.
+
+ 02. Explora la administrador web del servidor NAS.
      
-     - Activa una carpeta donde dejarás ficheros via FTP, SMB, o NFS.
+ 03. Activa una carpeta donde dejarás ficheros via FTP, SMB, o NFS.
      
-     - Haz que tu servidor web en otra máquina virtual monte a cada inicio esta carpeta, que es donde estarán sus páginas web.
+ 04. Haz que tu servidor web en otra máquina virtual monte a cada inicio esta carpeta, que es donde estarán sus páginas web.
 
- 06. (Extra) Instala un servidor de PXE de arranque por red, que permitirá la instalación o ejecución de sistemas operativos por red mediante un menú.
 
- 07. (Extra) Instala y configura un servidor de ficheros en la nube con NextCloud, y prepara varios clientes, tanto ordenadores de escritorio como dispositivos móbiles, para poder sincronizar los documentos, contactos y calendarios con dicho servidor.
+
+
+
+PRÁCTICA FICHEROS EN LA NUBE
+----------------------------
+
+Instala y configura un servidor de ficheros en la nube con NextCloud, y prepara varios clientes, tanto ordenadores de escritorio como dispositivos móbiles, para poder sincronizar los documentos, contactos y calendarios con dicho servidor.
 
      Si quieres, previamente puedes provar cómo funciona NextCloud en <https://try.nextcloud.com/>
+
+También puedes probar SeaFile en lugar de NextCloud.
+
+
+
+
+
+PRÁCTICA ARRANQUE EN RED
+------------------------
+
+Instala un servidor de PXE de arranque por red, que permitirá la instalación o ejecución de sistemas operativos por red mediante un menú.
 
 
 
@@ -102,4 +140,3 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Server_Message_Block>
 
   - <http://en.wikipedia.org/wiki/Samba_(software)>
-
