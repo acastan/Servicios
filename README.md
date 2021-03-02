@@ -86,9 +86,9 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Proxy-caché
 
-  * [Servidor de Proxy-caché (ejercicio - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9.md)
+  * [Servidor de Proxy-caché (ejercicio)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9.md)
 
-  * [Servidor de Proxy-caché (solución - a renovar)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de Proxy-caché (solución)](proxy/Ejercicio%204%20-%20Servidor%20Proxy%20cach%C3%A9%20-%20soluci%C3%B3n.pdf)
 
 
 
@@ -102,13 +102,13 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Servidor de ficheros
 
-  * [Servidor de FTP (ejercicio - a renovar)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP.md)
+  * [Servidor de FTP (ejercicio)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP.md)
 
-  * [Servidor de FTP (solución - a renovar)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de FTP (solución)](ficheros/Ejercicio%206a%20-%20Servidor%20ficheros%20FTP%20-%20soluci%C3%B3n.pdf)
 
-  * [Servidor de NFS (solución - a renovar)](ficheros/Ejercicio%206b%20-%20Servidor%20ficheros%20NFS%20-%20soluci%C3%B3n.md)
+  * [Servidor de NFS (solución)](ficheros/Ejercicio%206b%20-%20Servidor%20ficheros%20NFS%20-%20soluci%C3%B3n.md)
 
-  * [Servidor de SMB (solución - a renovar)](ficheros/Ejercicio%206c%20-%20Servidor%20ficheros%20SMB%20-%20soluci%C3%B3n.md)
+  * [Servidor de SMB (solución)](ficheros/Ejercicio%206c%20-%20Servidor%20ficheros%20SMB%20-%20soluci%C3%B3n.md)
 
 
 
@@ -170,10 +170,10 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Administración de SGBDR MySQL / MariaDB
 
-  * [Administración de MySQL (antiguo)](http://www.xtec.cat/~acastan/textos/Administracion%20de%20MySQL.html)
+  * [Administración de MySQL (muy antiguo)](http://www.xtec.cat/~acastan/textos/Administracion%20de%20MySQL.html)
 
 
 
 ## Otros
 
-  * [Optimizar LAMP (antiguo)](http://www.xtec.cat/~acastan/textos/Tuning%20LAMP.pdf)
+  * [Optimizar LAMP (muy antiguo)](http://www.xtec.cat/~acastan/textos/Tuning%20LAMP.pdf)
