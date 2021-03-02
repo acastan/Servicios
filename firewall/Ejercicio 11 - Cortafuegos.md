@@ -64,7 +64,7 @@ REFERENCIAS
 
   - <https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture>
 
-  - <http://es.tldp.org/Manuales-LuCAS/doc-iptables-firewall/doc-iptables-firewall.pdf>
+  - <http://pello.io/filez/firewall/iptables.html>
 
   - <https://wiki.nftables.org/wiki-nftables/>
 
