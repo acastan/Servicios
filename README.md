@@ -158,7 +158,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Redes Privadas Virtuales (ejercicio)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales.md)
 
-  * Redes Privadas Virtuales (solución - por hacer)
+  * [Redes Privadas Virtuales (solución - por acabar)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales%20-%20soluci%C3%B3n.pdf)
 
 
 
