@@ -1,4 +1,4 @@
-﻿PREGUNTAS
+PREGUNTAS
 ---------
 
  01. ¿En qué consiste un sistema de detección de intrusos (IDS)? ¿Qué diferencias hay con un cortafuegos?
@@ -58,18 +58,18 @@ En las opciones se especifica qué información se debe encontrar en un paquete 
 
 
 
-EJERCICIO
----------
+EJERCICIO CON SNORT O SURICATA
+------------------------------
 
- 01. Añade reglas a Snort para detectar escaneos horizontales y verticales. Pruébalas realizando un escaneo con Nmap. ¿Cómo sería un escaneo que burle dichas reglas?
+ 01. Añade reglas al IDS para detectar escaneos horizontales y verticales. Pruébalas realizando un escaneo con Nmap. ¿Cómo sería un escaneo que burle dichas reglas?
 
- 02. Añade reglas a Snort para que detecte ARP spoofing. Pruébalo con Bettercap.
+ 02. Añade reglas al IDS para que detecte ARP spoofing. Pruébalo con Bettercap.
 
- 03. Tu jefe quiere saber si los empleados hablan de él. Añade reglas a Snort para que detecte la cadena "jefe" en cualquier paquete TCP o UDP.
+ 03. Tu jefe quiere saber si los empleados hablan de él. Añade reglas al IDS para que detecte la cadena "jefe" en cualquier paquete TCP o UDP.
 
- 04. Están intentando conseguir contraseñas de algunos de tus servicios, por ejemplo SSH, probando las contraseñas de un diccionario. Añade reglas a Snort para que detecte dichos ataques. Pruébalo con Hydra o xHydra.
+ 04. Están intentando conseguir contraseñas de algunos de tus servicios, por ejemplo SSH, probando las contraseñas de un diccionario. Añade reglas al IDS para que detecte dichos ataques. Pruébalo con Hydra o xHydra.
 
- 05. Están realizando un ataque DOS sobre tu servidor web mediante Syn Flooding. Añade reglas a Snort que detecten dicho ataque. Pruébalo con `hping3 -i u1 -S- p 80 IP_servidor_a_atacar` . Si quieres puedes capturar el tráfico con Wireshark para ver el ataque. Si quieres puedes configurar Snort para que añada una regla a tu cortafuegos bloqueando la IP del ataque.
+ 05. Están realizando un ataque DOS sobre tu servidor web mediante Syn Flooding. Añade reglas al IDS que detecten dicho ataque. Pruébalo con `hping3 -i u1 -S- p 80 IP_servidor_a_atacar` . Si quieres puedes capturar el tráfico con Wireshark para ver el ataque. Si quieres puedes configurar al IDS para que añada una regla a tu cortafuegos bloqueando la IP del ataque.
 
 
 
@@ -78,7 +78,7 @@ EJERCICIO
 PRÁCTICA
 --------
 
-Descarga una máquina llena de vulnerabilidades a atacar, por ejemplo [Metaesploitable 3](https://github.com/rapid7/metasploitable3). Escaneala con Nmap y Nessus.¿Qué puertos, servicios y vulnerabilidades has descubierto? Atácala con Metasploit. Intenta detectar los diferentes ataques con reglas de Snort.
+Descarga una máquina llena de vulnerabilidades a atacar, por ejemplo [Metaesploitable 3](https://github.com/rapid7/metasploitable3). Escaneala con Nmap y Nessus.¿Qué puertos, servicios y vulnerabilidades has descubierto? Atácala con Metasploit. Intenta detectar los diferentes ataques con reglas de Snort o Suricata.
 
 
 
