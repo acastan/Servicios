@@ -1,5 +1,25 @@
-PREGUNTAS
+﻿PREGUNTAS
 ---------
+
+ 01. ¿En qué consiste un sistema de detección de intrusos (IDS)? ¿Qué diferencias hay con un cortafuegos?
+
+ 02. ¿Qué diferencia hay entre un IDS de red y un IDS de host? ¿Cuáles son las ventajas y desventajas de uno y de otro?
+
+ 03. ¿Qué diferencia hay entre un IDS basado en firmas y un IDS basado en anomalías? ¿Cuáles son las ventajas y desventajas de uno y de otro?
+
+ 04. ¿Qué técnicas permiten evadir un IDS?
+
+ 05. ¿Cuál es el software de IDS más conocido para Unix/Linux?
+
+ 06. ...
+
+ 07. ...
+
+ 08. ...
+
+ 09. ...
+
+ 10. ...
 
 
 
@@ -43,13 +63,13 @@ EJERCICIO
 
  01. Añade reglas a Snort para detectar escaneos horizontales y verticales. Pruébalas realizando un escaneo con Nmap. ¿Cómo sería un escaneo que burle dichas reglas?
 
- 02. Añade reglas a Snort para que detecte ARP spoofing. Pruébalo con Ettercap.
+ 02. Añade reglas a Snort para que detecte ARP spoofing. Pruébalo con Bettercap.
 
  03. Tu jefe quiere saber si los empleados hablan de él. Añade reglas a Snort para que detecte la cadena "jefe" en cualquier paquete TCP o UDP.
 
  04. Están intentando conseguir contraseñas de algunos de tus servicios, por ejemplo SSH, probando las contraseñas de un diccionario. Añade reglas a Snort para que detecte dichos ataques. Pruébalo con Hydra o xHydra.
 
- 05. Están realizando un ataque DOS sobre tu servidor web mediante Syn Flooding. Añade reglas a Snort que detecten dicho ataque. Pruébalo con "hping3 -i u1 -S- p 80 IP_servidor_a_atacar" . Si quieres puedes capturar el tráfico con Wireshark para ver el ataque. Si quieres puedes configurar Snort para que añada una regla a tu cortafuegos bloqueando la IP del ataque.
+ 05. Están realizando un ataque DOS sobre tu servidor web mediante Syn Flooding. Añade reglas a Snort que detecten dicho ataque. Pruébalo con `hping3 -i u1 -S- p 80 IP_servidor_a_atacar` . Si quieres puedes capturar el tráfico con Wireshark para ver el ataque. Si quieres puedes configurar Snort para que añada una regla a tu cortafuegos bloqueando la IP del ataque.
 
 
 
@@ -67,5 +87,6 @@ Descarga una máquina llena de vulnerabilidades a atacar, por ejemplo [Metaesplo
 REFERENCIAS
 -----------
 
-  - <http://openaccess.uoc.edu/webapps/o2/bitstream/10609/43090/6/osanchezloTFM0715memoria.pdf>
+  - <https://en.wikipedia.org/wiki/Intrusion_detection_system>
 
+  - <http://openaccess.uoc.edu/webapps/o2/bitstream/10609/43090/6/osanchezloTFM0715memoria.pdf>
