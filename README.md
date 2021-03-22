@@ -164,7 +164,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## IDS
 
-  * [Sistemas de detección de intrusos (por hacer)](ids/Ejercicio%2015%20-%20Sistema%20Detección%20Intrusos.md)
+  * [Sistemas de detección de intrusos (por hacer)](ids/Ejercicio%2015%20-%20Sistema%20Detecci%C3%B3n%20Intrusos.md)
 
   * Sistemas de detección de intrusos (solución - por hacer)
 
