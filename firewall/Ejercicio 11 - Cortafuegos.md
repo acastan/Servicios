@@ -33,23 +33,62 @@ PREGUNTAS
 
 
 
-PRÁCTICA WINDOWS
-----------------
+PRÁCTICA
+--------
 
-  - Instalaremos una máquina virtual con Windows Server y un cortafuegos de red (¿Agnitum Outpost Firewall?)
+Tenemos la siguiente configuración en máquinas virtuales:
 
-  - Configuraremos el cortafuegos para simular alguno de los casos vistos en clase.
+  - En nuestra red local un cortafuegos/router accesible por ssh.
+ 
+  - En nuestra red local un servidor web también accesible por ssh.
+ 
+  - En internet un cliente, para hacer pruebas.
 
+El cortafuegos tendrá dos tarjetas de red para unir Internet con la red local:
 
+  - El cliente en Internet  y el cortafuegos estarán conectados en modo puente (-si dicho cliente quieres que sea la máquina real o "anfitrión"-) o en red NAT (-si dicho cliente es otra máquina virtual).
+ 
+  - El cortafuegos y el servidor de la red local, máquinas virtuales los dos, estarán conectados en red interna.
 
+Queremos manipular el tráfico en el cortafuegos para que:
 
+  - Des de Internet sólo permitiremos tráfico a la red interna hacia el servidor web, a sus puertos 80 y 443.
 
-PRÁCTICA LINUX
---------------
+  - Des de la red interna hacia el cortafuegos sólo permitiremos conexiones ssh al puerto tcp/22 y preguntas dns al puerto udp/53.
 
-  - Instalaremos una máquina virtual con Linux Debian estable. Instalaremos Gufw, Shorewall o FWBuilder.
+  - Tanto el servidor web como el cortafuegos podrán acceder hacia fuera, excepto al puerto tcp/1337.
 
-  - Configuraremos el cortafuegos para simular alguno de los casos vistos en clase.
+  - El cortafuegos enrutará de la red interna hacia el exterior.
+
+Realiza el ejercicio con reglas des de la línea de comandos con [*iptables*](https://en.wikipedia.org/wiki/Iptables), [*nftables*](https://en.wikipedia.org/wiki/Nftables) o [*ufw*](https://en.wikipedia.org/wiki/Uncomplicated_Firewall).
+
+ 01. Programa las reglas del cortafuegos para que cumpla los anteriores requisitos. Entrega dichas reglas.
+
+ 02. Entrega todas las pruebas que has hecho para comprobar el correcto funcionamiento del cortafuegos.
+
+ 03. Las reglas deben arrancar con el cortafuegos. ¿Cómo lo consigues?
+
+ 04. Una vez conseguido, prueba lo mismo con alguna interfaz gráfica al cortafuegos, como [*gufw*](https://help.ubuntu.com/community/Gufw), [*fwbuilder*](http://fwbuilder.sourceforge.net/4.0/quick_start_guide.shtml) o [*shorewall*](https://shorewall.org/GettingStarted.html). Entrega capturas de pantalla.
+
+ 05. Una vez conseguido, prueba lo mismo con alguna distribución especializada en cortafuegos y enrutamiento, como [*SmoothWall*](https://smoothwall.org/), [*pfSense*](https://www.pfsense.org/), [*OpnSense*](https://opnsense.org/) o [*IPFire*](https://www.ipfire.org/). Entrega capturas de pantalla.
+
+Para escribir las reglas del cortafuegos es muy importante que sigas estos consejos:
+
+1) Debes entender muy bien la diferencia entre tráfico input, output y forward. Tráfico input es el que va específicamente dirigido a la máquina que hace de cortafuegos, como por ejemplo una actualización de sus paquetes o un intento de conexión ssh. Sin embargo, tráfico forward es el que llega al cortafuegos, porque este hace de router, pero su destino final es otra máquina.
+
+2) Establece las reglas por defecto. A continuación, para poder aclararte, crea seis apartados para ir escribiendo las diferentes reglas:
+  - tráfico del exterior hacia la red local,  
+  - tráfico de la red local hacia el exterior,  
+  - tráfico del exterior hacia el cortafuegos,  
+  - tráfico del cortafuegos hacia el exterior,  
+  - tráfico de la red local hacia el cortafuegos,  
+  - tráfico del cortafuegos hacia la red local
+
+3) A la hora de bloquear tráfico, comprueba que no estés bloqueando las respuestas a tráfico establecido. Por ejemplo, si permites el tráfico de salida de una red local hacia el exterior, pero bloqueas el tráfico de entrada, cuando un ordenador de la red local inicie una conexión hacia el exterior (-para, por ejemplo, actualizarse-) la respuesta del exterior quedará bloqueada. Para solucionar esto pon reglas que permitan el paso de paquetes de comunicaciones establecidas. Por ejemplo, en iptbles esto se soluciona utilizando los módulos [*conntrack* y *state*](https://unix.stackexchange.com/questions/108169/what-is-the-difference-between-m-conntrack-ctstate-and-m-state-state)
+
+4) No te olvides de permitir el tráfico de localhost dentro del cortafuegos, por si algunos servicios se necesitan comunicar con otros en la misma máquina vía sockets.
+
+5) No te olvides de permitir el tráfico de DNS (udp/53), para la resolución de nombres.
 
 
 
@@ -95,15 +134,13 @@ ANEXO: MANUAL DE IPTABLES
         iptables -P INPUT DROP
         iptables -P OUTPUT DROP
         iptables -P FORWARD DROP
-        iptables -t nat -P PREROUTING ACCEPT
-        iptables -t nat -P POSTROUTING ACCEPT
 
   * Añade nuevas reglas: `iptables -A`  
     Ejemplo:
 
         iptables -A INPUT -i lo -j ACCEPT
         iptables -A OUTPUT -o lo -j ACCEPT
-        iptables -A INPUT -s 192.168.1.0/25 -dport 80 -j ACCEPT
+        iptables -A INPUT -s 192.168.1.0/25 -p tcp --dport 80 -j ACCEPT
 
   * Lista las reglas: `iptables -L`  
     Ejemplo:
@@ -151,7 +188,7 @@ Las cadenas donde guardaremos reglas son `INPUT`, `OUTPUT`, `FORWARD`, `PREROUTI
 
   * La opción `-p { tcp | udp | icmp }` especifica el tipo de tráfico (-ver siguientes opciones-).
 
-  * Las opciones `--dport puerto` y `--sport puerto` indican el puerto de origen y destino, respectivamente, si el tráfico es TCP o UDP.
+  * Las opciones `--dport puerto` y `--sport puerto` indican el puerto de origen y destino, respectivamente, si el tráfico especificado en la anterior opción es TCP o UDP.
 
   * La opción `--icmp-type tipo_mensaje` indica tipo de mensaje si el tráfico es ICMP.
 
@@ -257,4 +294,3 @@ Los grupos donde guardaremos reglas son `input`, `output`, `forward`, `preroutin
   - <https://kernelnewbies.org/nftables_examples>
 
   - <https://wiki.archlinux.org/index.php/nftables#Examples>
-
