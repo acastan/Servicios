@@ -229,8 +229,6 @@ ANEXO: MANUAL DE NFTABLES
         nft chain inet filter input    { policy drop }
         nft chain inet filter output   { policy drop }
         nft chain inet filter forward  { policy drop }
-        nft chain inet nat prerouting  { policy accept }
-        nft chain inet nat postrouting { policy accept }
 
   * Añade nuevas cadenas: `nft add chain *familia* *tabla* *cadena* { type *tipo* hook *hook* priority *valor* \; [policy *acción*] }`  
     Ejemplo:
