@@ -66,6 +66,8 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Cortafuegos (ejercicio)](firewall/Ejercicio%2011%20-%20Cortafuegos.md)
 
+  * [Cortafuegos (solución - por acabar)](firewall/Ejercicio%2011%20-%20Cortafuegos%20-%20soluci%C3%B3n.pdf)
+
 
 
 ## DHCP
