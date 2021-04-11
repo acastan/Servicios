@@ -77,12 +77,12 @@ Para escribir las reglas del cortafuegos es muy importante que sigas estos conse
 1) Debes entender muy bien la diferencia entre tráfico input, output y forward. Tráfico input es el que va específicamente dirigido a la máquina que hace de cortafuegos, como por ejemplo una actualización de sus paquetes o un intento de conexión ssh. Sin embargo, tráfico forward es el que llega al cortafuegos, porque este hace de router, pero su destino final es otra máquina.
 
 2) Establece las reglas por defecto. A continuación, para poder aclararte, crea seis apartados para ir escribiendo las diferentes reglas:
-  - tráfico del exterior hacia la red local,  
-  - tráfico de la red local hacia el exterior,  
-  - tráfico del exterior hacia el cortafuegos,  
-  - tráfico del cortafuegos hacia el exterior,  
-  - tráfico de la red local hacia el cortafuegos,  
-  - tráfico del cortafuegos hacia la red local
+   - tráfico del exterior hacia la red local,  
+   - tráfico de la red local hacia el exterior,  
+   - tráfico del exterior hacia el cortafuegos,  
+   - tráfico del cortafuegos hacia el exterior,  
+   - tráfico de la red local hacia el cortafuegos,  
+   - tráfico del cortafuegos hacia la red local
 
 3) A la hora de bloquear tráfico, comprueba que no estés bloqueando las respuestas a tráfico establecido. Por ejemplo, si permites el tráfico de salida de una red local hacia el exterior, pero bloqueas el tráfico de entrada, cuando un ordenador de la red local inicie una conexión hacia el exterior (-para, por ejemplo, actualizarse-) la respuesta del exterior quedará bloqueada. Para solucionar esto pon reglas que permitan el paso de paquetes de comunicaciones establecidas. Por ejemplo, en iptbles esto se soluciona utilizando los módulos [*conntrack* y *state*](https://unix.stackexchange.com/questions/108169/what-is-the-difference-between-m-conntrack-ctstate-and-m-state-state)
 
