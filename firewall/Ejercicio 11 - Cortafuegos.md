@@ -70,7 +70,7 @@ Realiza el ejercicio con reglas des de la línea de comandos con [*iptables*](ht
 
  04. Una vez conseguido, prueba lo mismo con alguna interfaz gráfica al cortafuegos, como [*gufw*](https://help.ubuntu.com/community/Gufw), [*fwbuilder*](http://fwbuilder.sourceforge.net/4.0/quick_start_guide.shtml) o [*shorewall*](https://shorewall.org/GettingStarted.html). Entrega capturas de pantalla.
 
- 05. Una vez conseguido, prueba lo mismo con alguna distribución especializada en cortafuegos y enrutamiento, como [*SmoothWall*](https://smoothwall.org/), [*pfSense*](https://www.pfsense.org/), [*OpnSense*](https://opnsense.org/) o [*IPFire*](https://www.ipfire.org/). Entrega capturas de pantalla.
+ 05. Una vez conseguido, prueba lo mismo con alguna distribución especializada en cortafuegos y enrutamiento, como [*Zeroshell*](https://zeroshell.org/), [*pfSense*](https://www.pfsense.org/), [*OpnSense*](https://opnsense.org/) o [*IPFire*](https://www.ipfire.org/). Entrega capturas de pantalla.
 
 Para escribir las reglas del cortafuegos es muy importante que sigas estos consejos:
 
