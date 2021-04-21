@@ -212,6 +212,6 @@ REFERENCIAS
 
   - [Directivas de configuración de Squid](http://www.squid-cache.org/Doc/config/)
 
-  - [Access Control Lists de Squid](http://wiki.squid-cache.org/SquidFaq/SquidAcl)
+  - [ACLs de Squid](http://wiki.squid-cache.org/SquidFaq/SquidAcl)
 
   - [Configuraciones de ejemplo de Squid](https://ioc.xtec.cat/materials/FP/Materials/2201_SMX/SMX_2201_M07/web/html/WebContent/u3/a2/continguts.html#instal_lacio_del_programari_squid_per_a_linux)
