@@ -1,4 +1,4 @@
-﻿PREGUNTAS
+PREGUNTAS
 ---------
 	
  01. ¿Qué es chat? ¿Para que sirve? ¿Cuál es su historia?
@@ -44,7 +44,13 @@ PRÁCTICA LINUX
 
     <https://blog.mypapit.net/2015/09/a-bash-script-for-sending-telegram-messages-in-linux.html>
 
+    <https://geekland.eu/instalar-configurar-y-usar-telegram-cli/>
+
   - Crear un bot de Telegram para controlar nuestro servidor enviando mensajes al chat del teléfono móbil.
+
+    <https://lliçons.jutge.org/python/telegram.html>
+
+    <https://www.youtube.com/watch?v=YD7vtyLXu7U>
 
 
 
@@ -66,3 +72,5 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Voice_over_IP>
 
   - <https://en.wikipedia.org/wiki/Matrix_(protocol)>
+
+  - <https://en.wikipedia.org/wiki/Messaging_apps>
