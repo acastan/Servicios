@@ -132,9 +132,9 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Correo
 
-  * [Servidor de correo (ejercicio - a renovar)](correo/Ejercicio%207%20-%20Servidor%20correo.md)
+  * [Servidor de correo (ejercicio)](correo/Ejercicio%207%20-%20Servidor%20correo.md)
 
-  * [Servidor de correo (solución - a renovar)](correo/Ejercicio%207%20-%20Servidor%20correo%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de correo (solución)](correo/Ejercicio%207%20-%20Servidor%20correo%20-%20soluci%C3%B3n.pdf)
 
 
 
