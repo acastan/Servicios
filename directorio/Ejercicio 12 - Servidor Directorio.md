@@ -150,7 +150,9 @@ PRÁCTICA LINUX OPENLDAP
 
  08. Prueba la herramienta [JXplorer](http://jxplorer.org/) des de un cliente para consultar la información del directorio.
 
- 09. Prueba la herramienta [Apache Directory Studio](http://directory.apache.org/studio/) des de un cliente para consultar la información del directorio.
+ 09. Prueba la herramienta [LDAP Account Manager](http://www.ldap-account-manager.org/) des de un cliente para consultar la información del directorio.
+
+ 10. Prueba la herramienta [Apache Directory Studio](http://directory.apache.org/studio/) des de un cliente para consultar la información del directorio.
 
 
 
