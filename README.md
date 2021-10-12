@@ -14,11 +14,11 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ### Virtualización
 
-  * [Ejercicio de virtualización con Virtualbox (enunciado)](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20ejercicio.md) 
+  * [Ejercicio de virtualización con Virtualbox (enunciado)](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20ejercicio.md)
 
-  * [Ejercicio de virtualización con Virtualbox (solución)](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20soluci%C3%B3n.pdf) 
+  * [Ejercicio de virtualización con Virtualbox (solución)](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20soluci%C3%B3n.pdf)
 
-  * [Apuntes de virtualización con Docker](repaso/Ejercicio%200a%20-%20repaso%20Virtualización%20-%20Docker.pdf) 
+  * [Curso de virtualización con Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
 ### TCP/IP
 
