@@ -5,7 +5,7 @@ PREGUNTAS
 
  02. ¿Qué ventajas proporciona? ¿Por qué? ¿Qué desventajas proporciona? ¿Por qué?
 
- 03. Dibuja el esquema de una red local donde hay un servidor de DHCP.
+ 03. Dibuja el esquema de una red local donde hay un servidor de DHCP. ¿Qué debemos configurar en nuestra red para que el tráfico DHCP pase a través de los encaminadores o routers?
  
  04. ¿Qué es APIPA?
 
