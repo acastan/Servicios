@@ -201,13 +201,53 @@ Instala PHP y MySQL. Integra Apache y PHP, para que el servidor pueda ejecutar p
 
  02. Instala MySQL/MariaDB. Configura los parámetros de seguridad de acceso: usuarios que pueden acceder / acceder des de red o no / IPs que pueden acceder.
 
-     Prueba a instalar PHPMyAdmin, y entonces acceder a la gestión de las bases de datos desde un navegador.
+     Prueba a instalar [PHPMyAdmin](https://www.phpmyadmin.net/), o [Adminer](https://www.adminer.org/), o [DBeaver](https://dbeaver.io/), y entonces acceder a la gestión de las bases de datos desde un navegador.
 
-     Entrega comandos, pantallas de configuración, y pantalla de prueba de PHPMyAdmin.
+     Entrega comandos, pantallas de configuración, y pantalla de prueba de PHPMyAdmin/Adminer/DBeaver.
   
  03. Prueba el servidor web dinámico instalando algunos gestores de contenido: Wordpres, Drupal, Joomla, MediaWiki, Moodle, Alfresco, Prestashop, SeaFile, NextCloud, GitLab, Mantis-bt, Glpi, RackTables, OpenStack, etc.
 
      Entrega todos los pasos para la instalación y configuración del gestor de contenido.
+
+
+
+
+
+PRÁCTICA LINUX: TU SERVIDOR WEB EN INTERNET
+-------------------------------------------
+
+Vas tener tu propio servidor web en Internet, donde moverás todo lo hecho hasta ahora.
+
+ 01. Inicia una instancia de Linux en [Oracle Academy Cloud](https://academy.oracle.com/) o [AWS Academy](https://aws.amazon.com/training/awsacademy/).
+
+ 02. Instala en dicha instancia lo practicado hasta ahora: servidor web que pueda servir contenidos dinámicos, gestor de contenido, https.
+ 
+ 03. Abre puertos en los dos cortafuegos para poder probar tu web des de el exterior: el cortafuegos de red y el cortafuegos del host.
+
+ 04. Crea tu página web.
+  
+ 05. En [Freenom](https://www.freenom.com/) reserva un nombre de dominio gratuito (.tk, .ga, etc.) para tu web.
+ 
+ 06. Haz que el registro DNS Freenom para tu dominio apunte al servidor DNS de Oracle Cloud o Amazon AWS, y configura el servidor DNS de Oracle Cloud o Amazon AWS para que el registro www apunte a la IP de tu host.
+
+ 07. Crea e instala para tu web un certificado digital gratuito de [Let's Encrypt](https://letsencrypt.org/). Dichos certificados sólo demuestran que administras el dominio, y expiran a los tres meses. Lo ideal sería que utilizaras [certbot](https://certbot.eff.org/) para [renovar dicho certificado automáticamente](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-20-04-es). Si en lugar de utilizar certbot prefieres hacerlo [a mano](https://punchsalad.com/ssl-certificate-generator/) será tedioso repetir el proceso cada tres meses.
+
+Entrega la URL de tu web, así como todos los pasos para la instalación y configuración.
+
+
+
+
+
+PRÁCTICA LINUX EXTRA: CONVIÉRTETE EN UN PROVEEDOR DE ESPACIO WEB MULTIHOSTING
+-----------------------------------------------------------------------------
+
+Si has realizado los pasos del 1 al 3 de la práctica anterior, ahora instala un [panel administrativo](https://en.wikipedia.org/wiki/Comparison_of_web_hosting_control_panels) (ISPConfig, Virtualmin, GNUPanel, etc.) que permita vía navegador:
+
+  * a ti, crear usuarios y nuevos dominios web.
+  
+  * a los usuarios, gestionar su hosting web, subir archivos.
+
+Entrega los pasos para la instalación y configuración, y capturas de  pantalla de la administración del panel.
 
 
 
