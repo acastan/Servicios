@@ -238,8 +238,8 @@ Entrega la URL de tu web, así como todos los pasos para la instalación y confi
 
 
 
-PRÁCTICA LINUX EXTRA: CONVIÉRTETE EN UN PROVEEDOR DE ESPACIO WEB MULTIHOSTING
------------------------------------------------------------------------------
+PRÁCTICA LINUX EXTRA: CONVIÉRTETE EN UN PROVEEDOR DE ESPACIO WEB
+----------------------------------------------------------------
 
 Si has realizado los pasos del 1 al 3 de la práctica anterior, ahora instala un [panel administrativo](https://en.wikipedia.org/wiki/Comparison_of_web_hosting_control_panels) (ISPConfig, Virtualmin, GNUPanel, etc.) que permita vía navegador:
 
