@@ -1,25 +1,25 @@
-PREGUNTAS
+﻿PREGUNTAS
 ---------
 
  01. ¿En qué consiste un sistema de detección de intrusos (IDS)? ¿Qué diferencias hay con un cortafuegos?
 
- 02. ¿Qué diferencia hay entre un IDS de red y un IDS de host? ¿Cuáles son las ventajas y desventajas de uno y de otro?
+ 02. ¿Qué diferencia hay entre un IDS y un IPS?
 
- 03. ¿Qué diferencia hay entre un IDS basado en firmas y un IDS basado en anomalías? ¿Cuáles son las ventajas y desventajas de uno y de otro?
+ 03. ¿Qué diferencia hay entre un IDS de red y un IDS de host? ¿Cuáles son las ventajas y desventajas de uno y de otro?
 
- 04. ¿Qué técnicas permiten evadir un IDS?
+ 04. ¿Qué diferencia hay entre un IDS basado en firmas y un IDS basado en anomalías? ¿Cuáles son las ventajas y desventajas de uno y de otro?
 
- 05. ¿Cuál es el software de IDS más conocido para Unix/Linux?
+ 05. Dibuja el esquema de una red local donde hay un NIDS. 
 
- 06. ...
+ 06. ¿Qué técnicas permiten evadir un IDS?
 
- 07. ...
+ 07. ¿Cuál es el software de IDS más conocido para Unix/Linux?
 
- 08. ...
+ 08. ¿Qué es Snort, Suricata, Zeek, OSSEC, Wazuh, y Sguil?
 
- 09. ...
+ 09. ¿Qué es Security Onion?
 
- 10. ...
+ 10. ¿Cuál es la estructura de una regla se Snort?
 
 
 
@@ -78,7 +78,7 @@ EJERCICIO CON SNORT O SURICATA
 PRÁCTICA
 --------
 
-Descarga una máquina llena de vulnerabilidades a atacar, por ejemplo [Metaesploitable 3](https://github.com/rapid7/metasploitable3). Escaneala con Nmap y Nessus.¿Qué puertos, servicios y vulnerabilidades has descubierto? Atácala con Metasploit. Intenta detectar los diferentes ataques con reglas de Snort o Suricata.
+Descarga una máquina llena de vulnerabilidades a atacar, por ejemplo [Metaesploitable3](https://github.com/rapid7/metasploitable3). Escaneala con Nmap y Nessus.¿Qué puertos, servicios y vulnerabilidades has descubierto? Atácala con Metasploit. Intenta detectar los diferentes ataques con reglas de Snort o Suricata.
 
 
 
@@ -90,3 +90,12 @@ REFERENCIAS
   - <https://en.wikipedia.org/wiki/Intrusion_detection_system>
 
   - <http://openaccess.uoc.edu/webapps/o2/bitstream/10609/43090/6/osanchezloTFM0715memoria.pdf>
+  
+  
+  
+
+  
+TEMP
+----
+
+  - <https://www.digitalocean.com/community/tutorials/how-to-configure-suricata-as-an-intrusion-prevention-system-ips-on-debian-11>
