@@ -13,9 +13,11 @@
 
  06. Al instalar un servidor de streaming, ¿Qué parámetros a configurar piensas que serán los más importantes?
 
- 07. ¿Qué clientes de videoconferencia conoces para Linux?
+ 07. ¿Qué clientes y servidores de videoconferencia conoces para Linux?
 
  08. ¿Qué és webconferencia o webinar, y que servidor de webconferencia conoces para Linux?
+ 
+ 09. ¿Qué es GNU Jami?
 
 
 
@@ -111,4 +113,3 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Podcast>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_web_conferencing_software>
-
