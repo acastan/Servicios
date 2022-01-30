@@ -99,3 +99,5 @@ TEMP
 ----
 
   - <https://www.digitalocean.com/community/tutorials/how-to-configure-suricata-as-an-intrusion-prevention-system-ips-on-debian-11>
+
+  - <https://www.digitalocean.com/community/tutorials/how-to-build-a-security-information-and-event-management-siem-system-with-suricata-and-the-elastic-stack-on-debian-11>
