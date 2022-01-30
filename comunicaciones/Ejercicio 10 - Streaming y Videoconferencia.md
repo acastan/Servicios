@@ -89,6 +89,8 @@ PRÁCTICA LINUX
 
     <https://www.josedomingo.org/pledin/2020/07/streaming-video-software-libre/>
 
+    <https://www.digitalocean.com/community/tutorials/how-to-set-up-a-video-streaming-server-using-nginx-rtmp-on-ubuntu-20-04>
+
 
 
 
