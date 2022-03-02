@@ -7,7 +7,7 @@
 
  03. ¿Qué es podcast?
 
- 04. ¿Viene algún software de servidor de streaming con Windows Server? ¿Dónde? ¿Cuál es el servidor de correo comercial más conocido para Windows?
+ 04. ¿Viene algún software de servidor de streaming con Windows Server? ¿Dónde? ¿Cuál es el servidor de streaming comercial más conocido para Windows?
 
  05. ¿Cuáles son los servidores de streaming más conocidos para Unix/Linux?
 
@@ -32,8 +32,8 @@ PRÁCTICA WINDOWS
 
 
 
-PRÁCTICA LINUX
---------------
+PRÁCTICAS LINUX
+---------------
 
   - Instalaremos y configuraremos el servidor de streaming Icecast2. Utilizaremos clientes para acceder al contenido multimedia.
     
