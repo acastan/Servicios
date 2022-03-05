@@ -134,12 +134,18 @@ Sabiendo que Squid cuenta, entre otros, con los siguientes elementos de ACL:
  * url_regex: URL regular expression pattern matching
  * time: time of day, and day of week
 
+Sabiendo también que:
+
+ * Varias ACL en una regla es la intersección ("y") de todas ellas.
+ * Las reglas se evalúan por orden hasta que una de ellas se aplica.
+
 Explica las siguientes configuraciones:
 
 01. ¿Quién podrá acceder a la web?
 
         acl network172 src 172.16.5.0/24
         http_access allow network172
+        http_access deny all
 
 02. ¿Qué está permitido y qué está denegado en la siguiente configuración?
 
@@ -162,6 +168,7 @@ Explica las siguientes configuraciones:
         acl ME src 10.0.0.1
         acl YOU src 10.0.0.2
         http_access allow ME YOU
+        http_access deny all
 
 05. ¿Qué está permitido y qué está denegado en la siguiente configuración?
 
@@ -186,6 +193,7 @@ Explica las siguientes configuraciones:
 
         acl PornSites url_regex "/usr/local/squid/etc/pornlist"
         http_access deny !PornSites
+        http_access allow all
 
 09. ¿Qué está permitido y qué está denegado en la siguiente configuración?
 
@@ -212,6 +220,6 @@ REFERENCIAS
 
   - [Directivas de configuración de Squid](http://www.squid-cache.org/Doc/config/)
 
-  - [ACLs de Squid](http://wiki.squid-cache.org/SquidFaq/SquidAcl)
+  - [Access Control List en Squid](http://wiki.squid-cache.org/SquidFaq/SquidAcl)
 
-  - [Configuraciones de ejemplo de Squid](https://ioc.xtec.cat/materials/FP/Materials/2201_SMX/SMX_2201_M07/web/html/WebContent/u3/a2/continguts.html#instal_lacio_del_programari_squid_per_a_linux)
+  - [Configuraciones de ejemplo de Squid](http://www.nexolinux.com/proxy-squid-control-de-accesos-acl-ii-2/)
