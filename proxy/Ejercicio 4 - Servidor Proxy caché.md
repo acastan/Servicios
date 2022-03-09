@@ -9,13 +9,15 @@ PREGUNTAS
 
  04. ¿En qué consiste un proxy-caché inverso? Dibuja el esquema de una granja de servidores web donde se utiliza un proxy-caché inverso.
 
- 05. ¿Viene algún software de Proxy Caché con Windows Server? ¿Cuál es el software de proxy-caché más conocido para Windows? 
+ 05. ¿Viene algún software de proxy-caché con Windows Server? ¿Cuál es el software de proxy-caché más conocido para Windows? 
 
  06. ¿Cuál es el software de proxy-caché más conocido para Linux?
 
  07. Al instalar un servicio de proxy-caché, ¿Qué parámetros a configurar piensas que serán los más importantes?
- 
- 08. En la red local de nuestro centro la mayor parte del ancho de banda se la comen las actualizaciones de Windows, de antivirus, de Linux. Estudia diferentes métodos que podemos utilizar para cachear dichas actualizaciones y así liberar el ancho de banda. Pistas:
+
+ 08. ¿Crees que un proxy-caché funciona de la misma manera en las peticiones HTTP que en las HTTPS?
+
+ 09. En la red local de nuestro centro la mayor parte del ancho de banda se la comen las actualizaciones de Windows, de antivirus, de Linux. Estudia diferentes métodos que podemos utilizar para cachear dichas actualizaciones y así liberar el ancho de banda. Pistas:
 
      - Microsoft Windows Server Update Services.
 
@@ -57,8 +59,8 @@ PRÁCTICA WINDOWS
 
 
 
-PRÁCTICA LINUX
---------------
+PRÁCTICA LINUX SQUID HTTP
+-------------------------
 
  01. Instala el servidor proxy-caché *Squid* y configura el puerto, el tamaño de la caché, y el identificador que aparecerá en las páginas web de bloqueo
 
@@ -87,6 +89,17 @@ PRÁCTICA LINUX
  07. ¿Cómo harás para indicar al proxy que las páginas del dominio mired.org no las guarde en la caché?
 
  08. Instala *Webmin* y utilízalo para configurar gráficamente *Squid* desde un navegador
+
+
+
+
+
+PRÁCTICA LINUX SQUID HTTPS
+--------------------------
+
+Configura Squid para que actue correctamente de proxy-caché en sitios HTTPS.
+
+<https://www.howtoforge.com/filtering-https-traffic-with-squid>
 
 
 
