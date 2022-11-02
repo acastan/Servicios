@@ -9,6 +9,8 @@ Te recomiendo que visites:
 
  * [Documentación de Docker](https://docs.docker.com/)
 
+ * [Resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
+
 
 
 
@@ -63,7 +65,7 @@ Aunque este resumen va a estar dedicado a Docker, es interesante que hagas prueb
 DOCKER
 ------
 
-Docker se instala en un servidor que llamamos "Docker Engine". Se accede mediante un cliente por línea de comandos, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/).
+Docker se instala en un servidor que llamamos "Docker Engine". Se accede mediante un cliente por línea de comandos, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 ![](https://docs.docker.com/engine/images/architecture.svg)
 
@@ -116,17 +118,32 @@ Contenedores:
 
  * Cuando se lanza la ejecución de un contenedor Docker, dicho contenedor ejecuta un comando ("punto de entrada"). Una vez dicho comando finaliza, se para el contenedor. Este comportamiento puede liar a los usuarios primerizos, ya que algunos contenedores ejecutaran un comando que finaliza rápido y se pararán, mientras que otros ejecutarán un demonio, como por ejemplo un servidor web, que no finaliza y por lo tanto no para la ejecución del contenedor.
 
+
+
+
+
+REDIRECCIONAMIENTO DE PUERTOS Y PERSISTENCIA
+--------------------------------------------
+
+Las IPs a los contenedores se asignan dinámicamente por Docker. En general no se suele trabajar con IPS para los contenedores, sino que si tenemos un servicio ejecutándose en un contenedor [mapearemos puertos del contenedor a puertos del anfitrión](https://docs.docker.com/config/containers/container-networking/) y Docker ya se encargara de redireccionar el tráfico de red.
+
+Recuerda que el sistema operativo no permite dos aplicaciones utilizar el mismo puerto a la vez, ni permite usar puertos por debajo del 1024 a usuario no privilegiados.
+
 ![Imágenes y contenedores](https://bytes.cat/_media/docker5.png)
 
-we have a server running in a container, but since the container's IP is assigned by Docker dynamically, it makes things difficult. However, we can bind the container's ports to the host's ports and Docker will take care of forwarding the networking traffic.
+Para compartir datos entre contenedores o entre el anfitrión y los contenedores, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/bind-mounts/) o utilizar [volúmenes](https://docs.docker.com/storage/volumes/).
 
-![Publicar puertos](https://bytes.cat/_media/docker6.png)
+Los directorios se pueden enlazar en modo de lectura-escritura, pero también en modo de sólo lectura, si queremos asegurarnos que los contenedores no puedan realizar cambios en los datos.
 
-Más que utilizar IPs para los contenedores, los puertos de sus servicios se suelen [mapear a puertos del amfitrión](https://docs.docker.com/config/containers/container-networking/).
+Enlazar a un volumen de Docker es similar a enlazar a un directorio del anfitrión, con la diferencia de que en el volumen Docker no nos tenemos que preocupar dónde está almacenado en el anfitrión.
+
+Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos montar en memoria dicho directorio donde deba escribir.
 
 ![Persistencia](https://bytes.cat/_media/docker-volumes.png)
 
-Para compartir datos, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/bind-mounts/) o utilizar [volúmenes](https://docs.docker.com/storage/volumes/).
+En este ejemplo, tres contenedores enlazan los puertos que quieren exponer con puertos del anfitrión.  Por otro lado, dichos contenedores también enlazan algunos de sus directorios a directorios del anfitrión.
+
+![Publicar puertos](https://bytes.cat/_media/docker6.png)
 
 
 
@@ -184,13 +201,13 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
  * [Crear un nuevo contenedor y ejecutarlo](https://docs.docker.com/engine/reference/commandline/run/):
 
-        docker run [opciones] imagen [comando] [argumentos]
+       docker run [opciones] imagen [comando] [argumentos]
 
    Por ejemplo:
 
-        docker run -d -p 80:80 docker/getting-started
-        docker run -it -e MENSAJE=HOLA poweroff --rm --name=mi_Ubuntu ubuntu /bin/bash
-        docker run -d -p 8080:80 nginx
+       docker run -d -p 80:80 docker/getting-started
+       docker run -it -e MENSAJE=HOLA poweroff --rm --name=mi_Ubuntu ubuntu /bin/bash
+       docker run -d -p 8080:80 nginx
 
    Si la imagen (la "plantilla") no está en nuestro equipo, por defecto se descarga de [Docker Hub](https://hub.docker.com/), que es el registro público que proporciona Docker Inc.
 
@@ -198,68 +215,68 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
    En modo detached (argumento `--detach` o `-d`), una vez lanzado el contenedor, volvemos a la línea de comandos del anfitrión. Por lo tanto el terminal queda asociado al teclado y cónsola del anfitrión. Para acceder a la cónsola del contenedor y leer sus mensajes deberemos ejecutar el comando `docker attach`, que veremos más adelante.
 
-   En modo interactivo (argumentos `--interactive --tty` o `-it`), una vez lanzado el contenedor, su teclado y cónsola quedan asociados al terminal, y por lo tanto no volvemos a la línea de comandos del anfitrión, sino que el terminal muestra los mensajes de pantalla del contenedor. Para volver a la cónsola del anfitrión deberemos pulsar la combinación de teclas `CTRL + P + Q`.
+   En modo interactivo (argumentos `--interactive --tty` o `-it`), una vez lanzado el contenedor, su teclado y cónsola quedan asociados al terminal, y por lo tanto no volvemos a la línea de comandos del anfitrión, sino que el terminal muestra los mensajes de pantalla del contenedor. Para volver a la cónsola del anfitrión deberemos pulsar la combinación de teclas `CTRL-P CTRL-Q`.
 
  * [Listar](https://docs.docker.com/engine/reference/commandline/ps/) contenedores:
 
-        docker ps -a
+       docker ps -a
 
  * [Parar](https://docs.docker.com/engine/reference/commandline/stop/) e [iniciar](https://docs.docker.com/engine/reference/commandline/start/) contenedores:
 
-        docker stop/start/restart identificador/nombre
+       docker stop/start/restart identificador/nombre
 
    Por ejemplo:
 
-        docker start stupefied_colden
-        docker restart 434d318b3771
-        docker stop $(docker ps -a -q)
+       docker start stupefied_colden
+       docker restart 434d318b3771
+       docker stop $(docker ps -a -q)
 
  * [Inspeccionar](https://docs.docker.com/engine/reference/commandline/inspect/) contenedores:
 
-        docker inspect identificador/nombre
+       docker inspect identificador/nombre
 
    Por ejemplo:
 
-        docker inspect 434d318b3771
+       docker inspect 434d318b3771
 
  * [Ejecutar comandos](https://docs.docker.com/engine/reference/commandline/exec/) en contenedores:
 
-        docker exec [opciones] identificador/nombre comando [argumentos]
+       docker exec [opciones] identificador/nombre comando [argumentos]
 
    Por ejemplo:
 
-        docker exec -d 434d318b3771 touch /tmp/prueba
-        docker exec -it -e VAR1=1 stupefied_colden bash
+       docker exec -d 434d318b3771 touch /tmp/prueba
+       docker exec -it -e VAR1=1 stupefied_colden bash
 
  * [Copiar ficheros](https://docs.docker.com/engine/reference/commandline/cp/) entre el anfitrión y el contenedor:
 
-        docker cp [identificador/nombre:]ruta [identificador/nombre:]ruta
+       docker cp [identificador/nombre:]ruta [identificador/nombre:]ruta
 
    Por ejemplo:
 
-        docker cp 434d318b3771:/tmp/prueba ./
-        docker cp ./miFichero stupefied_colden:/tmp
+       docker cp 434d318b3771:/tmp/prueba ./
+       docker cp ./miFichero stupefied_colden:/tmp
 
  * [Enlazar la E/S](https://docs.docker.com/engine/reference/commandline/attach/) entre el terminal del anfitrión y el contenedor:
 
-        docker run -d --name=muchotexto busybox sh -c "while true; do $(echo date); sleep 1; done"
-        docker attach muchotexto
+       docker run -d --name=muchotexto busybox sh -c "while true; do $(echo date); sleep 1; done"
+       docker attach muchotexto
 
  * [Obtener logs](https://docs.docker.com/engine/reference/commandline/logs/) , que és como `docker attach` pero con formato "log":
 
-        docker run -d --name=muchotexto busybox sh -c "while true; do $(echo date); sleep 1; done"
-        docker logs --follow --until=2s muchotexto
+       docker run -d --name=muchotexto busybox sh -c "while true; do $(echo date); sleep 1; done"
+       docker logs --follow --until=2s muchotexto
 
    Todo lo que el programa que se ejecuta en el contenedor escribe a `stdout` y `stderr` se guarda en dichos logs, por lo que dicho log puede crecer enormemente a lo largo de la vida del contenedor.
 
  * [Cambiar nombre](https://docs.docker.com/engine/reference/commandline/rename/) de un contenedor:
 
-        docker rename nombre_contenedor nuevo_nombre_contenedor
+       docker rename nombre_contenedor nuevo_nombre_contenedor
 
  * [Borrar](https://docs.docker.com/engine/reference/commandline/rm/) el contenedor:
 
-        docker rm stupefied_colden
-        docker rm $(docker ps -a -q)
+       docker rm stupefied_colden
+       docker rm $(docker ps -a -q)
 
 <https://docs.docker.com/get-started/docker_cheatsheet.pdf>
 
@@ -276,31 +293,31 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
  * [Buscar imágenes](https://docs.docker.com/engine/reference/commandline/search/) en el [registro](https://hub.docker.com/search?image_filter=official&type=image):
 
-        docker search python | less
+       docker search python | less
 
  * [Descargar imágenes](https://docs.docker.com/engine/reference/commandline/pull/) del registro:
 
-        docker pull [host_registro:puerto/][cuenta/]imagen[:versión]
+       docker pull [host_registro:puerto/][cuenta/]imagen[:versión]
  
    Por ejemplo:
 
-        docker pull python:2.7
+       docker pull python:2.7
 
  * [Listar imágenes](https://docs.docker.com/engine/reference/commandline/images/) en el sistema:
 
-        docker images [nombre[:versión]]
+       docker images [nombre[:versión]]
 
  * ¿[Cómo se creó la imagen](https://docs.docker.com/engine/reference/commandline/history/)? Información del Dockerfile:
 
-        docker history [nombre[:versión]]
+       docker history [nombre[:versión]]
 
  * [Borrar imágenes](https://docs.docker.com/engine/reference/commandline/rmi/) del sistema:
 
-        docker rmi $(docker images -f "dangling=true" -q)
+       docker rmi $(docker images -f "dangling=true" -q)
 
  * [Asignar nuevas etiquetas adicionales](https://docs.docker.com/engine/reference/commandline/tag/) a una imagen:
 
-        docker tag cuenta/imagen[:etiqueta1] cuenta/imagen[:etiqueta2]
+       docker tag cuenta/imagen[:etiqueta1] cuenta/imagen[:etiqueta2]
 
  * [Copia de seguridad](https://docs.docker.com/engine/reference/commandline/save/) y [restauración](https://docs.docker.com/engine/reference/commandline/load/) de imágenes:
 
@@ -310,8 +327,8 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
    Pero por si algún motivo queremos guardar en local la imagen ya creada, podemos utilizar los comandos `save` y `load`.
 
-        docker save -o nombre_fichero.tar repositorio/imagen[:version]
-        docker load -i nombre_fichero.tar
+       docker save -o nombre_fichero.tar repositorio/imagen[:version]
+       docker load -i nombre_fichero.tar
 
 
 
@@ -334,35 +351,35 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
  * Comentarios:
 
-        # comentario
+       # comentario
 
  * La instrucción FROM: especifica la imagen inicial de la cual partimos.
 
-        FROM imagen:etiqueta
+       FROM imagen:etiqueta
 
  * La instrucción MAINTAINER: indica el autor de la imagen.
 
-        MAINTAINER nombre
+       MAINTAINER nombre
 
  * La instrucción RUN: ejecuta un comando sobre la imagen para modificarla, normalmente vía `/bin/sh -c`.
 
-        RUN comando
-        RUN ["ejecutable", "arg1", "arg2", ...]
+       RUN comando
+       RUN ["ejecutable", "arg1", "arg2", ...]
 
  * La instrucción CMD: especifica el comando por defecto a ejecutar al crear el contenedor.
 
-        CMD comando
-        CMD ["ejecutable", "arg1", "arg2", ...]
-        CMD ["arg1", "arg2", ...]
+       CMD comando
+       CMD ["ejecutable", "arg1", "arg2", ...]
+       CMD ["arg1", "arg2", ...]
 
  * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen.
 
-        COPY fuente destino
-        ADD fuente destino
+       COPY fuente destino
+       ADD fuente destino
 
  * Las instrucciones ENV: crean variables de entorno necesarias para la ejecución de la aplicación dentro del contenedor:
 
-        ENV var1="valor1" var2="valor2" ...
+       ENV var1="valor1" var2="valor2" ...
 
  * etc: instrucciones EXPOSE , ENTRYPOINT , USER , WORKDIR , ARG , VOLUME , LABEL , HEALTHCHECK , ...
 
@@ -385,7 +402,7 @@ Puede parecer un poco lioso, ya que por deformación profesional tendemos a iden
 
     nombre_repositorio/nombre_imagen:etiqueta
 
-De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno de tus repositorios es para una imagen de una aplicacion llamada "mi_app", en Docker la última versión la ejecutarás con:
+De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno de tus repositorios es para una imagen de una aplicación llamada "mi_app", en Docker la última versión la ejecutarás con:
 
     docker run pepito/mi_app:latest
 
@@ -404,98 +421,98 @@ EJEMPLOS DE DOCKER
 
  * Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
 
-        docker run --rm -it -p 8080:8080 theasp/novnc
+       docker run --rm -it -p 8080:8080 theasp/novnc
 
-        <http://localhost:8080/vnc.html>
+       <http://localhost:8080/vnc.html>
 
  * Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
 
-        docker run -it --name ejercicio ubuntu /bin/bash
-        uname -a
-        ps -ef
+       docker run -it --name ejercicio ubuntu /bin/bash
+       uname -a
+       ps -ef
 
    Si desacoplamos la entrada, podemos ver la misma información del contenedor des del anfitrión, con otros comandos:
 
-        CTRL + P + Q
-        docker exec ejercicio uname -a
-        docker top ejercicio
-        docker attach ejercicio
+       CTRL-P CTRL-Q
+       docker exec ejercicio uname -a
+       docker top ejercicio
+       docker attach ejercicio
 
    Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
 
-        exit
-        docker ps -a
-        uname -a
+       exit
+       docker ps -a
+       uname -a
 
    Para volver a acceder a la línea de comandos, arrancamos de nuevo el contenedor:
 
-        docker start -ai ejercicio
+       docker start -ai ejercicio
 
  * Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos:
 
-        #!/bin/sh
-        DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
-        WP_CID=$(docker run -d --link $DB_CID:mysql -p 80:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:6.0.3-php7.4-apache)
+       #!/bin/sh
+       DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
+       WP_CID=$(docker run -d --link $DB_CID:mysql -p 80:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:6.0.3-php7.4-apache)
 
  * Ejemplo de Dockerfile
 
-        FROM ubuntu:22.04
-        MAINTAINER yomismo
-        RUN apt update && apt -y install telnet
-        CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
+       FROM ubuntu:22.04
+       MAINTAINER yomismo
+       RUN apt update && apt -y install telnet
+       CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
 
    Y ahora ejecuta:
 
-        docker build -t starwars .
-        docker run -it starwars
+       docker build -t starwars .
+       docker run -it starwars
 
  * Otro ejemplo de Dockerfile
 
-        FROM debian:latest
-        MAINTAINER tumismo
-        RUN apt update && apt -y install cowsay
-        ENTRYPOINT ["/usr/games/cowsay"]
-        CMD ["Docker mooooooola!"]
+       FROM debian:latest
+       MAINTAINER tumismo
+       RUN apt update && apt -y install cowsay
+       ENTRYPOINT ["/usr/games/cowsay"]
+       CMD ["Docker mooooooola!"]
 
    Y ahora ejecuta:
 
-        docker build -t cowsay .
-        docker run -it cowsay
+       docker build -t cowsay .
+       docker run -it cowsay
 
  * Un ejemplo de Dockerfile para crear una imagen con Apache:
 
-        FROM debian
-        MAINTAINER Ana Cardo "ana@mired.org"
-        RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
-        ENV APACHE_RUN_USER www-data
-        ENV APACHE_RUN_GROUP www-data
-        ENV APACHE_LOG_DIR /var/log/apache2
-        EXPOSE 80
-        ADD ["index.html","/var/www/html/"]
-        ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+       FROM debian
+       MAINTAINER Ana Cardo "ana@mired.org"
+       RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
+       ENV APACHE_RUN_USER www-data
+       ENV APACHE_RUN_GROUP www-data
+       ENV APACHE_LOG_DIR /var/log/apache2
+       EXPOSE 80
+       ADD ["index.html","/var/www/html/"]
+       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
    y ejecutamos
 
-        docker build -t ana/apache2:1.0 .
-        docker images
-        docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
-        docker ps -a
+       docker build -t ana/apache2:1.0 .
+       docker images
+       docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
+       docker ps -a
 
    El siguiente fichero Dockerfile aprovecharía nuestra imagen anterior para crear una imagen con PHP:
 
-        FROM ana/apache2:1.0
-        MAINTAINER Bob Marley "bob@mired.org"
-        RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
-        EXPOSE 80
-        ADD ["index.php","/var/www/html/"]
-        ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+       FROM ana/apache2:1.0
+       MAINTAINER Bob Marley "bob@mired.org"
+       RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
+       EXPOSE 80
+       ADD ["index.php","/var/www/html/"]
+       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
    y ejecutamos
 
-        docker build -t bob/php:1.0 .
-        docker images
-        docker run -d -p 8080:80 --name servidor_php bob/php:1.0
-        docker ps -a
+       docker build -t bob/php:1.0 .
+       docker images
+       docker run -d -p 8080:80 --name servidor_php bob/php:1.0
+       docker ps -a
 
 
 
@@ -627,7 +644,7 @@ The docker node CLI utility allows users to run various commands to manage nodes
 KUBERNETES
 ----------
 
-Kubernetes es un "orquestador" de contenedores que permite el desplieque, escalado y balanceo de carga automáticos. Tenemos otros orquestadores, como Nomad, Openshift, etc. pero Kubernetes es el más extendido.
+Kubernetes es un "orquestador" de contenedores que permite el despliegue, escalado y balanceo de carga automáticos. Tenemos otros orquestadores, como Nomad, Openshift, etc. pero Kubernetes es el más extendido.
 
 Kubernetes defines a set of building blocks ("primitives") that collectively provide mechanisms that deploy, maintain, and scale applications based on CPU, memory or custom metrics. Kubernetes is loosely coupled and extensible to meet different workloads. The internal components as well as extensions and containers that run on Kubernetes rely on the Kubernetes API. The platform exerts its control over compute and storage resources by defining resources as Objects, which can then be managed as such.
 
@@ -655,4 +672,3 @@ TEMP (A AÑADIR)
  * [Contenedor para crackear contraseñas](https://www.elladodelmal.com/2020/05/aplicaciones-practicas-de-docker-en.html)
 
  * [Fortificar contenedores en Kubernetes](https://www.elladodelmal.com/2020/04/como-fortificar-containers-en.html)
-
