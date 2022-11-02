@@ -1,4 +1,4 @@
-﻿RESUMEN DE CONTENEDORES Y DOCKER
+RESUMEN DE CONTENEDORES Y DOCKER
 ================================
 
 Esta es una introducción a contenedores y a docker por parte de alguien -yo mismo- no muy versado en estos temas.
@@ -46,7 +46,7 @@ Desventajas:
  
  * Un problema típico de la virtualización: si cae el anfitrión (por un problema en el núcleo), caen todos los contenedores que se ejecutan sobre él.
 
- * Un problema de seguridad: los contenedores están aislados entre sí y un contenedor no puede acceder a los recursos de otro. Sin embargo, si los contenedores pueden acceder a los ficheros del anfitrión, que comparten, un usuario con permisos de administración en el contenedor podría modificar maliciosamente archivos del anfitrión. Para paliar dicho problema, se puede ejecutar Docker como usuario no privilegiado, pero en este caso los contenedores Docker tampoco tendrán IP propia ni podrán usar puertos del anfitrión por debajo del 1024. (revisar: ¿realmente los contenedores pueden modificar el sistema de ficheros no compartido del anfitrión?) 
+ * Problemas de límites: ¿Los contenedores pueden leer o modificar el sistema de ficheros no compartido del anfitrión? ¿Los contenedores pueden consumir toda la memoria del anfitrión? ¿Los contenedores pueden consumir CPU hasta provocar una degradación del rendimiento de todo el sistema?
 
 Las tecnologías de virtualización de contenedores se dividen en:
 
@@ -125,7 +125,7 @@ Contenedores:
 REDIRECCIONAMIENTO DE PUERTOS Y PERSISTENCIA
 --------------------------------------------
 
-Las IPs a los contenedores se asignan dinámicamente por Docker. En general no se suele trabajar con IPS para los contenedores, sino que si tenemos un servicio ejecutándose en un contenedor [mapearemos puertos del contenedor a puertos del anfitrión](https://docs.docker.com/config/containers/container-networking/) y Docker ya se encargara de redireccionar el tráfico de red.
+Las IPs a los contenedores se asignan dinámicamente por Docker. En general no se suele trabajar con IPs para los contenedores, sino que si tenemos un servicio ejecutándose en un contenedor [mapearemos puertos del contenedor a puertos del anfitrión](https://docs.docker.com/config/containers/container-networking/) y Docker ya se encargara de redireccionar el tráfico de red.
 
 Recuerda que el sistema operativo no permite dos aplicaciones utilizar el mismo puerto a la vez, ni permite usar puertos por debajo del 1024 a usuario no privilegiados.
 
@@ -343,6 +343,10 @@ Existe una manera "cutre" pero rápida de crear una imagen, a partir de un conte
 
     docker commit -a "autor" -m "descripción" idcontenedor repositorio/imagen:etiqueta
 
+Los cambios que se habían hecho sobre el sistema de ficheros del contenedor, se pueden consultar antes con el comando:
+
+    docker diff idcontenedor
+
 Pero lo normal para crear una imagen es planificar el proceso y escribir una plantilla ("Dockerfile") con la información necesaria para la creación de dicha imagen. Una vez tenemos la descripción guardada en la plantilla, para [construir una imagen](https://docs.docker.com/engine/reference/commandline/build/) ejecutamos:
 
     docker build -t repositorio/nombre:etiqueta Dockerfile .
@@ -357,31 +361,37 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
        FROM imagen:etiqueta
 
- * La instrucción MAINTAINER: indica el autor de la imagen.
+ * La instrucción LABEL: añade metadatos a la imagen, como el autor/a.
 
-       MAINTAINER nombre
+       LABEL maintainer "acastan@inspedralbes.cat" 
 
  * La instrucción RUN: ejecuta un comando sobre la imagen para modificarla, normalmente vía `/bin/sh -c`.
 
        RUN comando
        RUN ["ejecutable", "arg1", "arg2", ...]
 
- * La instrucción CMD: especifica el comando por defecto a ejecutar al crear el contenedor.
+ * Las instrucciones ENTRYPOINT y CMD: especifican el comando por defecto a ejecutar al crear el contenedor. ENTRYPOINT es el comando a ejecutar y CMD son los argumentos. Sin embargo, si ENTRYPOINT es una shell, entonces CMD será el comando a ejecutar en dicha shell, lo que puede causar confusión. Si no se especifica, ENTRYPOINT vale "`/bin/sh -c`"
 
-       CMD comando
-       CMD ["ejecutable", "arg1", "arg2", ...]
+       ENTRYPOINT ["ejecutable"]
        CMD ["arg1", "arg2", ...]
+
+       ENTRYPOINT ["ejecutable", "arg1", "arg2", ...]
+       CMD ["comando", "arg1", "arg2", ...]
 
  * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen.
 
        COPY fuente destino
        ADD fuente destino
 
- * Las instrucciones ENV: crean variables de entorno necesarias para la ejecución de la aplicación dentro del contenedor:
+ * La instrucción ENV: crea variables de entorno necesarias para la ejecución de la aplicación dentro del contenedor.
 
        ENV var1="valor1" var2="valor2" ...
 
- * etc: instrucciones EXPOSE , ENTRYPOINT , USER , WORKDIR , ARG , VOLUME , LABEL , HEALTHCHECK , ...
+ * La instrucción EXPOSE: especifica qué puertos utilizará el contenedor. El resto de puertos no se podrán acceder externamente.
+
+       EXPOSE puerto/protocolo
+
+ * etc: instrucciones USER , WORKDIR , ARG , VOLUME , LABEL , HEALTHCHECK , ...
 
 Para aprender a construir imágenes, te recomiendo revisar tu fichero Dockerfile en <https://www.fromlatest.io/#/>
 
