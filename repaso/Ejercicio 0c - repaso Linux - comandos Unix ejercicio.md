@@ -1,6 +1,10 @@
 Para saber como funciona cualquier comando, debes buscar ayuda escribiendo `man nombre_del_comando`.
 
-Puedes encontrar un buen curso sobre el funcionamiento de Linux y sus comandos en <http://linuxjourney.com/>
+Puedes encontrar un buen curso sobre el funcionamiento de Linux y sus comandos en <https://linuxjourney.com/>
+
+Puedes encontrar más ejercicios en línea en <https://cmdchallenge.com/>
+
+Y cuando ya te consideres un experto/a puedes intentar superar los retos de <https://overthewire.org/wargames/bandit/>
 
 Recuerda que algunos comandos necesitan permisos de superusuario para ser ejecutados:
 
