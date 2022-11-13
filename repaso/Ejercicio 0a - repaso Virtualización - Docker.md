@@ -1,7 +1,7 @@
 RESUMEN DE CONTENEDORES Y DOCKER
 ================================
 
-Esta es una introducción a contenedores y a docker por parte de alguien -yo mismo- no muy versado en estos temas.
+Esta es una introducción a contenedores y a Docker por parte de alguien -yo mismo- no muy versado en estos temas.
 
 Te recomiendo que visites:
 
@@ -12,7 +12,7 @@ Te recomiendo que visites:
  * [Resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
 
 
-
+---
 
 
 CONTENEDORES
@@ -37,13 +37,13 @@ Usos de virtualización, sea de contenedores o de otro tipo:
 Ventajas de usar contenedores:
 
  * Un contenedor arranca muchísimo más rápido que una máquina virtual, ya que el núcleo del sistema operativo ("kernel") ya está en marcha.
- 
+
  * Consume menos recursos: no necesitamos memoria RAM para el núcleo, no necesitamos CPU para el hipervisor, no necesitamos optimizaciones en la CPU para poder virtualizar.
 
 Desventajas:
 
  * No podemos ejecutar diferentes sistemas operativos, sino que estamos limitados al núcleo del anfitrión. 
- 
+
  * Un problema típico de la virtualización: si cae el anfitrión (por un problema en el núcleo), caen todos los contenedores que se ejecutan sobre él.
 
  * Problemas de límites: ¿Los contenedores pueden leer o modificar el sistema de ficheros no compartido del anfitrión? ¿Los contenedores pueden consumir toda la memoria del anfitrión? ¿Los contenedores pueden consumir CPU hasta provocar una degradación del rendimiento de todo el sistema?
@@ -59,7 +59,7 @@ Las tecnologías de virtualización de contenedores se dividen en:
 Aunque este resumen va a estar dedicado a Docker, es interesante que hagas pruebas con la distribución [Proxmox](https://www.proxmox.com/en/proxmox-ve) que está orientada a gestionar contenedores LXC y máquinas virtuales KVM.
 
 
-
+---
 
 
 DOCKER
@@ -71,34 +71,32 @@ Docker se instala en un servidor que llamamos "Docker Engine". Se accede mediant
 
 Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
 
- * *The Docker daemon* (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
+ * The *Docker daemon* (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
 
- * *The Docker client* (docker) is the primary way that many Docker users interact with Docker. When you use commands such as docker run, the client sends these commands to dockerd, which carries them out. The docker command uses the Docker API. The Docker client can communicate with more than one daemon.
+ * The *Docker client* (docker) is the primary way that many Docker users interact with Docker. When you use commands such as docker run, the client sends these commands to dockerd, which carries them out. The docker command uses the Docker API. The Docker client can communicate with more than one daemon.
 
- * *Docker Desktop* is an easy-to-install application for your Mac or Windows environment that enables you to build and share containerized applications and microservices. Docker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose, Docker Content Trust, Kubernetes, and Credential Helper.
+ * A *Docker image* is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
 
- * *Docker registry* stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry. When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
+   You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a Dockerfile with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.
 
- * *Docker objects*: when you use Docker, you are creating and using images, containers, networks, volumes, plugins, and other objects.
+ * A *Docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API or CLI. You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
 
-   - A *Docker image* is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
+   By default, a container is relatively well isolated from other containers and its host machine. You can control how isolated a container’s network, storage, or other underlying subsystems are from other containers or from the host machine.
 
-     You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a Dockerfile with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.
+   A container is defined by its image as well as any configuration options you provide to it when you create or start it. When a container is removed, any changes to its state that are not stored in persistent storage disappear.
 
-   - A *Docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API or CLI. You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
+ * The *Docker registry* stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry. When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
 
-     By default, a container is relatively well isolated from other containers and its host machine. You can control how isolated a container’s network, storage, or other underlying subsystems are from other containers or from the host machine.
-
-     A container is defined by its image as well as any configuration options you provide to it when you create or start it. When a container is removed, any changes to its state that are not stored in persistent storage disappear.
+ * The *Docker Desktop* is an easy-to-install application that enables you to build and share containerized applications and microservices. Docker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose, Docker Content Trust, Kubernetes, and Credential Helper.
 
 Docker se puede integrar con diferentes herramientas de infraestructura, como Amazon Web Services, Ansible, Cfengine, Chef, Google Cloud Platform, DigitalOcean, IBM Bluemix, Jelastic, Jenkins, Microsoft Azure, OpenStack Nova, OpenSVC, Puppet, Salt, y Vagrant.
 
 
+---
 
 
-
-OBJETOS DE DOCKER
------------------
+IMÁGENES Y CONTENEDORES
+-----------------------
 
 Imágenes:
 
@@ -119,7 +117,7 @@ Contenedores:
  * Cuando se lanza la ejecución de un contenedor Docker, dicho contenedor ejecuta un comando ("punto de entrada"). Una vez dicho comando finaliza, se para el contenedor. Este comportamiento puede liar a los usuarios primerizos, ya que algunos contenedores ejecutaran un comando que finaliza rápido y se pararán, mientras que otros ejecutarán un demonio, como por ejemplo un servidor web, que no finaliza y por lo tanto no para la ejecución del contenedor.
 
 
-
+---
 
 
 REDIRECCIONAMIENTO DE PUERTOS Y PERSISTENCIA
@@ -137,16 +135,16 @@ Los directorios se pueden enlazar en modo de lectura-escritura, pero también en
 
 Enlazar a un volumen de Docker es similar a enlazar a un directorio del anfitrión, con la diferencia de que en el volumen Docker no nos tenemos que preocupar dónde está almacenado en el anfitrión.
 
-Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos montar en memoria dicho directorio donde deba escribir.
+Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos [montar en memoria](https://docs.docker.com/storage/tmpfs/) dicho directorio donde deba escribir.
 
 ![Persistencia](https://bytes.cat/_media/docker-volumes.png)
 
-En este ejemplo, tres contenedores enlazan los puertos que quieren exponer con puertos del anfitrión.  Por otro lado, dichos contenedores también enlazan algunos de sus directorios a directorios del anfitrión.
+En este ejemplo, tres contenedores enlazan los puertos que quieren exponer con puertos del anfitrión. Por otro lado, dichos contenedores también enlazan algunos de sus directorios a directorios del anfitrión.
 
 ![Publicar puertos](https://bytes.cat/_media/docker6.png)
 
 
-
+---
 
 
 INSTALAR DOCKER
@@ -189,7 +187,7 @@ Para administrar contenedores gráficamente des de un navegador puedes instalar 
 Para una instalación "rootless" de Docker, consulta <https://docs.docker.com/engine/security/rootless/>.
 
 
-
+---
 
 
 COMANDOS DE DOCKER SOBRE CONTENEDORES
@@ -213,7 +211,7 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
    Al crear un contenedor éste puede pasar a estar en modo interactivo o en modo no interactivo ("detached").
 
-   En modo detached (argumento `--detach` o `-d`), una vez lanzado el contenedor, volvemos a la línea de comandos del anfitrión. Por lo tanto el terminal queda asociado al teclado y cónsola del anfitrión. Para acceder a la cónsola del contenedor y leer sus mensajes deberemos ejecutar el comando `docker attach`, que veremos más adelante.
+   En modo desacoplado (argumento `--detach` o `-d`), una vez lanzado el contenedor, volvemos a la línea de comandos del anfitrión. Por lo tanto el terminal queda asociado al teclado y cónsola del anfitrión. Para acceder a la cónsola del contenedor y leer sus mensajes deberemos ejecutar el comando `docker attach`, que veremos más adelante.
 
    En modo interactivo (argumentos `--interactive --tty` o `-it`), una vez lanzado el contenedor, su teclado y cónsola quedan asociados al terminal, y por lo tanto no volvemos a la línea de comandos del anfitrión, sino que el terminal muestra los mensajes de pantalla del contenedor. Para volver a la cónsola del anfitrión deberemos pulsar la combinación de teclas `CTRL-P CTRL-Q`.
 
@@ -278,12 +276,111 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
        docker rm stupefied_colden
        docker rm $(docker ps -a -q)
 
-<https://docs.docker.com/get-started/docker_cheatsheet.pdf>
+Chuletas de comandos:
 
-<https://raw.githubusercontent.com/sergarb1/CursoIntroduccionADocker/main/FuentesCurso/Docker%20CheatSheet%20COMPLETA.pdf>
+ * <https://docs.docker.com/get-started/docker_cheatsheet.pdf>
+
+ * <https://raw.githubusercontent.com/sergarb1/CursoIntroduccionADocker/main/FuentesCurso/Docker%20CheatSheet%20COMPLETA.pdf>
+
+Ejemplos:
+
+1. Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
+
+       docker run --rm -it -p 8080:8080 theasp/novnc
+
+       <http://localhost:8080/vnc.html>
+
+2. Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
+
+       docker run -it --name ejercicio ubuntu /bin/bash
+       uname -a
+       ps -ef
+
+   Si desacoplamos la entrada, podemos ver la misma información del contenedor des del anfitrión, con otros comandos:
+
+       CTRL-P CTRL-Q
+       docker exec ejercicio uname -a
+       docker top ejercicio
+       docker attach ejercicio
+
+   Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
+
+       exit
+       docker ps -a
+       uname -a
+
+   Para volver a acceder a la línea de comandos, arrancamos de nuevo el contenedor:
+
+       docker start -ai ejercicio
 
 
+---
 
+
+COMANDOS SOBRE SISTEMA DE FICHEROS
+----------------------------------
+
+Los contenedores trabajan con sistema de ficheros *Union File System* (UFS). Los cambios en el contenedor no modifican el anfitrión, sino que crean una nueva "capa" en el contenedor con los cambios.
+
+Si al cabo de un tiempo necesitamos saber qué cambios se han producido en el contenedor podemos utilizar el comando `docker diff contenedor`. Las líneas que muestra que comienzan con ...
+
+ * con 'A' significa que se ha añadido
+ * con 'C' significa que se ha cambiado 
+ * con 'D' significa que se ha borrado
+
+Además, los contenedores se pueden ejecutar en modo de sólo lectura con el atributo `--read-only`, lo que asegura que ningún dato en el contenedor es modificado.
+
+Ejemplo:
+
+1. Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con Wordpress es de sólo lectura, pero mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión, para que Apache funcione:
+
+       #!/bin/sh
+       DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
+       WP_CID=$(docker run -d --link $DB_CID:mysql -p 80:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:6.0.3-php7.4-apache)
+
+Ejercicio:
+
+1. Lanza la ejecución de un contenedor creado a partir de una imagen oficial de PHP con Apache, que tenga su carpeta /var/www/html mapeada a la carpeta del anfitrión donde guardas tus ejercicios de PHP.
+
+   Solución en formato largo:
+
+       $ docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
+
+   Solución en formato breve:
+
+       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
+
+
+---
+
+
+COMANDOS SOBRE RED
+------------------
+
+All containers without a --network specified, are attached to the default bridge network. This can be a risk, as unrelated stacks/services/containers are then able to communicate.
+
+Using a user-defined network provides a scoped network in which only containers attached to that network are able to communicate.
+
+During a container’s lifetime, you can connect or disconnect it from user-defined networks on the fly. To remove a container from the default bridge network, you need to stop the container and recreate it with different network options.
+
+Containers connected to the same user-defined bridge network effectively expose all ports to each other
+
+docker network create mi_red
+docker network ls
+docker network rm mi_red
+
+$ docker create --name mi-nginx --network mi_red --publish 8080:80 nginx:latest
+
+Pero si el contenedor ya se ejecutaba:
+
+$ docker network connect mi_red mi-nginx
+
+$ docker network disconnect mi_red mi-nginx
+
+<https://www.google.com/search?q=communication+containers+docker>
+
+
+---
 
 
 COMANDOS DE DOCKER SOBRE IMÁGENES
@@ -298,7 +395,7 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
  * [Descargar imágenes](https://docs.docker.com/engine/reference/commandline/pull/) del registro:
 
        docker pull [host_registro:puerto/][cuenta/]imagen[:versión]
- 
+
    Por ejemplo:
 
        docker pull python:2.7
@@ -331,7 +428,7 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
        docker load -i nombre_fichero.tar
 
 
-
+---
 
 
 CREACIÓN DE IMÁGENES DOCKER
@@ -395,8 +492,70 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
 Para aprender a construir imágenes, te recomiendo revisar tu fichero Dockerfile en <https://www.fromlatest.io/#/>
 
+Ejemplos de Dockerfile:
+
+1. A partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
+
+       FROM ubuntu:22.04
+       MAINTAINER yomismo
+       RUN apt update && apt -y install telnet
+       CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
+
+   Y ahora ejecuta:
+
+       docker build -t starwars .
+       docker run -it starwars
+
+2. A partir de una Debian, instala cowsay, y dice algo en ASCII Art:
+
+       FROM debian:latest
+       MAINTAINER tumismo
+       RUN apt update && apt -y install cowsay
+       ENTRYPOINT ["/usr/games/cowsay"]
+       CMD ["Docker mooooooola!"]
+
+   Y ahora ejecuta:
+
+       docker build -t cowsay .
+       docker run -it cowsay
+
+3. Crea una imagen con Apache:
+
+       FROM debian
+       MAINTAINER Ana Cardo "ana@mired.org"
+       RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
+       ENV APACHE_RUN_USER www-data
+       ENV APACHE_RUN_GROUP www-data
+       ENV APACHE_LOG_DIR /var/log/apache2
+       EXPOSE 80
+       ADD ["index.html","/var/www/html/"]
+       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+   y ejecutamos
+
+       docker build -t ana/apache2:1.0 .
+       docker images
+       docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
+       docker ps -a
+
+4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP:
+
+       FROM ana/apache2:1.0
+       MAINTAINER Bob Marley "bob@mired.org"
+       RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
+       EXPOSE 80
+       ADD ["index.php","/var/www/html/"]
+       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+   y ejecutamos
+
+       docker build -t bob/php:1.0 .
+       docker images
+       docker run -d -p 8080:80 --name servidor_php bob/php:1.0
+       docker ps -a
 
 
+---
 
 
 CUENTA EN DOCKER HUB
@@ -423,109 +582,7 @@ Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imag
     docker push pepito/mi_app:latest
 
 
-
-
-
-EJEMPLOS DE DOCKER
-------------------
-
- * Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
-
-       docker run --rm -it -p 8080:8080 theasp/novnc
-
-       <http://localhost:8080/vnc.html>
-
- * Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
-
-       docker run -it --name ejercicio ubuntu /bin/bash
-       uname -a
-       ps -ef
-
-   Si desacoplamos la entrada, podemos ver la misma información del contenedor des del anfitrión, con otros comandos:
-
-       CTRL-P CTRL-Q
-       docker exec ejercicio uname -a
-       docker top ejercicio
-       docker attach ejercicio
-
-   Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
-
-       exit
-       docker ps -a
-       uname -a
-
-   Para volver a acceder a la línea de comandos, arrancamos de nuevo el contenedor:
-
-       docker start -ai ejercicio
-
- * Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos:
-
-       #!/bin/sh
-       DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
-       WP_CID=$(docker run -d --link $DB_CID:mysql -p 80:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:6.0.3-php7.4-apache)
-
- * Ejemplo de Dockerfile
-
-       FROM ubuntu:22.04
-       MAINTAINER yomismo
-       RUN apt update && apt -y install telnet
-       CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
-
-   Y ahora ejecuta:
-
-       docker build -t starwars .
-       docker run -it starwars
-
- * Otro ejemplo de Dockerfile
-
-       FROM debian:latest
-       MAINTAINER tumismo
-       RUN apt update && apt -y install cowsay
-       ENTRYPOINT ["/usr/games/cowsay"]
-       CMD ["Docker mooooooola!"]
-
-   Y ahora ejecuta:
-
-       docker build -t cowsay .
-       docker run -it cowsay
-
- * Un ejemplo de Dockerfile para crear una imagen con Apache:
-
-       FROM debian
-       MAINTAINER Ana Cardo "ana@mired.org"
-       RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
-       ENV APACHE_RUN_USER www-data
-       ENV APACHE_RUN_GROUP www-data
-       ENV APACHE_LOG_DIR /var/log/apache2
-       EXPOSE 80
-       ADD ["index.html","/var/www/html/"]
-       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-   y ejecutamos
-
-       docker build -t ana/apache2:1.0 .
-       docker images
-       docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
-       docker ps -a
-
-   El siguiente fichero Dockerfile aprovecharía nuestra imagen anterior para crear una imagen con PHP:
-
-       FROM ana/apache2:1.0
-       MAINTAINER Bob Marley "bob@mired.org"
-       RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
-       EXPOSE 80
-       ADD ["index.php","/var/www/html/"]
-       ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
-
-   y ejecutamos
-
-       docker build -t bob/php:1.0 .
-       docker images
-       docker run -d -p 8080:80 --name servidor_php bob/php:1.0
-       docker ps -a
-
-
-
+---
 
 
 EJERCICIO DE DOCKER
@@ -548,7 +605,7 @@ Vas a crear un grupo de contenedores que sirva una web. Para ello:
 ¿Te atreves a crear varios contenedores web y un contenedor balanceador de carga para repartir el trabajo entre ellos?
 
 
-
+---
 
 
 ORQUESTACIÓN DE CONTENEDORES DOCKER
@@ -563,7 +620,7 @@ Las herramientas que realizan orquestación de contenedores dirigen el comportam
 Ejemplos de orquestadores de contenedores son [Docker Compose](https://docs.docker.com/compose/), [Docker Swarm](https://docs.docker.com/engine/swarm/) y [Kubernetes](https://es.wikipedia.org/wiki/Kubernetes).
 
 
-
+---
 
 
 DOCKER COMPOSE
@@ -579,7 +636,7 @@ Para instalar la versión 2:
 
     $ DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
     $ mkdir -p $DOCKER_CONFIG/cli-plugins
-    $ curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+    $ curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
     $ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
     $ docker compose version
 
@@ -607,29 +664,46 @@ Y para ejecutarlo cuando ya tienes el fichero creado, basta con escribir:
 He aquí otro ejemplo de `docker-compose.yml`:
 
     services:
-      wordpress:
-        image: wordpress
-        links:
-          - mariadb:mysql
-        environment:
-          - WORDPRESS_DB_PASSWORD=contraseña
-        ports:
-          - "80:80"
-        volumes:
-          - ./code:/code
-          - ./html:/var/www/html
-      mariadb:
-        image: mariadb
+      db:
+        image: mariadb:latest
+        restart: always
         environment:
           - MYSQL_ROOT_PASSWORD=contraseña
-          - MYSQL_DATABASE=wordpress
+          - MYSQL_DATABASE=db_wordpress
+          - MYSQL_USER=usuario_db_wordpress
+          - MYSQL_PASSWORD=contraseña_db_wordpress
+        networks:
+          - mired
         volumes:
-          - ./database:/var/lib/mysql
+          - datos_db:/var/lib/mysql
+      wordpress:
+        image: wordpress:apache
+        restart: always
+        environment:
+          - WORDPRESS_DB_HOST=db:3306
+          - WORDPRESS_DB_USER=usuario_db_wordpress
+          - WORDPRESS_DB_PASSWORD=contraseña_db_wordpress
+          - WORDPRESS_DB_NAME=db_wordpress
+        ports:
+          - "8000:80"
+        networks:
+          - mired
+        volumes:
+          - ./code:/code
+          - datos_wp:/var/www/html
+    volumes:
+      datos_db:
+      datos_wp:
+    networks:
+      mired:
+        driver: bridge
 
 Un buen ejemplo comentado se encuentra en <https://docs.docker.com/compose/gettingstarted/>.
 
+Y unos cuantos ficheros Docker Compose ya preparados se encuentran en <https://github.com/docker/awesome-compose>.
 
 
+---
 
 
 DOCKER SWARM
@@ -648,7 +722,7 @@ The docker node CLI utility allows users to run various commands to manage nodes
 <https://docs.docker.com/engine/swarm/swarm-tutorial/>
 
 
-
+---
 
 
 KUBERNETES
@@ -669,16 +743,28 @@ Kubernetes follows the primary/replica architecture. The components of Kubernete
 <https://docs.docker.com/get-started/kube-deploy/>
 
 
-
+---
 
 
 TEMP (A AÑADIR)
 ---------------
 
+ * [Ejercicios](https://www.google.com/search?q=docker+exercises)
+
  * [Contenedores para intrusión en redes](https://houdini.secsi.io/)
 
  * [Contenedor proxy para TOR](https://www.elladodelmal.com/2020/04/aplicaciones-practicas-de-docker-en.html)
- 
+
  * [Contenedor para crackear contraseñas](https://www.elladodelmal.com/2020/05/aplicaciones-practicas-de-docker-en.html)
 
  * [Fortificar contenedores en Kubernetes](https://www.elladodelmal.com/2020/04/como-fortificar-containers-en.html)
+
+ * [Seguridad "container breakout"](https://www.google.com/search?q=container+breakout)
+
+ * [Seguridad "docker breakout"](https://www.google.com/search?q=docker+breakout)
+
+ * [Seguridad "docker security"](https://www.google.com/search?q=docker+security)
+
+ * [Seguridad "hardening docker"](https://www.google.com/search?q=hardening+docker)
+
+ * [Aplicaciones gráficas en contenedores](https://www.google.com/search?q=hardening+docker)
