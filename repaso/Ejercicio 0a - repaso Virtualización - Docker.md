@@ -353,7 +353,7 @@ Un contenedor puede estar asociado a más de una red. Además, durante la vida d
 
  * Para lanzar el contenedor asociado a una red tienes el parámetro `--network`. Por ejemplo:
 
-       docker create --name mi-nginx --network mi_red --publish 8080:80 nginx:latest
+       docker run --name mi-nginx --network mi_red --publish 8080:80 nginx:latest
 
  * Para asociarlo/desasociarlo de una red sobre la marcha, cuando el contenedor ya se estaba ejecutando, tienes los comandos:
 
