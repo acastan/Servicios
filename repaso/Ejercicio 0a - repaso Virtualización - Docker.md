@@ -1,7 +1,7 @@
 RESUMEN DE CONTENEDORES Y DOCKER
 ================================
 
-Esta es una introducción a contenedores y a Docker por parte de alguien -yo mismo- no muy versado en estos temas.
+Esta es mi introducción a contenedores y a Docker, aunque no soy un experto en el tema.
 
 Te recomiendo que visites:
 
@@ -65,83 +65,49 @@ Aunque este resumen va a estar dedicado a Docker, es interesante que hagas prueb
 DOCKER
 ------
 
-Docker se instala en un servidor que llamamos "Docker Engine". Se accede mediante un cliente por línea de comandos, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+Docker utiliza una arquitectura cliente-servidor. Los diferentes clientes Docker se comunican con el servidor Docker, llamado "Docker Engine", el cual hace todo el trabajo de construir, ejecutar y distribuir los contenedores Docker. El cliente y servidor Docker pueden estar funcionando en el mismo equipo, pero también un cliente Docker de un equipo se puede conectar a un servidor Docker remoto en otro equipo. Los clientes se comunican con el servidor a través de una API REST, sobre sockets Unix o targeta de red.
+
+Tenemos varios clientes diferentes. Está el cliente típico de línea de comandos, con el que trabajaremos en este curso, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/). Otro cliente Docker es Docker Compose, que a través de un fichero de configuración YAML permite lanzar fácilmente aplicaciones que consisten en un conjunto complejo de contenedores.
 
 ![](https://docs.docker.com/engine/images/architecture.svg)
 
-Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which does the heavy lifting of building, running, and distributing your Docker containers. The Docker client and daemon can run on the same system, or you can connect a Docker client to a remote Docker daemon. The Docker client and daemon communicate using a REST API, over UNIX sockets or a network interface. Another Docker client is Docker Compose, that lets you work with applications consisting of a set of containers.
+Definiciones:
 
- * The *Docker daemon* (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
+ * El *servidor Docker* (`dockerd`) escucha las peticiones con el formato de la API Docker y gestiona objetos Docker, como imágenes, contenedores, redes, y volúmenes. Un servidor puede comunicarse con otros servidores para gestionar los servicios Docker.
 
- * The *Docker client* (docker) is the primary way that many Docker users interact with Docker. When you use commands such as docker run, the client sends these commands to dockerd, which carries them out. The docker command uses the Docker API. The Docker client can communicate with more than one daemon.
+ * El *cliente Docker* (`docker`) es la pricipal manera en la que la mayoría de usuarios/as interactuan con Docker. Cuando el usuario/a utiliza comandos como `docker run`, el cliente envía dichos comandos en formato de la API de Docker al proceso `dockerd` para que los ejecute. El cliente se puede comunicar con mas de un servidor.
 
- * A *Docker image* is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
+ * Una *imagen Docker* es una plantilla de sólo lectura con las instrucciones para crear un contenedor Docker. Podríamos considerar la imagen como la descripción de la "máquina virtual", mientras que el contenedor es la "máquina virtual" que se ejecuta consumiendo CPU y memoria. A partir de una imagen pueden crearse múltiples contenedores.
 
-   You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a Dockerfile with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.
+   Las imágenes, además de tener su sistema de ficheros predefinido, tienen una serie de parámetros (comandos, de variables de entorno, etc.) con valores por defecto y que se pueden personalizar en el momento de crear el contenedor.
+ 
+   A menudo una imagen está basada en otra imagen sobre la que añade cambios adicionales para personalizarla. Por ejemplo, puedes diseñar una imagen basada en otra imagen previa de Ubuntu, pero que además instala el servidor web Apache y tu aplicación web, así como los detalles de configuración necesarios para que tu aplicación web se pueda ejecutar.
 
- * A *Docker container* is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API or CLI. You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
+   Puedes crear tus propias imágenes o puedes utilizar las imágenes creadas por otras personas que las han publicado en un "registro". Para crear tu propia imagen debes escribir un documento "Dockerfile" que con una sintaxis sencilla describe los pasos necesarios para crear la imagen y ejecutar contenedores a partir de ella. Cada instrucción en el Dockerfile crea una nueva capa en la imagen. Cuando haces cambios en el Dockerfile y reconstruyes la imagen, sólo se reconstruirán las capas que han cambiado. Esto es en parte lo que consigue que las imágenes Docker sean tan ligeras, pequeñas y rápidas, comparadas con otras tecnologías de virtualización.
 
-   By default, a container is relatively well isolated from other containers and its host machine. You can control how isolated a container’s network, storage, or other underlying subsystems are from other containers or from the host machine.
+ * Un *contenedor Docker* es la instancia ejecutable de una imagen. Puedes crear, iniciar, parar, mover o borrar contenedores usando la API de Docker o un cliente. Puedes asignar un contenedor a una o más redes, añadirle almacenamiento, o incluso crear una nueva imagen a partir del estado actual del contenedor.
 
-   A container is defined by its image as well as any configuration options you provide to it when you create or start it. When a container is removed, any changes to its state that are not stored in persistent storage disappear.
+   Por defecto los contenedores están relativamente bien aislados de otros contenedores y del equipo anfitrión. Los propietarios de los contenedores pueden controlar con precisión cómo de aislado está el contenedor, su red, su almacenamiento, y sus otros subsistemas.
 
- * The *Docker registry* stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default. You can even run your own private registry. When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
+   El contenedor queda definido por la imagen de la que procede más los parámetros de configuración que se utilizaron cuando se creó o se arrancó, que además pueden reemplazar los de la imagen. Cuando se borra el contenedor, todos los cambios que se hicieron sobre él que no se guardaron en almacenamiento persistente desaparecerán.
 
- * The *Docker Desktop* is an easy-to-install application that enables you to build and share containerized applications and microservices. Docker Desktop includes the Docker daemon (dockerd), the Docker client (docker), Docker Compose, Docker Content Trust, Kubernetes, and Credential Helper.
+   Cada contenedor Docker posee un identificador único de 64 caracteres, pero habitualmente se utiliza una versión corta con los primeros 12 caracteres.
+
+   Cuando se lanza la ejecución de un contenedor Docker, dicho contenedor ejecuta un comando ("punto de entrada"). Una vez dicho comando finaliza, se para el contenedor. Este comportamiento puede liar a los usuarios primerizos, ya que algunos contenedores ejecutaran un comando que finaliza rápido y se pararán, mientras que otros ejecutarán un "demonio", como por ejemplo un servidor web, que no finaliza y por lo tanto no para la ejecución del contenedor.
+   
+   Docker asigna las IPs a los contenedores dinámicamente. En general no se suele trabajar con los contenedores a través de sus IPs, sino que si tenemos un servicio ejecutándose en un contenedor [mapearemos puertos del contenedor a puertos del anfitrión](https://docs.docker.com/config/containers/container-networking/#published-ports) y Docker ya se encargara de redireccionar el tráfico de red. Pero sobre el mapeo de puertos, recuerda que los sistemas operativos no permiten a dos aplicaciones utilizar el mismo puerto a la vez, ni permiten usar puertos por debajo del 1024 a usuarios no privilegiados.
+
+   Para compartir datos entre contenedores, o entre el anfitrión y los contenedores, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/).
+
+   En este ejemplo, tres contenedores que provienen de dos imágenes enlazan los puertos que quieren exponer con puertos del anfitrión. Por otro lado, dichos contenedores también enlazan algunos de sus directorios a directorios del anfitrión.
+
+   ![Publicar puertos](https://bytes.cat/_media/docker6.png)
+
+ * Los *registros Docker* almacenan imágenes Docker. Docker Hub es un registro público que todo el mundo puede usar, y Docker está configurado por defecto para buscar las imágenes en Docker Hub cuando no las encuentra en el equipo. Pero tu puedes tener un registro privado propio. Cuando utilizas los comandos `docker pull` o `docker run`, las imágenes requeridas se traen des del registro que tengas configurado, y cuando utilizas el comando `docker push`, la imagen especificada se sube al registro que tengas configurado.
+
+ * El *Docker Desktop* es una aplicación fácil de instalar que te permite construir y compartir aplicaciones y microservicios en contenedores. Docker Desktop incluye el servidor Docker, el cliente Docker, Docker Compose, Docker Content Trust, Kubernetes, y Credential Helper.
 
 Docker se puede integrar con diferentes herramientas de infraestructura, como Amazon Web Services, Ansible, Cfengine, Chef, Google Cloud Platform, DigitalOcean, IBM Bluemix, Jelastic, Jenkins, Microsoft Azure, OpenStack Nova, OpenSVC, Puppet, Salt, y Vagrant.
-
-
----
-
-
-IMÁGENES Y CONTENEDORES
------------------------
-
-Imágenes:
-
- * La imagen es una plantilla de solo lectura que se utiliza para crear contenedores, que son las "máquinas virtuales" en ejecución. A partir de una imagen pueden crearse múltiples contenedores.
-
- * Las imágenes, además de tener su sistema de ficheros predefinido, tienen una serie de parámetros predefinidos (comandos, de variables de entorno, etc.) con valores por defecto y que se pueden personalizar en el momento de crear el contenedor.
-
- * Docker permite crear nuevas imágenes basándose en imágenes anteriores. Se podría decir que una imagen puede estar formada por un conjunto de “capas” que han modificado una imagen base. Al crear una nueva imagen, simplemente estamos añadiendo una capa a la imagen anterior, la que actúa como base.
-
-Contenedores:
-
- * Son instancias de una imagen.
-
- * Pueden ser arrancados, parados y ejecutados.
-
- * Cada contenedor Docker posee un identificador único de 64 caracteres, pero habitualmente se utiliza una versión corta con los primeros 12 caracteres.
-
- * Cuando se lanza la ejecución de un contenedor Docker, dicho contenedor ejecuta un comando ("punto de entrada"). Una vez dicho comando finaliza, se para el contenedor. Este comportamiento puede liar a los usuarios primerizos, ya que algunos contenedores ejecutaran un comando que finaliza rápido y se pararán, mientras que otros ejecutarán un demonio, como por ejemplo un servidor web, que no finaliza y por lo tanto no para la ejecución del contenedor.
-
-
----
-
-
-REDIRECCIONAMIENTO DE PUERTOS Y PERSISTENCIA
---------------------------------------------
-
-Las IPs a los contenedores se asignan dinámicamente por Docker. En general no se suele trabajar con IPs para los contenedores, sino que si tenemos un servicio ejecutándose en un contenedor [mapearemos puertos del contenedor a puertos del anfitrión](https://docs.docker.com/config/containers/container-networking/) y Docker ya se encargara de redireccionar el tráfico de red.
-
-Recuerda que el sistema operativo no permite dos aplicaciones utilizar el mismo puerto a la vez, ni permite usar puertos por debajo del 1024 a usuario no privilegiados.
-
-![Imágenes y contenedores](https://bytes.cat/_media/docker5.png)
-
-Para compartir datos entre contenedores o entre el anfitrión y los contenedores, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/bind-mounts/) o utilizar [volúmenes](https://docs.docker.com/storage/volumes/).
-
-Los directorios se pueden enlazar en modo de lectura-escritura, pero también en modo de sólo lectura, si queremos asegurarnos que los contenedores no puedan realizar cambios en los datos.
-
-Enlazar a un volumen de Docker es similar a enlazar a un directorio del anfitrión, con la diferencia de que en el volumen Docker no nos tenemos que preocupar dónde está almacenado en el anfitrión.
-
-Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos [montar en memoria](https://docs.docker.com/storage/tmpfs/) dicho directorio donde deba escribir.
-
-![Persistencia](https://bytes.cat/_media/docker-volumes.png)
-
-En este ejemplo, tres contenedores enlazan los puertos que quieren exponer con puertos del anfitrión. Por otro lado, dichos contenedores también enlazan algunos de sus directorios a directorios del anfitrión.
-
-![Publicar puertos](https://bytes.cat/_media/docker6.png)
 
 
 ---
@@ -317,8 +283,8 @@ Ejemplos:
 ---
 
 
-COMANDOS SOBRE SISTEMA DE FICHEROS
-----------------------------------
+COMANDOS SOBRE EL SISTEMA DE FICHEROS (PERSISTENCIA)
+----------------------------------------------------
 
 Los contenedores trabajan con sistema de ficheros *Union File System* (UFS). Los cambios en el contenedor no modifican el anfitrión, sino que crean una nueva "capa" en el contenedor con los cambios.
 
@@ -329,6 +295,16 @@ Si al cabo de un tiempo necesitamos saber qué cambios se han producido en el co
  * con 'D' significa que se ha borrado
 
 Además, los contenedores se pueden ejecutar en modo de sólo lectura con el atributo `--read-only`, lo que asegura que ningún dato en el contenedor es modificado.
+
+Para compartir datos entre contenedores o entre el anfitrión y los contenedores, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/bind-mounts/) o utilizar [volúmenes](https://docs.docker.com/storage/volumes/).
+
+Los directorios se pueden enlazar en modo de lectura-escritura, pero también en modo de sólo lectura, si queremos asegurarnos que los contenedores no puedan realizar cambios en los datos.
+
+Enlazar a un volumen de Docker es similar a enlazar a un directorio del anfitrión, con la diferencia de que en el volumen Docker no nos tenemos que preocupar dónde está almacenado en el anfitrión.
+
+Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos [montar en memoria](https://docs.docker.com/storage/tmpfs/) dicho directorio donde deba escribir.
+
+![Persistencia](https://bytes.cat/_media/docker-volumes.png)
 
 Ejemplo:
 
@@ -344,40 +320,46 @@ Ejercicio:
 
    Solución en formato largo:
 
-       $ docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
+       docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
 
    Solución en formato breve:
 
-       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
+       docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
 
 
 ---
 
 
-COMANDOS SOBRE RED
-------------------
+COMANDOS SOBRE LA RED
+---------------------
 
-All containers without a --network specified, are attached to the default bridge network. This can be a risk, as unrelated stacks/services/containers are then able to communicate.
+Los contenedores pueden estar asociados a una red propia. Los contenedores sobre los que no se ha especificado un parámetro `--network` quedan asociados a [la red por defecto](https://docs.docker.com/network/bridge/). Esto puede suponer un riesgo, ya que contenedores que pertenecen a proyectos distintos y no guardan relación se podrán comunicar entre ellos. Al especificar [una red propia](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks), sólo los contenedores que pertenezcan a dicha red se verán entre ellos. Los contenedores que comparten una red, además, exponen todos sus puertos a los otros contenedores. Sólo los puertos que se [mapean](https://docs.docker.com/config/containers/container-networking/#published-ports) quedan expuestos al exterior.
 
-Using a user-defined network provides a scoped network in which only containers attached to that network are able to communicate.
+Los contenedores en una red propia no necesitan conocer sus IPs ya que se ven a través de su nombre, porque que Docker los incorpora a un servicio de DNS propio, y reenvía al DNS del anfitrión lo que no pertenezca a la rd propia.
 
-During a container’s lifetime, you can connect or disconnect it from user-defined networks on the fly. To remove a container from the default bridge network, you need to stop the container and recreate it with different network options.
+Un contenedor puede estar asociado a más de una red. Además, durante la vida del contenedor, lo podemos conectar y desconectar sobre la marcha de nuevas redes definidas por nosotros. Pero para desconectarlo de la red por defecto y darle una red nuestra, tenemos que pararlo momentáneamente.
 
-Containers connected to the same user-defined bridge network effectively expose all ports to each other
+ * Para crear una red tienes el comando:
 
-docker network create mi_red
-docker network ls
-docker network rm mi_red
+       docker network create mi_red
 
-$ docker create --name mi-nginx --network mi_red --publish 8080:80 nginx:latest
+ * Para listar las redes tienes el comando:
 
-Pero si el contenedor ya se ejecutaba:
+       docker network ls
 
-$ docker network connect mi_red mi-nginx
+ * Para eliminar una red sin contenedores asociados tienes el comando:
 
-$ docker network disconnect mi_red mi-nginx
+       docker network rm mi_red
 
-<https://www.google.com/search?q=communication+containers+docker>
+ * Para lanzar el contenedor asociado a una red tienes el parámetro `--network`. Por ejemplo:
+
+       docker create --name mi-nginx --network mi_red --publish 8080:80 nginx:latest
+
+ * Para asociarlo/desasociarlo de una red sobre la marcha, cuando el contenedor ya se estaba ejecutando, tienes los comandos:
+
+       docker network connect mi_red mi-nginx
+
+       docker network disconnect mi_red mi-nginx
 
 
 ---
