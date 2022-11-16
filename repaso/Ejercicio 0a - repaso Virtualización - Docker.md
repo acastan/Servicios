@@ -11,6 +11,24 @@ Te recomiendo que visites:
 
  * [Resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
 
+Tabla de contenido:
+
+ * [CONTENEDORES](#contenedores)
+ * [DOCKER](#docker)
+ * [INSTALAR DOCKER](#instalar-docker)
+ * [COMANDOS DE DOCKER SOBRE CONTENEDORES](#comandos-de-docker-sobre-contenedores)
+ * [COMANDOS DE DOCKER SOBRE EL SISTEMA DE FICHEROS Y PERSISTENCIA](#comandos-de-docker-sobre-el-sistema-de-ficheros-y-persistencia)
+ * [COMANDOS DE DOCKER SOBRE LA RED](#comandos-de-docker-sobre-la-red)
+ * [COMANDOS DE DOCKER SOBRE IMÁGENES](#comandos-de-docker-sobre-im-genes)
+ * [CREACIÓN DE IMÁGENES DOCKER](#creaci-n-de-im-genes-docker)
+ * [CUENTA EN DOCKER HUB](#cuenta-en-docker-hub)
+ * [EJERCICIO DE DOCKER](#ejercicio-de-docker)
+ * [ORQUESTACIÓN DE CONTENEDORES DOCKER](#orquestaci-n-de-contenedores-docker)
+ * [DOCKER COMPOSE](#docker-compose)
+ * [DOCKER SWARM](#docker-swarm)
+ * [KUBERNETES](#kubernetes)
+ * [TEMPORAL - A REVISAR](#temporal---a-revisar)
+
 
 ---
 
@@ -283,7 +301,7 @@ Ejemplos:
 ---
 
 
-COMANDOS DE DOCKER SOBRE EL SISTEMA DE FICHEROS (PERSISTENCIA)
+COMANDOS DE DOCKER SOBRE EL SISTEMA DE FICHEROS Y PERSISTENCIA
 --------------------------------------------------------------
 
 Los contenedores trabajan con sistema de ficheros *Union File System* (UFS). Los cambios en el contenedor no modifican el anfitrión, sino que crean una nueva "capa" en el contenedor con los cambios.
@@ -736,8 +754,8 @@ Kubernetes follows the primary/replica architecture. The components of Kubernete
 ---
 
 
-TEMP (A AÑADIR)
----------------
+TEMPORAL - A REVISAR
+--------------------
 
  * [Contenedores para intrusión en redes](https://houdini.secsi.io/)
 
