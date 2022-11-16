@@ -283,8 +283,8 @@ Ejemplos:
 ---
 
 
-COMANDOS SOBRE EL SISTEMA DE FICHEROS (PERSISTENCIA)
-----------------------------------------------------
+COMANDOS DE DOCKER SOBRE EL SISTEMA DE FICHEROS (PERSISTENCIA)
+--------------------------------------------------------------
 
 Los contenedores trabajan con sistema de ficheros *Union File System* (UFS). Los cambios en el contenedor no modifican el anfitrión, sino que crean una nueva "capa" en el contenedor con los cambios.
 
@@ -330,8 +330,8 @@ Ejercicio:
 ---
 
 
-COMANDOS SOBRE LA RED
----------------------
+COMANDOS DE DOCKER SOBRE LA RED
+-------------------------------
 
 Los contenedores pueden estar asociados a una red propia. Los contenedores sobre los que no se ha especificado un parámetro `--network` quedan asociados a [la red por defecto](https://docs.docker.com/network/bridge/). Esto puede suponer un riesgo, ya que contenedores que pertenecen a proyectos distintos y no guardan relación se podrán comunicar entre ellos. Al especificar [una red propia](https://docs.docker.com/network/network-tutorial-standalone/#use-user-defined-bridge-networks), sólo los contenedores que pertenezcan a dicha red se verán entre ellos. Los contenedores que comparten una red, además, exponen todos sus puertos a los otros contenedores. Sólo los puertos que se [mapean](https://docs.docker.com/config/containers/container-networking/#published-ports) quedan expuestos al exterior.
 
@@ -570,7 +570,15 @@ Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imag
 EJERCICIO DE DOCKER
 -------------------
 
-Vas a crear un grupo de contenedores que sirva una web. Para ello:
+En primer lugar, aquí hay webs con bastantes ejercicios que te recomiendo mirar:
+
+ * <https://hamk-sysadmin-docker.github.io/exercises/>
+
+ * <https://github.com/Vizuri/docker-exercises>
+
+ * <https://dockerlabs.collabnix.com/>
+
+En segundo lugar, te propongo un ejercicio. Vas a crear un grupo de contenedores que sirva una web. Para ello:
 
  1.  A partir de una imagen de Debian, crea una imagen de un servidor web estático.
 
@@ -730,8 +738,6 @@ Kubernetes follows the primary/replica architecture. The components of Kubernete
 
 TEMP (A AÑADIR)
 ---------------
-
- * [Ejercicios](https://www.google.com/search?q=docker+exercises)
 
  * [Contenedores para intrusión en redes](https://houdini.secsi.io/)
 
