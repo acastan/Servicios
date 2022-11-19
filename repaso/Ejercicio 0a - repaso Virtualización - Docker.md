@@ -5,11 +5,11 @@ Esta es mi introducción a contenedores y a Docker, aunque no soy un experto en 
 
 Te recomiendo que visites:
 
- * [Curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
+ * [Un curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
- * [Documentación de Docker](https://docs.docker.com/)
+ * [Un resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
 
- * [Resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
+ * [La documentación oficial de Docker](https://docs.docker.com/)
 
 Tabla de contenido:
 
@@ -136,35 +136,28 @@ INSTALAR DOCKER
 
 Se puede instalar mediante un script:
 
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
+    $ curl -fsSL https://get.docker.com -o get-docker.sh
+    $ sudo sh get-docker.sh
 
-Pero también se puede instalar mediante repositorios. Por ejemplo, esta fórmula es para mi Debian estable:
+Pero también se puede instalar mediante repositorios. Por ejemplo, en mi Debian 11 estable:
 
-    sudo apt update
-    sudo apt install ca-certificates curl gnupg lsb-release
-
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    sudo apt update
-    sudo apt install docker-ce docker-ce-cli containerd.io
+    $ sudo apt update
+    $ sudo apt install docker.io
 
 En cualquiera de los dos casos, comprueba que se instaló y funciona:
 
-    sudo docker run hello-world
-    sudo docker version
-    sudo docker info
+    $ docker run hello-world
+    $ docker version
+    $ docker info
 
 Para administrar contenedores gráficamente des de un navegador puedes instalar Portainer, que es un contenedor con una aplicación web:
 
-    docker volume create portainer_data
-    docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always \
+    $ docker volume create portainer_data
+    $ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always \
         -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data \
         portainer/portainer-ce:latest
 
-    docker ps
+    $ docker ps
 
     <https://localhost:9443>
 
@@ -270,32 +263,32 @@ Ejemplos:
 
 1. Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
 
-       docker run --rm -it -p 8080:8080 theasp/novnc
+       $ docker run --rm -it -p 8080:8080 theasp/novnc
 
        <http://localhost:8080/vnc.html>
 
 2. Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
 
-       docker run -it --name ejercicio ubuntu /bin/bash
-       uname -a
-       ps -ef
+       $ docker run -it --name ejercicio ubuntu /bin/bash
+       --$ uname -a
+       --$ ps -ef
 
    Si desacoplamos la entrada, podemos ver la misma información del contenedor des del anfitrión, con otros comandos:
 
        CTRL-P CTRL-Q
-       docker exec ejercicio uname -a
-       docker top ejercicio
-       docker attach ejercicio
+       $ docker exec ejercicio uname -a
+       $ docker top ejercicio
+       $ docker attach ejercicio
 
    Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
 
-       exit
-       docker ps -a
-       uname -a
+       --$ exit
+       $ docker ps -a
+       $ uname -a
 
    Para volver a acceder a la línea de comandos, arrancamos de nuevo el contenedor:
 
-       docker start -ai ejercicio
+       $ docker start -ai ejercicio
 
 
 ---
@@ -503,8 +496,8 @@ Ejemplos de Dockerfile:
 
    Y ahora ejecuta:
 
-       docker build -t starwars .
-       docker run -it starwars
+       $ docker build -t starwars .
+       $ docker run -it starwars
 
 2. A partir de una Debian, instala cowsay, y dice algo en ASCII Art:
 
@@ -516,8 +509,8 @@ Ejemplos de Dockerfile:
 
    Y ahora ejecuta:
 
-       docker build -t cowsay .
-       docker run -it cowsay
+       $ docker build -t cowsay .
+       $ docker run -it cowsay
 
 3. Crea una imagen con Apache:
 
@@ -533,10 +526,10 @@ Ejemplos de Dockerfile:
 
    y ejecutamos
 
-       docker build -t ana/apache2:1.0 .
-       docker images
-       docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
-       docker ps -a
+       $ docker build -t ana/apache2:1.0 .
+       $ docker images
+       $ docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
+       $ docker ps -a
 
 4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP:
 
@@ -549,10 +542,10 @@ Ejemplos de Dockerfile:
 
    y ejecutamos
 
-       docker build -t bob/php:1.0 .
-       docker images
-       docker run -d -p 8080:80 --name servidor_php bob/php:1.0
-       docker ps -a
+       $ docker build -t bob/php:1.0 .
+       $ docker images
+       $ docker run -d -p 8080:80 --name servidor_php bob/php:1.0
+       $ docker ps -a
 
 
 ---
@@ -573,13 +566,13 @@ Puede parecer un poco lioso, ya que por deformación profesional tendemos a iden
 
 De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno de tus repositorios es para una imagen de una aplicación llamada "mi_app", en Docker la última versión la ejecutarás con:
 
-    docker run pepito/mi_app:latest
+    $ docker run pepito/mi_app:latest
 
 Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imagen des de la línea de comandos de Docker debes haber [iniciado sesión](https://docs.docker.com/engine/reference/commandline/login/) con el comando `login`:
 
-    docker login
-    docker commit idcontenedor pepito/mi_app:latest
-    docker push pepito/mi_app:latest
+    $ docker login
+    $ docker commit idcontenedor pepito/mi_app:latest
+    $ docker push pepito/mi_app:latest
 
 
 ---
@@ -596,19 +589,21 @@ En primer lugar, aquí hay webs con bastantes ejercicios que te recomiendo mirar
 
  * <https://dockerlabs.collabnix.com/>
 
-En segundo lugar, te propongo un ejercicio. Vas a crear un grupo de contenedores que sirva una web. Para ello:
+En segundo lugar, un consejo: cuendo un contenedor no funcione y finalice tan pronto como lanzas su ejecución, puedes consultar lo que ha pasado con el comando `docker logs`.
 
- 1.  A partir de una imagen de Debian, crea una imagen de un servidor web estático.
+En tercer lugar, te propongo un ejercicio. Vas a crear un grupo de contenedores que sirva una web. Para ello:
 
- 2.  A partir de la imagen anterior, crea  una imagen de un servidor web dinámico con PHP.
+ 1. A partir de una imagen de Debian, crea una imagen de un servidor web estático.
 
- 3.  Adicionalmente a partir de una imagen de Debian, crea una imagen de un servidor SQL MariaDB.
+ 2. A partir de la imagen anterior, crea  una imagen de un servidor web dinámico con PHP.
 
- 4.  Descarga y descomprime la web (por ejemplo, Wordpress) en el anfitrión.
+ 3. Adicionalmente a partir de una imagen de Debian, crea una imagen de un servidor SQL MariaDB.
 
- 5.  Crea un contenedor con la imagen del servidor web dinámico, y otro contenedor con la imagen del servidor SQL. Dichos contenedores compartirán una red propia, para que el puerto del servidor SQL sólo quede expuesto al servidor web.
+ 4. Descarga y descomprime la web (por ejemplo, Wordpress) en el anfitrión.
 
-     Para desacoplar el almacenamiento y facilitar las copias de seguridad, el contenedor web compartirá con el anfitrión la carpeta donde están las páginas web, y el contenedor SQL compartirá con el anfitrión la carpeta donde están las bases de datos. 
+ 5. Crea un contenedor con la imagen del servidor web dinámico, y otro contenedor con la imagen del servidor SQL. Dichos contenedores compartirán una red propia, para que el puerto del servidor SQL sólo quede expuesto al servidor web.
+
+    Para desacoplar el almacenamiento y facilitar las copias de seguridad, el contenedor web compartirá con el anfitrión la carpeta donde están las páginas web, y el contenedor SQL compartirá con el anfitrión la carpeta donde están las bases de datos. 
 
 ¿Te atreves a crear varios contenedores web y un contenedor balanceador de carga para repartir el trabajo entre ellos?
 
@@ -640,17 +635,10 @@ Docker proporciona la utilidad Docker Compose, que aunque no se puede considerar
 
 El comando `docker-compose` en la versión 1, y `docker compose` en la versión 2, permite ejecutar operaciones en varios contenedores a la vez, como construir las imágenes, escalar el número de contenedores, reiniciar contenedores parados, etc.
 
-Para instalar la versión 2:
+Para instalarlo des de los repositorios:
 
-    $ DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-    $ mkdir -p $DOCKER_CONFIG/cli-plugins
-    $ curl -SL https://github.com/docker/compose/releases/download/v2.12.2/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-    $ chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-    $ docker compose version
-
-Para instalarlo para todos los usuarios, en vez del usuario actual, cambia la anterior primera línea por:
-
-    $ DOCKER_CONFIG=${DOCKER_CONFIG:-/usr/local/lib/docker}
+    $ sudo apt update
+    $ sudo apt install docker-compose
 
 Un ejemplo de fichero `docker-compose.yml`:
 
