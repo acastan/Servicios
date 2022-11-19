@@ -146,18 +146,18 @@ Pero también se puede instalar mediante repositorios. Por ejemplo, en mi Debian
 
 En cualquiera de los dos casos, comprueba que se instaló y funciona:
 
-    $ docker run hello-world
-    $ docker version
-    $ docker info
+    $ sudo docker run hello-world
+    $ sudo docker version
+    $ sudo docker info
 
 Para administrar contenedores gráficamente des de un navegador puedes instalar Portainer, que es un contenedor con una aplicación web:
 
-    $ docker volume create portainer_data
-    $ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always \
-        -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data \
-        portainer/portainer-ce:latest
+    $ sudo docker volume create portainer_data
+    $ sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always \
+             -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data \
+             portainer/portainer-ce:latest
 
-    $ docker ps
+    $ sudo docker ps
 
     <https://localhost:9443>
 
@@ -263,32 +263,32 @@ Ejemplos:
 
 1. Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
 
-       $ docker run --rm -it -p 8080:8080 theasp/novnc
+       $ sudo docker run --rm -it -p 8080:8080 theasp/novnc
 
        <http://localhost:8080/vnc.html>
 
 2. Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
 
-       $ docker run -it --name ejercicio ubuntu /bin/bash
+       $ sudo docker run -it --name ejercicio ubuntu /bin/bash
        --$ uname -a
        --$ ps -ef
 
    Si desacoplamos la entrada, podemos ver la misma información del contenedor des del anfitrión, con otros comandos:
 
        CTRL-P CTRL-Q
-       $ docker exec ejercicio uname -a
-       $ docker top ejercicio
-       $ docker attach ejercicio
+       $ sudo docker exec ejercicio uname -a
+       $ sudo docker top ejercicio
+       $ sudo docker attach ejercicio
 
    Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
 
        --$ exit
-       $ docker ps -a
+       $ sudo docker ps -a
        $ uname -a
 
    Para volver a acceder a la línea de comandos, arrancamos de nuevo el contenedor:
 
-       $ docker start -ai ejercicio
+       $ sudo docker start -ai ejercicio
 
 
 ---
@@ -526,10 +526,10 @@ Ejemplos de Dockerfile:
 
    y ejecutamos
 
-       $ docker build -t ana/apache2:1.0 .
-       $ docker images
-       $ docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
-       $ docker ps -a
+       $ sudo docker build -t ana/apache2:1.0 .
+       $ sudo docker images
+       $ sudo docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
+       $ sudo docker ps -a
 
 4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP:
 
@@ -542,10 +542,10 @@ Ejemplos de Dockerfile:
 
    y ejecutamos
 
-       $ docker build -t bob/php:1.0 .
-       $ docker images
-       $ docker run -d -p 8080:80 --name servidor_php bob/php:1.0
-       $ docker ps -a
+       $ sudo docker build -t bob/php:1.0 .
+       $ sudo docker images
+       $ sudo docker run -d -p 8080:80 --name servidor_php bob/php:1.0
+       $ sudo docker ps -a
 
 
 ---
@@ -566,13 +566,13 @@ Puede parecer un poco lioso, ya que por deformación profesional tendemos a iden
 
 De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno de tus repositorios es para una imagen de una aplicación llamada "mi_app", en Docker la última versión la ejecutarás con:
 
-    $ docker run pepito/mi_app:latest
+    $ sudo docker run pepito/mi_app:latest
 
 Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imagen des de la línea de comandos de Docker debes haber [iniciado sesión](https://docs.docker.com/engine/reference/commandline/login/) con el comando `login`:
 
-    $ docker login
-    $ docker commit idcontenedor pepito/mi_app:latest
-    $ docker push pepito/mi_app:latest
+    $ sudo docker login
+    $ sudo docker commit idcontenedor pepito/mi_app:latest
+    $ sudo docker push pepito/mi_app:latest
 
 
 ---
@@ -654,8 +654,8 @@ Un ejemplo de fichero `docker-compose.yml`:
 
 Y para ejecutarlo cuando ya tienes el fichero creado, basta con escribir:
 
-    $ docker compose up
-    $ docker ps -a
+    $ sudo docker compose up
+    $ sudo docker ps -a
 
 He aquí otro ejemplo de `docker-compose.yml`:
 
