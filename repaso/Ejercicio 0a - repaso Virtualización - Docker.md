@@ -654,7 +654,7 @@ Un ejemplo de fichero `docker-compose.yml`:
 
 Y para ejecutarlo cuando ya tienes el fichero creado, basta con escribir:
 
-    $ sudo docker compose up
+    $ sudo docker-compose up
     $ sudo docker ps -a
 
 He aquí otro ejemplo de `docker-compose.yml`:
