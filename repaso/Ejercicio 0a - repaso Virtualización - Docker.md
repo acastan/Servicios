@@ -490,7 +490,7 @@ Ejemplos de Dockerfile:
 1. A partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
 
        FROM ubuntu:22.04
-       MAINTAINER yomismo
+       LABEL maintainer "yo@mismo.org"
        RUN apt update && apt -y install telnet
        CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
 
@@ -502,7 +502,7 @@ Ejemplos de Dockerfile:
 2. A partir de una Debian, instala cowsay, y dice algo en ASCII Art:
 
        FROM debian:latest
-       MAINTAINER tumismo
+       LABEL maintainer "tu@mismo.org"
        RUN apt update && apt -y install cowsay
        ENTRYPOINT ["/usr/games/cowsay"]
        CMD ["Docker mooooooola!"]
@@ -515,7 +515,7 @@ Ejemplos de Dockerfile:
 3. Crea una imagen con Apache:
 
        FROM debian
-       MAINTAINER Ana Cardo "ana@mired.org"
+       LABEL maintainer "ana@cardo.org"
        RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
        ENV APACHE_RUN_USER www-data
        ENV APACHE_RUN_GROUP www-data
@@ -534,7 +534,7 @@ Ejemplos de Dockerfile:
 4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP:
 
        FROM ana/apache2:1.0
-       MAINTAINER Bob Marley "bob@mired.org"
+       LABEL maintainer "bob@marley.org"
        RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
        EXPOSE 80
        ADD ["index.php","/var/www/html/"]
