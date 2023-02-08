@@ -160,13 +160,13 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Redes Privadas Virtuales (ejercicio)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales.md)
 
-  * [Redes Privadas Virtuales (solución - por acabar)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales%20-%20soluci%C3%B3n.pdf)
+  * [Redes Privadas Virtuales (solución)](vpn/Ejercicio%2014%20-%20Redes%20Privadas%20Virtuales%20-%20soluci%C3%B3n.pdf)
 
 
 
 ## IDS
 
-  * [Sistemas de detección de intrusos (por hacer)](ids/Ejercicio%2015%20-%20Sistema%20Detecci%C3%B3n%20Intrusos.md)
+  * [Sistemas de detección de intrusos](ids/Ejercicio%2015%20-%20Sistema%20Detecci%C3%B3n%20Intrusos.md)
 
   * Sistemas de detección de intrusos (solución - por hacer)
 
