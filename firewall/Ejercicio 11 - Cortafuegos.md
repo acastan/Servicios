@@ -7,11 +7,11 @@ PREGUNTAS
 
  03. ¿Qué es un cortafuegos sin estado o "stateless firewall"? ¿Qué diferencia hay con un cortafuegos con estado o "stateful firewall"?
 
- 04. ¿Puede un cortafuegos incorporar reglas dinámicamente des de aplicaciones? Pon un ejemplo
+ 04. ¿Puede un cortafuegos incorporar reglas dinámicamente des de aplicaciones? Pon un ejemplo.
 
  05. ¿Qué es una DMZ ("zona desmilitarizada") y para qué sirve?
 
- 06. ¿Qué es un cortafuegos a nivel de paquete? ¿Qué es un cortafuegos a nivel de circuito? ¿Qué es un cortafuegos a nivel de aplicación?
+ 06. ¿Qué es una política restrictiva? ¿Qué es una política permisiva?
 
  07. ¿Viene algún software cortafuegos con Windows Server? ¿Desde dónde se instala y desde dónde se administra? ¿Cuál es el software de cortafuegos comercial más conocido para Windows?
 
@@ -70,7 +70,7 @@ Realiza el ejercicio con reglas des de la línea de comandos con [*iptables*](ht
 
  04. Una vez conseguido, prueba lo mismo con alguna interfaz gráfica al cortafuegos, como [*gufw*](https://help.ubuntu.com/community/Gufw), [*fwbuilder*](http://fwbuilder.sourceforge.net/4.0/quick_start_guide.shtml) o [*shorewall*](https://shorewall.org/GettingStarted.html). Entrega capturas de pantalla.
 
- 05. Una vez conseguido, prueba lo mismo con alguna distribución especializada en cortafuegos y enrutamiento, como [*Zeroshell*](https://zeroshell.org/), [*pfSense*](https://www.pfsense.org/), [*OpnSense*](https://opnsense.org/) o [*IPFire*](https://www.ipfire.org/). Entrega capturas de pantalla.
+ 05. Una vez conseguido, prueba lo mismo con alguna distribución especializada en cortafuegos y enrutamiento, como [*Endian*](https://www.endian.com/community/), [*pfSense*](https://www.pfsense.org/), [*OpnSense*](https://opnsense.org/) o [*IPFire*](https://www.ipfire.org/). Entrega capturas de pantalla.
 
 Para escribir las reglas del cortafuegos es muy importante que sigas estos consejos:
 
