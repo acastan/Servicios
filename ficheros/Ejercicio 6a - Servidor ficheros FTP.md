@@ -140,3 +140,5 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Server_Message_Block>
 
   - <http://en.wikipedia.org/wiki/Samba_(software)>
+
+  - <https://www.fortra.com/blog/10-essential-tips-securing-ftp-and-sftp-servers>
