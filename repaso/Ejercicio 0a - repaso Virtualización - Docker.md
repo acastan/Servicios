@@ -635,7 +635,7 @@ Docker proporciona la utilidad Docker Compose, que aunque no se puede considerar
 
 El comando `docker-compose` en la versión 1, y `docker compose` en la versión 2, permite ejecutar operaciones en varios contenedores a la vez, como construir las imágenes, escalar el número de contenedores, reiniciar contenedores parados, etc.
 
-Para instalarlo des de los repositorios:
+La versión 2, más rápida y que viene integrada en Docker, es la que debieras utilizar. Sin embargo, si dicha versión 2 no está disponible y necesitas la versión 1, puedes instalar esta última des de los repositorios:
 
     $ sudo apt update
     $ sudo apt install docker-compose
