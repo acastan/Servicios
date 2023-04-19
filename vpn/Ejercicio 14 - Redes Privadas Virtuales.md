@@ -36,11 +36,13 @@ Crea el siguiente montaje de red para conectar un "roadwarrior" a la red de la e
 
    - Una tarjeta de red para Internet (WAN)
 
- * Una máquina virtual con servicio ssh y web que estará en la red de la empresa
+ * Una máquina virtual con servicio ssh y web que estará en la red de la empresa.
 
-   El endpoint VPN y el servidor estarán en red. Escoge tú las IPs que quieras y el tipo de red (por ejemplo, red interna)
+   El endpoint VPN y el servidor estarán en red interna. Escoge tú las IPs que quieras.
 
  * El cliente que creará un túnel con el endpoint y que intentará acceder a la web y ssh del servidor.
+
+   El endpoint VPN y el cliente estarán en red en modo puente.
 
    Dicho cliente puede ser:
 
@@ -62,7 +64,7 @@ Una opción es utilizar como VPN endpoint una distribución Linux o BSD especial
 
 Otra opción es utilizar como VPN endpoint un Linux e instalar y administrar a pelo OpenVPN.
 
-Otra opción es utilizar Windows tanto en el cliente como en endpoint VPN. Si es así, intenta hacerlo sin instalar software adicional para el VPN y conseguirlo con las opciones de Microsoft que incorpora el Windows.
+Otra opción es utilizar Windows tanto en el cliente como en endpoint VPN. Si es así, intenta hacerlo sin instalar software adicional para el VPN y conseguirlo con las opciones de Microsoft que incorpora el Windows. ¿Hace falta que el cliente sea miembro del dominio? ¿Se pueden aplicar GPOs al clente que se conecta por VPN?
 
 
 
@@ -106,7 +108,13 @@ REFERENCIAS
 
   - <https://en.wikipedia.org/wiki/Virtual_private_network>
 
+  - <https://www.youtube.com/watch?v=_wQTRMBAvzg>
+
+  - <https://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/14106-how-vpn-works.html>
+
   - <https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling>
+
+  - <https://iximiuz.com/en/posts/ssh-tunnels/>
 
   - <https://en.wikipedia.org/wiki/OpenVPN>
 
@@ -114,7 +122,4 @@ REFERENCIAS
 
   - <https://en.wikipedia.org/wiki/WireGuard>
 
-  - <https://www.cisco.com/c/en/us/support/docs/security-vpn/ipsec-negotiation-ike-protocols/14106-how-vpn-works.html>
-
-  - <https://www.youtube.com/watch?v=_wQTRMBAvzg>
-
+  - <https://www.ivpn.net/pptp-vs-ipsec-ikev2-vs-openvpn-vs-wireguard/>
