@@ -27,6 +27,7 @@ Tabla de contenido:
  * [DOCKER COMPOSE](#docker-compose)
  * [DOCKER SWARM](#docker-swarm)
  * [KUBERNETES](#kubernetes)
+ * [TEMPORAL - SEGURIDAD](#temporal---seguridad)
  * [TEMPORAL - A REVISAR](#temporal---a-revisar)
 
 
@@ -150,7 +151,7 @@ En cualquiera de los dos casos, comprueba que se instaló y funciona:
     $ sudo docker version
     $ sudo docker info
 
-Para administrar contenedores gráficamente des de un navegador puedes instalar Portainer, que es un contenedor con una aplicación web:
+Para administrar contenedores gráficamente des de un navegador puedes instalar Portainer, que es un contenedor con una aplicación web que se accede navegando por https://localhost:9443 :
 
     $ sudo docker volume create portainer_data
     $ sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always \
@@ -158,8 +159,6 @@ Para administrar contenedores gráficamente des de un navegador puedes instalar 
              portainer/portainer-ce:latest
 
     $ sudo docker ps
-
-    <https://localhost:9443>
 
 Para una instalación "rootless" de Docker, consulta <https://docs.docker.com/engine/security/rootless/>.
 
@@ -331,11 +330,11 @@ Ejercicio:
 
    Solución en formato largo:
 
-       docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
+       $ docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
 
    Solución en formato breve:
 
-       docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
+       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
 
 
 ---
@@ -496,8 +495,8 @@ Ejemplos de Dockerfile:
 
    Y ahora ejecuta:
 
-       $ docker build -t starwars .
-       $ docker run -it starwars
+       $ sudo docker build -t starwars .
+       $ sudo docker run -it starwars
 
 2. A partir de una Debian, instala cowsay, y dice algo en ASCII Art:
 
@@ -509,8 +508,8 @@ Ejemplos de Dockerfile:
 
    Y ahora ejecuta:
 
-       $ docker build -t cowsay .
-       $ docker run -it cowsay
+       $ sudo docker build -t cowsay .
+       $ sudo docker run -it cowsay
 
 3. Crea una imagen con Apache:
 
@@ -737,6 +736,40 @@ Kubernetes follows the primary/replica architecture. The components of Kubernete
 <https://kubernetes.io/docs/tutorials/kubernetes-basics/>
 
 <https://docs.docker.com/get-started/kube-deploy/>
+
+
+---
+
+
+TEMPORAL - SEGURIDAD
+--------------------
+
+En una instalación normal de Docker, los usuarios no administradores que necesitan lanzar contenedores pertenecen al grupo *docker*. Hay que ir con mucho cuidado, pues el demonio de Docker ejecuta los contenedores como administrador, y eso quiere decir que dichos usuarios a través de los contenedores pueden acabar manipulando el anfitrión de maneras que inicialmente no tenían permitidas. Veamos un ejemplo:
+
+    $ docker run -it --rm -v /:/host alpine cat /host/etc/shadow
+
+Existen varias soluciones:
+
+ * No tener dichos usuarios, y que tan sólo administradores puedan ejecutar contenedores. Obviamente, esto no será siempre posible.
+
+ * Instalar Docker [rootless](https://docs.docker.com/engine/security/rootless/). En dicha instalación no hace falta permisos administrativos para lanzar contenedores, sino que se ejecutan con los permisos del usuario en cuestión. Sin embargo, no todas las características de Docker estarán disponibles, ya que para ciertos tipos de dispositivo o de configuración de red de Docker hacen falta privilegios administrativos.
+
+ * Modificando el campo `userns-remap` del fichero `/etc/docker/daemon.json` podemos proteger el sistema de ficheros raiz.
+
+Cambiando de tema, pero también relacionado con la seguridad, hay que mencionar que existen analizadores de vulnerabilidades especializados en contenedores. Se trata de aplicaciones que buscan problemas de seguridad en las imágenes que hemos creado o que utilizaremos. Por ejemplo, están [Clair](https://quay.github.io/clair/) y [Trivy](https://trivy.dev/).
+
+Ejemplo (-que no he probado-) de instalación y posterior uso de Clair para el análisis de una imagen llamada *dvwa* ("Damn Vulnerable Web Application") del repositorio *infoslack*.
+
+    $ mkdir -p clair/docker-compose-data/clair-config
+    $ wget https://raw.github.com/jgsqware/clairctl/master/docker-compose.yml --directory-prefix=clair/docker-compose-data/
+    $ wget https://raw.github.com/jgsqware/clairctl/master/docker-compose-data/clair-config/config.yml --directory-prefix=clair/clair-config/
+    $ cd clair/docker-compose-data
+    $ docker-compose up
+
+    $ docker pull infoslack/dvwa
+    $ docker-compose exec clairctl clairctl analyze -l infoslack/dvwa
+
+Y en este enlace tienes unos buenos [apuntes de Trivy](https://raul-profesor.github.io/Curso-especialista-ciberseguridad/segdef/trivy/).
 
 
 ---
