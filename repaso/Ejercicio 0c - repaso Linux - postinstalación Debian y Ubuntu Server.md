@@ -105,10 +105,10 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
     
     Por ejemplo, imaginemos que en el fichero `/etc/fstab` tenemos unas particiones /dev/sda2 y /dev/sda3 asociadas y montadas en las carpetas /home y /var, respectivamente, a las que queremos añadir un sistema de cuotas.
 
-    /dev/sda1     /                ext4     errors=remount-ro     0     1
-    /dev/sda2     /home            ext4     defaults              0     2
-    /dev/sda3     /var             ext4     defaults              0     2
-    /dev/sda4     none             swap     sw                    0     0
+        /dev/sda1     /                ext4     errors=remount-ro     0     1
+        /dev/sda2     /home            ext4     defaults              0     2
+        /dev/sda3     /var             ext4     defaults              0     2
+        /dev/sda4     none             swap     sw                    0     0
 
     En un Linux antiguo, por ejemplo una Ubuntu 16.04, editaríamos el fichero `/etc/fstab` añadiendo `usrquota` y `grpquota` a las opciones de las particiones que nos interese tener sistema de cuotas, luego remontaremos dichas particiones antes de activar el sistema de cuotas, y después crearíamos los ficheros de cuotas en el inicio de partición con el comando `quotacheck -avugm`.
 
