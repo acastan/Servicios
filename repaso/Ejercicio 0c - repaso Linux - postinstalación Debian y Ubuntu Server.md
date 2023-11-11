@@ -1,21 +1,19 @@
 Instalación de Linux
 --------------------
 
-Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. Recomiendo Debian Stable, Ubuntu Server LTS o CentOS. En este manual yo utilizaré Ubuntu Server y Debian.
+Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. En este manual yo utilizaré Debian Stable 12 y Ubuntu Server 22.04.
 
 Encontrarás unos detallados tutoriales para la instalación en:
 
+  - <https://www.howtoforge.com/perfect-server-debian-12-buster-apache-bind-dovecot-ispconfig-3-2/>
+
   - <https://www.howtoforge.com/tutorial/perfect-server-ubuntu-20.04-with-apache-php-myqsl-pureftpd-bind-postfix-doveot-and-ispconfig/>
-
-  - <https://www.howtoforge.com/perfect-server-debian-10-buster-apache-bind-dovecot-ispconfig-3-1/>
-
-  - <https://www.howtoforge.com/tutorial/perfect-server-centos-8-apache-mysql-php-pureftpd-postfix-dovecot-and-ispconfig/>
 
 Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita entorno gráfico.
 
 01. Si una vez instalado necesitas cambiar la configuración de la red
 
-    a) En caso de trabajar con Debian 10 edita el siguiente fichero:
+    a) En caso de trabajar con Debian 12 edita el siguiente fichero:
 
         sudo nano /etc/network/interfaces
 
@@ -68,16 +66,18 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
     Si queremos descargar software libre fuera del repositorio de Ubuntu añadiremos la palabra `universe`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `multiverse`.
 
-        deb http://es.archive.ubuntu.com/ubuntu/ focal           main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/ focal-updates   main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse
-        deb http://security.ubuntu.com/ubuntu/   focal-security  main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/ jammy           main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/ jammy-updates   main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+        deb http://security.ubuntu.com/ubuntu/   jammy-security  main restricted universe multiverse
 
     Si queremos descargar software libre fuera del repositorio de Debian añadiremos la palabra `contrib`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `non-free`.
 
-        deb http://ftp.es.debian.org/debian/             buster           main contrib non-free
-        deb http://ftp.es.debian.org/debian/             buster-updates   main contrib non-free
-        deb http://security.debian.org/debian-security   buster/updates   main contrib non-free
+        deb http://ftp.es.debian.org/debian/       bookworm           main contrib non-free non-free-firmware
+        deb http://ftp.es.debian.org/debian/       bookworm-updates   main contrib non-free non-free-firmware
+        deb http://ftp.es.debian.org/debian/       bookworm-backports main contrib non-free non-free-firmware
+        deb http://deb.debian.org/debian-security/ bookworm-security  main contrib non-free non-free-firmware
+
 
 03. Ahora vamos a actualizar las listas de programas disponibles, y después de ello vamos a actualizar los programas que tenemos instalados:
 
@@ -102,25 +102,32 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 07. Opcionalmente podríamos instalar un sistema de cuotas de disco para que los ficheros de los usuarios no superen ciertos límites de espacio:
 
         sudo apt install quota
+    
+    Por ejemplo, imaginemos que en el fichero `/etc/fstab` tenemos unas particiones /dev/sda2 y /dev/sda3 asociadas y montadas en las carpetas /home y /var, respectivamente, a las que queremos añadir un sistema de cuotas.
 
-    Y edita el fichero `/etc/fstab` añadiendo `usrquota` y `grpquota` a las particiones que nos interese tener sistema de cuotas (aviso: dicho fichero seguramente será diferente en vuestro equipos, dependiendo de las particiones que tengáis).
+    /dev/sda1     /                ext4     errors=remount-ro     0     1
+    /dev/sda2     /home            ext4     defaults              0     2
+    /dev/sda3     /var             ext4     defaults              0     2
+    /dev/sda4     none             swap     sw                    0     0
 
-        /dev/sda1     /                ext4     errors=remount-ro              0     1
-        /dev/sda2     /home            ext4     defaults,usrquota,grpquota     0     2
-        /dev/sda3     /var             ext4     defaults,usrquota,grpquota     0     2
-        /dev/sda4     none             swap     sw                             0     0
+    En un Linux antiguo, por ejemplo una Ubuntu 16.04, editaríamos el fichero `/etc/fstab` añadiendo `usrquota` y `grpquota` a las opciones de las particiones que nos interese tener sistema de cuotas, luego remontaremos dichas particiones antes de activar el sistema de cuotas, y después crearíamos los ficheros de cuotas en el inicio de partición con el comando `quotacheck -avugm`.
 
-    Remontaremos dichas particiones antes de activar el sistema de cuotas. Por último, editaremos las cuotas de los usuarios o grupos con el comando `edquota`. Ejecutamos:
+    Sin embargo, en los Linux modernos activaremos las cuotas en el sistema de ficheros ext4 con el comando `tune2fs -O quota dispositivo`. 
 
-        # Remontar particiones
-        sudo mount -vo remount /home
-        sudo mount -vo remount /var
+        # desmonta las particiones donde activarás las cuotas
+        sudo umount /dev/sda2
+        sudo umount /dev/sda3
 
-        # Crea ficheros de quotas en el inicio de partición
-        sudo quotacheck -avugm
+        # instala el sistema de cuotas en los sistemas de ficheros ext4 con:
+        sudo tune2fs -O quota /dev/sda2
+        sudo tune2fs -O quota /dev/sda3
+
+        # monta de nuevo las particiones donde activamos las cuotas
+        sudo mount /dev/sda2
+        sudo mount /dev/sda3
 
         # Activa el sistema de quotas
-        sudo quotaon –avug
+        sudo quotaon -avug
 
         # Edita las quotas de un usuario
         sudo edquota usuario
@@ -131,7 +138,7 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
     Para aprender más sobre cuotas de disco en Linux:
 
-      - <https://www.server-world.info/en/note?os=Ubuntu_16.04&p=quota>
+      - <https://www.server-world.info/en/note?os=Debian_12&p=quota>
 
       - <https://wiki.archlinux.org/index.php/disk_quota>
 
