@@ -123,7 +123,7 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
         sudo mount /dev/sda2
         sudo mount /dev/sda3
 
-    Y a continuación, tanto si estamos en un Linux moderno o antiguo, activamos el sistema de cuotas con el comando `quotaon`, editamos las cuotas de usuario para establecer los límites con el comando `edquota`, y visualizamos las quotas de los usuarios y de las particiones con los comandos `quota` y `repquota`, respectivamente. 
+    Y a continuación, tanto si estamos en un Linux moderno o antiguo, activamos el sistema de cuotas con el comando `quotaon`, editamos las cuotas de usuario para establecer los límites con el comando `edquota`, y visualizamos las cuotas de los usuarios y de las particiones con los comandos `quota` y `repquota`, respectivamente. 
 
         sudo quotaon -avug
 
