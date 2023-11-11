@@ -103,7 +103,7 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
         sudo apt install quota
     
-    Por ejemplo, imaginemos que en el fichero `/etc/fstab` tenemos unas particiones /dev/sda2 y /dev/sda3 asociadas y montadas en las carpetas /home y /var, respectivamente, a las que queremos añadir un sistema de cuotas.
+    Por ejemplo, imaginemos que en el fichero `/etc/fstab` tenemos unas particiones /dev/sda2 y /dev/sda3 asociadas y montadas en las carpetas /home y /var, respectivamente, a las que queremos añadir un sistema de cuotas. Ejemplo del contenido de dicho fichero:
 
         /dev/sda1     /                ext4     errors=remount-ro     0     1
         /dev/sda2     /home            ext4     defaults              0     2
