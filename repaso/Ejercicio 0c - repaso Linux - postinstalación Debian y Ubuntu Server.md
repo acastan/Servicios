@@ -110,7 +110,7 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
         /dev/sda3     /var             ext4     defaults              0     2
         /dev/sda4     none             swap     sw                    0     0
 
-    En un Linux antiguo, por ejemplo una Ubuntu 16.04, editaríamos el fichero `/etc/fstab` añadiendo `usrquota` y `grpquota` a las opciones de las particiones que nos interese tener sistema de cuotas, luego remontaremos dichas particiones antes de activar el sistema de cuotas, y después crearíamos los ficheros de cuotas en el inicio de partición con el comando `quotacheck -avugm`.
+    En un Linux antiguo, por ejemplo una Ubuntu 16.04, editaríamos el fichero `/etc/fstab` añadiendo `usrquota` y `grpquota` a las opciones de las particiones que nos interese tener sistema de cuotas, luego remontaríamos dichas particiones antes de activar el sistema de cuotas, y después crearíamos los ficheros de cuotas en el inicio de partición con el comando `quotacheck -avugm`.
 
     Sin embargo, en los Linux modernos activaremos las cuotas en el sistema de ficheros ext4 con el comando `tune2fs -O quota dispositivo`. 
 
