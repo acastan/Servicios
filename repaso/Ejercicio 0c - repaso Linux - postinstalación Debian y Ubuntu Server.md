@@ -114,25 +114,21 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
     Sin embargo, en los Linux modernos activaremos las cuotas en el sistema de ficheros ext4 con el comando `tune2fs -O quota dispositivo`. 
 
-        # desmonta las particiones donde activarás las cuotas
         sudo umount /dev/sda2
         sudo umount /dev/sda3
 
-        # instala el sistema de cuotas en los sistemas de ficheros ext4 con:
         sudo tune2fs -O quota /dev/sda2
         sudo tune2fs -O quota /dev/sda3
 
-        # monta de nuevo las particiones donde activamos las cuotas
         sudo mount /dev/sda2
         sudo mount /dev/sda3
 
-        # Activa el sistema de quotas
+    Y a continuación, tanto si estamos en un Linux moderno o antiguo, activamos el sistema de cuotas con el comando `quotaon`, editamos las cuotas de usuario para establecer los límites con el comando `edquota`, y visualizamos las quotas de los usuarios y de las particiones con los comandos `quota` y `repquota`, respectivamente. 
+
         sudo quotaon -avug
 
-        # Edita las quotas de un usuario
         sudo edquota usuario
 
-        # Visualiza las quotas de un usuario y de las particiones
         sudo quota -u usuario
         sudo repquota -a
 
