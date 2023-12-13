@@ -316,7 +316,7 @@ MOTORES DE ALMACENAMIENTO
 
  * Podemos deshabilitar los motores de almacenamiento que no necesitamos para ahorrar memoria del servidor, ya que no necesitaremos reservar memoria para los buffers y otras estructuras de datos asociadas con el motor. Por ejemplo:
 
-       shell>   mysqld --skip-bdb --skip-innodb
+       mysqld --skip-bdb --skip-innodb
 
  * Lecturas para profundizar:
 
@@ -691,7 +691,7 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
     2) que ambos ordenadores utilicen aritmética entera de complemento a dos; y
     3) que si hay tablas con columnas de tipo numero real, ambos ordenadores utilicen el formato de números reales especificado por la IEEE.)
 
-   ![](imagenes/MySQL_ficheros.png)
+   ![ficheros](imagenes/MySQL_ficheros.png)
 
    Ejemplos de realización de copias de seguridad: (1) con tar, (2) con zip, (3) con rsync, (4) con cp, (5) con cp sólo bbdd world, (6) con cp sólo tabla City.
    
@@ -908,7 +908,7 @@ ANÁLISIS Y OPTIMIZACIÓN DE TABLAS
    - Los índices ocupan espacio en disco y memoria, y las operaciones de inserción, modificación y borrado serán un poco más lentas (habrá que actualizar índices), por lo que no debemos indexar todas las columnas, sino sólo las más usadas en búsquedas.
    - Cuanto más pequeño es el índice más rápidas serán las operaciones.
 
-   ![](imagenes/MySQL_indice.jpg)
+   ![indice](imagenes/MySQL_indice.jpg)
 
  * Algunas sentencias se ejecutan mucho más eficientemente si hay índices:
 
@@ -1012,13 +1012,12 @@ El funcionamiento es el siguiente: los servidores esclavos se conectan al maestr
 
 Esto nos proporciona: 
  - Replica automática de los datos en máquinas remotas.
-   ![](imagenes/MySQL_replicacion_multidb.png)
+   ![replicacion_multidb](imagenes/MySQL_replicacion_multidb.png)
  - Balanceo de la carga (de las consultas).
-   ![](imagenes/MySQL_replicacion_escalar.png)
+   ![replicacion_escalar](imagenes/MySQL_replicacion_escalar.png)
  - Alta disponibilidad mediante redundancia de servidores.
-   ![](imagenes/MySQL_replicacion_redundancia_antes.png)
-   -> cae el maestro ->
-   ![](imagenes/MySQL_replicacion_redundancia_despues.png)
+   ![redundancia_antes](imagenes/MySQL_replicacion_redundancia_antes.png)
+   ![redundancia_despues](imagenes/MySQL_replicacion_redundancia_despues.png)
  - Copias de seguridad en esclavos sin interrumpir maestro.
  
  * Preparación:
