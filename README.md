@@ -100,6 +100,8 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Servidor web (solución)](web/Ejercicio%205%20-%20Servidor%20web%20-%20soluci%C3%B3n.pdf)
 
+  * [Optimizar LAMP (muy antiguo)](web/Tuning%20LAMP.pdf)
+
 
 
 ## Servidor de ficheros
@@ -175,9 +177,3 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 ## Administración de SGBDR MySQL / MariaDB
 
   * [Administración de MySQL (muy antiguo)](http://www.xtec.cat/~acastan/textos/Administracion%20de%20MySQL.html)
-
-
-
-## Otros
-
-  * [Optimizar LAMP (muy antiguo)](web/Tuning%20LAMP.pdf)
