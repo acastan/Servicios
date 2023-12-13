@@ -180,4 +180,4 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
 ## Otros
 
-  * [Optimizar LAMP (muy antiguo)](http://www.xtec.cat/~acastan/textos/Tuning%20LAMP.pdf)
+  * [Optimizar LAMP (muy antiguo)](web/Tuning%20LAMP.pdf)
