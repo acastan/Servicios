@@ -298,21 +298,21 @@ MOTORES DE ALMACENAMIENTO
    - Es una buena elección cuando disponiendo de varios servidores necesitamos a la vez velocidad, transacciones y redundancia de datos; replicación síncrona; y resistencia a caídas de servidores.
 
  * Comparación de los motores:
-                                           |  MyISAM  |  InnoDB  |  HEAP  |  NDB  |
-   --------------------------------------- |:--------:|:--------:|:------:|:-----:|
-   Multi-statement transactions, ROLLBACK  |       -  |       X  |     -  |    X  |
-   Foreign key constraints                 |       -  |       X  |     -  |    -  |
-   Locking level                           |   table  |     row  | table  |  row  |
-   BTREE indexes                           |       X  |       X  |     -  |    X  |
-   FULLTEXT indexes                        |       X  |       -  |     -  |    -  |
-   HASH lookups                            |       -  |       X  |     X  |    X  |
-   Other in-memory tree-based index        |       -  |       -  | 4.1.0  |    -  |
-   GIS, RTREE indexes                      |   4.1.0  |       -  |     -  |    -  |
-   Unicode                                 |   4.1.0  |   4.1.2  |     -  |    -  |
-   Merge (union views)                     |       X  |       -  |     -  |    -  |
-   Compress read-only storage              |       X  |       -  |     -  |    -  |
-   Relative disk use                       |     low  |    high  |     -  |  low  |
-   Relative memory use                     |     low  |    high  |   low  | high  |
+   |                                         |  MyISAM  |  InnoDB  |  HEAP  |  NDB  |
+   | --------------------------------------- |:--------:|:--------:|:------:|:-----:|
+   | Multi-statement transactions, ROLLBACK  |       -  |       X  |     -  |    X  |
+   | Foreign key constraints                 |       -  |       X  |     -  |    -  |
+   | Locking level                           |   table  |     row  | table  |  row  |
+   | BTREE indexes                           |       X  |       X  |     -  |    X  |
+   | FULLTEXT indexes                        |       X  |       -  |     -  |    -  |
+   | HASH lookups                            |       -  |       X  |     X  |    X  |
+   | Other in-memory tree-based index        |       -  |       -  | 4.1.0  |    -  |
+   | GIS, RTREE indexes                      |   4.1.0  |       -  |     -  |    -  |
+   | Unicode                                 |   4.1.0  |   4.1.2  |     -  |    -  |
+   | Merge (union views)                     |       X  |       -  |     -  |    -  |
+   | Compress read-only storage              |       X  |       -  |     -  |    -  |
+   | Relative disk use                       |     low  |    high  |     -  |  low  |
+   | Relative memory use                     |     low  |    high  |   low  | high  |
 
  * Podemos deshabilitar los motores de almacenamiento que no necesitamos para ahorrar memoria del servidor, ya que no necesitaremos reservar memoria para los buffers y otras estructuras de datos asociadas con el motor. Por ejemplo:
 
