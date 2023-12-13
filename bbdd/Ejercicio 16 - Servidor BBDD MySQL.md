@@ -114,13 +114,13 @@ INSTALACIÓN DE MYSQL 5.0 EN UBUNTU 7.04
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/8.0/en/server-side-scripts.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/instance-manager.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/configuring-mysql.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/server-shutdown.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/security.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysql.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysqladmin.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/server-side-scripts.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/instance-manager.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/configuring-mysql.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/server-shutdown.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/security.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysql.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysqladmin.html>
 
 
 ---
@@ -231,8 +231,8 @@ FUNCIONAMIENTO DEL SERVIDOR MYSQL
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/8.0/en/features.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/log-files.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/features.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/log-files.html>
 
 
 ---
@@ -320,9 +320,9 @@ MOTORES DE ALMACENAMIENTO
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/8.0/en/storage-engines.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/myisam-storage-engine.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/innodb.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/innodb.html>
 
 
 ---
@@ -411,9 +411,9 @@ REPASO DE CONSULTAS
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/8.0/en/data-manipulation.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/examples.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/query-speed.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/data-manipulation.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/examples.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/query-speed.html>
 
 
 ---
@@ -442,7 +442,7 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
        CREATE TABLE tabla definición;
 
-   Sintaxis completa en <http://dev.mysql.com/doc/refman/8.0/en/create-table.html>
+   Sintaxis completa en <http://dev.mysql.com/doc/refman/5.7/en/create-table.html>
 
  * Borrar toda una tabla:
 
@@ -452,7 +452,7 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
        ALTER TABLE tabla modificación;
 
-   Sintaxis completa en <http://dev.mysql.com/doc/refman/8.0/en/alter-table.html>
+   Sintaxis completa en <http://dev.mysql.com/doc/refman/5.7/en/alter-table.html>
 
  * Ver las tablas de una base de datos:
 
@@ -513,8 +513,8 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/8.0/en/data-definition.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/transactional-commands.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/data-definition.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/transactional-commands.html>
 
 
 ---
@@ -666,10 +666,10 @@ ADMINISTRACIÓN DE USUARIOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/user-account-management.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/account-management-sql.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/privilege-system.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/encryption-functions.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/user-account-management.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/account-management-sql.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/privilege-system.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html>
 
 
 ---
@@ -678,21 +678,13 @@ ADMINISTRACIÓN DE USUARIOS
 REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
 ----------------------------------------
 
- * Primer método: parar el servidor y copiar o restaurar los ficheros, que están
-   en el directorio de datos (normalmente en '/var/lib/mysql/'). Para obtener
-   dicho directorio:
+ * Primer método: parar el servidor y copiar o restaurar los ficheros, que están en el directorio de datos (normalmente en '/var/lib/mysql/'). Para obtener dicho directorio:
 
-     SHOW VARIABLES LIKE 'datadir';
+       SHOW VARIABLES LIKE 'datadir';
 
-   En tablas de tipo MyISAM estos ficheros están en una carpeta con el nombre de
-   la base de datos, tienen el mismo nombre que las tablas y extensiones '*.frm'
-   (formato), '*.myd' (datos), y '*.myi' (índices).
+   En tablas de tipo MyISAM estos ficheros están en una carpeta con el nombre de la base de datos, tienen el mismo nombre que las tablas y extensiones '*.frm' (formato), '*.myd' (datos), y '*.myi' (índices).
 
-   En tablas de tipo InnoDB se encuentran ficheros con los nombres de las tablas
-   y extensión '*.frm' en la carpeta de la base de datos, y en el directorio
-   principal de datos existen varios ficheros de datos con nombre 'ibdata1',
-   'ibdata2', ... que comparten todas las bases de datos InnoDB del servidor, y 
-   también los ficheros de "logs" de InnoDB: 'ib_logfile0', 'ib_logfile1', ...
+   En tablas de tipo InnoDB se encuentran ficheros con los nombres de las tablas y extensión '*.frm' en la carpeta de la base de datos, y en el directorio principal de datos existen varios ficheros de datos con nombre 'ibdata1', 'ibdata2', ... que comparten todas las bases de datos InnoDB del servidor, y también los ficheros de "logs" de InnoDB: 'ib_logfile0', 'ib_logfile1', ...
 
    (Aviso: si los ficheros InnoDB vamos a copiarlos de un ordenador a otro, debe
     cumplirse: 
@@ -810,17 +802,18 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/disaster-prevention.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysqlhotcopy.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysqldump.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/myisampack.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/disaster-prevention.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlhotcopy.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/myisampack.html>
 
 
-
+---
 
 
 IMPORTAR Y EXPORTAR DATOS
+-------------------------
 
  * El método estándar para importar y exportar fácilmente bases de datos es 
    mediante ficheros de texto, donde cada fichero corresponde a una tabla de la
@@ -858,9 +851,9 @@ IMPORTAR Y EXPORTAR DATOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/load-data.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/select.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysqlimport.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/load-data.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/select.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html>
 
 
 ---
@@ -922,10 +915,10 @@ INTEGRIDAD Y REPARACIÓN DE TABLAS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/check-table.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/repair-table.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/check-table.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/repair-table.html>
    - <http://dev.mysql.com/doc/refman/5.0/en/myisamchk.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/using-mysqlcheck.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/using-mysqlcheck.html>
 
 
 ---
@@ -1010,10 +1003,10 @@ ANÁLISIS Y OPTIMIZACIÓN DE TABLAS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/create-index.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/optimize-table.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/optimizing-database-structure.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/mysql-indexes.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/create-index.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/optimize-table.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/optimizing-database-structure.html>
 
 
 ---
@@ -1033,9 +1026,9 @@ ANÁLISIS Y OPTIMIZACIÓN DEL SERVIDOR MYSQL
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/query-cache.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/query-cache.html>
    - <http://www.xtec.net/~acastan/textos/Tuning%20LAMP.pdf>
-   - <http://dev.mysql.com/doc/refman/8.0/en/optimizing-the-server.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/optimizing-the-server.html>
 
 
 ---
@@ -1046,7 +1039,7 @@ CONECTANDO APLICACIONES CON BASES DE DATOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/connectors.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/connectors.html>
 
 
 ---
@@ -1174,8 +1167,8 @@ Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_redund
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/replication.html>
-   - <http://dev.mysql.com/doc/refman/8.0/en/replication-sql.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/replication.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/replication-sql.html>
    - <http://dev.mysql.com/books/hpmysql-excerpts/ch07.html>
 
 
@@ -1187,5 +1180,5 @@ CLÚSTER DE SERVIDORES MYSQL
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/8.0/en/ndbcluster.html>
+   - <http://dev.mysql.com/doc/refman/5.7/en/ndbcluster.html>
 
