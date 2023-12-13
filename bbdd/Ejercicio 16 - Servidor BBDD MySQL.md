@@ -1,5 +1,5 @@
-ADMINISTRACIÓN DE MYSQL
-=======================
+ADMINISTRACIÓN DE MYSQL 5
+=========================
 
 
 {toc}
@@ -186,7 +186,7 @@ FUNCIONAMIENTO DEL SERVIDOR MYSQL
    
       Los motores de almacenamiento guardan datos (tablas, logs, ...) en disco y en memoria, envía datos a otros servidores remotos, ...
 
-   ![Funcionamiento MySQL](http://www.xtec.net/~acastan/textos/imagenes_MySQL/funcionamiento.jpg)
+   ![Funcionamiento MySQL](imagenes/MySQL_funcionamiento.jpg)
 
  * El servidor MySQL utiliza espacio en disco para almacenar lo siguiente:
    - Los programas cliente y servidor, y sus librerías.
@@ -245,7 +245,7 @@ MOTORES DE ALMACENAMIENTO
 
    MySQL dispone de una docena de motores de almacenamiento propios, más los motores externos desarrollados por terceras partes que se pueden incorporar al servidor. Algunos de los más conocidos son: MyISAM, InnoDB, HEAP, NDB.
    
-   ![Motores de almacenamiento](http://www.xtec.net/~acastan/textos/imagenes_MySQL/motores.png)
+   ![Motores de almacenamiento](imagenes/MySQL_motores.png)
 
  * Seleccionar el motor de almacenamiento de una tabla:
 
@@ -686,62 +686,51 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
 
    En tablas de tipo InnoDB se encuentran ficheros con los nombres de las tablas y extensión '*.frm' en la carpeta de la base de datos, y en el directorio principal de datos existen varios ficheros de datos con nombre 'ibdata1', 'ibdata2', ... que comparten todas las bases de datos InnoDB del servidor, y también los ficheros de "logs" de InnoDB: 'ib_logfile0', 'ib_logfile1', ...
 
-   (Aviso: si los ficheros InnoDB vamos a copiarlos de un ordenador a otro, debe
-    cumplirse: 
-    (1) que las bases de datos y tablas tengan nombres en minúsculas;
-    (2) que ambos ordenadores utilicen aritmética entera de complemento a dos; y
-    (3) que si hay tablas con columnas de tipo numero real, ambos ordenadores 
-        utilicen el formato de números reales especificado por la IEEE.)
+   Si los ficheros InnoDB vamos a copiarlos de un ordenador a otro, debe cumplirse: 
+    1) que las bases de datos y tablas tengan nombres en minúsculas;
+    2) que ambos ordenadores utilicen aritmética entera de complemento a dos; y
+    3) que si hay tablas con columnas de tipo numero real, ambos ordenadores utilicen el formato de números reales especificado por la IEEE.)
 
-   Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/ficheros.png
+   ![](imagenes/MySQL_ficheros.png)
 
-   Ejemplos de realización de copias de seguridad: (1) con tar, (2) con zip, (3)
-   con rsync, (4) con cp, (5) con cp sólo bbdd world, (6) con cp sólo tabla City.
+   Ejemplos de realización de copias de seguridad: (1) con tar, (2) con zip, (3) con rsync, (4) con cp, (5) con cp sólo bbdd world, (6) con cp sólo tabla City.
    
-     mysqladmin -u root -p shutdown
+       mysqladmin -u root -p shutdown
 
-     (1)  sudo  tar czf    /tmp/mysql-backup.tar.gz      /var/lib/mysql/
-     (2)  sudo  zip -r     /tmp/mysql-backup.zip         /var/lib/mysql/
-     (3)  sudo  rsync -r   /var/lib/mysql/               /tmp/mysql-backup
-     (4)  sudo  cp -r      /var/lib/mysql/               /tmp/mysql-backup
-     (5)  sudo  cp -r      /var/lib/mysql/world/         /tmp/mysql-backup
-     (6)  sudo  cp -r      /var/lib/mysql/world/City.*   /tmp/mysql-backup
+       (1)  sudo  tar czf    /tmp/mysql-backup.tar.gz      /var/lib/mysql/
+       (2)  sudo  zip -r     /tmp/mysql-backup.zip         /var/lib/mysql/
+       (3)  sudo  rsync -r   /var/lib/mysql/               /tmp/mysql-backup
+       (4)  sudo  cp -r      /var/lib/mysql/               /tmp/mysql-backup
+       (5)  sudo  cp -r      /var/lib/mysql/world/         /tmp/mysql-backup
+       (6)  sudo  cp -r      /var/lib/mysql/world/City.*   /tmp/mysql-backup
 
-     sudo /etc/init.d/mysql start
+       sudo /etc/init.d/mysql start
 
-   Ejemplos de restauración de las copias (vigilad con los permisos y con que el
-   propietario de los ficheros siga siendo 'mysql'):
+   Ejemplos de restauración de las copias (vigilad con los permisos y con que el propietario de los ficheros siga siendo 'mysql'):
 
-     sudo /etc/init.d/mysql stop
+       sudo /etc/init.d/mysql stop
 
-     sudo cp -r /otro_directorio/   /var/lib/mysql/
-     sudo chown -R mysql.mysql      /var/lib/mysql/
+       sudo cp -r /otro_directorio/   /var/lib/mysql/
+       sudo chown -R mysql.mysql      /var/lib/mysql/
 
-     sudo /etc/init.d/mysql start
+       sudo /etc/init.d/mysql start
 
- * Segundo método: mediante el script 'mysqlhotcopy'. Sólo sirve para tablas 
-   MyISAM, pero es rápido y no hace falta parar el servidor ya que el script
-   bloquea las tablas. Se ejecuta localmente en el servidor.
+ * Segundo método: mediante el script 'mysqlhotcopy'. Sólo sirve para tablas MyISAM, pero es rápido y no hace falta parar el servidor ya que el script bloquea las tablas. Se ejecuta localmente en el servidor.
 
    Ejemplos de realización de copias de seguridad:
    
-     sudo mysqlhotcopy world /otro_directorio -u root -p contraseña
+       sudo mysqlhotcopy world /otro_directorio -u root -p contraseña
 
-   Ejemplos de restauración de las copias (vigilad con los permisos y con que el
-   propietario de los ficheros siga siendo 'mysql'):
+   Ejemplos de restauración de las copias (vigilad con los permisos y con que el propietario de los ficheros siga siendo 'mysql'):
 
-     sudo /etc/init.d/mysql stop
+       sudo /etc/init.d/mysql stop
 
-     sudo cp -r /otro_directorio/   /var/lib/mysql/
-     sudo chown -R mysql.mysql      /var/lib/mysql/
+       sudo cp -r /otro_directorio/   /var/lib/mysql/
+       sudo chown -R mysql.mysql      /var/lib/mysql/
 
-     sudo /etc/init.d/mysql start
+       sudo /etc/init.d/mysql start
 
- * Tercer método: mediante el comando 'mysqldump'. Es menos rápido, pero sirve
-   para todo tipo de tablas. El fichero que genera no contiene los datos, sino 
-   instrucciones SQL que generan las tablas y les insertan los datos, por lo que
-   también nos sirve para migrar las bases de datos de MySQL a otro gestor. Se
-   puede ejecutar de forma local y remota, y los ficheros quedan en el servidor.
+ * Tercer método: mediante el comando 'mysqldump'. Es menos rápido, pero sirve para todo tipo de tablas. El fichero que genera no contiene los datos, sino instrucciones SQL que generan las tablas y les insertan los datos, por lo que también nos sirve para migrar las bases de datos de MySQL a otro gestor. Se puede ejecutar de forma local y remota, y los ficheros quedan en el servidor.
 
    Ejemplos de realización de copias de seguridad:
    
@@ -757,48 +746,43 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
   
        mysql world -u root -p < world.sql
 
- * Cuarto método: las sentencias SQL 'BACKUP TABLE' y 'RESTORE TABLE', que no 
-   explicaré porque han quedado obsoletas.
+ * Cuarto método: las sentencias SQL `BACKUP TABLE` y `RESTORE TABLE`, que no explicaré porque han quedado obsoletas.
 
- * Para restaurar los cambios en la base de datos que se produjeron después de 
-   la copia de seguridad debemos obtener dichos cambios de los ficheros de "logs":
+ * Para restaurar los cambios en la base de datos que se produjeron después de la copia de seguridad debemos obtener dichos cambios de los ficheros de "logs":
 
    - Miramos cuales son posteriores a la fecha de la copia de seguridad:
 
-     ls -l /var/log/mysql
+         ls -l /var/log/mysql
 
-       ...
-       -rw-rw---- 1 mysql adm 11949 2007-02-04 09:23 mysql-bin.000102
-       -rw-rw---- 1 mysql adm   117 2007-02-04 13:46 mysql-bin.000103
-       -rw-rw---- 1 mysql adm 11906 2007-02-04 13:48 mysql-bin.000104
-       ...
+           ...
+           -rw-rw---- 1 mysql adm 11949 2007-02-04 09:23 mysql-bin.000102
+           -rw-rw---- 1 mysql adm   117 2007-02-04 13:46 mysql-bin.000103
+           -rw-rw---- 1 mysql adm 11906 2007-02-04 13:48 mysql-bin.000104
+           ...
 
    - Si queremos asegurarnos comprobando su contenido:
 
-     mysqlbinlog /var/log/mysql/mysql-bin.000102 | less
-     ...
+         mysqlbinlog /var/log/mysql/mysql-bin.000102 | less
+         ...
 
    - Los restauramos ordenadamente:
 
-     mysqlbinlog /var/log/mysql/mysql-bin.000102 | mysql -u root -p
-     mysqlbinlog /var/log/mysql/mysql-bin.000103 | mysql -u root -p
-     mysqlbinlog /var/log/mysql/mysql-bin.000104 | mysql -u root -p
+         mysqlbinlog /var/log/mysql/mysql-bin.000102 | mysql -u root -p
+         mysqlbinlog /var/log/mysql/mysql-bin.000103 | mysql -u root -p
+         mysqlbinlog /var/log/mysql/mysql-bin.000104 | mysql -u root -p
 
- * Relacionado con el tema de las copias de seguridad, podemos comprimir las
-   tablas MyISAM que ya no se actualizan para que ocupen mucho menos espacio.
-   Comprimidas con la utilidad 'myisampack' todavía se pueden consultar aunque
-   no se pueden actualizar hasta que se descomprimen de nuevo con 'myisamchk'.
+ * Relacionado con el tema de las copias de seguridad, podemos comprimir las tablas MyISAM que ya no se actualizan para que ocupen mucho menos espacio. Comprimidas con la utilidad 'myisampack' todavía se pueden consultar aunque no se pueden actualizar hasta que se descomprimen de nuevo con 'myisamchk'.
 
-     myisampack /var/lib/mysql/world/City.MYI
-     myisamchk --recover --quick /var/lib/mysql/world/City.MYI
+       myisampack /var/lib/mysql/world/City.MYI
+       myisamchk --recover --quick /var/lib/mysql/world/City.MYI
 
    Para descomprimirlas:
 
-     myisamchk --unpack /var/lib/mysql/world/City.MYI
+       myisamchk --unpack /var/lib/mysql/world/City.MYI
 
    Para consultar si estaban comprimidas:
 
-     shell> mysql world -u root -p -e "SHOW TABLE STATUS LIKE 'City'"
+       mysql world -u root -p -e "SHOW TABLE STATUS LIKE 'City'"
 
  * Lecturas para profundizar:
  
@@ -815,39 +799,32 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
 IMPORTAR Y EXPORTAR DATOS
 -------------------------
 
- * El método estándar para importar y exportar fácilmente bases de datos es 
-   mediante ficheros de texto, donde cada fichero corresponde a una tabla de la
-   base de datos, cada fila del fichero es un registro, y los valores de los
-   campos se separan por tabuladores u otras marcas.
+ * El método estándar para importar y exportar fácilmente bases de datos es mediante ficheros de texto, donde cada fichero corresponde a una tabla de la base de datos, cada fila del fichero es un registro, y los valores de los campos se separan por tabuladores u otras marcas.
 
- * Podemos importar mediante la sentencia 'LOAD DATA [LOCAL] INFILE' (la palabra
-   LOCAL se utiliza cuando el fichero a importar está en el ordenador del
-   cliente, y no se utiliza cuando el fichero está en el servidor):
+ * Podemos importar mediante la sentencia 'LOAD DATA [LOCAL] INFILE' (la palabra LOCAL se utiliza cuando el fichero a importar está en el ordenador del cliente, y no se utiliza cuando el fichero está en el servidor):
 
-     LOAD DATA LOCAL INFILE 'ciudades.txt' INTO TABLE City;
+       LOAD DATA LOCAL INFILE 'ciudades.txt' INTO TABLE City;
 
-     LOAD DATA LOCAL INFILE 'ciudades.txt' 
-       FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n' 
-       IGNORE 1 LINES INTO TABLE City;
+       LOAD DATA LOCAL INFILE 'ciudades.txt' 
+         FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n' 
+         IGNORE 1 LINES INTO TABLE City;
 
  * También podemos importar con el comando externo 'mysqlimport':
 
-     mysqlimport base_de_datos fichero1.txt fichero2.txt ...
+       mysqlimport base_de_datos fichero1.txt fichero2.txt ...
 
- * Podemos exportar mediante la sentencia 'SELECT ... INTO OUTFILE' (el fichero
-   a exportar quedará en el servidor):
+ * Podemos exportar mediante la sentencia 'SELECT ... INTO OUTFILE' (el fichero a exportar quedará en el servidor):
 
-     SELECT * FROM City INTO OUTFILE 'ciudades.txt';
+       SELECT * FROM City INTO OUTFILE 'ciudades.txt';
 
-     SELECT * FROM City INTO OUTFILE 'ciudades.txt'
-       FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
+       SELECT * FROM City INTO OUTFILE 'ciudades.txt'
+         FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\r\n';
 
- * También podemos exportar redireccionando la salida (el fichero a exportar
-   quedará en el cliente):
+ * También podemos exportar redireccionando la salida (el fichero a exportar quedará en el cliente):
 
-     mysql world -u root -p -e "SELECT * FROM City" > ciudades.txt
-     mysql world -u root -p --html -e "SELECT * FROM City" > ciudades.html
-     mysql world -u root -p --xml -e "SELECT * FROM City" > ciudades.xml
+       mysql world -u root -p -e "SELECT * FROM City" > ciudades.txt
+       mysql world -u root -p --html -e "SELECT * FROM City" > ciudades.html
+       mysql world -u root -p --xml -e "SELECT * FROM City" > ciudades.xml
 
  * Lecturas para profundizar:
  
@@ -862,56 +839,43 @@ IMPORTAR Y EXPORTAR DATOS
 INTEGRIDAD Y REPARACIÓN DE TABLAS
 ---------------------------------
 
- * Inserción y borrado masivo de datos + bloqueo del sistema o fallo del disco =
-   tabla o índice corrupto
+ * Inserción y borrado masivo de datos + bloqueo del sistema o fallo del disco = tabla o índice corrupto
 
-     USE world;
-     SELECT * FROM City;
+       USE world;
+       SELECT * FROM City;
 
-       ERROR 1016: No puedo abrir archivo: 'City.MYD'. (Error: 145)
+         ERROR 1016: No puedo abrir archivo: 'City.MYD'. (Error: 145)
 
-     system perror 145
-       MySQL error code 145: Table was marked as crashed and should be repaired
+       system perror 145
+         MySQL error code 145: Table was marked as crashed and should be repaired
 
-   Si tenemos copia de seguridad podemos restaurarla y recuperar la tabla. Si no
-   tenemos copia tendremos que reparar la tabla, proceso en el cual se suelen
-   perder los registros defectuosos.
+   Si tenemos copia de seguridad podemos restaurarla y recuperar la tabla. Si no tenemos copia tendremos que reparar la tabla, proceso en el cual se suelen perder los registros defectuosos.
 
  * Consulta y reparación de la integridad mediante sentencias SQL:
 
-     CHECK TABLE City EXTENDED;
-     REPAIR TABLE City;
+       CHECK TABLE City EXTENDED;
+       REPAIR TABLE City;
 
- * Consulta y reparación con la utilidad 'myisamchk': esta utilidad es para
-   tablas 'MyISAM', accede a los ficheros de tablas directamente, y por lo tanto
-   necesita parar el servidor. Ejemplos:
+ * Consulta y reparación con la utilidad 'myisamchk': esta utilidad es para tablas 'MyISAM', accede a los ficheros de tablas directamente, y por lo tanto necesita parar el servidor. Ejemplos:
 
-     sudo /etc/init.d/mysql stop
-     myisamchk --check          /var/lib/mysql/*/*.MYI
-     myisamchk --recover        /var/lib/mysql/world/*.MYI
-     myisamchk --safe-recover   /var/lib/mysql/world/City.MYI
-     myisamchk --key_buffer_size=64M --sort_buffer_size=64M
-               --read_buffer_size=1M --write_buffer_size=1M
-               --silent --force --fast --update-state /var/lib/mysql/world/*.MYI
-     sudo /etc/init.d/mysql start
+       sudo /etc/init.d/mysql stop
+       myisamchk --check          /var/lib/mysql/*/*.MYI
+       myisamchk --recover        /var/lib/mysql/world/*.MYI
+       myisamchk --safe-recover   /var/lib/mysql/world/City.MYI
+       myisamchk --key_buffer_size=64M --sort_buffer_size=64M
+                 --read_buffer_size=1M --write_buffer_size=1M
+                 --silent --force --fast --update-state /var/lib/mysql/world/*.MYI
+       sudo /etc/init.d/mysql start
 
- * Consulta y reparación con la utilidad 'mysqlcheck': esta utilidad es para
-   tablas 'MyISAM', 'InnoDB' y 'BDB', se conecta como cliente al servidor y le
-   envía sentencias SQL, y por lo tanto no se debe parar el servidor. Ejemplos:
+ * Consulta y reparación con la utilidad 'mysqlcheck': esta utilidad es para tablas 'MyISAM', 'InnoDB' y 'BDB', se conecta como cliente al servidor y le envía sentencias SQL, y por lo tanto no se debe parar el servidor. Ejemplos:
 
-     mysqlcheck -u root -p --check  world City
-     mysqlcheck -u root -p --repair world City
-     mysqlcheck -u root -p --force  world City
+       mysqlcheck -u root -p --check  world City
+       mysqlcheck -u root -p --repair world City
+       mysqlcheck -u root -p --force  world City
 
- * Reparar tablas InnoDB: si se ha producido una caída del servidor, con
-   reiniciarlo hay suficiente. InnoDB reconocerá que no se apagó correctamente e
-   iniciará una recuperación automática.
+ * Reparar tablas InnoDB: si se ha producido una caída del servidor, con reiniciarlo hay suficiente. InnoDB reconocerá que no se apagó correctamente e iniciará una recuperación automática.
 
-   Aún así, podemos detectar errores mediante la sentencia 'CHECK TABLE' o 
-   mediante la utilidad 'mysqlcheck'. Pero para reparar una tabla InnoDB no se
-   puede utilizar la sentencia 'REPAIR TABLE' o la utilidad 'mysqlcheck'. El
-   único método es exportar la tabla con 'mysqldump', después borrar la tabla
-   defectuosa, y por último importarla de nuevo.
+   Aún así, podemos detectar errores mediante la sentencia 'CHECK TABLE' o mediante la utilidad 'mysqlcheck'. Pero para reparar una tabla InnoDB no se puede utilizar la sentencia 'REPAIR TABLE' o la utilidad 'mysqlcheck'. El único método es exportar la tabla con 'mysqldump', después borrar la tabla defectuosa, y por último importarla de nuevo.
 
  * Lecturas para profundizar:
  
@@ -932,74 +896,70 @@ ANÁLISIS Y OPTIMIZACIÓN DE TABLAS
    - Mejorar las consultas (pero depende de cada aplicación).
    - Mejorar la configuración del servidor MySQL.
 
- * Las tablas desordenadas provocan búsqueda secuencial lenta. Pero una tabla
-   ordenada también tiene su coste:
+ * Las tablas desordenadas provocan búsqueda secuencial lenta. Pero una tabla ordenada también tiene su coste:
    - Ordenar una tabla desordenada es costoso.
    - Constante acceso de escritura desordena de nuevo los registros de la tabla.
    - La inserción y eliminación ordenada de registros es costoso.
    - Cuando ordenamos por una columna desordenamos el resto de columnas.
 
  * Creando índices conseguiremos consultas mucho más rápidas:
-   - Es menos costoso de insertar. modificar y eliminar en un índice que hacerlo 
-     en toda una tabla ordenada.
-   - Puedo tener varios índices de una tabla, lo que permite ordenar tabla por
-     varios criterios a la vez.
-   - Los índices ocupan espacio en disco y memoria, y las operaciones de
-     inserción, modificación y borrado serán un poco más lentas (habrá que
-     actualizar índices), por lo que no debemos indexar todas las columnas, sino
-     sólo las más usadas en búsquedas.
+   - Es menos costoso de insertar. modificar y eliminar en un índice que hacerlo en toda una tabla ordenada.
+   - Puedo tener varios índices de una tabla, lo que permite ordenar tabla por varios criterios a la vez.
+   - Los índices ocupan espacio en disco y memoria, y las operaciones de inserción, modificación y borrado serán un poco más lentas (habrá que actualizar índices), por lo que no debemos indexar todas las columnas, sino sólo las más usadas en búsquedas.
    - Cuanto más pequeño es el índice más rápidas serán las operaciones.
 
-   Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/indice.jpg
+   ![](imagenes/MySQL_indice.jpg)
 
  * Algunas sentencias se ejecutan mucho más eficientemente si hay índices:
 
-     SELECT * FROM A,B,C WHERE A.a = B.b AND B.b = C.c;
+       SELECT * FROM A,B,C WHERE A.a = B.b AND B.b = C.c;
 
    - Sin índices  ->  producto cartesiano + filtrado
    - Con índices  ->  A + (filtrado A.a = B.b) + (filtrado B.b = C.c)
 
  * Crear una nueva tabla con índices:
-     CREATE TABLE nombre_tabla (definición, INDEX nombre_indice (campo(longitud)), ...);
+
+       CREATE TABLE nombre_tabla (definición, INDEX nombre_indice (campo(longitud)), ...);
 
    Ejemplo:
-     CREATE TABLE `Alumnos` (
-       `DNI` int(8) NOT NULL,
-       `Nombre` char(35) NOT NULL,
-       `Nota` int(2) NOT NULL,
-       PRIMARY KEY (`DNI`),
-       INDEX(`Nombre`) );
+
+       CREATE TABLE `Alumnos` (
+         `DNI` int(8) NOT NULL,
+         `Nombre` char(35) NOT NULL,
+         `Nota` int(2) NOT NULL,
+         PRIMARY KEY (`DNI`),
+         INDEX(`Nombre`) );
 
  * Crear un índice en una tabla ya existente (dos maneras):
-     CREATE [UNIQUE] INDEX nombre_indice ON nombre_tabla (nombre_columna(longitud),...);
-     ALTER TABLE nombre_tabla ADD INDEX nombre_indice (nombre_columna(longitud),...);
+
+       CREATE [UNIQUE] INDEX nombre_indice ON nombre_tabla (nombre_columna(longitud),...);
+       ALTER TABLE nombre_tabla ADD INDEX nombre_indice (nombre_columna(longitud),...);
 
    Ejemplo:
-     CREATE INDEX indice ON Alumnos (Nombre(10));
-     ALTER TABLE Alumnos ADD INDEX (Nombre(10));
+
+       CREATE INDEX indice ON Alumnos (Nombre(10));
+       ALTER TABLE Alumnos ADD INDEX (Nombre(10));
 
  * Borrar un índice en una tabla ya existente (dos maneras):
-     DROP INDEX nombre_indice ON nombre_tabla;
-     ALTER TABLE nombre_tabla DROP INDEX nombre_indice;
+
+       DROP INDEX nombre_indice ON nombre_tabla;
+       ALTER TABLE nombre_tabla DROP INDEX nombre_indice;
 
    Ejemplo:
-     DROP INDEX indice ON Alumnos;
-     ALTER TABLE Alumnos DROP INDEX Nombre;
+
+       DROP INDEX indice ON Alumnos;
+       ALTER TABLE Alumnos DROP INDEX Nombre;
 
  * Las consultas por columnas que pueden contener valores NULL son más lentas.
 
- * El rendimiento mejora si los registros de la tabla tienen longitud fija (sin
-   campos de tipo VARCHAR, TEXT o BLOB). Si cada campo (columna) tiene una
-   longitud fija entonces cada registro (línea) también tendrá una longitud fija.
-   - Disminuye la fragmentación: los registros borrados son substituidos por
-     registros de la misma longitud.
-   - Aumenta la velocidad: los registros son accedidos por "número de registro"
-     en lugar de "desplazamiento dentro del fichero".
+ * El rendimiento mejora si los registros de la tabla tienen longitud fija (sin campos de tipo VARCHAR, TEXT o BLOB). Si cada campo (columna) tiene una longitud fija entonces cada registro (línea) también tendrá una longitud fija.
+   - Disminuye la fragmentación: los registros borrados son substituidos por registros de la misma longitud.
+   - Aumenta la velocidad: los registros son accedidos por "número de registro" en lugar de "desplazamiento dentro del fichero".
    - Disminuye el consumo de memoria: el índice es más pequeño.
 
  * También se puede desfragmentar tablas para ganar espacio y velocidad:
 
-     OPTIMIZE TABLE tabla;
+       OPTIMIZE TABLE tabla;
 
  * Lecturas para profundizar:
  
@@ -1015,9 +975,7 @@ ANÁLISIS Y OPTIMIZACIÓN DE TABLAS
 ANÁLISIS Y OPTIMIZACIÓN DEL SERVIDOR MYSQL
 ------------------------------------------
 
- * Caché de consultas MySQL: el servidor compara el string de la consulta, y si
-   es idéntico a uno anterior y la tabla no ha cambiado, recoge el resultado de
-   la caché.
+ * Caché de consultas MySQL: el servidor compara el string de la consulta, y si es idéntico a uno anterior y la tabla no ha cambiado, recoge el resultado de la caché.
 
  * Tres variables a configurar en /etc/mysql/my.cnf:
    - query_cache_limit : tamaño máximo de cada resultado
@@ -1048,16 +1006,9 @@ CONECTANDO APLICACIONES CON BASES DE DATOS
 REPLICACIÓN Y DISTRIBUCIÓN DE CARGA
 -----------------------------------
 
-Replicación es la copia sincronizada entre dos o más servidores de bases de
-datos, de forma de que cualquiera de ellos puede entregar los mismos resultados
-a sus clientes. Se basa en un esquema "maestro-esclavos", en el que el maestro
-mantiene la base de datos original y los esclavos las copias.
+Replicación es la copia sincronizada entre dos o más servidores de bases de datos, de forma de que cualquiera de ellos puede entregar los mismos resultados a sus clientes. Se basa en un esquema "maestro-esclavos", en el que el maestro mantiene la base de datos original y los esclavos las copias.
 
-El funcionamiento es el siguiente: los servidores esclavos se conectan al
-maestro para consultar sus logs y así mantenerse informados de las operaciones
-de modificación que ha realizado (insert, delete, update, ...) para a su vez
-poder realizarlas también ellos y mantener una replica exacta de la base de
-datos del servidor maestro. Los servidores esclavos sólo sirven para consultas.
+El funcionamiento es el siguiente: los servidores esclavos se conectan al maestro para consultar sus logs y así mantenerse informados de las operaciones de modificación que ha realizado (insert, delete, update, ...) para a su vez poder realizarlas también ellos y mantener una replica exacta de la base de datos del servidor maestro. Los servidores esclavos sólo sirven para consultas.
 
 Esto nos proporciona: 
  - Replica automática de los datos en máquinas remotas.
@@ -1065,10 +1016,10 @@ Esto nos proporciona:
  - Alta disponibilidad mediante redundancia de servidores.
  - Copias de seguridad en esclavos sin interrumpir maestro.
 
-Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_multidb.png
-Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_escalar.png
-Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_redundancia_antes.png
-Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_redundancia_despues.png
+![](imagenes/MySQL_replicacion_multidb.png)
+![](imagenes/MySQL_replicacion_escalar.png)
+![](imagenes/MySQL_replicacion_redundancia_antes.png)
+![](imagenes/MySQL_replicacion_redundancia_despues.png)
  
  * Preparación:
    - Maestro y esclavo con versiones compatibles de SQL
@@ -1080,90 +1031,93 @@ Ver imagen http://www.xtec.net/~acastan/textos/imagenes_MySQL/replicacion_redund
 
    1) Crear un usuario para la replicación:
 
-      GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* 
-        TO replicante@esclavo.midominio.org IDENTIFIED BY 'contraseña';
+          GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* 
+            TO replicante@esclavo.midominio.org IDENTIFIED BY 'contraseña';
 
    2) Modificar /etc/mysql/my.cnf:
 
-        [mysqld]
-        log-bin
-        server-id = 1
-      
-      /etc/init.d/mysql restart
+          [mysqld]
+          log-bin
+          server-id = 1
+
+      Y reiniciar el servicio:
+
+          /etc/init.d/mysql restart
 
    3) Copiar la base de datos a los esclavos:
 
-      FLUSH TABLES WITH READ LOCK;
-      SYSTEM mysqldump -u root -p --opt world | mysql -h esclavo.midominio.org -u root -pcontraseña mundo
-      SHOW MASTER STATUS;
-      UNLOCK TABLES;
+          FLUSH TABLES WITH READ LOCK;
+          SYSTEM mysqldump -u root -p --opt world | mysql -h esclavo.midominio.org -u root -pcontraseña mundo
+          SHOW MASTER STATUS;
+          UNLOCK TABLES;
 
-        ejemplo resultado de SHOW MASTER: fichero maestro-bin.001 en posición 76
+        ejemplo resultado de `SHOW MASTER` : `fichero maestro-bin.001 en posición 76`
 
  * Configuración esclavo:
 
    1) Crear un usuario para la replicación:
 
-      GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* 
-        TO replicante@esclavo.midominio.org IDENTIFIED BY 'contraseña';
+          GRANT REPLICATION SLAVE, REPLICATION CLIENT ON *.* 
+            TO replicante@esclavo.midominio.org IDENTIFIED BY 'contraseña';
 
    2) Modificar /etc/mysql/my.cnf:
 
-        [mysqld]
-        server-id = 2
+          [mysqld]
+          server-id = 2
+
+      Y reiniciar el servicio:
       
-      /etc/init.d/mysql restart
+          /etc/init.d/mysql restart
 
    3) Iniciar la replicación:
 
-      CHANGE MASTER TO MASTER_HOST = 'maestro.midominio.org', 
-        MASTER_USER = 'replicante', MASTER_PASSWORD = 'contraseña', 
-        MASTER_LOG_FILE = 'maestro-bin.001', MASTER_LOG_POS = 76;
+          CHANGE MASTER TO MASTER_HOST = 'maestro.midominio.org', 
+            MASTER_USER = 'replicante', MASTER_PASSWORD = 'contraseña', 
+            MASTER_LOG_FILE = 'maestro-bin.001', MASTER_LOG_POS = 76;
 
-      START SLAVE;
+          START SLAVE;
 
  * Tareas administrativas más comunes:
 
    - Ver el estado de la replicación desde el esclavo:
 
-     SHOW MASTER LOGS;
-     SHOW MASTER STATUS;
-     SHOW SLAVE STATUS;
+         SHOW MASTER LOGS;
+         SHOW MASTER STATUS;
+         SHOW SLAVE STATUS;
 
    - Ver el estado de la replicación desde el maestro:
 
-     SHOW MASTER LOGS;
-     SHOW MASTER STATUS;
-     SHOW SLAVE HOSTS;
-     SHOW PROCESSLIST;
+         SHOW MASTER LOGS;
+         SHOW MASTER STATUS;
+         SHOW SLAVE HOSTS;
+         SHOW PROCESSLIST;
 
    - Parar e iniciar un esclavo (se ejecuta en el esclavo):
 
-     STOP SLAVE;
-     START SLAVE;
+         STOP SLAVE;
+         START SLAVE;
 
- * Código PHP para balancear la carga de las consultas entre los esclavos,
-   evitar servidores caidos, ...:
+ * Código PHP para balancear la carga de las consultas entre los esclavos, evitar servidores caidos, ...:
 
-   <html>
-     ...
-     <?php
-       $mysqlhosts[0] = "esclavo1.aula207.org";
-       $mysqlhosts[1] = "esclavo2.aula207.org";
-       $intentos = 0;
-       while($intentos<10 && !$connID) {
-         $mysqlhost = $mysqlhosts[rand(0,1)];
-         $connID=mysql_connect($mysqlhost, "usuario", "contraseña");
-         $intentos++;
-       }
-       if(!$connID) {
-         echo "<p>Sorry, no database server found.</p></body></html>";
-         exit();
-       }
+       <html>
        ...
-     ?>
-     ...
-   </html>
+       <?php
+         $mysqlhosts[0] = "esclavo1.aula207.org";
+         $mysqlhosts[1] = "esclavo2.aula207.org";
+         $intentos = 0;
+         while($intentos<10 && !$connID) {
+           $mysqlhost = $mysqlhosts[rand(0,1)];
+           $connID=mysql_connect($mysqlhost, "usuario", "contraseña");
+           $intentos++;
+         }
+         if(!$connID) {
+           echo "<p>Sorry, no database server found.</p></body></html>";
+           exit();
+         }
+         ...
+       ?>
+       ...
+       </html>
 
  * Lecturas para profundizar:
  
@@ -1181,4 +1135,3 @@ CLÚSTER DE SERVIDORES MYSQL
  * Lecturas para profundizar:
  
    - <http://dev.mysql.com/doc/refman/5.7/en/ndbcluster.html>
-
