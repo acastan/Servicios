@@ -1012,14 +1012,14 @@ El funcionamiento es el siguiente: los servidores esclavos se conectan al maestr
 
 Esto nos proporciona: 
  - Replica automática de los datos en máquinas remotas.
+   ![](imagenes/MySQL_replicacion_multidb.png)
  - Balanceo de la carga (de las consultas).
+   ![](imagenes/MySQL_replicacion_escalar.png)
  - Alta disponibilidad mediante redundancia de servidores.
+   ![](imagenes/MySQL_replicacion_redundancia_antes.png)
+   -> cae el maestro ->
+   ![](imagenes/MySQL_replicacion_redundancia_despues.png)
  - Copias de seguridad en esclavos sin interrumpir maestro.
-
-![](imagenes/MySQL_replicacion_multidb.png)
-![](imagenes/MySQL_replicacion_escalar.png)
-![](imagenes/MySQL_replicacion_redundancia_antes.png)
-![](imagenes/MySQL_replicacion_redundancia_despues.png)
  
  * Preparación:
    - Maestro y esclavo con versiones compatibles de SQL
