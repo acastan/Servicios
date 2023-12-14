@@ -1011,12 +1011,12 @@ Replicación es la copia sincronizada entre dos o más servidores de bases de da
 El funcionamiento es el siguiente: los servidores esclavos se conectan al maestro para consultar sus logs y así mantenerse informados de las operaciones de modificación que ha realizado (insert, delete, update, ...) para a su vez poder realizarlas también ellos y mantener una replica exacta de la base de datos del servidor maestro. Los servidores esclavos sólo sirven para consultas.
 
 Esto nos proporciona: 
- - Replica automática de los datos en máquinas remotas.
+ - Replica automática de los datos en máquinas remotas.  
    ![replicacion_multidb](imagenes/MySQL_replicacion_multidb.png)
- - Balanceo de la carga (de las consultas).
+ - Balanceo de la carga (de las consultas).  
    ![replicacion_escalar](imagenes/MySQL_replicacion_escalar.png)
- - Alta disponibilidad mediante redundancia de servidores.
-   ![redundancia_antes](imagenes/MySQL_replicacion_redundancia_antes.png)
+ - Alta disponibilidad mediante redundancia de servidores.  
+   ![redundancia_antes](imagenes/MySQL_replicacion_redundancia_antes.png)  
    ![redundancia_despues](imagenes/MySQL_replicacion_redundancia_despues.png)
  - Copias de seguridad en esclavos sin interrumpir maestro.
  
