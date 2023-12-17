@@ -111,6 +111,8 @@ REFERENCIAS
 
 
 
+---
+
 
 
 ANEXO: MANUAL DE IPTABLES
@@ -173,8 +175,6 @@ Las cadenas donde guardaremos reglas son `INPUT`, `OUTPUT`, `FORWARD`, `PREROUTI
   * `POSTROUTING` para modificar IPs y puertos de paquetes que salen del cortafuegos, después de que se les apliquen las cadenas `OUTPUT` o `FORWARD`.
 
 
----
-
 
 ### ARGUMENTOS DE IPTABLES
 
@@ -197,14 +197,14 @@ Las cadenas donde guardaremos reglas son `INPUT`, `OUTPUT`, `FORWARD`, `PREROUTI
   * La opción `--to IP:puerto`, utilizado en enrutamiento (NAT, PNAT) para modificar la IP o puerto de un paquete, especifica la nueva IP o puerto.
 
 
----
-
 
 ### EJEMPLOS DE IPTABLES
 
   - <https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands>
 
 
+
+---
 
 
 
@@ -284,11 +284,97 @@ Los grupos donde guardaremos reglas son `input`, `output`, `forward`, `preroutin
   * `postrouting` para modificar IPs y puertos de paquetes que salen del cortafuegos, después de que se les apliquen las cadenas `output` o `forward`.
 
 
----
-
 
 ### EJEMPLOS DE NFTABLES
 
   - <https://kernelnewbies.org/nftables_examples>
 
   - <https://wiki.archlinux.org/index.php/nftables#Examples>
+
+
+
+---
+
+
+
+ANEXO: REGLAS IPTABLES CONTRA ATAQUES DDOS
+------------------------------------------
+
+
+
+### 1: Drop invalid packets ###
+
+    /sbin/iptables -t mangle -A PREROUTING -m conntrack --ctstate INVALID -j DROP
+
+### 2: Drop TCP packets that are new and are not SYN ###
+
+    /sbin/iptables -t mangle -A PREROUTING -p tcp ! --syn -m conntrack --ctstate NEW -j DROP 
+ 
+### 3: Drop SYN packets with suspicious MSS value ###
+
+    /sbin/iptables -t mangle -A PREROUTING -p tcp -m conntrack --ctstate NEW -m tcpmss ! --mss 536:65535 -j DROP
+
+### 4: Block packets with bogus TCP flags ###
+
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,SYN FIN,SYN -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags SYN,RST SYN,RST -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,RST FIN,RST -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags FIN,ACK FIN -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,URG URG -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags ACK,PSH PSH -j DROP
+    /sbin/iptables -t mangle -A PREROUTING -p tcp --tcp-flags ALL NONE -j DROP
+
+### 5: Block spoofed packets ###
+
+    /sbin/iptables -t mangle -A PREROUTING -s 224.0.0.0/3 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 169.254.0.0/16 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 172.16.0.0/12 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 192.0.2.0/24 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 192.168.0.0/16 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 10.0.0.0/8 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 0.0.0.0/8 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 240.0.0.0/5 -j DROP 
+    /sbin/iptables -t mangle -A PREROUTING -s 127.0.0.0/8 ! -i lo -j DROP
+
+### 6: Drop ICMP (be careful, sometimes you need this protocol) ###
+
+    /sbin/iptables -t mangle -A PREROUTING -p icmp -j DROP
+
+### 7: Drop fragments in all chains ###
+
+    /sbin/iptables -t mangle -A PREROUTING -f -j DROP
+
+### 8: Limit connections per source IP ###
+
+    /sbin/iptables -A INPUT -p tcp -m connlimit --connlimit-above 111 -j REJECT --reject-with tcp-reset
+
+### 9: Limit RST packets ###
+
+    /sbin/iptables -A INPUT -p tcp --tcp-flags RST RST -m limit --limit 2/s --limit-burst 2 -j ACCEPT 
+    /sbin/iptables -A INPUT -p tcp --tcp-flags RST RST -j DROP
+
+### 10: Limit new TCP connections per second per source IP ###
+
+    /sbin/iptables -A INPUT -p tcp -m conntrack --ctstate NEW -m limit --limit 60/s --limit-burst 20 -j ACCEPT 
+    /sbin/iptables -A INPUT -p tcp -m conntrack --ctstate NEW -j DROP
+
+### Bonus Rule: SSH brute-force protection ###
+
+    /sbin/iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -m recent --set 
+    /sbin/iptables -A INPUT -p tcp --dport ssh -m conntrack --ctstate NEW -m recent --update --seconds 60 --hitcount 10 -j DROP
+
+### Bonus Rule: Protection against port scanning ###
+
+    /sbin/iptables -N port-scanning 
+    /sbin/iptables -A port-scanning -p tcp --tcp-flags SYN,ACK,FIN,RST RST -m limit --limit 1/s --limit-burst 2 -j RETURN 
+    /sbin/iptables -A port-scanning -j DROP
+
+### Bonus Rule: Protection against SYN Flood ###
+
+    /sbin/iptables -N syn_flood
+    /sbin/iptables -A syn_flood --limit 10/s --limit-burst 100 -j RETURN
+    /sbin/iptables -A syn_flood -j LOG --log-level info --log-prefix iptables:syn_flood:
+    /sbin/iptables -A syn_flood -j DROP
+
+    /sbin/iptables -A INPUT   -p tcp --syn                   -j syn_flood
+    /sbin/iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j syn_flood
