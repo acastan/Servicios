@@ -5,9 +5,9 @@ Esta es mi introducción a contenedores y a Docker, aunque no soy un experto en 
 
 Te recomiendo que visites:
 
- * [Un curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
+ * [Un buen curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
- * [Un resumen con algunos gráficos que me gustan](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
+ * [Un resumen de Docker con buenos gráficos](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
 
  * [La documentación oficial de Docker](https://docs.docker.com/)
 
@@ -179,11 +179,11 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
    Por ejemplo:
 
-       docker run -d -p 80:80 docker/getting-started
-       docker run -it -e MENSAJE=HOLA poweroff --rm --name=mi_Ubuntu ubuntu /bin/bash
+       docker run -d docker/getting-started
+       docker run -it -e MENSAJE=HOLA --rm --name=mi_Ubuntu ubuntu /bin/bash
        docker run -d -p 8080:80 nginx
 
-   Si la imagen (la "plantilla") no está en nuestro equipo, por defecto se descarga de [Docker Hub](https://hub.docker.com/), que es el registro público que proporciona Docker Inc.
+   Si la imagen (la "plantilla") no está en nuestro equipo, por defecto se descarga de [Docker Hub](https://hub.docker.com/), que es el registro público que proporciona Docker Inc. Muchas de las imágenes oficiales de dicho repositorio reciben configuración para el contenedor a través de variables de entorno (`docker run -e ...`) o ficheros compartidos con el anfitrión (`docker run -v ...`).
 
    Al crear un contenedor éste puede pasar a estar en modo interactivo o en modo no interactivo ("detached").
 
@@ -316,9 +316,15 @@ Por último, en caso que por seguridad queramos que todo el sistema de ficheros 
 
 ![Persistencia](https://bytes.cat/_media/docker-volumes.png)
 
-Ejemplo:
+Ejemplos:
 
-1. Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con Wordpress es de sólo lectura, pero mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión, para que Apache funcione:
+1. Lanzamos un contenedor con un serviodor web *Nginx*. La página web está en la carpeta /miweb del anfitrión:
+
+       $ docker run -d -p 8000:80 -v /miweb:/usr/share/nginx/html:ro nginx
+
+    La opción `ro` significa que la carpeta /miweb se monta en modo lectura y no puede ser modificada por el contenedor.
+
+2. Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con Wordpress es de sólo lectura, pero mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión, para que Apache funcione:
 
        #!/bin/sh
        DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
@@ -334,7 +340,7 @@ Ejercicio:
 
    Solución en formato breve:
 
-       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                              php:7.4-apache
+       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                 php:7.4-apache
 
 
 ---
@@ -370,6 +376,20 @@ Un contenedor puede estar asociado a más de una red. Además, durante la vida d
        docker network connect mi_red mi-nginx
 
        docker network disconnect mi_red mi-nginx
+
+Ejemplo:
+
+1. Lanzamos dos contenedores uno asociado a la red *prueba* y otro asociado a la red *produccion*. A continuación el contenedor asociado a la red *prueba* lo asociamos también a la red *produccion* y compruebo que puedan hacer ping entre ellos:
+
+       $ docker network create red_produccion
+       $ docker network create red_prueba
+       $ docker run -d --name cont_produccion --network red_produccion alpine sh
+       $ docker run -d --name cont_prueba     --network red_prueba     alpine sh
+       $ docker network connect red_produccion cont_prueba
+       $ docker attach cont_prueba
+
+           ping cont_prueba
+           ping cont_produccion
 
 
 ---
@@ -673,6 +693,7 @@ He aquí otro ejemplo de `docker-compose.yml`:
           - datos_db:/var/lib/mysql
       wordpress:
         image: wordpress:apache
+        depends_on: db
         restart: always
         environment:
           - WORDPRESS_DB_HOST=db:3306
@@ -704,11 +725,9 @@ Y unos cuantos ficheros Docker Compose ya preparados se encuentran en <https://g
 DOCKER SWARM
 ------------
 
-Docker proporciona la utilidad Docker Swarm, que provides native clustering functionality for Docker containers, which turns a group of Docker engines into a single virtual Docker engine. Docker manages swarms using the Raft consensus algorithm. According to Raft, for an update to be performed, the majority of Swarm nodes need to agree on the update.
+Docker proporciona la utilidad Docker Swarm, que maneja grupos ("clusters") de contenedores ("nodos"), permitiendo de manera sencilla que dichos grupos de contenedores ("swarm") se vean como un único contenedor "virtual".
 
-The docker swarm CLI utility allows users to run Swarm containers, create discovery tokens, list nodes in the cluster, and more. 
-
-The docker node CLI utility allows users to run various commands to manage nodes in a swarm, for example, listing the nodes in a swarm, updating nodes, and removing nodes from the swarm.
+Los comandos `docker swarm` y `docker node` permiten a los usuarios ejecutar el swarm, listar nodos del clúster, actualizar nodos, borrarlos, etc. 
 
 <https://docs.docker.com/engine/swarm/key-concepts/>
 
@@ -725,9 +744,7 @@ KUBERNETES
 
 Kubernetes es un "orquestador" de contenedores que permite el despliegue, escalado y balanceo de carga automáticos. Tenemos otros orquestadores, como Nomad, Openshift, etc. pero Kubernetes es el más extendido.
 
-Kubernetes defines a set of building blocks ("primitives") that collectively provide mechanisms that deploy, maintain, and scale applications based on CPU, memory or custom metrics. Kubernetes is loosely coupled and extensible to meet different workloads. The internal components as well as extensions and containers that run on Kubernetes rely on the Kubernetes API. The platform exerts its control over compute and storage resources by defining resources as Objects, which can then be managed as such.
-
-Kubernetes follows the primary/replica architecture. The components of Kubernetes can be divided into those that manage an individual node and those that are part of the control plane.
+Kubernetes aporta mecanismos que depliegan, mantienen y escalan aplicacions basándose en carga de la CPU, de la memoria u otras métricas a medida. Los componentes de kubernetes, así como las extensiones y contenedores, utilizan la API de Kubernetes. Los componentes de Kubernetes se dividen entre los que manejan nodos y los componentes del plano de control.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/be/Kubernetes.png)
 
