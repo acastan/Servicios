@@ -1,8 +1,21 @@
 ADMINISTRACIÓN DE MYSQL 5
 =========================
 
-
-{toc}
+  * [FUNCIONES DEL ADMINISTRADOR/A](#funciones-del-administrador-a)
+  * [INSTALACIÓN DE MYSQL 5.0 EN UBUNTU 7.04](#instalaci-n-de-mysql-50-en-ubuntu-704)
+  * [INSTALACIÓN DE LA BASE DE DATOS DE EJEMPLO](#instalaci-n-de-la-base-de-datos-de-ejemplo)
+  * [FUNCIONAMIENTO DEL SERVIDOR MYSQL](#funcionamiento-del-servidor-mysql)
+  * [MOTORES DE ALMACENAMIENTO](#motores-de-almacenamiento)
+  * [REPASO DE CONSULTAS](#repaso-de-consultas)
+  * [ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS](#administraci-n-de-tablas-y-bases-de-datos)
+  * [ADMINISTRACIÓN DE USUARIOS](#administraci-n-de-usuarios)
+  * [REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD](#realizar-y-restaurar-copias-de-seguridad)
+  * [INTEGRIDAD Y REPARACIÓN DE TABLAS](#integridad-y-reparaci-n-de-tablas)
+  * [ANÁLISIS Y OPTIMIZACIÓN DE TABLAS](#an-lisis-y-optimizaci-n-de-tablas)
+  * [ANÁLISIS Y OPTIMIZACIÓN DEL SERVIDOR MYSQL](#an-lisis-y-optimizaci-n-del-servidor-mysql)
+  * [CONECTANDO APLICACIONES CON BASES DE DATOS](#conectando-aplicaciones-con-bases-de-datos)
+  * [REPLICACIÓN Y DISTRIBUCIÓN DE CARGA](#replicaci-n-y-distribuci-n-de-carga)
+  * [CLÚSTER DE SERVIDORES MYSQL](#cl-ster-de-servidores-mysql)
 
 
 ---
@@ -114,13 +127,12 @@ INSTALACIÓN DE MYSQL 5.0 EN UBUNTU 7.04
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/5.7/en/server-side-scripts.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/instance-manager.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/configuring-mysql.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/server-shutdown.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/security.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysql.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysqladmin.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/server-options.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/option-files.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/server-shutdown.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/security.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysql.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysqladmin.html>
 
 
 ---
@@ -131,11 +143,11 @@ INSTALACIÓN DE MYSQL 5.0 EN UBUNTU 7.04
 
 Para las diferentes pruebas que haremos necesitaremos una base de datos. Podemos descargar una sencilla base de datos con tres tablas en:
 
-  <http://downloads.mysql.com/docs/world.sql.gz>
+  <https://downloads.mysql.com/docs/world-db.tar.gz>
 
 Opcionalmente, también se puede descargar otra base de datos más compleja, con más tablas, vistas, procedimientos almacenados, triggers, etc. en:
 
-  <http://downloads.mysql.com/docs/sakila-db.tar.gz>
+  <https://downloads.mysql.com/docs/sakila-db.tar.gz>
 
 Para trabajar con la base de datos *world* haremos lo siguiente:
 
@@ -231,8 +243,8 @@ FUNCIONAMIENTO DEL SERVIDOR MYSQL
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/5.7/en/features.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/log-files.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/features.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/server-logs.html>
 
 
 ---
@@ -320,9 +332,9 @@ MOTORES DE ALMACENAMIENTO
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/innodb.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/storage-engines.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/innodb-storage-engine.html>
 
 
 ---
@@ -411,9 +423,9 @@ REPASO DE CONSULTAS
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/5.7/en/data-manipulation.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/examples.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/query-speed.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/sql-data-manipulation-statements.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/examples.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/select-optimization.html>
 
 
 ---
@@ -442,7 +454,7 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
        CREATE TABLE tabla definición;
 
-   Sintaxis completa en <http://dev.mysql.com/doc/refman/5.7/en/create-table.html>
+   Sintaxis completa en <https://dev.mysql.com/doc/refman/5.7/en/create-table.html>
 
  * Borrar toda una tabla:
 
@@ -452,7 +464,7 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
        ALTER TABLE tabla modificación;
 
-   Sintaxis completa en <http://dev.mysql.com/doc/refman/5.7/en/alter-table.html>
+   Sintaxis completa en <https://dev.mysql.com/doc/refman/5.7/en/alter-table.html>
 
  * Ver las tablas de una base de datos:
 
@@ -513,8 +525,8 @@ ADMINISTRACIÓN DE TABLAS Y BASES DE DATOS
 
  * Lecturas para profundizar:
 
-   - <http://dev.mysql.com/doc/refman/5.7/en/data-definition.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/transactional-commands.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/sql-data-definition-statements.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/sql-transactional-statements.html>
 
 
 ---
@@ -666,10 +678,9 @@ ADMINISTRACIÓN DE USUARIOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/user-account-management.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/account-management-sql.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/privilege-system.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/account-management-statements.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/access-control.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/encryption-functions.html>
 
 
 ---
@@ -786,11 +797,11 @@ REALIZAR Y RESTAURAR COPIAS DE SEGURIDAD
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/disaster-prevention.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlhotcopy.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysqldump.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/myisampack.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/backup-types.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysqlbinlog.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/myisampack.html>
 
 
 ---
@@ -828,9 +839,9 @@ IMPORTAR Y EXPORTAR DATOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/load-data.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/select.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/load-data.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/select.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html>
 
 
 ---
@@ -879,10 +890,10 @@ INTEGRIDAD Y REPARACIÓN DE TABLAS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/check-table.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/repair-table.html>
-   - <http://dev.mysql.com/doc/refman/5.0/en/myisamchk.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/using-mysqlcheck.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/check-table.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/repair-table.html>
+   - <https://dev.mysql.com/doc/refman/5.0/en/myisamchk.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html>
 
 
 ---
@@ -963,10 +974,10 @@ ANÁLISIS Y OPTIMIZACIÓN DE TABLAS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/mysql-indexes.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/create-index.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/optimize-table.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/optimizing-database-structure.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysql-indexes.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/create-index.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/optimize-table.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/optimizing-database-structure.html>
 
 
 ---
@@ -985,8 +996,8 @@ ANÁLISIS Y OPTIMIZACIÓN DEL SERVIDOR MYSQL
  * Lecturas para profundizar:
  
    - <http://dev.mysql.com/doc/refman/5.7/en/query-cache.html>
-   - <http://www.xtec.net/~acastan/textos/Tuning%20LAMP.pdf>
-   - <http://dev.mysql.com/doc/refman/5.7/en/optimizing-the-server.html>
+   - <https://github.com/acastan/Servicios/blob/master/web/Tuning%20LAMP.pdf>
+   - <https://dev.mysql.com/doc/refman/5.7/en/optimizing-server.html>
 
 
 ---
@@ -997,7 +1008,7 @@ CONECTANDO APLICACIONES CON BASES DE DATOS
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/connectors.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/connectors-apis.html>
 
 
 ---
@@ -1011,12 +1022,12 @@ Replicación es la copia sincronizada entre dos o más servidores de bases de da
 El funcionamiento es el siguiente: los servidores esclavos se conectan al maestro para consultar sus logs y así mantenerse informados de las operaciones de modificación que ha realizado (insert, delete, update, ...) para a su vez poder realizarlas también ellos y mantener una replica exacta de la base de datos del servidor maestro. Los servidores esclavos sólo sirven para consultas.
 
 Esto nos proporciona: 
- - Replica automática de los datos en máquinas remotas.  
+ - Replica automática de los datos en máquinas remotas.
    ![replicacion_multidb](imagenes/MySQL_replicacion_multidb.png)
- - Balanceo de la carga (de las consultas).  
+ - Balanceo de la carga (de las consultas).
    ![replicacion_escalar](imagenes/MySQL_replicacion_escalar.png)
- - Alta disponibilidad mediante redundancia de servidores.  
-   ![redundancia_antes](imagenes/MySQL_replicacion_redundancia_antes.png)  
+ - Alta disponibilidad mediante redundancia de servidores.
+   ![redundancia_antes](imagenes/MySQL_replicacion_redundancia_antes.png)
    ![redundancia_despues](imagenes/MySQL_replicacion_redundancia_despues.png)
  - Copias de seguridad en esclavos sin interrumpir maestro.
  
@@ -1120,9 +1131,9 @@ Esto nos proporciona:
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/replication.html>
-   - <http://dev.mysql.com/doc/refman/5.7/en/replication-sql.html>
-   - <http://dev.mysql.com/books/hpmysql-excerpts/ch07.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/replication.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/group-replication.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/sql-replication-statements.html>
 
 
 ---
@@ -1133,4 +1144,4 @@ CLÚSTER DE SERVIDORES MYSQL
 
  * Lecturas para profundizar:
  
-   - <http://dev.mysql.com/doc/refman/5.7/en/ndbcluster.html>
+   - <https://dev.mysql.com/doc/refman/5.7/en/mysql-cluster.html>
