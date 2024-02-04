@@ -88,7 +88,7 @@ Docker utiliza una arquitectura cliente-servidor. Los diferentes clientes Docker
 
 Tenemos varios clientes diferentes. Está el cliente típico de línea de comandos, con el que trabajaremos en este curso, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/). Otro cliente Docker es Docker Compose, que a través de un fichero de configuración YAML permite lanzar fácilmente aplicaciones que consisten en un conjunto complejo de contenedores.
 
-![](https://docs.docker.com/engine/images/architecture.svg)
+![Arquitectura](https://docs.docker.com/get-started/images/docker-architecture.webp)
 
 Definiciones:
 
@@ -251,6 +251,7 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 
        docker rm stupefied_colden
        docker rm $(docker ps -a -q)
+       docker container prune -f
 
 Chuletas de comandos:
 
