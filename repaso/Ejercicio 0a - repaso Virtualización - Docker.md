@@ -88,7 +88,7 @@ Docker utiliza una arquitectura cliente-servidor. Los diferentes clientes Docker
 
 Tenemos varios clientes diferentes. Está el cliente típico de línea de comandos, con el que trabajaremos en este curso, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/). Otro cliente Docker es Docker Compose, que a través de un fichero de configuración YAML permite lanzar fácilmente aplicaciones que consisten en un conjunto complejo de contenedores.
 
-![Arquitectura](https://docs.docker.com/get-started/images/docker-architecture.webp)
+![Arquitectura](https://sysdig.com/wp-content/uploads/image2-49.png)
 
 Definiciones:
 
