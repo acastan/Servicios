@@ -4,7 +4,7 @@ Puedes encontrar un buen curso sobre el funcionamiento de Linux y sus comandos e
 
 Puedes encontrar más ejercicios en línea en <https://cmdchallenge.com/>
 
-Y cuando ya te consideres un experto/a puedes intentar superar los retos de <https://overthewire.org/wargames/bandit/>
+Cuando te consideres un experto/a, intenta superar los retos de <https://overthewire.org/wargames/bandit/> y los CTF de <https://sadservers.com/scenarios>
 
 Recuerda que algunos comandos necesitan permisos de superusuario para ser ejecutados:
 
