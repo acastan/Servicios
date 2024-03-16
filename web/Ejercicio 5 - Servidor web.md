@@ -328,7 +328,9 @@ REFERENCIAS
 
   - <https://jvns.ca/blog/2017/01/31/whats-tls/>
 
-  - <http://www.xtec.net/~acastan/textos/Tuning%20LAMP.pdf>
+  - <https://www.digitalocean.com/community/tutorials/5-common-server-setups-for-your-web-application>
+
+  - <https://github.com/acastan/Servicios/blob/master/web/Tuning%20LAMP.pdf>
 
   - <https://blog.avast.com/create-a-secure-web-server-avast>
 
