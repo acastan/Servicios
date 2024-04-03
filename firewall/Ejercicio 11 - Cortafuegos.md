@@ -17,7 +17,20 @@ PREGUNTAS
 
  08. ¿Cuál es el software de cortafuegos más conocido para Linux? ¿Y para otros sistemas Unix? ¿Qué sistema Unix y distribuciones Linux son especialmente seguras para instalar PCs que hagan de cortafuegos y sistemas de detección de intrusos?
 
- 09. Queremos instalar un cortafuegos en una pequeña red local de cinco PCs y un servidor HTTP y SQL, todos con IP pública y salida a Internet. Dicho cortafuegos debe proteger los ordenadores de la red de ataques del exterior. También debe proteger el servidor SQL de los ordenadores de la red interna y del exterior, que sólo accederán al servicio de HTTP. (el servicio SQL es accedido sólo por el servicio HTTP del mismo ordenador para crear páginas web dinámicas a partir de la base de datos, pero no queremos que los usuarios realicen consultas directas sobre el servidor de bases de datos). De momento dejamos que los usuarios de nuestra red accedan a cualquier servicio de Internet.
+ 09. En el instituto necesitamos proteger la secretaria de posibles ataques. Concretamente queremos proteger los datos de los alumnos que están en un servidor dedicado llamado *Oficinas*. Las secretarias acceden a las aplicaciones administrativas mediante un cliente web que se conecta a un servidor web seguro (https, puerto 443) en *Oficinas*. Dicho servidor ejecuta páginas dinámicas escritas en PHP que realizan consultas sobre un servidor de bases de datos (MySQL, puerto 3306).
+
+     Queremos que solamente el servidor web seguro sea accesible por los navegadores de las secretarias (IPs 192.168.0.4 y 192.168.0.5) y por SSH desde el ordenador del administrador de sistemas (IP 192.168.0.99). Por otro lado queremos que el servidor *Oficinas* únicamente pueda establecer conexión con el exterior para actualizarse (<http://es.archive.ubuntu.com> y <http://security.ubuntu.com/ubuntu>).
+
+     a) Dibuja en un esquema dónde pondrías el cortafuegos y justifica tu elección.
+
+     b) Escribe las reglas del cortafuegos en la siguiente tabla:
+
+        | red origen | puerto origen | red destino | puerto destino | protocolo | estado | acción |
+        | ---------- | ------------- | ----------- | -------------- | --------- | ------ | ------ |
+        |            |               |             |                |           |        |               |
+
+
+ 10. Queremos instalar un cortafuegos en una pequeña red local de cinco PCs y un servidor HTTP y SQL, todos con IP privada y salida a Internet. Dicho cortafuegos debe proteger los ordenadores de la red de ataques del exterior. También debe proteger el servidor SQL de los ordenadores de la red interna y del exterior, que sólo accederán al servicio de HTTP. (el servicio SQL es accedido sólo por el servicio HTTP del mismo ordenador para crear páginas web dinámicas a partir de la base de datos, pero no queremos que los usuarios realicen consultas directas sobre el servidor de bases de datos). De momento dejamos que los usuarios de nuestra red accedan a cualquier servicio de Internet.
 
      a) Piensa dónde colocarías el cortafuegos y dibuja un esquema de la red.
 
@@ -25,16 +38,48 @@ PREGUNTAS
 
         | red origen | puerto origen | red destino | puerto destino | protocolo | estado | acción |
         | ---------- | ------------- | ----------- | -------------- | --------- | ------ | ------ |
-        |            |               |             |                |           |        |        |
-
- 10. En el ejercicio anterior que normas añadirías al cortafuegos para impedir que los usuarios de nuestra red accedan al exterior excepto a un servidor de correo que utiliza IMAP y SMTP en los puertos estándar.
+        |            |               |             |                |           |        |               |
 
 
 
 
 
-PRÁCTICA
---------
+PRÁCTICA INICIAL
+----------------
+
+Pera el ejercicio 10 anterior, donde has puesto las reglas en una tabla, haz un montaje en en VirtualBox con un router IPFire y tres redes ("mired", "dmz" y "internet") donde implementes y pruebes tus reglas.
+
+  * La red "mired" (verde) tendrá un cliente.
+
+  * La red "dmz" (naranja) tendrá un servidor Apache2 + MariaDB/MySQL.
+
+  * La red "internet" (roja) tendrá un cliente y otro servidor web Apache2.
+
+Haz todas las pruebas correspondientes:
+
+  * De "internet" no se puede acceder a "mired"  
+    (Prueba: de "internet" no se puede hacer ping a una IP de "mired")
+
+  * De "internet" sólo se puede acceder al servidor web de la "dmz" por el puerto 80 y 443  
+    (Prueba: de "internet" un análisis de puertos de nuestro servidor sólo muestra abiertos los puertos 80 y 443)  
+    (Prueba: un ordenador de "internet" puede navegar por la página por defecto de tu servidor en la "dmz")
+
+  * De "mired" se puede accede a "internet"  
+    (Prueba: de "mired" se puede hacer ping a una IP de "internet")  
+    (Prueba: un ordenador de "mired" puede navegar por la página por defecto del servidor de "internet")
+
+  * De "mired" sólo se puede acceder al nuestro servidor web por el puerto 80 y 443.  
+    (Prueba: de "mired" un análisis de puertos de nuestro servidor sólo muestra abiertos los puertos 80 y 443)  
+    (Prueba: un ordinador de "mired" puede navegar por la página por defecto de tu servidor en la "dmz")
+
+Envía captura de pantalla de las reglas, y capturas de pantalla de cada prueba.
+
+
+
+
+
+PRÁCTICA SEGUNDA
+----------------
 
 Tenemos la siguiente configuración en máquinas virtuales:
 
