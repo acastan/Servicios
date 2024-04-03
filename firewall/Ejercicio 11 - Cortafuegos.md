@@ -72,7 +72,7 @@ Haz todas las pruebas correspondientes:
     (Prueba: de "mired" un análisis de puertos de nuestro servidor sólo muestra abiertos los puertos 80 y 443)  
     (Prueba: un ordinador de "mired" puede navegar por la página por defecto de tu servidor en la "dmz")
 
-Envía captura de pantalla de las reglas, y capturas de pantalla de cada prueba.
+Entrega captura de pantalla de las reglas, y capturas de pantalla de cada prueba.
 
 
 
