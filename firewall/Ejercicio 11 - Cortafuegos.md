@@ -47,7 +47,7 @@ PREGUNTAS
 PRÁCTICA INICIAL
 ----------------
 
-Pera el ejercicio 10 anterior, donde has puesto las reglas en una tabla, haz un montaje en en VirtualBox con un router IPFire y tres redes ("mired", "dmz" y "internet") donde implementes y pruebes tus reglas.
+Para el ejercicio 10 anterior, donde has puesto las reglas en una tabla, haz un montaje en en VirtualBox con un router IPFire y tres redes ("mired", "dmz" e "internet") donde implementes y pruebes tus reglas.
 
   * La red "mired" (verde) tendrá un cliente.
 
