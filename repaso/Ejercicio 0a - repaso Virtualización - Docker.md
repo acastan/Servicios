@@ -43,7 +43,7 @@ Al software que permite el alojamiento de distintos contenedores se le llama mot
 
 Veámoslo con una imagen, que vale más que mil palabras:
 
-![](https://www.softwaretestinghelp.com/wp-content/qa/uploads/2018/09/1.Containerization-vs-Virtualization.png)
+![](https://imzye.com/assets/images/shared-hosting-architectures.png)
 
 Fijate que aunque la virtualización con contenedores consume más recursos que ejecutar las aplicaciones y servicios directamente sin contenedores, consume muchos menos recursos que ejecutar dichas aplicaciones y servicios en máquinas virtuales.
 
