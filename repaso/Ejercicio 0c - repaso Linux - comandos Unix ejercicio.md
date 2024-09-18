@@ -2,6 +2,8 @@ Para saber como funciona cualquier comando, debes buscar ayuda escribiendo `man 
 
 Puedes encontrar un buen curso sobre el funcionamiento de Linux y sus comandos en <https://linuxjourney.com/>
 
+¿Qué deberías saber en tu carrera como administrador/a de Linux? Esto: <https://roadmap.sh/linux>
+
 Puedes encontrar más ejercicios en línea en <https://cmdchallenge.com/>
 
 Cuando te consideres un experto/a, intenta superar los retos de <https://overthewire.org/wargames/bandit/> y los CTF de <https://sadservers.com/scenarios>
