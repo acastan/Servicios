@@ -45,7 +45,7 @@ Al software que permite el alojamiento de distintos contenedores se le llama mot
 
 Veámoslo con una imagen, que vale más que mil palabras:
 
-![](https://imzye.com/assets/images/shared-hosting-architectures.png)
+![](https://drek4537l1klr.cloudfront.net/denniss/HighResolutionFigures/figure_1-1.png)
 
 Fijate que aunque la virtualización con contenedores consume más recursos que ejecutar las aplicaciones y servicios directamente sin contenedores, consume muchos menos recursos que ejecutar dichas aplicaciones y servicios en máquinas virtuales.
 
@@ -90,7 +90,7 @@ Docker utiliza una arquitectura cliente-servidor. Los diferentes clientes Docker
 
 Tenemos varios clientes diferentes. Está el cliente típico de línea de comandos, con el que trabajaremos en este curso, pero también hay clientes gráficos como [Portainer](https://www.portainer.io/) y [Docker Desktop](https://www.docker.com/products/docker-desktop/). Otro cliente Docker es Docker Compose, que a través de un fichero de configuración YAML permite lanzar fácilmente aplicaciones que consisten en un conjunto complejo de contenedores.
 
-![](https://docs.docker.com/engine/images/architecture.svg)
+![](https://docs.docker.com/get-started/images/docker-architecture.webp)
 
 Definiciones:
 
