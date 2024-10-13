@@ -21,11 +21,11 @@ Tabla de contenido:
  * [COMANDOS DE DOCKER SOBRE CONTENEDORES](#comandos-de-docker-sobre-contenedores)
  * [COMANDOS DE DOCKER SOBRE EL SISTEMA DE FICHEROS Y PERSISTENCIA](#comandos-de-docker-sobre-el-sistema-de-ficheros-y-persistencia)
  * [COMANDOS DE DOCKER SOBRE LA RED](#comandos-de-docker-sobre-la-red)
- * [COMANDOS DE DOCKER SOBRE IMÁGENES](#comandos-de-docker-sobre-im-genes)
- * [CREACIÓN DE IMÁGENES DOCKER](#creaci-n-de-im-genes-docker)
+ * [COMANDOS DE DOCKER SOBRE IMAGENES](#comandos-de-docker-sobre-imagenes)
+ * [CREACION DE IMAGENES DOCKER](#creacion-de-imagenes-docker)
  * [CUENTA EN DOCKER HUB](#cuenta-en-docker-hub)
  * [EJERCICIO DE DOCKER](#ejercicio-de-docker)
- * [ORQUESTACIÓN DE CONTENEDORES DOCKER](#orquestaci-n-de-contenedores-docker)
+ * [ORQUESTACION DE CONTENEDORES DOCKER](#orquestacion-de-contenedores-docker)
  * [DOCKER COMPOSE](#docker-compose)
  * [DOCKER SWARM](#docker-swarm)
  * [KUBERNETES](#kubernetes)
@@ -321,29 +321,25 @@ Por último, en caso que por seguridad queramos que todo el sistema de ficheros 
 
 Ejemplos:
 
-1. Lanzamos un contenedor con un serviodor web *Nginx*. La página web está en la carpeta /miweb del anfitrión:
-
-       $ docker run -d -p 8000:80 -v /miweb:/usr/share/nginx/html:ro nginx
-
-    La opción `ro` significa que la carpeta /miweb se monta en modo lectura y no puede ser modificada por el contenedor.
-
-2. Este script crea y lanza Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con Wordpress es de sólo lectura, pero mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión, para que Apache funcione:
-
-       #!/bin/sh
-       DB_CID=$(docker run -d -e MYSQL_ROOT_PASSWORD=pedralbes mysql:5.7)
-       WP_CID=$(docker run -d --link $DB_CID:mysql -p 80:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress:6.0.3-php7.4-apache)
-
-Ejercicio:
-
-1. Lanza la ejecución de un contenedor creado a partir de una imagen oficial de PHP con Apache, que tenga su carpeta /var/www/html mapeada a la carpeta del anfitrión donde guardas tus ejercicios de PHP.
+1. Lanzamos la ejecución de un contenedor creado a partir de una imagen oficial de PHP con Apache, que tenga su carpeta /var/www/html mapeada a la carpeta /dades/dades/IAW del anfitrión, donde guardas tus ejercicios de HTML y PHP.
 
    Solución en formato largo:
 
-       $ docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:7.4-apache
+       $ sudo docker run -d -p 8000:80 --name php --mount type=bind,source=/dades/dades/IAW/,target=/var/www/html/ php:8.3-apache
 
    Solución en formato breve:
 
-       $ docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/                 php:7.4-apache
+       $ sudo docker run -d -p 8000:80 --name php -v /dades/dades/IAW/:/var/www/html/:ro php:8.3-apache
+
+   La opción `ro` significa que la carpeta /miweb se monta en modo lectura y no puede ser modificada por el contenedor.
+
+2. Lanzamos Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con el servidor de base de datos tiene sus ficheros en el volumen wpBBDD, para que no se pierda la base de datos si eliminamos el contenedor. El contenedor con el servidor web es de sólo lectura, pero para que Apache funcione mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión:
+
+       $ sudo docker volume create wpBBDD
+
+       $ sudo docker run -d --name miBBDD -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wp_user -e MYSQL_PASSWORD=wp_pass -v wpBBDD:/var/lib/mysql mysql
+
+       $ sudo docker run -d --name miWEB --link miBBDD:mysql -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wp_user -e WORDPRESS_DB_PASSWORD=wp_pass -p 8000:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress
 
 
 ---
@@ -398,7 +394,7 @@ Ejemplo:
 ---
 
 
-COMANDOS DE DOCKER SOBRE IMÁGENES
+COMANDOS DE DOCKER SOBRE IMAGENES
 ---------------------------------
 
 Los comandos que ahora resumo se pueden ejecutar también como subcomandos del comando [`docker image`](https://docs.docker.com/engine/reference/commandline/image/). Por ejemplo, listar imágenes con `docker images` es equivalente a `docker image ls`.
@@ -446,7 +442,7 @@ Los comandos que ahora resumo se pueden ejecutar también como subcomandos del c
 ---
 
 
-CREACIÓN DE IMÁGENES DOCKER
+CREACION DE IMAGENES DOCKER
 ---------------------------
 
 ![](https://miro.medium.com/max/1400/1*p8k1b2DZTQEW_yf0hYniXw.png)
@@ -633,7 +629,7 @@ En tercer lugar, te propongo un ejercicio. Vas a crear un grupo de contenedores 
 ---
 
 
-ORQUESTACIÓN DE CONTENEDORES DOCKER
+ORQUESTACION DE CONTENEDORES DOCKER
 -----------------------------------
 
 Docker pone en marcha aplicaciones o software en contenedores en varios entornos. Docker se basa en estándares abiertos y funciona en la mayoría de los entornos operativos más comunes, incluidos Linux, Microsoft Windows y otras infraestructuras locales o basadas en la nube.
@@ -662,24 +658,22 @@ La versión 2, más rápida y que viene integrada en Docker, es la que debes uti
     $ sudo apt update
     $ sudo apt install docker-compose
 
-Un ejemplo de fichero `docker-compose.yml`:
+Un ejemplo de fichero `docker-compose.yml` para una imagen que se construye a partir de un *Dockerfile* que está en el mismo directorio:
 
     services:
       web:
         build: .
         ports:
-          - "8000:5000"
+          - "5000:80"
         volumes:
-          - .:/code
-      redis:
-        image: redis
+          - ./app:/codigo
 
 Y para ejecutarlo cuando ya tienes el fichero creado, basta con escribir:
 
     $ sudo docker-compose up
     $ sudo docker ps -a
 
-He aquí otro ejemplo de `docker-compose.yml`:
+He aquí otro ejemplo de `docker-compose.yml` para un blog Wordpress con dos contenedores, uno con el servidor BBDD y otro con el servidor web:
 
     services:
       db:
@@ -717,9 +711,34 @@ He aquí otro ejemplo de `docker-compose.yml`:
       mired:
         driver: bridge
 
-Un buen ejemplo comentado se encuentra en <https://docs.docker.com/compose/gettingstarted/>.
+Este último ejemplo de `docker-compose.yml` levantará varios servidores web con balanceo de carga. Para la prueba, debes crear un fichero `index.php` en el mismo directorio, con el contenido `<?php phpinfo(); ?>` o bien `<?php echo "IP ".$_SERVER["SERVER_ADDR"]; ?>` , que mostrará la IP del equipo. Fíjate que la línea `ports` no asigna el puerto 80 a ningún puerto externo en concreto, lo que hará que el puerto del anfitrión asociado sea aleatorio. Fíjate que compartimos la carpeta donde estará la página web que hemos creado. Fíjate en la carpeta compartida `/var/run/docker.sock` del balanceador, que le permitirá obtener información de los servidores web levantados:
 
-Y unos cuantos ficheros Docker Compose ya preparados se encuentran en <https://github.com/docker/awesome-compose>.
+    services:
+      web:
+        image: php:8.3-apache
+        ports:
+          - 80
+        volumes:
+          - .:/var/www/html
+      balanceador:
+        image: dockercloud/haproxy
+        ports:
+          - 8888:80
+        links:
+          - web
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+
+Podemos levantar cuatro servidores web con:
+
+    $ sudo docker-compose up -d --scale web=4
+    $ sudo docker-compose ps
+
+El balanceador nos redirigirá a uno u otro nodo (-comprueba la IP mostrada por la página web-) en cada recarga de la dirección <http://localhost:8888/> .
+
+Otros buenos ejemplos comentados se encuentran en <https://docs.docker.com/compose/gettingstarted/> .
+
+Y unos cuantos ficheros Docker Compose ya preparados se encuentran en <https://github.com/docker/awesome-compose> .
 
 
 ---
@@ -814,4 +833,4 @@ TEMPORAL - A REVISAR
 
  * [Seguridad "hardening docker"](https://www.google.com/search?q=hardening+docker)
 
- * [Aplicaciones gráficas en contenedores](https://www.google.com/search?q=hardening+docker)
+ * [Aplicaciones gráficas en contenedores](https://www.baeldung.com/linux/docker-container-gui-applications)
