@@ -311,13 +311,25 @@ Además, los contenedores se pueden ejecutar en modo de sólo lectura con el atr
 
 Para compartir datos entre contenedores o entre el anfitrión y los contenedores, podemos [mapear directorios del anfitrión al contenedor](https://docs.docker.com/storage/bind-mounts/) o utilizar [volúmenes](https://docs.docker.com/storage/volumes/).
 
+![Persistencia](https://bytes.cat/_media/docker-volumes.png)
+
 Los directorios se pueden enlazar en modo de lectura-escritura, pero también en modo de sólo lectura, si queremos asegurarnos que los contenedores no puedan realizar cambios en los datos.
 
 Enlazar a un volumen de Docker es similar a enlazar a un directorio del anfitrión, con la diferencia de que en el volumen Docker no nos tenemos que preocupar dónde está almacenado en el anfitrión.
 
 Por último, en caso que por seguridad queramos que todo el sistema de ficheros del contenedor sea de sólo lectura, pero necesite escribir alguna cosa para funcionar, podemos [montar en memoria](https://docs.docker.com/storage/tmpfs/) dicho directorio donde deba escribir.
 
-![Persistencia](https://bytes.cat/_media/docker-volumes.png)
+ * Para crear un volumen tienes el comando:
+
+       docker volume create mi_volumen
+
+ * Para listar los volumenes tienes el comando:
+
+       docker volume ls
+
+ * Para eliminar un volumen sin contenedores asociados tienes el comando:
+
+       docker volume rm mi_volumen
 
 Ejemplos:
 
@@ -380,13 +392,30 @@ Ejemplo:
 
 1. Lanzamos dos contenedores uno asociado a la red *prueba* y otro asociado a la red *produccion*. A continuación el contenedor asociado a la red *prueba* lo asociamos también a la red *produccion* y compruebo que puedan hacer ping entre ellos:
 
-       $ docker network create red_produccion
-       $ docker network create red_prueba
-       $ docker run -d --name cont_produccion --network red_produccion alpine sh
-       $ docker run -d --name cont_prueba     --network red_prueba     alpine sh
-       $ docker network connect red_produccion cont_prueba
-       $ docker attach cont_prueba
+       $ sudo docker network create red_produccion
+       $ sudo docker network create red_prueba
+      
+   En un segundo terminal ejecutamos:
 
+       $ sudo docker run -it --name cont_produccion --network red_produccion alpine sh
+      
+   En un tercer terminal ejecutamos:
+
+       $ sudo docker run -it --name cont_prueba     --network red_prueba     alpine sh
+      
+   Hacemos pruebas de conectividad en el segundo y en el tercer terminal:
+
+           ip a
+           ping cont_prueba
+           ping cont_produccion
+   
+   Volvemos al primer terminal y el contenedor de prueba lo asociamos también a la red *producción* :
+
+       $ sudo docker network connect red_produccion cont_prueba
+   
+   De nuevo hacemos pruebas de conectividad en el segundo y en el tercer terminal:
+
+           ip a
            ping cont_prueba
            ping cont_produccion
 
