@@ -137,7 +137,7 @@ Docker se puede integrar con diferentes herramientas de infraestructura, como Am
 INSTALAR DOCKER
 ---------------
 
-La manera más fácil de instalar Docker en Windows o en MacOS es decargar e instalar [Docker Desktop](https://www.docker.com/products/docker-desktop/). Para usarlo, te pedirá tener creada una cuenta en Docker o Docker Hub. Aunque en Linux también puedo instalar Docker Desktop, dedico las siguientes líneas a la instalación más "normal" y ligera de Docker en Linux.
+La manera más fácil de instalar Docker en Windows o en MacOS es descargar e instalar [Docker Desktop](https://www.docker.com/products/docker-desktop/). Para usarlo, te pedirá tener creada una cuenta en Docker o Docker Hub. Aunque en Linux también puedo instalar Docker Desktop, dedico las siguientes líneas a la instalación más "normal" y ligera de Docker en Linux.
 
 Se puede instalar mediante un script:
 
