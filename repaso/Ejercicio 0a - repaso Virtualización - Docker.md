@@ -376,6 +376,10 @@ Un contenedor puede estar asociado a más de una red. Además, durante la vida d
 
        docker network ls
 
+ * Para saber qué contenedores están en una red, con sus correspondientes IPs, tienes el comando:
+
+       docker network inspect mi_red
+
  * Para eliminar una red sin contenedores asociados tienes el comando:
 
        docker network rm mi_red
