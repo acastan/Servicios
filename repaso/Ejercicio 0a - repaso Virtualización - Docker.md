@@ -1,9 +1,7 @@
 RESUMEN DE CONTENEDORES Y DOCKER
 ================================
 
-Esta es mi introducción a contenedores y a Docker, aunque no soy un experto en el tema.
-
-Te recomiendo que visites:
+Este es mi resumen sobre contenedores y Docker. Para aprender, te recomiendo que visites:
 
  * [Un resumen de Docker con buenos gráficos](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
 
@@ -11,7 +9,7 @@ Te recomiendo que visites:
 
  * [Un buen curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
- * [Un curso en transparencias ](https://container.training/intro-selfpaced.yml.html)
+ * [Un curso en transparencias](https://container.training/intro-selfpaced.yml.html)
 
  * [La documentación oficial de Docker](https://docs.docker.com/)
 
