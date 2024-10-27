@@ -5,13 +5,16 @@ Esta es mi introducción a contenedores y a Docker, aunque no soy un experto en 
 
 Te recomiendo que visites:
 
+ * [Un resumen de Docker con buenos gráficos](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
+
+ * [¿Qué deberías aprender si te vas a dedicar a Docker?](https://roadmap.sh/docker)
+
  * [Un buen curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
- * [Un resumen de Docker con buenos gráficos](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
+ * [Un curso en transparencias ](https://container.training/intro-selfpaced.yml.html)
 
  * [La documentación oficial de Docker](https://docs.docker.com/)
 
- * [¿Qué deberías aprender si te vas a dedicar a Docker?](https://roadmap.sh/docker)
 
 Tabla de contenido:
 
@@ -810,6 +813,8 @@ Kubernetes aporta mecanismos que depliegan, mantienen y escalan aplicacions bas�
 <https://kubernetes.io/docs/tutorials/kubernetes-basics/>
 
 <https://docs.docker.com/get-started/kube-deploy/>
+
+<https://container.training/kube-selfpaced.yml.html>
 
 
 ---
