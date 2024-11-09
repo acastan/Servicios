@@ -611,6 +611,8 @@ Ejemplos de Dockerfile:
 
    Accede con un navegador a http:/localhost:8080/index.php
 
+   Fíjate que también existe la página <http:/localhost:8080/index.html> que creaste en la imagen anterior.
+
 
 ---
 
