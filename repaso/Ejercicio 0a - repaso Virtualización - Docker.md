@@ -591,7 +591,7 @@ Ejemplos de Dockerfile:
        $ sudo docker run -d -p 8000:80 --name servidor_web ana/apache2:1.0
        $ sudo docker ps -a
 
-   Accede con un navegador a http:/localhost:8000/index.html
+   Accede con un navegador a <http:/localhost:8000/index.html>
 
 4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP (-y de paso un fichero index.php de prueba-):
 
@@ -609,7 +609,7 @@ Ejemplos de Dockerfile:
        $ sudo docker run -d -p 8080:80 --name servidor_php ana/php:1.0
        $ sudo docker ps -a
 
-   Accede con un navegador a http:/localhost:8080/index.php
+   Accede con un navegador a <http:/localhost:8080/index.php>
 
    Fíjate que también existe la página <http:/localhost:8080/index.html> que creaste en la imagen anterior.
 
