@@ -138,7 +138,9 @@ Docker se puede integrar con diferentes herramientas de infraestructura, como Am
 INSTALAR DOCKER
 ---------------
 
-La manera más fácil de instalar Docker en Windows o en MacOS es descargar e instalar [Docker Desktop](https://www.docker.com/products/docker-desktop/). Para usarlo, te pedirá tener creada una cuenta en Docker o Docker Hub. Aunque en Linux también puedo instalar Docker Desktop, dedico las siguientes líneas a la instalación más "normal" y ligera de Docker en Linux.
+La manera más fácil de instalar Docker en Windows o en MacOS es descargar e instalar [Docker Desktop](https://www.docker.com/products/docker-desktop/). Para usarlo, la primera vez te pedirá tener creada una cuenta gratuita en [Docker Hub](https://hub.docker.com/). Al instalarse Docker Desktop en Windows, se instalaran algunos componentes de Windows que permiten la ejecución de contenedores. Dichos componentes son o bien el WLS (Subsistema de Linux para Windows) o bien el Hyper-V (un hipervisor para virtualización). Si una vez instalado Docker Desktop falla la ejecución de contenedores des del terminal, ves a "Panel de Control -> Programas -> Activar y desactivar características de Windows" y allá comprueba que tengas instaladas dichas dos características de Windows.
+
+Aunque en Linux también puedo instalar Docker Desktop, dedico las siguientes líneas a la instalación más "normal" y ligera de Docker en Linux.
 
 Se puede instalar mediante un script:
 
@@ -495,7 +497,7 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
     docker build -t repositorio/nombre:etiqueta Dockerfile .
 
-[Dockerfile](https://docs.docker.com/engine/reference/builder/) es el fichero de texto que contiene instrucciones que automatizan los pasos para construir la imagen. El Dockerfile contiene
+[Dockerfile](https://docs.docker.com/engine/reference/builder/) es el fichero de texto que contiene instrucciones que automatizan los pasos para construir la imagen. Un consejo: el fichero Dockerfile debería estar en una carpeta propia junto con el resto de documentos necesarios para generar la imagen, ya que [el proceso de construcción explorará todas las subcarpetas](https://www.baeldung.com/ops/docker-reduce-build-context). El Dockerfile contiene
 
  * Comentarios:
 
@@ -507,12 +509,17 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
  * La instrucción LABEL: añade metadatos a la imagen, como el autor/a.
 
-       LABEL maintainer "acastan@inspedralbes.cat" 
+       LABEL maintainer="acastan@inspedralbes.cat" 
 
  * La instrucción RUN: ejecuta un comando sobre la imagen para modificarla, normalmente vía `/bin/sh -c`.
 
        RUN comando
        RUN ["ejecutable", "arg1", "arg2", ...]
+
+ * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen.
+
+       COPY fuente destino
+       ADD fuente destino
 
  * Las instrucciones ENTRYPOINT y CMD: especifican el comando por defecto a ejecutar al crear el contenedor. ENTRYPOINT es el comando a ejecutar y CMD son los argumentos. Sin embargo, si ENTRYPOINT es una shell, entonces CMD será el comando a ejecutar en dicha shell, lo que puede causar confusión. Si no se especifica, ENTRYPOINT vale "`/bin/sh -c`"
 
@@ -521,11 +528,6 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
        ENTRYPOINT ["ejecutable", "arg1", "arg2", ...]
        CMD ["comando", "arg1", "arg2", ...]
-
- * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen.
-
-       COPY fuente destino
-       ADD fuente destino
 
  * La instrucción ENV: crea variables de entorno necesarias para la ejecución de la aplicación dentro del contenedor.
 
@@ -543,8 +545,8 @@ Ejemplos de Dockerfile:
 
 1. A partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
 
-       FROM ubuntu:22.04
-       LABEL maintainer "yo@mismo.org"
+       FROM ubuntu:24.04
+       LABEL maintainer="yo@mismo.org"
        RUN apt update && apt -y install telnet
        CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
 
@@ -553,53 +555,61 @@ Ejemplos de Dockerfile:
        $ sudo docker build -t starwars .
        $ sudo docker run -it starwars
 
-2. A partir de una Debian, instala cowsay, y dice algo en ASCII Art:
+2. A partir de una Debian, instala cowsay, y di algo en ASCII Art:
 
        FROM debian:latest
-       LABEL maintainer "tu@mismo.org"
+       LABEL maintainer="tu@mismo.org"
        RUN apt update && apt -y install cowsay
        ENTRYPOINT ["/usr/games/cowsay"]
        CMD ["Docker mooooooola!"]
 
    Y ahora ejecuta:
 
-       $ sudo docker build -t cowsay .
-       $ sudo docker run -it cowsay
+       $ sudo docker build -t tu_usuario/cowsay:1.0 .
+       $ sudo docker run -it tu_usuario/cowsay:1.0
+       $ sudo docker login -u tu_usuario
+       $ sudo docker push sudo tu_usuario/cowsay:1.0
 
-3. Crea una imagen con Apache:
+   Accede con un navegador a tu cuenta en Docker Hub para comprobar que la nueva imagen se ha subido.
+
+3. Crea una imagen con Apache (-y también un fichero index.html de prueba-):
 
        FROM debian
-       LABEL maintainer "ana@cardo.org"
+       LABEL maintainer="ana@cardo.org"
        RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
-       ENV APACHE_RUN_USER www-data
-       ENV APACHE_RUN_GROUP www-data
-       ENV APACHE_LOG_DIR /var/log/apache2
+       ENV APACHE_RUN_USER=www-data
+       ENV APACHE_RUN_GROUP=www-data
+       ENV APACHE_LOG_DIR=/var/log/apache2
        EXPOSE 80
-       ADD ["index.html","/var/www/html/"]
+       COPY index.html /var/www/html/
        ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
-   y ejecutamos
+   y ejecuta:
 
        $ sudo docker build -t ana/apache2:1.0 .
        $ sudo docker images
-       $ sudo docker run -d -p 80:80 --name servidor_web ana/apache2:1.0
+       $ sudo docker run -d -p 8000:80 --name servidor_web ana/apache2:1.0
        $ sudo docker ps -a
 
-4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP:
+   Accede con un navegador a http:/localhost:8000/index.html
+
+4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP (-y de paso un fichero index.php de prueba-):
 
        FROM ana/apache2:1.0
-       LABEL maintainer "bob@marley.org"
+       LABEL maintainer="ana@cardo.org"
        RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
        EXPOSE 80
-       ADD ["index.php","/var/www/html/"]
+       COPY index.php /var/www/html/
        ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
-   y ejecutamos
+   y ejecuta
 
-       $ sudo docker build -t bob/php:1.0 .
+       $ sudo docker build -t ana/php:1.0 .
        $ sudo docker images
-       $ sudo docker run -d -p 8080:80 --name servidor_php bob/php:1.0
+       $ sudo docker run -d -p 8080:80 --name servidor_php ana/php:1.0
        $ sudo docker ps -a
+
+   Accede con un navegador a http:/localhost:8080/index.php
 
 
 ---
@@ -624,7 +634,7 @@ De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno
 
 Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imagen des de la línea de comandos de Docker debes haber [iniciado sesión](https://docs.docker.com/engine/reference/commandline/login/) con el comando `login`:
 
-    $ sudo docker login
+    $ sudo docker login -u usuario
     $ sudo docker commit idcontenedor pepito/mi_app:latest
     $ sudo docker push pepito/mi_app:latest
 
