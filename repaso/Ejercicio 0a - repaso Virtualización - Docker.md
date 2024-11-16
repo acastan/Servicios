@@ -516,7 +516,7 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
        RUN comando
        RUN ["ejecutable", "arg1", "arg2", ...]
 
- * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen.
+ * Las instrucciones COPY y ADD: copian ficheros del anfitrión a la imagen. Parecen iguales, pero ADD permite especificar URLs en la fuente, o ficheros comprimidos que se descomprimirán en el destino. Si no es ese el caso, mejor utilizar entonces COPY.
 
        COPY fuente destino
        ADD fuente destino
@@ -528,6 +528,34 @@ Pero lo normal para crear una imagen es planificar el proceso y escribir una pla
 
        ENTRYPOINT ["ejecutable", "arg1", "arg2", ...]
        CMD ["comando", "arg1", "arg2", ...]
+
+   Voy a intentar aclarar un poco la diferencia entre ENTRYPOINT y CMD, porque genera confusión. Ambos son el comando y los argumentos a ejecutar al crear el contenedor. Sin embargo al crear un contenedor, se le pueden especificar nuevos comandos y argumentos a ejecutar:
+
+       $ sudo docker run imagen [comando con argumentos]
+
+   Dicho comando que especificamos con `docker run` substituirá a los especificados con CMD, y se añadirá a los especificados con ENTRYPOINT. Es decir, que cuando se crea un contenedor se ejecuta ENTRYPOINT+CMD o ENTRYPOINT+comando. Veámoslo con tres ejemplos.
+   
+   En el siguiente Dockerfile, no importa el comando a ejecutar que especifiquemos en `doker run`, ya que siempre se ejecutará un `ping localhost`:
+
+       FROM alpine
+       ENTRYPOINT ["/bin/ping", "localhost"]
+       ...
+       $ sudo docker run -it imagen 
+
+   Con el siguiente Dockerfile, siempre se ejecutará un `ping`. Si no especificamos argumento serà un `ping localhost`, pero podemos especificar otro host en `docker run`:
+
+       FROM alpine
+       ENTRYPOINT ["/bin/ping"]
+       CMD ["localhost"]
+       ...
+       $ sudo docker run -it imagen 8.8.8.8
+
+   Por último, con el siguiente Dockerfile, si no especificamos argumento ejecutará un `ping localhost`, pero podemos especificar el nuevo comando en `docker run`:
+
+       FROM alpine
+       CMD ["/bin/ping", "localhost"]
+       ...
+       $ sudo docker run -it imagen /bin/sh
 
  * La instrucción ENV: crea variables de entorno necesarias para la ejecución de la aplicación dentro del contenedor.
 
@@ -546,9 +574,9 @@ Ejemplos de Dockerfile:
 1. A partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
 
        FROM ubuntu:24.04
-       LABEL maintainer="yo@mismo.org"
+       LABEL maintainer="ana@cardo.org"
        RUN apt update && apt -y install telnet
-       CMD ["/usr/bin/telnet", "towel.blinkenlights.nl"]
+       ENTRYPOINT ["/usr/bin/telnet", "towel.blinkenlights.nl"]
 
    Y ahora ejecuta:
 
@@ -558,24 +586,24 @@ Ejemplos de Dockerfile:
 2. A partir de una Debian, instala cowsay, y di algo en ASCII Art:
 
        FROM debian:latest
-       LABEL maintainer="tu@mismo.org"
+       LABEL maintainer="bob@esponja.edu"
        RUN apt update && apt -y install cowsay
        ENTRYPOINT ["/usr/games/cowsay"]
        CMD ["Docker mooooooola!"]
 
    Y ahora ejecuta:
 
-       $ sudo docker build -t tu_usuario/cowsay:1.0 .
-       $ sudo docker run -it tu_usuario/cowsay:1.0
-       $ sudo docker login -u tu_usuario
-       $ sudo docker push sudo tu_usuario/cowsay:1.0
-
-   Accede con un navegador a tu cuenta en Docker Hub para comprobar que la nueva imagen se ha subido.
+       $ sudo docker build -t bob/cowsay:1.0 .
+       $ sudo docker images
+       $ sudo docker run -it bob/cowsay:1.0
+       $ sudo docker run -it bob/cowsay:1.0 -p "¡Qué horror!"
+    
+    Puedes probar otros ojos con -b , -d , -g , -p , -s , -t , -w , -y.
 
 3. Crea una imagen con Apache (-y también un fichero index.html de prueba-):
 
        FROM debian
-       LABEL maintainer="ana@cardo.org"
+       LABEL maintainer="tu_direccion@de_correo"
        RUN apt update && apt install -y apache2 && apt clean && rm -rf /var/lib/apt/lists/*
        ENV APACHE_RUN_USER=www-data
        ENV APACHE_RUN_GROUP=www-data
@@ -586,17 +614,22 @@ Ejemplos de Dockerfile:
 
    y ejecuta:
 
-       $ sudo docker build -t ana/apache2:1.0 .
+       $ sudo docker build -t <tu_usuario_Docker>/miweb:1.0 .
+       $ sudo docker run -d -p 8000:80 --name servidor_web <tu_usuario_Docker>/miweb:1.0
        $ sudo docker images
-       $ sudo docker run -d -p 8000:80 --name servidor_web ana/apache2:1.0
        $ sudo docker ps -a
 
    Accede con un navegador a <http:/localhost:8000/index.html>
 
+       $ sudo docker login -u <tu_usuario_Docker>
+       $ sudo docker push <tu_usuario_Docker>/miweb:1.0
+
+   Accede con un navegador a tu cuenta en Docker Hub para comprobar que la nueva imagen se ha subido.
+
 4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP (-y de paso un fichero index.php de prueba-):
 
-       FROM ana/apache2:1.0
-       LABEL maintainer="ana@cardo.org"
+       FROM <tu_usuario_Docker>/miweb:1.0
+       LABEL maintainer="tu_direccion@de_correo"
        RUN apt update && apt install -y php && apt clean && rm -rf /var/lib/apt/lists/*
        EXPOSE 80
        COPY index.php /var/www/html/
@@ -604,14 +637,18 @@ Ejemplos de Dockerfile:
 
    y ejecuta
 
-       $ sudo docker build -t ana/php:1.0 .
+       $ sudo docker build -t <tu_usuario_Docker>/miphp:1.0 .
+       $ sudo docker run -d -p 8080:80 --name servidor_php <tu_usuario_Docker>/miphp:1.0
        $ sudo docker images
-       $ sudo docker run -d -p 8080:80 --name servidor_php ana/php:1.0
        $ sudo docker ps -a
 
    Accede con un navegador a <http:/localhost:8080/index.php>
-
+   
    Fíjate que también existe la página <http:/localhost:8080/index.html> que creaste en la imagen anterior.
+
+       $ sudo docker push <tu_usuario_Docker>/miphp:1.0
+
+   Accede con un navegador a tu cuenta en Docker Hub para comprobar que la nueva imagen se ha subido.
 
 
 ---
@@ -636,9 +673,9 @@ De una manera o de otra, si tu cuenta de usuario de Docker Hub es "pepito" y uno
 
 Para [subir](https://docs.docker.com/engine/reference/commandline/push/) la imagen des de la línea de comandos de Docker debes haber [iniciado sesión](https://docs.docker.com/engine/reference/commandline/login/) con el comando `login`:
 
-    $ sudo docker login -u usuario
-    $ sudo docker commit idcontenedor pepito/mi_app:latest
-    $ sudo docker push pepito/mi_app:latest
+    $ sudo docker login -u <usuario>
+    $ sudo docker commit <idcontenedor> <usuario>/mi_app:latest
+    $ sudo docker push <usuario>/mi_app:latest
 
 
 ---
