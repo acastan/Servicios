@@ -696,17 +696,31 @@ En segundo lugar, un consejo: cuendo un contenedor no funcione y finalice tan pr
 
 En tercer lugar, te propongo un ejercicio. Vas a crear un grupo de contenedores que sirva una web. Para ello:
 
- 1. A partir de una imagen de Debian, crea una imagen de un servidor web estático.
+ 1. A partir de una imagen de PHP, crea una nueva imagen que añada el módulo de PHP que conecta con bases de datos MySQL y MariaDB.
+ 
+    Si partes de la imagen <tu_usuario_Docker>/miphp:1.0 del ejemplo anterior, crea un Dockerfile con la siguiente línea:
 
- 2. A partir de la imagen anterior, crea  una imagen de un servidor web dinámico con PHP.
+        RUN apt update && apt install -y php-mysql && apt clean && rm -rf /var/lib/apt/lists/*
+    
+    Si partes de una imagen oficial PHP, crea un Dockerfile con la siguiente línea:
 
- 3. Adicionalmente a partir de una imagen de Debian, crea una imagen de un servidor SQL MariaDB.
+        RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
- 4. Descarga y descomprime la web (por ejemplo, Wordpress) en el anfitrión.
+    Crea una nueva imagen que se llamará <tu_usuario_Docker>/miphp:2.0
 
- 5. Crea un contenedor con la imagen del servidor web dinámico, y otro contenedor con la imagen del servidor SQL. Dichos contenedores compartirán una red propia, para que el puerto del servidor SQL sólo quede expuesto al servidor web.
+ 2. Descarga y descomprime la web (por ejemplo, Wordpress o MediaWiki o Joomla o Moodle) en el anfitrión.
+
+ 3. Redacta un script que lance los siguientes contenedores:
+
+    - Un contenedor con la imagen del servidor web dinámico,
+    - Otro contenedor con la imagen del servidor SQL, y
+    - Un último contenedor con la imagen de Adminer, que te permite gestionar bases de datos a partir de una interfaz web.
+
+    Dichos contenedores compartirán una red propia, para que el puerto del servidor SQL sólo quede expuesto al servidor web.
 
     Para desacoplar el almacenamiento y facilitar las copias de seguridad, el contenedor web compartirá con el anfitrión la carpeta donde están las páginas web, y el contenedor SQL compartirá con el anfitrión la carpeta donde están las bases de datos. 
+
+ 4. Pruébalo todo instalando el gestor de contenidos y administrando la web.
 
 ¿Te atreves a crear varios contenedores web y un contenedor balanceador de carga para repartir el trabajo entre ellos?
 
