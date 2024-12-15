@@ -268,13 +268,13 @@ Chuletas de comandos:
 
 Ejemplos:
 
-1. Lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
+1. En este ejemplo lanzamos un contenedor con [noVNC](https://novnc.com/) y nos conectamos vía navegador:
 
        $ sudo docker run --rm -it -p 8080:8080 theasp/novnc
 
        <http://localhost:8080/vnc.html>
 
-2. Lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
+2. En este ejemplo lanzamos un contenedor Ubuntu con una shell preparada para ejecutar comandos ¿Qué núcleo del s.o. y qué procesos ves en el contenedor? :
 
        $ sudo docker run -it --name ejercicio ubuntu /bin/bash
        --$ uname -a
@@ -287,7 +287,7 @@ Ejemplos:
        $ sudo docker top ejercicio
        $ sudo docker attach ejercicio
 
-   Cuando salimos con el comando `exit` el contenedor se para ¿Qué núcleo del s.o. ves en el anfitrión? :
+   Cuando salimos con el comando `exit` el contenedor se para ¿Por qué? ¿Y qué núcleo del S.O. ves en el anfitrión? :
 
        --$ exit
        $ sudo docker ps -a
@@ -338,7 +338,7 @@ Por último, en caso que por seguridad queramos que todo el sistema de ficheros 
 
 Ejemplos:
 
-1. Lanzamos la ejecución de un contenedor creado a partir de una imagen oficial de PHP con Apache, que tenga su carpeta /var/www/html mapeada a la carpeta /dades/dades/IAW del anfitrión, donde guardas tus ejercicios de HTML y PHP.
+1. En este ejemplo lanzamos la ejecución de un contenedor creado a partir de una imagen oficial de PHP con Apache, que tenga su carpeta /var/www/html mapeada a la carpeta /dades/dades/IAW del anfitrión, donde guardas tus ejercicios de HTML y PHP.
 
    Solución en formato largo:
 
@@ -350,13 +350,18 @@ Ejemplos:
 
    La opción `ro` significa que la carpeta /miweb se monta en modo lectura y no puede ser modificada por el contenedor.
 
-2. Lanzamos Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con el servidor de base de datos tiene sus ficheros en el volumen wpBBDD, para que no se pierda la base de datos si eliminamos el contenedor. El contenedor con el servidor web es de sólo lectura, pero para que Apache funcione mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión:
+2. En este ejemplo lanzamos Wordpress, utilizando un contenedor con un servidor web y otro contenedor con un servidor de bases de datos. El contenedor con el servidor de base de datos tiene sus ficheros en el volumen wpBBDD, para que no se pierda la base de datos si eliminamos el contenedor. El contenedor con el servidor web es de sólo lectura, pero para que Apache funcione mantiene el directorio /tmp de escritura, y también mantiene en escritura el directorio /run/apache2/ montado en el volumen por defecto del anfitrión:
 
        $ sudo docker volume create wpBBDD
 
-       $ sudo docker run -d --name miBBDD -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wp_user -e MYSQL_PASSWORD=wp_pass -v wpBBDD:/var/lib/mysql mysql
+       $ sudo docker run -d --name miBBDD -v wpBBDD:/var/lib/mysql \
+          -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=wordpress \
+          -e MYSQL_USER=wp_user -e MYSQL_PASSWORD=wp_pass mysql
 
-       $ sudo docker run -d --name miWEB --link miBBDD:mysql -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wp_user -e WORDPRESS_DB_PASSWORD=wp_pass -p 8000:80 --read-only -v /run/apache2/ --tmpfs /tmp wordpress
+       $ sudo docker run -d --name miWEB -p 8000:80 \
+          --read-only -v /run/apache2/ --tmpfs /tmp \
+          --link miBBDD:mysql -e WORDPRESS_DB_NAME=wordpress \
+          -e WORDPRESS_DB_USER=wp_user -e WORDPRESS_DB_PASSWORD=wp_pass wordpress
 
 
 ---
@@ -399,7 +404,7 @@ Un contenedor puede estar asociado a más de una red. Además, durante la vida d
 
 Ejemplo:
 
-1. Lanzamos dos contenedores uno asociado a la red *prueba* y otro asociado a la red *produccion*. A continuación el contenedor asociado a la red *prueba* lo asociamos también a la red *produccion* y compruebo que puedan hacer ping entre ellos:
+1. En este ejemplo lanzamos dos contenedores uno asociado a la red *prueba* y otro asociado a la red *produccion*. A continuación el contenedor asociado a la red *prueba* lo asociamos también a la red *produccion* y compruebo que puedan hacer ping entre ellos:
 
        $ sudo docker network create red_produccion
        $ sudo docker network create red_prueba
@@ -571,7 +576,7 @@ Para aprender a construir imágenes, te recomiendo revisar tu fichero Dockerfile
 
 Ejemplos de Dockerfile:
 
-1. A partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
+1. Este ejemplo a partir de una Ubuntu 22.04, instala telnet, y reproduce via telnet la Guerra de las Galaxias en ASCII Art:
 
        FROM ubuntu:24.04
        LABEL maintainer="ana@cardo.org"
@@ -583,7 +588,7 @@ Ejemplos de Dockerfile:
        $ sudo docker build -t starwars .
        $ sudo docker run -it starwars
 
-2. A partir de una Debian, instala cowsay, y di algo en ASCII Art:
+2. Este ejemplo a partir de una Debian, instala cowsay, y di algo en ASCII Art:
 
        FROM debian:latest
        LABEL maintainer="bob@esponja.edu"
@@ -600,7 +605,7 @@ Ejemplos de Dockerfile:
     
     Puedes probar otros ojos con -b , -d , -g , -p , -s , -t , -w , -y.
 
-3. Crea una imagen con Apache (-y también un fichero index.html de prueba-):
+3. En este ejemplo crea una imagen con Apache (-y también un fichero index.html de prueba-):
 
        FROM debian
        LABEL maintainer="tu_direccion@de_correo"
@@ -626,7 +631,7 @@ Ejemplos de Dockerfile:
 
    Accede con un navegador a tu cuenta en Docker Hub para comprobar que la nueva imagen se ha subido.
 
-4. Aprovecharía nuestra imagen anterior para crear una imagen con PHP (-y de paso un fichero index.php de prueba-):
+4. En este ejemplo aprovecha nuestra imagen anterior para crear una imagen con PHP (-y de paso un fichero index.php de prueba-):
 
        FROM <tu_usuario_Docker>/miweb:1.0
        LABEL maintainer="tu_direccion@de_correo"
@@ -757,83 +762,132 @@ La versión 2, más rápida y que viene integrada en Docker, es la que debes uti
     $ sudo apt update
     $ sudo apt install docker-compose
 
-Un ejemplo de fichero `docker-compose.yml` para una imagen que se construye a partir de un *Dockerfile* que está en el mismo directorio:
+Ejemplos de docker-compose.yml:
 
-    services:
-      web:
-        build: .
-        ports:
-          - "5000:80"
-        volumes:
-          - ./app:/codigo
+1. He aquí un ejemplo para un blog Wordpress con dos contenedores, uno con el servidor BBDD y otro con el servidor web:
 
-Y para ejecutarlo cuando ya tienes el fichero creado, basta con escribir:
+       services:
 
-    $ sudo docker-compose up
-    $ sudo docker ps -a
+         db:
+           image: mariadb:latest
+           restart: always
+           environment:
+             - MYSQL_ROOT_PASSWORD=contraseña
+             - MYSQL_DATABASE=db_wordpress
+             - MYSQL_USER=usuario_db_wordpress
+             - MYSQL_PASSWORD=contraseña_db_wordpress
+           networks:
+             - mired
+           volumes:
+             - datos_db:/var/lib/mysql
 
-He aquí otro ejemplo de `docker-compose.yml` para un blog Wordpress con dos contenedores, uno con el servidor BBDD y otro con el servidor web:
+         wordpress:
+           image: wordpress:apache
+           depends_on:
+             - db
+           restart: always
+           environment:
+             - WORDPRESS_DB_HOST=db:3306
+             - WORDPRESS_DB_USER=usuario_db_wordpress
+             - WORDPRESS_DB_PASSWORD=contraseña_db_wordpress
+             - WORDPRESS_DB_NAME=db_wordpress
+           ports:
+             - "8000:80"
+           networks:
+             - mired
+           volumes:
+             - ./code:/code
+             - datos_wp:/var/www/html
 
-    services:
-      db:
-        image: mariadb:latest
-        restart: always
-        environment:
-          - MYSQL_ROOT_PASSWORD=contraseña
-          - MYSQL_DATABASE=db_wordpress
-          - MYSQL_USER=usuario_db_wordpress
-          - MYSQL_PASSWORD=contraseña_db_wordpress
-        networks:
-          - mired
-        volumes:
-          - datos_db:/var/lib/mysql
-      wordpress:
-        image: wordpress:apache
-        depends_on: db
-        restart: always
-        environment:
-          - WORDPRESS_DB_HOST=db:3306
-          - WORDPRESS_DB_USER=usuario_db_wordpress
-          - WORDPRESS_DB_PASSWORD=contraseña_db_wordpress
-          - WORDPRESS_DB_NAME=db_wordpress
-        ports:
-          - "8000:80"
-        networks:
-          - mired
-        volumes:
-          - ./code:/code
-          - datos_wp:/var/www/html
-    volumes:
-      datos_db:
-      datos_wp:
-    networks:
-      mired:
-        driver: bridge
+       volumes:
+         datos_db:
+         datos_wp:
 
-Este último ejemplo de `docker-compose.yml` levantará varios servidores web con balanceo de carga. Para la prueba, debes crear un fichero `index.php` en el mismo directorio, con el contenido `<?php phpinfo(); ?>` o bien `<?php echo "IP ".$_SERVER["SERVER_ADDR"]; ?>` , que mostrará la IP del equipo. Fíjate que la línea `ports` no asigna el puerto 80 a ningún puerto externo en concreto, lo que hará que el puerto del anfitrión asociado sea aleatorio. Fíjate que compartimos la carpeta donde estará la página web que hemos creado. Fíjate en la carpeta compartida `/var/run/docker.sock` del balanceador, que le permitirá obtener información de los servidores web levantados:
+       networks:
+         mired:
 
-    services:
-      web:
-        image: php:8.3-apache
-        ports:
-          - 80
-        volumes:
-          - .:/var/www/html
-      balanceador:
-        image: dockercloud/haproxy
-        ports:
-          - 8888:80
-        links:
-          - web
-        volumes:
-          - /var/run/docker.sock:/var/run/docker.sock
+   Levanta los contenedores con:
 
-Podemos levantar cuatro servidores web con:
+       $ sudo docker compose up -d
+       $ sudo docker compose ps
 
-    $ sudo docker-compose up -d --scale web=4
-    $ sudo docker-compose ps
+   Accede con un navegador a <http:/localhost:8000/> para configurar y administrar Wordpress.
 
-El balanceador nos redirigirá a uno u otro nodo (-comprueba la IP mostrada por la página web-) en cada recarga de la dirección <http://localhost:8888/> .
+   Apaga los contenedores con:
+
+       $ sudo docker compose down
+       $ sudo docker compose ps
+
+   Compara los parámetros del fichero `docker-compose.yml` con los que utilizaste un ejemplo anterior en que levantabas Wordpress con `docker run`.
+
+
+2. En este ejemplo veremos que docker compose también puede levantar contenedores a partir de imágenes a construir mediante su `Dockerfile`. Escribe el siguiente fichero `index.php`:
+
+       <?php echo "Hola, mi IP es ".$_SERVER["SERVER_ADDR"]; ?>
+
+   Y ahora escribe el fichero `Dockerfile` que generará una nueva imagen con nuestra aplicación web:
+
+       FROM php:apache
+       COPY index.php /var/www/html/
+
+   Por útlimo escribe el siguiente fichero `docker-compose.yml` en el que en lugar de tener la línea `ìmage` tenemos la línea `build` para construir la imagen, y en que además el puerto 80 del contenedor se mapea a un puero aleatorio del anfitrión:
+
+       services:
+         web:
+           build: .
+         ports:
+           - 80
+
+   Levanta un contenedor con:
+
+       $ sudo docker compose up -d
+       $ sudo docker compose ps
+
+   Fíjate a que puerto del anfitrión se ha mapeado. Accede con un navegador a <http:/localhost:puerto/> para ver la página php que te da la IP del servidor web.
+
+   Ahora prueba:
+
+       $ sudo docker compose up -d --scale web=4
+       $ sudo docker compose ps
+
+   ¿Cuántos contenedores ves? ¿A qué puertos del anfitrión han quedado asociados? Accede a cada uno de ellos con un navegador a <http:/localhost:puerto/> para ver la página php que te da la IP del servidor web.
+
+   Luego apaga los contenedores con:
+
+       $ sudo docker compose down
+       $ sudo docker compose ps
+
+3. Ahora al ejemplo anterior le añadimos un balanceador de carga que será quien recibirá las peticiones. Modifica el fichero `docker-compose.yml`:
+
+       services:
+
+         web:
+           build: .
+           ports:
+             - 80
+
+         balanceador:
+           image: dockercloud/haproxy
+           ports:
+             - 8888:80
+           links:
+             - web
+           volumes:
+             - /var/run/docker.sock:/var/run/docker.sock
+
+   Levanta cuatro servidores web con:
+
+       $ sudo docker compose up -d --scale web=4
+       $ sudo docker compose ps
+       $ sudo docker compose up -d --scale web=6
+       $ sudo docker compose ps
+
+   A cada recarga de la dirección <http://localhost:8888/> el balanceador nos redirigirá a uno u otro nodo (-comprueba la IP mostrada por la página web-) .
+
+   Luego apaga los contenedores con:
+
+       $ sudo docker compose down
+       $ sudo docker compose ps
 
 Otros buenos ejemplos comentados se encuentran en <https://docs.docker.com/compose/gettingstarted/> .
 
