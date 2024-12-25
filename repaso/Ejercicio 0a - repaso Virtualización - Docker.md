@@ -740,6 +740,8 @@ Docker pone en marcha aplicaciones o software en contenedores en varios entornos
 
 Sin embargo, las aplicaciones en contenedores pueden ser complicadas. Durante la producción, muchas pueden requerir docenas o cientos de contenedores independientes. Es en este punto donde los entornos en tiempo de ejecución de contenedores, como Docker, se benefician del uso de otras herramientas para orquestar o gestionar todos los contenedores en funcionamiento.
 
+¿Cómo escalar? ¿Cómo evitar conflictos de puertos? ¿Cómo actualizamos los contenedores? ¿Qué pasa si un contenedor tiene problemas? ¿Qué pasa si un amfitrión tiene problemas?
+
 Las herramientas que realizan orquestación de contenedores dirigen el comportamiento de los contenedores pudiendo automatizar el despliegue, la gestión y el escalado de las aplicaciones basadas en contenedores. Estas herramientas son necesarias en entornos en los que tenemos que manejar un sistema con muchos contenedores, que dan distintos servicios (base de datos, servidor web, métricas, la propia aplicación, ...) y desplegados sobre distintos servidores. Estos contenedores atienden una demanda determinada que tiene que ser satisfecha por unos recursos los cuales se tienen que escalar, actualizar, etc. sin repercutir en el usuario de la aplicación. Por tanto hay que controlar y dirigir la creación de contenedores, verificar su correcta ejecución, gestionar los errores,...
 
 Ejemplos de orquestadores de contenedores son [Docker Compose](https://docs.docker.com/compose/), [Docker Swarm](https://docs.docker.com/engine/swarm/) y [Kubernetes](https://es.wikipedia.org/wiki/Kubernetes).
@@ -823,7 +825,7 @@ Ejemplos de docker-compose.yml:
 
 2. En este ejemplo veremos que docker compose también puede levantar contenedores a partir de imágenes a construir mediante su `Dockerfile`. Escribe el siguiente fichero `index.php`:
 
-       <?php echo "Hola, mi IP es ".$_SERVER["SERVER_ADDR"]; ?>
+       <html><body><p><?php echo "Mi IP es ".$_SERVER["SERVER_ADDR"]." y mi nombre es ".gethostname(); ?></p></body></html>
 
    Y ahora escribe el fichero `Dockerfile` que generará una nueva imagen con nuestra aplicación web:
 
@@ -904,11 +906,13 @@ Docker proporciona la utilidad Docker Swarm, que maneja grupos ("clusters") de c
 
 Los comandos `docker swarm` y `docker node` permiten a los usuarios ejecutar el swarm, listar nodos del clúster, actualizar nodos, borrarlos, etc. 
 
-<https://docs.docker.com/engine/swarm/key-concepts/>
+Algunos apuntes interesantes:
 
-<https://docs.docker.com/get-started/swarm-deploy/>
+ * <https://docs.docker.com/engine/swarm/key-concepts/>
 
-<https://docs.docker.com/engine/swarm/swarm-tutorial/>
+ * <https://docs.docker.com/get-started/swarm-deploy/>
+
+ * <https://docs.docker.com/engine/swarm/swarm-tutorial/>
 
 
 ---
@@ -923,13 +927,114 @@ Kubernetes aporta mecanismos que depliegan, mantienen y escalan aplicacions bas�
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/be/Kubernetes.png)
 
-<https://cloud.google.com/kubernetes-engine/kubernetes-comic>
+Conceptos:
 
-<https://kubernetes.io/docs/tutorials/kubernetes-basics/>
+ * [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) : 
+   Uno o más contenedores compartiendo la IP dinámica del pod, compartiendo almacenamiento y ompartiendo recursos, y compartiendo el ciclo de vida del pod.
 
-<https://docs.docker.com/get-started/kube-deploy/>
+ * [Nodes](https://kubernetes.io/docs/concepts/architecture/nodes/) : 
+   Contienen pods. Está el "master node" que se utiliza para gestionar el cluster, y los "worker nodes" que contienen la carga de trabajo. Al máster node le decimos qué imagen queremos y cuantas réplicas, y él se encargara de encontrar los worker nodes para ejecutar la aplicación.
 
-<https://container.training/kube-selfpaced.yml.html>
+   Podrías ver el pod como una máquina virtual que tiene contenedores, y el nodo como una máquina física que contiene varias máquinas virtuales pod.
+
+ * [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) : 
+   Monitorea periódicamente comprobando el estado deseado por una plantilla, escalando y replicando los pods. Determina cuantas instancias de una aplicación deben ejecutarse, asegurando alta disponibilidad y tolerancia a fallos.
+
+ * [Services](https://kubernetes.io/docs/concepts/services-networking/service/) : 
+   Agrupa pods mediante etiquetas proporcionando una IP virtual estable y nombre DNS. Proporciona un punto de acceso estable a la aplicación, sea cual sea la infraestructura interna o el númerod e instancias que se ejecutan.
+
+ * [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) : 
+   Almacenamiento en red.
+
+ * [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) : 
+   Tuplas de clave/valor asociados a objetos Kubernetes.
+
+Algunos apuntes interesantes:
+
+ * <https://cloud.google.com/kubernetes-engine/kubernetes-comic>
+
+ * <https://kubernetes.io/docs/tutorials/kubernetes-basics/>
+
+ * <https://container.training/kube-selfpaced.yml.html>
+
+Vamos a instalar Kubernetes en local con Minikube en Debian 12 . Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/).
+
+ 1. Utilizaré Debian 12 en VirtualBox. En la máquina virtual hay que seleccionar dos núcleos y dar 2Gb de memoria RAM como mínimo.
+
+ 2. Las siguientes instrucciones instalan minikube:
+ 
+        $ wget https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+        $ sudo dpkg -i minikube_latest_amd64.deb
+
+    Sin embargo, minikube [necesita un "driver" para ejecutarse](https://minikube.sigs.k8s.io/docs/drivers/). Como driver para minikube escojo Docker, que si no está instalado lo instalo con:
+
+        $ sudo apt update
+        $ sudo apt install docker.io
+        $ sudo usermod -aG docker $USER && newgrp docker
+
+    Puedes probar que minikube funciona con:
+    
+        $ minikube start
+        $ minikube dashboard
+
+ 3. En caso de que también quiera instalar kubectl, que permite ejecutar comandos contra clústeres Kubernetes:
+
+        $ sudo apt update
+        $ sudo apt install -y apt-transport-https ca-certificates curl gnupg
+        $ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        $ sudo chmod 644 /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        $ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+        $ sudo chmod 644 /etc/apt/sources.list.d/kubernetes.list
+        $ sudo apt update
+        $ sudo apt install -y kubectl
+
+    Puedes probar que se instaló con:
+    
+        $ kubectl version --client
+
+ 4. Ahora ya puedes interactuar con el clúster:
+ 
+        $ kubectl get all
+
+    En un segundo terminal, para monitorizar un despliegue, escribe:
+
+        $ watch -n 1 kubectl get pods -A
+    
+    Volvemos al primer terminal para lanzar una aplicación y ejecutar algunos [comandos básicos](https://mer.vin/2019/10/kubectl-basic-commands/):
+
+        $ kubectl create deployment miapp --image=nginxdemos/hello:0.3
+        $ kubectl get events --sort-by=.metadata.creationTimestamp
+        $ kubectl expose deployment miapp --port=8080 --type=LoadBalancer
+        $ kubectl get deployments
+        $ kubectl get services
+
+    En la instalación local con minikube, la IP queda "pending". Para acceder a la app puedo utilizar la IP de minikube:
+
+        $ minikube service miapp
+        $ minikube tunnel
+        $ kubectl get services
+
+    Podemos escalar facilmente, o cambiar la versión:
+
+        $ kubectl scale deployment miapp --replicas=2
+        $ kubectl describe deployment miapp
+        $ kubectl edit deployment miapp
+        $ kubectl set image deployment/miapp *=nginxdemos/hello:0.4
+
+    Y podemos interactuar con los pods:
+
+        $ kubectl get nodes
+        $ kubectl describe pod <nombre_pod>
+        $ kubectl logs <nombre_pod>
+        $ kubectl exec -ti <nombre_pod> -- ls/bin/sh
+        (pod)$ ls
+        (pod)$ pwd
+        (pod)$ exit
+        $ kubectl delete pod <nombre_pod>
+
+    Finalmente, para cerrar todo:
+
+        $ kubectl delete all --all
 
 
 ---
