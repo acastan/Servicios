@@ -957,7 +957,7 @@ Algunos apuntes interesantes:
 
  * <https://container.training/kube-selfpaced.yml.html>
 
-Vamos a instalar Kubernetes en local con Minikube en Debian 12 . Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/).
+Vamos a instalar Kubernetes en local en Debian 12. Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/).
 
  1. Utilizaré Debian 12 en VirtualBox. En la máquina virtual hay que seleccionar dos núcleos y dar 2Gb de memoria RAM como mínimo.
 
