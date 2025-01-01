@@ -1016,7 +1016,7 @@ Vamos a instalar Kubernetes en local en Debian 12 . Existen muchas [implementaci
 
     Podemos escalar facilmente, o cambiar la versión:
 
-        $ kubectl scale deployment miapp --replicas=2
+        $ kubectl scale deployment miapp --replicas=3
         $ kubectl describe deployment miapp
         $ kubectl edit deployment miapp
         $ kubectl set image deployment/miapp *=nginxdemos/hello:0.4
