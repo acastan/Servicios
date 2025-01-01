@@ -935,7 +935,7 @@ Conceptos:
  * [Nodes](https://kubernetes.io/docs/concepts/architecture/nodes/) : 
    Contienen pods. Está el "master node" que se utiliza para gestionar el cluster, y los "worker nodes" que contienen la carga de trabajo. Al máster node le decimos qué imagen queremos y cuantas réplicas, y él se encargara de encontrar los worker nodes para ejecutar la aplicación.
 
-   Podrías ver el pod como una máquina virtual que tiene contenedores, y el nodo como una máquina física que contiene varias máquinas virtuales pod.
+   Podrías imaginar (-pero no es real-) el pod como una máquina virtual que tiene contenedores, y el nodo como una máquina física que contiene varias máquinas virtuales pod.
 
  * [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) : 
    Monitorea periódicamente comprobando el estado deseado por una plantilla, escalando y replicando los pods. Determina cuantas instancias de una aplicación deben ejecutarse, asegurando alta disponibilidad y tolerancia a fallos.
@@ -957,7 +957,7 @@ Algunos apuntes interesantes:
 
  * <https://container.training/kube-selfpaced.yml.html>
 
-Vamos a instalar Kubernetes en local en Debian 12. Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/).
+Vamos a instalar Kubernetes en local en Debian 12 . Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/), que instala en una única máquina, real o virtual, un nodo "master" y un nodo "worker".
 
  1. Utilizaré Debian 12 en VirtualBox. En la máquina virtual hay que seleccionar dos núcleos y dar 2Gb de memoria RAM como mínimo.
 
@@ -975,7 +975,7 @@ Vamos a instalar Kubernetes en local en Debian 12. Existen muchas [implementacio
     Puedes probar que minikube funciona con:
     
         $ minikube start
-        $ minikube dashboard
+        $ minikube dashboard &
 
  3. En caso de que también quiera instalar kubectl, que permite ejecutar comandos contra clústeres Kubernetes:
 
@@ -990,10 +990,11 @@ Vamos a instalar Kubernetes en local en Debian 12. Existen muchas [implementacio
 
     Puedes probar que se instaló con:
     
-        $ kubectl version --client
+        $ kubectl version
 
  4. Ahora ya puedes interactuar con el clúster:
  
+        $ kubectl cluster-info
         $ kubectl get all
 
     En un segundo terminal, para monitorizar un despliegue, escribe:
@@ -1011,7 +1012,7 @@ Vamos a instalar Kubernetes en local en Debian 12. Existen muchas [implementacio
     En la instalación local con minikube, la IP queda "pending". Para acceder a la app puedo utilizar la IP de minikube:
 
         $ minikube service miapp
-        $ minikube tunnel
+        $ minikube tunnel &
         $ kubectl get services
 
     Podemos escalar facilmente, o cambiar la versión:
