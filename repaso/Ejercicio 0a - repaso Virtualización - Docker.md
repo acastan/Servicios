@@ -930,7 +930,7 @@ Kubernetes aporta mecanismos que depliegan, mantienen y escalan aplicacions bas�
 Conceptos:
 
  * [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) : 
-   Uno o más contenedores compartiendo la IP dinámica del pod, compartiendo almacenamiento y ompartiendo recursos, y compartiendo el ciclo de vida del pod.
+   Uno o más contenedores compartiendo la IP dinámica del pod, compartiendo almacenamiento, compartiendo recursos, y compartiendo el ciclo de vida del pod.
 
  * [Nodes](https://kubernetes.io/docs/concepts/architecture/nodes/) : 
    Contienen pods. Está el "master node" que se utiliza para gestionar el cluster, y los "worker nodes" que contienen la carga de trabajo. Al máster node le decimos qué imagen queremos y cuantas réplicas, y él se encargara de encontrar los worker nodes para ejecutar la aplicación.
@@ -941,7 +941,7 @@ Conceptos:
    Monitorea periódicamente comprobando el estado deseado por una plantilla, escalando y replicando los pods. Determina cuantas instancias de una aplicación deben ejecutarse, asegurando alta disponibilidad y tolerancia a fallos.
 
  * [Services](https://kubernetes.io/docs/concepts/services-networking/service/) : 
-   Agrupa pods mediante etiquetas proporcionando una IP virtual estable y nombre DNS. Proporciona un punto de acceso estable a la aplicación, sea cual sea la infraestructura interna o el númerod e instancias que se ejecutan.
+   Agrupa pods mediante etiquetas proporcionando una IP virtual estable y nombre DNS. Proporciona un punto de acceso estable a la aplicación, sea cual sea la infraestructura interna o el número de instancias que se ejecutan.
 
  * [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) : 
    Almacenamiento en red.
@@ -1026,7 +1026,7 @@ Vamos a instalar Kubernetes en local en Debian 12 . Existen muchas [implementaci
         $ kubectl get nodes
         $ kubectl describe pod <nombre_pod>
         $ kubectl logs <nombre_pod>
-        $ kubectl exec -ti <nombre_pod> -- ls/bin/sh
+        $ kubectl exec -ti <nombre_pod> -- /bin/sh
         (pod)$ ls
         (pod)$ pwd
         (pod)$ exit
