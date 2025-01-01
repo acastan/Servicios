@@ -1005,14 +1005,13 @@ Vamos a instalar Kubernetes en local en Debian 12 . Existen muchas [implementaci
 
         $ kubectl create deployment miapp --image=nginxdemos/hello:0.3
         $ kubectl get events --sort-by=.metadata.creationTimestamp
-        $ kubectl expose deployment miapp --port=8080 --type=LoadBalancer
+        $ kubectl expose deployment miapp --port=80 --type=LoadBalancer
         $ kubectl get deployments
         $ kubectl get services
 
     En la instalación local con minikube, la IP queda "pending". Para acceder a la app puedo utilizar la IP de minikube:
 
         $ minikube service miapp
-        $ minikube tunnel &
         $ kubectl get services
 
     Podemos escalar facilmente, o cambiar la versión:
