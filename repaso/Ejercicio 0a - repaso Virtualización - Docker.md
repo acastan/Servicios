@@ -830,7 +830,7 @@ Ejemplos de docker-compose.yml:
    Y ahora escribe el fichero `Dockerfile` que generará una nueva imagen con nuestra aplicación web:
 
        FROM php:apache
-       COPY index.php /var/www/html/
+       COPY index.php /var/www/html/index.php
 
    Por útlimo escribe el siguiente fichero `docker-compose.yml` en el que en lugar de tener la línea `ìmage` tenemos la línea `build` para construir la imagen, y en que además el puerto 80 del contenedor se mapea a un puero aleatorio del anfitrión:
 
@@ -859,7 +859,7 @@ Ejemplos de docker-compose.yml:
        $ sudo docker compose down
        $ sudo docker compose ps
 
-3. Ahora al ejemplo anterior le añadimos un balanceador de carga que será quien recibirá las peticiones. Modifica el fichero `docker-compose.yml`:
+3. Ahora al ejemplo anterior le añadimos un [balanceador de carga](https://intellisoft.io/docker-load-balancer-a-comprehensive-guide/) que será quien recibirá las peticiones. Modifica el fichero `docker-compose.yml`:
 
        services:
 
