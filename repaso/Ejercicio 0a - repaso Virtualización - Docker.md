@@ -794,7 +794,7 @@ Ejemplos de docker-compose.yml:
              - WORDPRESS_DB_PASSWORD=contraseña_db_wordpress
              - WORDPRESS_DB_NAME=db_wordpress
            ports:
-             - "8000:80"
+             - 8000:80
            networks:
              - mired
            volumes:
@@ -825,7 +825,7 @@ Ejemplos de docker-compose.yml:
 
 2. En este ejemplo veremos que docker compose también puede levantar contenedores a partir de imágenes a construir mediante su `Dockerfile`. Escribe el siguiente fichero `index.php`:
 
-       <html><body><p><?php echo "Mi IP es ".$_SERVER["SERVER_ADDR"]." y mi nombre es ".gethostname(); ?></p></body></html>
+       <html><body><p><?php echo "Mi IP es ".$_SERVER["SERVER_ADDR"]." y mi ID es ".gethostname(); ?></p></body></html>
 
    Y ahora escribe el fichero `Dockerfile` que generará una nueva imagen con nuestra aplicación web:
 
@@ -837,8 +837,8 @@ Ejemplos de docker-compose.yml:
        services:
          web:
            build: .
-         ports:
-           - 80
+           ports:
+             - 80
 
    Levanta un contenedor con:
 
@@ -875,7 +875,7 @@ Ejemplos de docker-compose.yml:
            links:
              - web
            volumes:
-             - /var/run/docker.sock:/var/run/docker.sock
+             - /var/run/docker.sock:/var/run/docker.sock:ro
 
    Levanta cuatro servidores web con:
 
