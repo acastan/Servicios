@@ -129,7 +129,7 @@ Configura el servidor para que sirva páginas de dos nombres de dominio diferent
 
      Entrega captura de pantalla del listado del directorio "sites-enabled" de Apache.
 
- 04. Haz los canvios necesarios en tu servidor DNS para que los nombres de host "www.mired.org" i "intranet.mired.org" apunten a la IP del servidor DNS, que también es el servidor web.
+ 04. Haz los canvios necesarios en tu servidor DNS para que los nombres de host "www.mired.org" e "intranet.mired.org" apunten a la IP del servidor DNS, que también es el servidor web.
 
      Entrega captura de pantalla del fichero de configuración del servidor DNS.
 
@@ -222,7 +222,7 @@ Vas tener tu propio servidor web en Internet, donde moverás todo lo hecho hasta
 
  02. Instala en dicha instancia lo practicado hasta ahora: servidor web que pueda servir contenidos dinámicos, gestor de contenido, https.
  
- 03. Abre puertos en los dos cortafuegos para poder probar tu web des de el exterior: el cortafuegos de red y el cortafuegos del host.
+ 03. Abre los puertos 80 y 443 en el cortafuegos de red y el cortafuegos del host para poder probar tu web des de el exterior.
 
  04. Crea tu página web.
   
@@ -299,7 +299,7 @@ PRÁCTICAS LINUX EXTRA
 
      <https://httpd.apache.org/docs/current/howto/auth.html>
 
- 09. (Extra) Crea una carpeta fuera del directorio raíz de Apache i "mapeala" a la URL http://localhost/carpetaExterna/
+ 09. (Extra) Crea una carpeta fuera del directorio raíz de Apache y "mapeala" a la URL http://localhost/carpetaExterna/
 
      <https://httpd.apache.org/docs/current/urlmapping.html#outside>
 
@@ -322,7 +322,7 @@ REFERENCIAS
 
   - <https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP>
 
-  - <http://news.netcraft.com/archives/web_server_survey.html>
+  - <https://www.netcraft.com/resources/?topic=web-server-survey>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_web_server_software>
 
