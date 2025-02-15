@@ -1,4 +1,4 @@
-APUNTES DE CONTENEDORES Y DOCKER
+RESUMEN DE CONTENEDORES Y DOCKER
 ================================
 
 Este es mi resumen sobre contenedores y Docker. Para aprender, te recomiendo que visites:
@@ -934,7 +934,7 @@ Los nodos "worker" contienen el agente "kubelet" que se comunica con el clúster
 Conceptos:
 
  * [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) :
-   Uno o más contenedores compartiendo la IP dinámica del pod, compartiendo almacenamiento, compartiendo recursos, y compartiendo el ciclo de vida del pod. El pode es la unidad mínima que puede manipular Kubernetes.
+   Uno o más contenedores compartiendo la IP dinámica del pod, compartiendo almacenamiento, compartiendo recursos, y compartiendo el ciclo de vida del pod. El pod es la unidad mínima que puede manipular Kubernetes.
 
  * [Nodes](https://kubernetes.io/docs/concepts/architecture/nodes/) :
    Contienen pods. Está el "master node" que se utiliza para gestionar el clúster, y los "worker nodes" que contienen la carga de trabajo. Al máster node le decimos qué imagen queremos y cuantas réplicas, y él se encargara de encontrar los worker nodes para ejecutar la aplicación.
@@ -961,13 +961,21 @@ Algunos apuntes interesantes:
 
  * <https://container.training/kube-selfpaced.yml.html>
 
+Puedes probar Kubernetes en línea, sin tenerlo instalado, en las siguientes direcciones:
+
+ * <https://labs.play-with-k8s.com/>
+
+ * <https://killercoda.com/playgrounds/scenario/kubernetes>
+
+ * <https://killercoda.com/playgrounds/course/kubernetes-playgrounds>
+
 Los usuarios que han instalado Docker Desktop tienen ya Kubernetes instalado. Quizás tengan que habilitar Kubernetes en la pestaña correspondiente de la aplicación Docker Desktop, y entonces ya puedan lanzar comandos `kubectl` des del terminal.
 
 A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/), que instala en una única máquina, real o virtual, un nodo que funciona a la vez como "master" y como "worker".
 
  1. En la máquina virtual hay que seleccionar dos núcleos y dar 2Gb de memoria RAM como mínimo.
 
- 2. Antes de instalar el orquestador, primero se supone que tengo una tecnología de contenedores ya instalada, como Docker o Podman. Minikube necesitará cargar un ["driver"](https://minikube.sigs.k8s.io/docs/drivers/) para la tecnología de virtualización. En este curso trabajamos con Docker, que si no está instalado lo instalo con:
+ 2. Antes de instalar el orquestador, primero se supone que tengo una tecnología de contenedores ya instalada, como Docker o Podman. Minikube necesitará cargar un "[driver](https://minikube.sigs.k8s.io/docs/drivers/)" para la tecnología de virtualización. En este curso trabajamos con Docker, que si no está instalado lo instalo con:
 
         $ sudo apt update
         $ sudo apt install docker.io
@@ -989,16 +997,12 @@ A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas 
 
         $ minikube dashboard &
 
- 4. En un cliente, que en mi caso va a ser la misma máquina virtual, necesitaría instalar el comando `kubectl`, que permite lanzar órdenes contra clústeres Kubernetes. En realidad, ya se ha instalado con Minikube sin que nos demos cuenta y podríamos utilizarlo creando un alias `alias kubectl="minikube kubectl --"` . Sin embargo, en estas líneas detallo como sería la instalación des de cero:
-
+ 4. En un cliente, que en mi caso va a ser la misma máquina virtual, necesitaría instalar el comando `kubectl`, que permite lanzar órdenes contra clústeres Kubernetes. En realidad, ya se ha instalado con Minikube sin que nos demos cuenta y podemos utilizarlo creando un alias `alias kubectl="minikube kubectl --"` . Sin embargo, también puedo instalar una versión antigua (-no recomendable-) des de los repositorios:
+ 
         $ sudo apt update
-        $ sudo apt install -y apt-transport-https ca-certificates curl gnupg
-        $ curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-        $ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-        $ sudo apt update
-        $ sudo apt install -y kubectl
-
-    Puedes probar que se instaló con:
+        $ sudo apt install kubernetes-client
+  
+    De cualquiera de las dos maneras, puedes probar que se instaló con:
 
         $ kubectl version
 
