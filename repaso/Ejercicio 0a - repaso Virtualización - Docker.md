@@ -1002,7 +1002,7 @@ A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas 
         $ sudo apt update
         $ sudo apt install kubernetes-client
   
-    De cualquiera de las dos maneras, puedes probar que se instaló con:
+    De cualquiera de las dos maneras, puedes probar que funciona con:
 
         $ kubectl version
 
