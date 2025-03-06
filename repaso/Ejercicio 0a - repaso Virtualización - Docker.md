@@ -971,7 +971,8 @@ Puedes probar Kubernetes en línea, sin tenerlo instalado, en las siguientes dir
 
 Los usuarios que han instalado Docker Desktop tienen ya Kubernetes instalado. Quizás tengan que habilitar Kubernetes en la pestaña correspondiente de la aplicación Docker Desktop, y entonces ya puedan lanzar comandos `kubectl` des del terminal.
 
-A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f). Para esta prueba escojo [minikube](https://minikube.sigs.k8s.io/), que instala en una única máquina, real o virtual, un nodo que funciona a la vez como "master" y como "worker".
+A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas [implementaciones de Kubernetes](https://alperenbayramoglu2.medium.com/simple-comparison-of-lightweight-k8s-implementations-7c07c4e6e95f): 
+[minikube](https://minikube.sigs.k8s.io/), [KinD](<https://kind.sigs.k8s.io/>), [K3s](https://k3s.io/), etc. Para esta prueba escojo minikube, que instala en una única máquina, real o virtual, un nodo que funciona a la vez como "master" y como "worker".
 
  1. En la máquina virtual hay que seleccionar dos núcleos y dar 2Gb de memoria RAM como mínimo.
 
@@ -1064,6 +1065,14 @@ A continuación voy a instalar Kubernetes en local en Debian 12. Existen muchas 
     Finalmente, para cerrar todo:
 
         $ kubectl delete all --all
+
+Propuestas de ejercicios:
+
+ * Realizar esta [instalación de Kubernetes con KinD](https://www.josedomingo.org/pledin/2021/02/kubernetes-con-kind/)
+
+ * Realizar esta [instalación de Kubernetes des de cero](https://www.digitalocean.com/community/tutorials/bare-metal-kubernetes)
+
+ * Realizar una instalación de Kubenetes con K3s, buscando tu mismo/a los tutoriales. El clúster tendrá tres máquinas virtuales Debian 12 sin entorno gráfico: un nodo máster (con 1Gb RAM y 1 CPU) y dos nodos workers (con 512 Mb RAM y 1 CPU). Además tendrás otra máquina virtual adicional donde instalarás kubectl para controlar el clúster. La imagen de la aplicación a lanzar es nginxdemos/hello 
 
 
 ---
