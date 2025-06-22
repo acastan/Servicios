@@ -3,15 +3,15 @@ RESUMEN DE CONTENEDORES Y DOCKER
 
 Este es mi resumen sobre contenedores y Docker. Para aprender, te recomiendo que visites:
 
- * [Un resumen de Docker con buenos gráficos](https://betterprogramming.pub/docker-for-front-end-developers-c758a44e622f)
-
  * [¿Qué deberías aprender si te vas a dedicar a Docker?](https://roadmap.sh/docker)
 
- * [Un buen curso sobre Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
+ * Un [vídeo introductorio a Docker](https://www.youtube.com/watch?v=CV_Uf3Dq-EU) de una hora
 
- * [Un curso en transparencias](https://container.training/intro-selfpaced.yml.html)
+ * Un [curso de Docker](https://sergarb1.github.io/CursoIntroduccionADocker/)
 
- * [La documentación oficial de Docker](https://docs.docker.com/)
+ * Unas [transparencias de Docker](https://container.training/intro-selfpaced.yml.html)
+
+ * La [documentación oficial de Docker](https://docs.docker.com/)
 
 
 Tabla de contenido:
@@ -955,11 +955,13 @@ Conceptos:
 
 Algunos apuntes interesantes:
 
- * <https://cloud.google.com/kubernetes-engine/kubernetes-comic>
+ * Un [cómic de Kubernetes](https://cloud.google.com/kubernetes-engine/kubernetes-comic)
 
- * <https://kubernetes.io/docs/tutorials/kubernetes-basics/>
+ * Un [tutorial de Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
 
- * <https://container.training/kube-selfpaced.yml.html>
+ * Unas [transparencias de Kubernetes](https://container.training/kube-selfpaced.yml.html)
+
+ * Un [vídeo introductorio a Kubernetes](https://www.youtube.com/watch?v=DCoBcpOA7W4)  de una hora y media
 
 Puedes probar Kubernetes en línea, sin tenerlo instalado, en las siguientes direcciones:
 
@@ -1072,7 +1074,13 @@ Propuestas de ejercicios:
 
  * Realizar esta [instalación de Kubernetes des de cero](https://www.digitalocean.com/community/tutorials/bare-metal-kubernetes)
 
- * Realizar una instalación de Kubenetes con K3s, buscando tu mismo/a los tutoriales. El clúster tendrá tres máquinas virtuales Debian 12 sin entorno gráfico: un nodo máster (con 1Gb RAM y 1 CPU) y dos nodos workers (con 512 Mb RAM y 1 CPU). Además tendrás otra máquina virtual adicional donde instalarás kubectl para controlar el clúster. La imagen de la aplicación a lanzar es nginxdemos/hello 
+ * Realizar una instalación de Kubenetes con K3s, buscando tu mismo/a los tutoriales. El clúster tendrá tres máquinas virtuales Debian 12 sin entorno gráfico: un nodo máster (con 1Gb RAM y 1 CPU) y dos nodos workers (con 512 Mb RAM y 1 CPU). Además tendrás otra máquina virtual adicional donde instalarás kubectl para controlar el clúster. La imagen de la aplicación a lanzar es nginxdemos/hello
+
+Si crees que has conseguido un cierto dominio o maestría en Kubernetes, aquí van unos ejercicios adicionales del tipo reto "Capture the Flag":
+
+ * <https://k8slanparty.com/>
+
+ * <https://eksclustergames.com/>
 
 
 ---
