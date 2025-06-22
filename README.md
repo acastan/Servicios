@@ -18,7 +18,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Ejercicio de virtualización con Virtualbox (solución)](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20soluci%C3%B3n.pdf)
 
-  * [Repaso de virtualización con Docker](repaso/Ejercicio%200a%20-%20repaso%20Virtualizaci%C3%B3n%20-%20Docker.md)
+  * [Repaso de virtualización con Docker](https://github.com/acastan/Docker/blob/main/Docker%20-%20apuntes.md)
 
 ### TCP/IP
 
