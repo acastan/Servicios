@@ -1,4 +1,4 @@
-﻿PREGUNTAS
+PREGUNTAS
 ---------
 
   01. ¿Es lo mismo acceso remoto que control remoto? ¿Qué diferencia hay?
@@ -9,11 +9,11 @@
 
   04. ¿Qué es X sobre SSH?
 
-  05. ¿Qué es FreeNX?
+  05. ¿Qué es SPICE?
 
   06. ¿Qué es RDP?
 
-  07. Dibuja una tabla con las diferencias hay entre ellos (SSH, VNC, RDP, FreeNX, X sobre SSH). Indica para que sistema operativo está disponible el servidor y el cliente, cuál es herramienta de control remoto y cuál de acceso remoto, cuál da acceso a línea de comandos y cuál a aplicaciones gráficas.
+  07. Dibuja una tabla con las diferencias hay entre ellos (SSH, VNC, RDP, SPICE, X sobre SSH). Indica para que sistema operativo está disponible el servidor y el cliente, cuál es herramienta de control remoto y cuál de acceso remoto, cuál da acceso a línea de comandos y cuál a aplicaciones gráficas.
   
   08. ¿Qué es un tunel SSH y para qué sirve? ¿Qué tipos de tunel SSH existen? ¿Qué diferencia hay entre tunel SSH y VPN? ¿Con qué comandos puedes crear un tunel SSH en Linux?
 
@@ -77,7 +77,7 @@ Implementa una conexión VNC bajo tunel SSH. Para ello debes:
 
     - Cliente Windows: <http://www.maquinasvirtuales.eu/conexion-vnc-bajo-tunel-ssh-putty/>
 
-    - Cliente Linux: <http://www.vilecha.com/hellguest/ssh_tuneles.asp>
+    - Cliente Linux: <https://www.ochobitshacenunbyte.com/2022/10/19/como-crear-un-tunel-ssh-en-linux/>
 
 
 
@@ -119,9 +119,11 @@ REFERENCIAS
 
   - <http://en.wikipedia.org/wiki/Secure_Shell>
 
+  - <https://iximiuz.com/en/posts/ssh-tunnels/>
+
   - <http://en.wikipedia.org/wiki/VNC>
 
-  - <http://en.wikipedia.org/wiki/NX_technology>
+  - <https://en.wikipedia.org/wiki/Simple_Protocol_for_Independent_Computing_Environments>
 
   - <http://en.wikipedia.org/wiki/Remote_Desktop_Protocol>
 
@@ -134,4 +136,3 @@ REFERENCIAS
   - <http://www.vanemery.com/Linux/XoverSSH/X-over-SSH2.html>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_remote_desktop_software>
-
