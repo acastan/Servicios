@@ -1,13 +1,13 @@
 Instalación de Linux
 --------------------
 
-Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. En este manual yo utilizaré Debian Stable 12 y Ubuntu Server 22.04.
+Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. En este manual yo utilizaré Debian Stable 12 y Ubuntu Server 24.04.
 
 Encontrarás unos detallados tutoriales para la instalación en:
 
   - <https://www.howtoforge.com/perfect-server-debian-12-buster-apache-bind-dovecot-ispconfig-3-2/>
-
-  - <https://www.howtoforge.com/tutorial/perfect-server-ubuntu-20.04-with-apache-php-myqsl-pureftpd-bind-postfix-doveot-and-ispconfig/>
+  
+  - <https://www.howtoforge.com/tutorial/ispconfig-multiserver-setup-debian-ubuntu/>
 
 Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita entorno gráfico.
 
@@ -66,10 +66,10 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
     Si queremos descargar software libre fuera del repositorio de Ubuntu añadiremos la palabra `universe`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `multiverse`.
 
-        deb http://es.archive.ubuntu.com/ubuntu/ jammy           main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/ jammy-updates   main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
-        deb http://security.ubuntu.com/ubuntu/   jammy-security  main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   noble           main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   noble-updates   main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   noble-backports main restricted universe multiverse
+        deb http://security.ubuntu.com/ubuntu/     noble-security  main restricted universe multiverse
 
     Si queremos descargar software libre fuera del repositorio de Debian añadiremos la palabra `contrib`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `non-free`.
 
@@ -153,7 +153,7 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
 10. Por último, por si quisiéramos administrar nuestro servidor remotamente a través de un navegador, faltaría añadir el repositorio de Webmin:
 
-        sudo apt install gnupg
+        sudo apt install gnupg2
         sudo nano /etc/apt/sources.list
 
             deb https://download.webmin.com/download/repository sarge contrib
