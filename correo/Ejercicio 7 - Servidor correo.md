@@ -15,9 +15,9 @@
 
  07. Al instalar un servidor de correo entrante y un servidor de correo saliente, ¿Qué parámetros a configurar piensas que serán los más importantes?
 
- 08. ¿Cómo puedes utilizar telnet para comprobar el funcionamiento de ...
-     a) ... un servidor SMTP?
-     b) ... un servidor POP3?
+ 08. ¿Cómo puedes utilizar telnet para comprobar el funcionamiento de ...  
+     a) ... un servidor SMTP?  
+     b) ... un servidor POP3?  
      c) ... un servidor IMAP?
 
 
@@ -86,4 +86,5 @@ REFERENCIAS
   - <http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>
 
   - <http://en.wikipedia.org/wiki/Comparison_of_mail_servers>
+
 
