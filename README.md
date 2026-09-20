@@ -44,13 +44,13 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Ejercicio sobre Windows Server (enunciado)](repaso/Ejercicio%200d%20-%20repaso%20Windows%20Server%20-%20ejercicio.md)
 
-  * [Ejercicio sobre Windows Server (solución)](repaso/Ejercicio%200d%20-%20repaso%20Windows%20Server%20-%20soluci%C3%B3n.pdf)
+  * [Ejercicio sobre Windows Server (solución)](repaso/Ejercicio%200d%20-%20repaso%20Windows%20Server%20-%20soluci%C3%B3n.md)
   
 ### Planificar los servicios
 
   * [Ejercicio sobre servicios (enunciado)](repaso/Ejercicio%200e%20-%20Planificar%20servicios.md)
 
-  * [Ejercicio sobre servicios (solución)](repaso/Ejercicio%200e%20-%20Planificar%20servicios%20-%20soluci%C3%B3n.pdf)
+  * [Ejercicio sobre servicios (solución)](repaso/Ejercicio%200e%20-%20Planificar%20servicios%20-%20soluci%C3%B3n.md)
 
 
 
