@@ -1,11 +1,5 @@
-% Title:   RAID en Linux  
-% Version: 1.2  
-% Author:  Alejandro Castán Salinas  
-% Email:   acastan@xtec.cat
-
-
----
-
+RAID en Linux
+=============
 
 Este texto trata de resumir el proceso de creación de RAIDs software en Linux (Ubuntu 16.04) des de la línea de comandos, pero al final del documento dedico un apartado a la creación de RAID gráficamente con un módulo de Webmin.
 
@@ -18,7 +12,21 @@ Bibliografía que deberías leer:
   * <https://raid.wiki.kernel.org/index.php/RAID_setup>
   * <http://www.tldp.org/HOWTO/Software-RAID-HOWTO.html>
 
-{toc}
+
+---
+
+
+ÍNDICE
+------
+
+  - [PREVIOS](#previos)
+  - [PARTICIONAR LOS DISPOSITIVOS](#particionar-los-dispositivos)
+  - [CONSTRUIR EL RAID](#construir-el-raid)
+  - [ENSAMBLAR Y UTILIZAR EL RAID](#ensamblar-y-utilizar-el-raid)
+  - [QUITAR DISCOS DEL RAID](#quitar-discos-del-raid)
+  - [AÑADIR DISCOS AL RAID](#a-adir-discos-al-raid)
+  - [INCREMENTAR EL TAMAÑO DEL RAID](#incrementar-el-tama-o-del-raid)
+  - [HERRAMIENTAS GRÁFICAS](#herramientas-gr-ficas)
 
 
 ---
@@ -252,4 +260,3 @@ El gestor de contenidos Webmin tiene un módulo de RAID. Mira como se instala y 
   * <https://www.digitalocean.com/community/tutorials/how-to-install-webmin-on-ubuntu-16-04>
   * <https://doxfer.webmin.com/Webmin/Linux_RAID>
   * <https://www.youtube.com/watch?v=Y4MIWzLwZy8>
-
