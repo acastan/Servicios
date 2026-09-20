@@ -1,117 +1,132 @@
-01. ¿Cuantos bytes tiene una dirección de IP versión 4?  
-    a) 2  
-  **b) 4**  
-    c) 32  
+Test TCP/IP
+===========
 
-02. ¿A qué clase pertenece la dirección 116.34.200.19?  
-  **a) A**  
-    b) B  
-    c) C
+01. ¿Cuantos bytes tiene una dirección de IP versión 4?
+    - [ ]  2
+    - [x]  4
+    - [ ]  32
 
-03. Una dirección de clase C utiliza:  
-  **a) 24 bits para la dirección de red y 8 bits para la dirección del equipo.**  
-    b) 16 bits para la dirección de red y 16 bits para la dirección del equipo.  
-    c) 32 bits para la dirección de red y 0 bits para la dirección del equipo.  
-    d) 24 bits para la dirección de red y 24 bits para la dirección del equipo.
+02. ¿A qué clase pertenece la dirección 116.34.200.19?
+    - [x]  A
+    - [ ]  B
+    - [ ]  C
 
-04. La máscara de red sirve para obtener qué bits de una dirección IP identifican la red y qué bits identifican el equipo. (**C**/F)
+03. Una dirección de clase C utiliza:
+    - [x]  24 bits para la dirección de red y 8 bits para la dirección del equipo.
+    - [ ]  16 bits para la dirección de red y 16 bits para la dirección del equipo.
+    - [ ]  32 bits para la dirección de red y 0 bits para la dirección del equipo.
+    - [ ]  24 bits para la dirección de red y 24 bits para la dirección del equipo.
 
-05. ¿Cuál de las siguientes representa la máscara de red por defecto para una red clase C?  
-    a) 255.255.0.0  
-    b) 255.255.232.0  
-  **c) 255.255.255.0**
+04. La máscara de red sirve para obtener qué bits de una dirección IP identifican la red y qué bits identifican el equipo.
+    - [x]  Cierto
+    - [ ]  Falso
 
-06. ¿Cuántos equipos pueden existir en una red clase C?  
-    a) 256  
-  **b) 254**  
-    c) 128
+05. ¿Cuál de las siguientes representa la máscara de red por defecto para una red clase C?
+    - [ ]  255.255.0.0
+    - [ ]  255.255.232.0
+    - [x]  255.255.255.0
 
-07. ¿Para qué se utiliza el protocolo ARP en una red Ethernet?  
-  **a) Obtiene la dirección MAC de un nodo a partir de su dirección IP.**  
-    b) Obtiene la dirección IP de un nodo a partir de su dirección MAC.  
-    c) Obtiene un protocolo a partir de su dirección IP.  
-    d) Obtiene el fabricante de la tarjeta de red a partir de su dirección MAC.
+06. ¿Cuántos equipos pueden existir en una red clase C?
+    - [ ]  256
+    - [x]  254
+    - [ ]  128
 
-08. ¿Cuál es la función de ICMP?  
-    a) Establece la relación entre direcciones de IP y direcciones de MAC.  
-    b) Controla el flujo de información hacia el nodo destino.  
-  **c) Envia información de error y control entre nodos de la red.**
+07. ¿Para qué se utiliza el protocolo ARP en una red Ethernet?
+    - [x]  Obtiene la dirección MAC de un nodo a partir de su dirección IP.
+    - [ ]  Obtiene la dirección IP de un nodo a partir de su dirección MAC.
+    - [ ]  Obtiene un protocolo a partir de su dirección IP.
+    - [ ]  Obtiene el fabricante de la tarjeta de red a partir de su dirección MAC.
 
-09. ¿Cómo se transmiten los mensajes ICMP?  
-    a) En el área de datos de una trama Ethernet.  
-    b) En el área de datos de un segmento TCP.  
-  **c) En el área de datos de un datagrama IP.**
+08. ¿Cuál es la función de ICMP?
+    - [ ]  Establece la relación entre direcciones de IP y direcciones de MAC.
+    - [ ]  Controla el flujo de información hacia el nodo destino.
+    - [x]  Envia información de error y control entre nodos de la red.
 
-10. ¿Cuál de las siguientes frases describe mejor a TCP?  
-    a) Protocolo de enlace punto a punto que soporta múltiples protocolos de red.  
-    b) Protocolo de transporte orientado a datagramas, sin conexión, no fiable.  
-  **c) Protocolo de transporte orientado a datagramas, con conexión, fiable.**
+09. ¿Cómo se transmiten los mensajes ICMP?
+    - [ ]  En el área de datos de una trama Ethernet.
+    - [ ]  En el área de datos de un segmento TCP.
+    - [x]  En el área de datos de un datagrama IP.
 
-11. ¿Cuál de las siguientes frases describe mejor a UDP?  
-    a) Protocolo de enlace punto a punto que soporta múltiples protocolos de red.  
-  **b) Protocolo de transporte orientado a datagramas, sin conexión, no fiable.**  
-    c) Protocolo de transporte orientado a datagramas, con conexión, fiable.
+10. ¿Cuál de las siguientes frases describe mejor a TCP?
+    - [ ]  Protocolo de enlace punto a punto que soporta múltiples protocolos de red.
+    - [ ]  Protocolo de transporte orientado a datagramas, sin conexión, no fiable.
+    - [x]  Protocolo de transporte orientado a datagramas, con conexión, fiable.
 
-12. ¿Cuál de los campos del encabezado de un segmento TCP se utiliza para identificar la cantidad de bytes que un nodo receptor está dispuesto a aceptar?  
-    a) Tiempo de vida.  
-    b) Secuencia.  
-  **c) Ventana.**  
-    d) Versión.
+11. ¿Cuál de las siguientes frases describe mejor a UDP?
+    - [ ]  Protocolo de enlace punto a punto que soporta múltiples protocolos de red.
+    - [x]  Protocolo de transporte orientado a datagramas, sin conexión, no fiable.
+    - [ ]  Protocolo de transporte orientado a datagramas, con conexión, fiable.
 
-13. El establecimiento de conexión en el protocolo TCP requiere la siguiente secuencia de señales en los primeros tres paquetes enviados: primero, la señales SYN/ACK; segundo, la señal SYN; y tercero, la señal ACK. (C/**F**)
+12. ¿Cuál de los campos del encabezado de un segmento TCP se utiliza para identificar la cantidad de bytes que un nodo receptor está dispuesto a aceptar?
+    - [ ]  Tiempo de vida.
+    - [ ]  Secuencia.
+    - [x]  Ventana.
+    - [ ]  Versión.
 
-14. Un equipo que envío información mediante TCP, ¿cómo sabe que la información llegó?  
-  **a) Porque recibe una señal ACK del receptor de la información.**  
-    b) Porque recibe un mensaje "ICMP de solicitud de eco" del receptor de la información.  
-    c) Porque recibe un mensaje "ICMP de datos recibidos" del receptor de la información.  
-    d) Porque recibe una señal SYN/ACK del receptor de la información.
+13. El establecimiento de conexión en el protocolo TCP requiere la siguiente secuencia de señales en los primeros tres paquetes enviados: primero, la señales SYN/ACK; segundo, la señal SYN; y tercero, la señal ACK.
+    - [ ]  Cierto
+    - [x]  Falso
 
-15. Las tres partes de una conexión TCP son:  
-    a) Resolución del nombre, solicitud de eco, terminación de la sesión.  
-  **b) Establecimiento de sesión, transferencia de datos, terminación de la sesión.**  
-    c) Resolución del nombre, búsqueda de puerto, terminación de la sesión.  
-    d) Establecimiento de sesión, negociación de sesión, interrupción de la sesión.
+14. Un equipo que envío información mediante TCP, ¿cómo sabe que la información llegó?
+    - [x]  Porque recibe una señal ACK del receptor de la información.
+    - [ ]  Porque recibe un mensaje "ICMP de solicitud de eco" del receptor de la información.
+    - [ ]  Porque recibe un mensaje "ICMP de datos recibidos" del receptor de la información.
+    - [ ]  Porque recibe una señal SYN/ACK del receptor de la información.
 
-16. Las dos maneras de terminar una sesión TCP son mediante un mensaje "ICMP de solicitud de eco" y un mensaje "ICMP de respuesta de eco". (C/**F**)
+15. Las tres partes de una conexión TCP son:
+    - [ ]  Resolución del nombre, solicitud de eco, terminación de la sesión.
+    - [x]  Establecimiento de sesión, transferencia de datos, terminación de la sesión.
+    - [ ]  Resolución del nombre, búsqueda de puerto, terminación de la sesión.
+    - [ ]  Establecimiento de sesión, negociación de sesión, interrupción de la sesión.
 
-17. Cuando un cliente intenta una conexión y el servidor responde con las señales RST/ACK significa:  
-    a) El servidor está apagado o fuera de servicio.  
-    b) El servidor tiene abierto el puerto TCP donde se intenta establecer la conexión.  
-  **c) El servidor tiene cerrado el puerto TCP donde se intenta establecer la conexión.**  
-    d) El servidor tiene cerrado el puerto UDP donde se intenta establecer la conexión.
+16. Las dos maneras de terminar una sesión TCP son mediante un mensaje "ICMP de solicitud de eco" y un mensaje "ICMP de respuesta de eco".
+    - [ ]  Cierto
+    - [x]  Falso
 
-18. Un servidor DNS:  
-    a) Sólo asocia direcciones IP a nombres de equipos.  
-    b) Sólo asocia nombres de equipos a direcciones IP.  
-  **c) Puede asociar direcciones IP a nombres de equipos y nombres de equipos a direcciones IP.**  
-    d) Sólo asocia direcciones MAC a nombres de equipos.
+17. Cuando un cliente intenta una conexión y el servidor responde con las señales RST/ACK significa:
+    - [ ]  El servidor está apagado o fuera de servicio.
+    - [ ]  El servidor tiene abierto el puerto TCP donde se intenta establecer la conexión.
+    - [x]  El servidor tiene cerrado el puerto TCP donde se intenta establecer la conexión.
+    - [ ]  El servidor tiene cerrado el puerto UDP donde se intenta establecer la conexión.
 
-19. Los puertos tienen un número que va desde 0 a 65535. (**C**/F)
+18. Un servidor DNS:
+    - [ ]  Sólo asocia direcciones IP a nombres de equipos.
+    - [ ]  Sólo asocia nombres de equipos a direcciones IP.
+    - [x]  Puede asociar direcciones IP a nombres de equipos y nombres de equipos a direcciones IP.
+    - [ ]  Sólo asocia direcciones MAC a nombres de equipos.
 
-20. El puerto de un cliente se usa para una sesión de intercambio de datos y luego se libera para su reuso. (**C**/F)
+19. Los puertos tienen un número que va desde 0 a 65535.
+    - [x]  Cierto
+    - [ ]  Falso
 
-21. El puerto de un servicio es un número:  
-    a) Mayor que 1023.  
-    b) Entre 1 y 1023, y cambia muy frecuentemente.  
-    **c) Número bien conocido, y no suele cambiar.**  
-    d) Diferente en cada equipo dependiendo del sistema operativo y del número de servicios que se ejecutan en el equipo.
+20. El puerto de un cliente se usa para una sesión de intercambio de datos y luego se libera para su reuso.
+    - [x]  Cierto
+    - [ ]  Falso
 
-22. ¿A qué servicio está asociado normalmente el puerto UDP o TCP 53?  
-    a) ICMP.  
-    b) IP.  
-    c) El troyano Back Orifice.  
-  **d) DNS.**
+21. El puerto de un servicio es un número:
+    - [ ]  Mayor que 1023.
+    - [ ]  Entre 1 y 1023, y cambia muy frecuentemente.
+    - [x]  Número bien conocido, y no suele cambiar.
+    - [ ]  Diferente en cada equipo dependiendo del sistema operativo y del número de servicios que se ejecutan en el equipo.
 
-23. ¿Qué hace un router?  
-    a) Determina el camino completo de un paquete IP, desde el origen hasta el destino.  
-    b) Utiliza el protocolo ARP para encaminar todos los paquetes.  
-  **c) Intenta llevar un poquito más cerca de su destino cada paquete IP que recibe.**  
-    d) Utiliza el protocolo DNS para encaminar todos los paquetes.
+22. ¿A qué servicio está asociado normalmente el puerto UDP o TCP 53?
+    - [ ]  ICMP.
+    - [ ]  IP.
+    - [ ]  El troyano Back Orifice.
+    - [x]  DNS.
 
-24. ¿Qué protocolo TCP/IP está asociado con el enrutamiento de paquetes?  
-  **a) IP.**  
-    b) DNS.  
-    c) ARP.  
-    d) TCP.
+23. ¿Qué hace un router?
+    - [ ]  Determina el camino completo de un paquete IP, desde el origen hasta el destino.
+    - [ ]  Utiliza el protocolo ARP para encaminar todos los paquetes.
+    - [x]  Intenta llevar un poquito más cerca de su destino cada paquete IP que recibe.
+    - [ ]  Utiliza el protocolo DNS para encaminar todos los paquetes.
 
-25. Algunos dominios DNS de alto nivel son .com, .edu, y .org. (**C**/F)
+24. ¿Qué protocolo TCP/IP está asociado con el enrutamiento de paquetes?
+    - [x]  IP.
+    - [ ]  DNS.
+    - [ ]  ARP.
+    - [ ]  TCP.
+
+25. Algunos dominios DNS de alto nivel son .com, .edu, y .org.
+    - [x]  Cierto
+    - [ ]  Falso
