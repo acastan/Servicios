@@ -1,14 +1,19 @@
+Windows Server
+==============
 
- | Windows usuario | Versión equiv servidor     |
- |:--------------- |:-------------------------- |
- | Windows 95      | Windows NT Server 4.0      |
- | Windows 98      | Windows Server 2000        |
- | Windows XP      | Windows Server 2003        |
- | Windows Vista   | Windows Server 2008        |
- | Windows 7       | Windows Server 2008r2      |
- | Windows 8       | Windows Server 2012        |
- | Windows 8.1     | Windows Server 2012r2      |
- | Windows 10      | Windows Server 2016 y 2019 |
+ | Windows usuario | Versión equiv servidor |
+ |:--------------- |:---------------------- |
+ | Windows 95      | Windows NT Server 4.0  |
+ | Windows 98      | Windows Server 2000    |
+ | Windows XP      | Windows Server 2003    |
+ | Windows Vista   | Windows Server 2008    |
+ | Windows 7       | Windows Server 2008r2  |
+ | Windows 8       | Windows Server 2012    |
+ | Windows 8.1     | Windows Server 2012r2  |
+ | Windows 10 1607 | Windows Server 2016    |
+ | Windows 10 1809 | Windows Server 2019    |
+ | Windows 10 21H2 | Windows Server 2022    |
+ | Windows 11 24H2 | Windows Server 2025    |
 
 
 
@@ -44,15 +49,14 @@ PREGUNTAS
 PRÁCTICA
 --------
 
-  - Instalaremos Windows Server 2019.
+Instalaremos Windows Server 2022, y examinaremos las siguientes herramientas administrativas:
 
-  - Examinaremos las siguientes herramientas administrativas:
-    - Cónsola de administración de servidores
-    - Panel de propiedades del sistema
-    - Administrador de tareas
-    - Administrador de servicios
-    - Registro de eventos
-    - Monitor de fiabilidad y rendimiento
+  - Cónsola de administración de servidores
+  - Panel de propiedades del sistema
+  - Administrador de tareas
+  - Administrador de servicios
+  - Registro de eventos
+  - Monitor de fiabilidad y rendimiento
 
 
 
