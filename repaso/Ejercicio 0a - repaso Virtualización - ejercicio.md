@@ -1,4 +1,11 @@
-﻿PREGUNTAS
+Repaso de virtualización con VirtualBox
+=======================================
+
+
+
+
+
+Preguntas
 ---------
 
  01. ¿En qué consiste la virtualización? ¿Qué tipos de virtualización hay? ¿Qué ventajas proporciona?
@@ -25,7 +32,7 @@
 
 
 
-PRÁCTICA
+Práctica
 --------
 
   - Instala VirtualBox. En caso de que estés en Linux configurara los repositorios de programas para añadir los de VirtualBox, que se pueden obtener en <http://www.virtualbox.org/wiki/Linux_Downloads>, y así tener siempre disponible la última versión de VirtualBox.
@@ -81,7 +88,7 @@ Segona part pràctica: màquines virtuals en xarxa en mode NAT. Temps màxim due
 
 
 
-REFERENCIAS
+Referencias
 -----------
 
   - <http://en.wikipedia.org/wiki/Platform_virtualization>
@@ -95,4 +102,3 @@ REFERENCIAS
   - <http://www.vmware.com/>
 
   - <http://www.vmware.com/appliances/>
-
