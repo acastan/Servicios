@@ -1,5 +1,5 @@
 Instalación de Linux
---------------------
+====================
 
 Como distribución de Linux para servidores escoge una que sea muy estable y que proporcione actualizaciones de seguridad durante tres años o más. En este manual yo utilizaré Debian Stable 12 y Ubuntu Server 24.04.
 
@@ -11,9 +11,11 @@ Encontrarás unos detallados tutoriales para la instalación en:
 
 Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita entorno gráfico.
 
+
+
 01. Si una vez instalado necesitas cambiar la configuración de la red
 
-    a) En caso de trabajar con Debian 12 edita el siguiente fichero:
+    a) En caso de trabajar con Debian 13 edita el siguiente fichero:
 
         sudo nano /etc/network/interfaces
 
@@ -58,6 +60,8 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
         sudo netplan apply
 
+
+
 02. Una vez instalado manipularemos el fichero con las fuentes desde donde se instalan los programas:
 
         sudo nano /etc/apt/sources.list
@@ -66,17 +70,18 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
     Si queremos descargar software libre fuera del repositorio de Ubuntu añadiremos la palabra `universe`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `multiverse`.
 
-        deb http://es.archive.ubuntu.com/ubuntu/   noble           main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/   noble-updates   main restricted universe multiverse
-        deb http://es.archive.ubuntu.com/ubuntu/   noble-backports main restricted universe multiverse
-        deb http://security.ubuntu.com/ubuntu/     noble-security  main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   resolute              main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   resolute-updates      main restricted universe multiverse
+        deb http://es.archive.ubuntu.com/ubuntu/   resolute-backports    main restricted universe multiverse
+        deb http://security.ubuntu.com/ubuntu/     resolute-security     main restricted universe multiverse
 
     Si queremos descargar software libre fuera del repositorio de Debian añadiremos la palabra `contrib`, y si queremos descargar software no libre (sin licencia GPL, como Java) añadiremos la palabra `non-free`.
 
-        deb http://ftp.es.debian.org/debian/       bookworm           main contrib non-free non-free-firmware
-        deb http://ftp.es.debian.org/debian/       bookworm-updates   main contrib non-free non-free-firmware
-        deb http://ftp.es.debian.org/debian/       bookworm-backports main contrib non-free non-free-firmware
-        deb http://deb.debian.org/debian-security/ bookworm-security  main contrib non-free non-free-firmware
+        deb http://ftp.es.debian.org/debian/       trixie           main contrib non-free non-free-firmware
+        deb http://ftp.es.debian.org/debian/       trixie-updates   main contrib non-free non-free-firmware
+        deb http://ftp.es.debian.org/debian/       trixie-backports main contrib non-free non-free-firmware
+        deb http://deb.debian.org/debian-security/ trixie-security  main contrib non-free non-free-firmware
+
 
 
 03. Ahora vamos a actualizar las listas de programas disponibles, y después de ello vamos a actualizar los programas que tenemos instalados:
@@ -84,10 +89,14 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
         sudo apt update
         sudo apt upgrade
 
+
+
 04. Si queremos instalar nuevos programas y no conocemos el nombre de los paquetes, podemos instalar `aptitude`. Una vez instalado, al ejecutarlo se nos abrirá un entorno en modo texto que nos permite navegar y buscar en las listas de programas. Al principio cuesta un poco, así que lee las combinaciones de teclas en la ayuda:
 
         sudo apt install aptitude
         sudo aptitude
+
+
 
 05. Y para cambiar la opción de arranque por defecto, edita en el fichero de configuración de GRUB la opción `GRUB_DEFAULT`, que indica la línea por defecto en el menú de arranque, teniendo en cuenta que la primera línea es la 0:
 
@@ -95,9 +104,13 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
         sudo update-grub
         more /boot/grub/grub.cfg
 
+
+
 06. Vamos a instalar un servidor de SSH para poder acceder a nuestro ordenador remotamente desde otros equipos:
 
         sudo apt install openssh-server
+
+
 
 07. Opcionalmente podríamos instalar un sistema de cuotas de disco para que los ficheros de los usuarios no superen ciertos límites de espacio:
 
@@ -138,6 +151,8 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
 
       - <https://wiki.archlinux.org/index.php/disk_quota>
 
+
+
 08. Opcionalmente (y nada recomendable en un servidor) podríamos instalar el sistema gráfico (X Window) o incluso un escritorio (LXDE, LXQT, XFCE, Gnome, MATE, KDE, ...):
 
         sudo apt install xorg
@@ -147,9 +162,13 @@ Tan sólo instalaremos el sistema base y los servicios. Un servidor no necesita 
         sudo apt install gnome-core
         sudo apt install kde-baseapps
 
+
+
 09. Por si quisiéramos descargar el código fuente de programas para posteriormente compilarlos, nos vendrá bien tener instaladas unas mínimas herramientas de programación:
 
         sudo apt install build-essential
+
+
 
 10. Por último, por si quisiéramos administrar nuestro servidor remotamente a través de un navegador, faltaría añadir el repositorio de Webmin:
 
