@@ -1,4 +1,11 @@
-PROBLEMÁTICA
+Planificación de la red y servicios
+===================================
+
+
+
+
+
+Problemática
 ------------
 
 Nuestro centro educativo ha ido creciendo en los últimos años. Actualmente el número de profesores y alumnos es elevado y todos utilizan las nuevas tecnologías de la información en su tarea diaria.
@@ -13,7 +20,7 @@ Por todo ello, y como responsables de las TIC en el centro, decidís reestructur
 
 
 
-ESQUEMA HARDWARE
+Esquema hardware
 ----------------
 
 El centro dispone de ordenadores para el alumnado ubicados en varias aulas informáticas, así como también de ordenadores para el profesorado, repartidos en los despachos de Dirección y en los espacios departamentales.
@@ -26,7 +33,7 @@ Salida a Internet con fibra óptica.
 
 
 
-ESQUEMA SOFTWARE
+Esquema software
 ----------------
 
 Los ordenadores de las aulas de informática son recientes, por lo que disponen de más memoria RAM. En ellos se instalará Linux. Este sistema operativo puede comportarse también como un potente cliente de red que se comunicará perfectamente con el servidor.
@@ -39,7 +46,7 @@ Para conseguir la integración de todos los equipos se utilizará un nuevo equip
 
 
 
-PREGUNTAS
+Preguntas
 ---------
 
  01. Fruto del crecimiento informático del centro y de la utilización cada vez más frecuente de dichos recursos informáticos resulta que la información se encuentra fragmentada en muchos lugares, el acceso a ella es complejo y lento y, en multitud de ocasiones se accede a información desfasada o ésta se ha perdido. ¿Qué actuaciones harías?
@@ -62,7 +69,7 @@ PREGUNTAS
 
 
 
-PRÁCTICA
+Práctica
 --------
 
 Con la herramienta de diagramas Dia, crear un esquema de la red local, donde aparezca router, switches, servidores con nombre de servicios, y máquinas cliente.
