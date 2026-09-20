@@ -1,4 +1,9 @@
-﻿LISTADO DE ARCHIVOS
+Comandos Linux
+==============
+
+
+
+LISTADO DE ARCHIVOS
 -------------------
 
 Estudia el comando ls.
@@ -432,4 +437,3 @@ EXPRESIONES REGULARES (EXTRA)
  12. Una dirección de correo electrónico con el formato nombre@dominio.xxx
 
          grep ([:alnum:]+)(EN)([:alnum:]+)[\.]([:alnum:]){2,4} fichero
-
