@@ -29,7 +29,7 @@ Hardware
  - HD: RAID, hotplug
  - Carcasa: formato rack, doble fuente de alimentación
  - SAI
- - Cloud Computing (Iaas)
+ - Cloud Computing (IaaS)
 
 
 
@@ -102,7 +102,7 @@ Virtualitzación
 ---------------
 
  - Aplicaciones: Docker, LXD, KVM, VirtualBox, VMware, Proxmox, ...
- - Descargar Máquinas virtuales: http://www.easyvmx.com/ , http://virtualboximages.com/ , http://www.vmware.com/appliances/
+ - Descargar Máquinas virtuales: <http://www.easyvmx.com/> , <https://www.linuxvmimages.com/> , <https://www.osboxes.org/virtualbox-images/>
 
 
 
@@ -110,7 +110,7 @@ Balanceo de carga, escalabilidad y redundancia
 ----------------------------------------------
 
  - Escalado vertical y horizontal
- - Ejemplos de escalabilidad: http://highscalability.com/
+ - Ejemplos de escalabilidad: <http://highscalability.com/>
  - Redundancia: Heartbeat
 
 
@@ -119,21 +119,17 @@ Enlaces
 -------
 
  - Cursos INTEF sobre servidores Linux y Windows en redes locales:  
-   <http://formacion.intef.es/course/view.php?id=184>  
-   <http://formacion.intef.es/course/view.php?id=185>
+   <http://www.ite.educacion.es/formacion/materiales/85/cd/linux/indice.htm>  
+   <http://www.ite.educacion.es/formacion/materiales/85/cd/windows/indice.htm>
 
  - Cursos “Serveis de Xarxa” de la IOC:  
-   <https://ioc.xtec.cat/materials/FP/Materials/2201_SMX/SMX_2201_M07/web/html/index.html>  
-   <https://ioc.xtec.cat/materials/FP/Recursos/fp_asix_m08_/web/fp_asix_m08_htmlindex/index.html>
+   <https://ioc.xtec.cat/materials/FP/Recursos/fp_smx_m0227_/web/fp_smx_m0227_htmlindex/index.html>  
+   <https://ioc.xtec.cat/materials/FP/Recursos/fp_asx_m0375_/web/fp_asx_m0375_htmlindex/index.html>
 
  - Otras guías de servidores:  
    <https://ubuntu.com/server/docs>  
    <https://help.ubuntu.com/community/Servers>  
    <https://debian-handbook.info/browse/stable/>  
-   <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/deploying_different_types_of_servers/index>  
-   <http://www.alcancelibre.org/filemgmt/index.php?id=1>
 
  - Administración Linux y LPI:  
-   <http://openaccess.uoc.edu/webapps/o2/handle/10609/60686>  
    <https://learning.lpi.org/en/learning-materials/learning-materials/>  
-   <http://www.ibm.com/developerworks/linux/lpi/>
