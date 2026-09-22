@@ -19,7 +19,7 @@ Windows Server
 
 
 
-PREGUNTAS
+Preguntas
 ---------
 
  01. ¿Qué diferencias básicas hay entre una versión de Windows "no server" y una versión "server"?
@@ -46,7 +46,7 @@ PREGUNTAS
 
 
 
-PRÁCTICA
+Práctica
 --------
 
 Instalaremos Windows Server 2022, y examinaremos las siguientes herramientas administrativas:
@@ -62,7 +62,7 @@ Instalaremos Windows Server 2022, y examinaremos las siguientes herramientas adm
 
 
 
-REFERENCIAS
+Referencias
 -----------
 
   - <https://en.wikipedia.org/wiki/Windows_Server>
