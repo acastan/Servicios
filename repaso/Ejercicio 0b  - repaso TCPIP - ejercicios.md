@@ -1,4 +1,4 @@
-EJERCICIOS DE TCP/IP
+Ejercicios de TCP/IP
 ====================
 
 Instalad el analizador de protocolos Wireshark (también llamado “sniffer”) que encontraréis en la página web <http://www.wireshark.org/> o en el repositorio de paquetes de vuestra distribución Linux.
@@ -120,7 +120,7 @@ Utilizando el analizador de puertos que descargamos el día anterior en clase (�
 
 
 
-REFERENCIAS
+Referencias
 -----------
 
   * Apuntes:
