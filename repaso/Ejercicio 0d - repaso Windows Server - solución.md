@@ -19,8 +19,8 @@ Windows Server
 
 
 
-PREGUNTAS
----------
+Respuestas a las preguntas
+--------------------------
 
 
 
@@ -28,7 +28,7 @@ PREGUNTAS
      
      **Internamente la arquitectura es similar (arquitectura NT), ya que se unifico con Windows XP.**
 
-     ![](recursos/imagen-WindowsServer.png)
+     ![Arquitectura](recursos/imagen-WindowsServer.png)
 
      **Sin embargo Windows Server:**
 
@@ -130,5 +130,3 @@ PREGUNTAS
  10. ¿Hace falta un antivirus en un servidor? Razona la respuesta.
 
      **Aunque aparentemente no hace falta, ya que los servidores deberían ser máquinas físicamente aisladas que no tocan los usuarios, en los que no se instala apenas software y el que se instala tiene licencia, se puede instalar un antivirus “especial” que monitorice los ficheros de las carpetas compartidas en el servidor de ficheros, y los ficheros adjuntos a los mensajes en el servidor de correo.**
-
-
