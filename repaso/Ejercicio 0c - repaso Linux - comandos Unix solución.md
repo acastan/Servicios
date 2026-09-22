@@ -3,7 +3,7 @@ Comandos Linux
 
 
 
-LISTADO DE ARCHIVOS
+Listado de archivos
 -------------------
 
 Estudia el comando ls.
@@ -29,7 +29,7 @@ ___
 
 
 
-REDIRECCION ENTRADA/SALIDA
+Redirección entrada/salida
 --------------------------
 
  05. Sin editor de texto, mediante redirección, crea el archivo cap1 con el contenido “Este es el capítulo 1”. Repite con cap2 y cap3. Verifica mostrando cada uno con el comando cat.
@@ -59,7 +59,7 @@ ___
 
 
 
-EDITOR DE TEXTO
+Editor de texto
 ---------------
 
  09. Invócalo escribiendo vi o nano. Interpreta la ayuda y experimenta con él creando y modificando textos breves. ¿Cuál es la combinación de teclas para borrar toda una línea? ¿ Cuál es la combinación de teclas para cortar-copiar-pegar?
@@ -77,7 +77,7 @@ ___
 
 
 
-SISTEMA DE ARCHIVOS
+Sistema de archivos
 -------------------
 
  11. Trasládate al directorio doc, dentro del directorio usr, dentro del directorio raíz. Muestra el directorio actual y los archivos contenidos en él.
@@ -130,7 +130,7 @@ ___
 
 
 
-CARPETAS DE UNIX
+Carpetas de UNIX
 ----------------
 
  19. ¿Qué se guarda en las siguientes carpetas: /bin y /sbin, /mnt y /media, /usr/sbin, /var, /dev, /proc, /boot?
@@ -150,7 +150,7 @@ ___
 
 
 
-DISCOS, PARTICIONES, MONTAR Y DESMONTAR
+Discos, particiones, montar y desmontar
 ---------------------------------------
 
  22. Lista las particiones del primer disco duro.
@@ -214,7 +214,7 @@ ___
 
 
 
-USUARIOS
+Usuarios
 --------
 
  30. Muestra el nombre del usuario en la sesión actual, y después el nombre de la máquina.
@@ -236,7 +236,7 @@ ___
 
 
 
-SEGURIDAD
+Seguridad
 ---------
 
  33. El usuario acastan desea cambiar su contraseña. ¿Cómo lo hace? ¿Qué ayuda debe pedir al administrador?
@@ -252,7 +252,7 @@ ___
 
 
 
-PROCESOS
+Procesos
 --------
 
  35. Muestra los procesos de tu sesión actual que se están ejecutando.
@@ -323,7 +323,7 @@ PROCESOS
          dmesg
          
      o bien
-     
+
          uname -a
          less /var/log/messages
 
@@ -336,7 +336,7 @@ ___
 
 
 
-SERVICIOS Y FICHEROS DE CONFIGURACIÓN
+Servicios y ficheros de configuración
 -------------------------------------
 
  45. ¿Cómo se detiene o inicia un servicio?
@@ -373,9 +373,9 @@ SERVICIOS Y FICHEROS DE CONFIGURACIÓN
          crontab [usuario] -e
 
      minuto , hora , dia_del_mes , mes , dia_de_la_semana , y el comando
-     
+
      Pero con SystemD hay una nueva manera de ejecutar periódicamente procesos:
-     
+
      <https://www.atareao.es/tutorial/trabajando-con-systemd/cron-con-systemd-timer/>
 
  50. ¿En qué ficheros se guarda información relativa a los usuarios del sistema?
@@ -387,7 +387,7 @@ ___
 
 
 
-EXPRESIONES REGULARES (EXTRA)
+Expresiones regulares (extra)
 -----------------------------
 
  01. Palabras que tienen una a más b o una a más d seguidas de una n
