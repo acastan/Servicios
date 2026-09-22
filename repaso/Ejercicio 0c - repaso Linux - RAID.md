@@ -9,31 +9,31 @@ Bibliografía que deberías leer:
 
   * <https://en.wikipedia.org/wiki/RAID>
   * <https://wiki.archlinux.org/index.php/RAID>
-  * <https://raid.wiki.kernel.org/index.php/RAID_setup>
-  * <http://www.tldp.org/HOWTO/Software-RAID-HOWTO.html>
+  * <https://docs.kernel.org/admin-guide/md.html>
+  * <https://tldp.org/HOWTO/Software-RAID-HOWTO.html>
 
 
 ---
 
 
-ÍNDICE
+Índice
 ------
 
-  - [PREVIOS](#previos)
-  - [PARTICIONAR LOS DISPOSITIVOS](#particionar-los-dispositivos)
-  - [CONSTRUIR EL RAID](#construir-el-raid)
-  - [ENSAMBLAR Y UTILIZAR EL RAID](#ensamblar-y-utilizar-el-raid)
-  - [QUITAR DISCOS DEL RAID](#quitar-discos-del-raid)
-  - [AÑADIR DISCOS AL RAID](#a-adir-discos-al-raid)
-  - [INCREMENTAR EL TAMAÑO DEL RAID](#incrementar-el-tama-o-del-raid)
-  - [HERRAMIENTAS GRÁFICAS](#herramientas-gr-ficas)
+  - [Cosas previas](#cosas-previas)
+  - [Particionar los dispositivos](#particionar-los-dispositivos)
+  - [Construir el RAID](#construir-el-raid)
+  - [Ensamblar y utilizar el RAID](#ensamblar-y-utilizar-el-raid)
+  - [Quitar discos del RAID](#quitar-discos-del-raid)
+  - [Añadir discos al RAID](#a-adir-discos-al-raid)
+  - [Incrementar el tamaño del RAID](#incrementar-el-tama-o-del-raid)
+  - [Herramientas gráficas](#herramientas-gr-ficas)
 
 
 ---
 
 
-PREVIOS
--------
+Cosas previas
+-------------
 
 Muchos de los comandos necesitarán permisos de administrador. Para no tener que recurrir a sudo en cada comando, cambiamos de usuario a administrador, pero deberemos tener cuidado con lo que hagamos:
 
@@ -67,7 +67,7 @@ Estudia los diversos  modos de operación de mdadm: crear, ensamblar, monitoriza
 ---
 
 
-PARTICIONAR LOS DISPOSITIVOS
+Particionar los dispositivos
 ----------------------------
 
 Si el disco o partición ya se utilizó en otro RAID, entonces debemos sobreescribir el superbloque:
@@ -91,7 +91,7 @@ Si queremos comprobar que dispositivos tenemos:
 ---
 
 
-CONSTRUIR EL RAID
+Construir el RAID
 -----------------
 
 He aquí unos ejemplos.
@@ -129,7 +129,7 @@ Puedes consultar información breve o detallada del RAID, respectivamente, con:
 ---
 
 
-ENSAMBLAR Y UTILIZAR EL RAID
+Ensamblar y utilizar el RAID
 ----------------------------
 
 Para utilizar el RAID, siempre se debe “ensamblar” antes:
@@ -187,7 +187,7 @@ A continuación lo añadimos al sistema de ficheros, y probamos que monte:
 ---
 
 
-QUITAR DISCOS DEL RAID
+Quitar discos del RAID
 ----------------------
 
 Para quitar un disco del RAID primero lo marcamos como defectuoso:
@@ -218,7 +218,7 @@ Para dejar de utilizar todo el RAID debemos:
 ---
 
 
-AÑADIR DISCOS AL RAID
+Añadir discos al RAID
 ---------------------
 
 Se pueden añadir nuevos discos al RAID con mdadm sobre la marcha, sin parar el sistema ni el RAID. Debes particionar el nuevo disco con las mismas características de los otros dispositivos que ya forman el RAID.
@@ -233,7 +233,7 @@ Suponiendo que el RAID ya estaba ensamblado y montado, añade el nuevo disco, vi
 ---
 
 
-INCREMENTAR EL TAMAÑO DEL RAID
+Incrementar el tamaño del RAID
 ------------------------------
 
 If larger disks are installed in a RAID array or partition size has been increased, it may be desirable to increase the size of the RAID volume to fill the larger available space. This process may be begun by first following the above sections pertaining to replacing disks. Once the RAID volume has been rebuilt onto the larger disks it must be "grown" to fill the space.
@@ -250,13 +250,13 @@ Next, partitions present on the RAID volume /dev/md0 may need to be resized. See
 ---
 
 
-HERRAMIENTAS GRÁFICAS
+Herramientas gráficas
 ---------------------
 
 El programa GParted tan sólo nos permite visualizar RAIDs, pero no crearlos.
 
 El gestor de contenidos Webmin tiene un módulo de RAID. Mira como se instala y se utiliza:
 
-  * <https://www.digitalocean.com/community/tutorials/how-to-install-webmin-on-ubuntu-16-04>
-  * <https://doxfer.webmin.com/Webmin/Linux_RAID>
+  * <https://webmin.com/download/>
+  * <https://webmin.com/docs/modules/linux-raid/>
   * <https://www.youtube.com/watch?v=Y4MIWzLwZy8>
