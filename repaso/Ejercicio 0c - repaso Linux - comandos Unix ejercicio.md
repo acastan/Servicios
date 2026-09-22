@@ -20,7 +20,7 @@ ___
 
 
 
-LISTADO DE ARCHIVOS
+Listado de archivos
 -------------------
 
 Estudia el comando ls.
@@ -43,7 +43,7 @@ ___
 
 
 
-REDIRECCION ENTRADA/SALIDA
+Redirección entrada/salida
 --------------------------
 
  05. Sin editor de texto, mediante redirección, crea el archivo cap1 con el contenido “Este es el capítulo 1”. Repite con cap2 y cap3. Verifica mostrando cada uno con el comando cat.
@@ -59,7 +59,7 @@ ___
 
 
 
-EDITOR DE TEXTO
+Editor de texto
 ---------------
 
 El editor por excelencia de UNIX es vi, presente en todas las variedades de UNIX. En todas las instalaciones de LINUX, además de vi también encontramos el editor nano, que es más sencillo de utilizar.
@@ -73,7 +73,7 @@ ___
 
 
 
-SISTEMA DE ARCHIVOS
+Sistema de archivos
 -------------------
 
  11. Trasládate al directorio bin, dentro del directorio usr, dentro del directorio raíz. Muestra el directorio actual y los archivos contenidos en él.
@@ -97,7 +97,7 @@ ___
 
 
 
-CARPETAS DE UNIX
+Carpetas de UNIX
 ----------------
 
  19. ¿Qué se guarda en las siguientes carpetas: /bin y /sbin, /mnt y /media, /usr/sbin, /var, /dev, /proc, /boot?
@@ -111,7 +111,7 @@ ___
 
 
 
-DISCOS, PARTICIONES, MONTAR Y DESMONTAR
+Discos, particiones, montar y desmontar
 ---------------------------------------
 
  22. Lista las particiones del primer disco duro.
@@ -135,7 +135,7 @@ ___
 
 
 
-USUARIOS
+Usuarios
 --------
 
  30. Muestra el nombre del usuario en la sesión actual, y después el nombre de la máquina.
@@ -149,7 +149,7 @@ ___
 
 
 
-SEGURIDAD
+Seguridad
 ---------
 
  33. El usuario acastan desea cambiar su contraseña. ¿Cómo lo hace? ¿Qué ayuda debe pedir al administrador?
@@ -161,7 +161,7 @@ ___
 
 
 
-PROCESOS
+Procesos
 --------
 
  35. Muestra los procesos de tu sesión actual que se están ejecutando.
@@ -189,7 +189,7 @@ ___
 
 
 
-SERVICIOS Y FICHEROS DE CONFIGURACIÓN
+Servicios y ficheros de configuración
 -------------------------------------
 
  45. ¿Cómo se detiene o inicia un servicio?
@@ -209,7 +209,7 @@ ___
 
 
 
-EXPRESIONES REGULARES (EXTRA)
+Expresiones regulares (extra)
 -----------------------------
 
 Recordando los diferentes operadores de las expresiones regulares:
