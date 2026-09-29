@@ -32,7 +32,7 @@ ___
 Redirección entrada/salida
 --------------------------
 
- 05. Sin editor de texto, mediante redirección, crea el archivo cap1 con el contenido “Este es el capítulo 1”. Repite con cap2 y cap3. Verifica mostrando cada uno con el comando cat.
+ 05. Sin editor de texto, mediante redirección, crea el archivo cap1 con el contenido "Este es el capítulo 1". Repite con cap2 y cap3. Verifica mostrando cada uno con el comando cat.
 
          echo "este es el capitulo 1" > cap1
          cat cap1
