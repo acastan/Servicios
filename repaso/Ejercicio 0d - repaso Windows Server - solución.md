@@ -24,24 +24,24 @@ Respuestas a las preguntas
 
 
 
- 01. ¿Qué diferencias básicas hay entre una versión de Windows "no server" y una versión "server"?
+ 01. **¿Qué diferencias básicas hay entre una versión de Windows "no server" y una versión "server"?**
      
-     **Internamente la arquitectura es similar (arquitectura NT), ya que se unifico con Windows XP.**
+     Internamente la arquitectura es similar (arquitectura NT), ya que se unifico con Windows XP.
 
      ![Arquitectura](recursos/imagen-WindowsServer.png)
 
-     **Sin embargo Windows Server:**
+     Sin embargo Windows Server:
 
-     - **Dispone de muchas más herramientas de administración,**
-     - **Dispone de más servicios de Windows: DHCP, DNS, Active Directory, IIS, Hyper-V, etc.**
-     - **Detecta más RAM, soporte multiprocesador, sólo 64 bits**
-     - **Tiene un núcleo optimizado para aplicaciones en segundo plano y menos optimizado para multimedia**
-     - **Gestiona el almacenamiento de maneras mucho más avanzadas: storage pools, discos virtuales, RAIDs, ...**
-     - **Simplifaica el escritorio, eliminando los efectos.**
+     - Dispone de muchas más herramientas de administración.
+     - Dispone de más servicios de Windows: DHCP, DNS, Active Directory, IIS, Hyper-V, etc.
+     - Detecta más RAM, soporte multiprocesador, sólo 64 bits.**
+     - Tiene un núcleo optimizado para aplicaciones en segundo plano y menos optimizado para multimedia.
+     - Gestiona el almacenamiento de maneras mucho más avanzadas: storage pools, discos virtuales, RAIDs, ...
+     - Simplifaica el escritorio, eliminando los efectos.
 
 
 
- 02. Dibuja la tabla de requisitos hardware de las sucesivas versiones de Windows Server.
+ 02. **Dibuja la tabla de requisitos hardware de las sucesivas versiones de Windows Server.**
 
 | Windows Server | Novedades | Requisitos | Ediciones |
 | :------------: | :-------- | :--------- | :-------- |
@@ -59,59 +59,59 @@ Respuestas a las preguntas
 
 
 
- 03. ¿Cuáles son características más importantes que ha incorporado cada nueva versión de Windows Server?
+ 03. **¿Cuáles son características más importantes que ha incorporado cada nueva versión de Windows Server?**
 
-     **Ver tabla anterior**
-
-
-
- 04. Para una versión de Windows Server, que diferencias hay entre sus "ediciones"? Por ejemplo, para Windows Server 2012, ¿Qué diferencias hay entre las ediciones Foundation, Essentials, Standard y Datacenter?
-
-     **Diferencias en precio, servicios disponibles, número de instancias a ejecutar, número de CPUs, número de usuarios. En el ejemplo:**
-
-     - **2012 Datacenter: para servidores potentes, de hasta 64 procesadores y tolerancia a fallos.**
-
-     - **2012 Standard: lo mismo que la edición Datacenter, pero la licencia permite muchas menos máquinas virtuales (sólo dos).**
-
-     - **2012 Essentials: casi lo mismo que la edición Standard, pero sin instalación Server Core, sin Hyper-V, sin servicio de Federación de Active Directory, y restringido a 25 usuarios.**
-
-     - **2012 Foundation: es una versión reducida del SO para pequeños negocios que necesitan compartir ficheros e impresoras. Limitada a 15 usuarios y sin derechos de virtualización.**
-
-     **Hay que aclarar que las restricciones no son físicas, sino de licencias. Por ejemplo, en la versión estándar puedo instalar más de dos máquinas virtuales, aunque la licencia sólo permita dos, pero legalmente deberé adquirir licencias adicionales para ello.**
+     Ver tabla anterior
 
 
 
- 05. ¿Qué diferencia hay entre una instalación normal y una instalación "server core" en las últimas versiones de Windows Server?
+ 04. **Para una versión de Windows Server, que diferencias hay entre sus "ediciones"? Por ejemplo, para Windows Server 2012, ¿Qué diferencias hay entre las ediciones Foundation, Essentials, Standard y Datacenter?**
 
-     **La instalación normal instala todo el sistema gràfico y escritorio, mientras que server core tan sólo tiene línea de comandos con PowerShell, lo que la hace muchísimo más ligera y menos expuesta a fallos, además de ocupar menos disco duro y necesitar menos actualizaciones de seguridad.**
+     Diferencias en precio, servicios disponibles, número de instancias a ejecutar, número de CPUs, número de usuarios. En el ejemplo:
 
-     **En Windows 2008, una vez instalado no se podía cambiar de una opción a la otra, pero desde Windows 2012, aunque hayamos escogido un tipo de instalación después se puede cambiar sin necesidad de reinstalar el sistema.**
+     - 2012 Datacenter: para servidores potentes, de hasta 64 procesadores y tolerancia a fallos.
 
-     **Existe un tercer tipo de instalación gráfica mínima, que no tiene escritorio ni menú ni aplicaciones, pero si permite abrir el panel de administración de servidores, el MMC, y una ventana con PowerShell.**
+     - 2012 Standard: lo mismo que la edición Datacenter, pero la licencia permite muchas menos máquinas virtuales (sólo dos).
+
+     - 2012 Essentials: casi lo mismo que la edición Standard, pero sin instalación Server Core, sin Hyper-V, sin servicio de Federación de Active Directory, y restringido a 25 usuarios.
+
+     - 2012 Foundation: es una versión reducida del SO para pequeños negocios que necesitan compartir ficheros e impresoras. Limitada a 15 usuarios y sin derechos de virtualización.
+
+     Hay que aclarar que las restricciones no son físicas, sino de licencias. Por ejemplo, en la versión estándar puedo instalar más de dos máquinas virtuales, aunque la licencia sólo permita dos, pero legalmente deberé adquirir licencias adicionales para ello.
+
+
+
+ 05. **¿Qué diferencia hay entre una instalación normal y una instalación "server core" en las últimas versiones de Windows Server?**
+
+     La instalación normal instala todo el sistema gràfico y escritorio, mientras que server core tan sólo tiene línea de comandos con PowerShell, lo que la hace muchísimo más ligera y menos expuesta a fallos, además de ocupar menos disco duro y necesitar menos actualizaciones de seguridad.
+
+     En Windows 2008, una vez instalado no se podía cambiar de una opción a la otra, pero desde Windows 2012, aunque hayamos escogido un tipo de instalación después se puede cambiar sin necesidad de reinstalar el sistema.
+
+     Existe un tercer tipo de instalación gráfica mínima, que no tiene escritorio ni menú ni aplicaciones, pero si permite abrir el panel de administración de servidores, el MMC, y una ventana con PowerShell.
 
      <https://msdn.microsoft.com/es-es/library/hh831786%28v=ws.11%29.aspx>
 
 
 
- 06. ¿Cuánto cuesta un Windows Server?
+ 06. **¿Cuánto cuesta un Windows Server?**
 
-     **El coste monetario depende de la edición y las licencias.**
+     El coste monetario depende de la edición y las licencias.
 
 
 
- 07. ¿Cómo funciona el sistema de licencias?
+ 07. **¿Cómo funciona el sistema de licencias?**
 
-     **En el caso de un Windows Server el tema de las licencias es complejo: se compran licencias por número de usuarios, por número de CPUs, por clientes conectados, por número de instalaciones o máquinas virtuales, etc.**
+     En el caso de un Windows Server el tema de las licencias es complejo: se compran licencias por número de usuarios, por número de CPUs, por clientes conectados, por número de instalaciones o máquinas virtuales, etc.
 
-     **Para el caso anterior (Windows Server 2012) puedes consultar la complejidad del sistema de licencias en este enlace:**
+     Para el caso anterior (Windows Server 2012) puedes consultar la complejidad del sistema de licencias en este enlace:
 
      <http://download.microsoft.com/download/0/4/E/04E7E3B8-EEA6-421B-91EA-546AEBD325AC/Windows_Server_2012_R2_Licensing_Datasheet_es-es.pdf>
 
 
 
- 08. ¿Qué es PowerShell?
+ 08. **¿Qué es PowerShell?**
 
-     **Es la línea de comandos avanzada de Windows, disponible des de Windows 7.**
+     Es la línea de comandos avanzada de Windows, disponible des de Windows 7.
 
      - <https://learn.microsoft.com/es-es/powershell/scripting/learn/ps101/01-getting-started>
 
@@ -121,12 +121,12 @@ Respuestas a las preguntas
 
 
 
- 09. ¿Desde dónde se instalan servicios y componentes adicionales de Windows Server?
+ 09. **¿Desde dónde se instalan servicios y componentes adicionales de Windows Server?**
 
-     **Existen dos herramientas donde es posible diche instalación: “agregar características de Windows” y “Panel de Administración de Servidores”**
+     Existen dos herramientas donde es posible diche instalación: "agregar características de Windows" y "Panel de Administración de Servidores"
 
 
 
- 10. ¿Hace falta un antivirus en un servidor? Razona la respuesta.
+ 10. **¿Hace falta un antivirus en un servidor? Razona la respuesta.**
 
-     **Aunque aparentemente no hace falta, ya que los servidores deberían ser máquinas físicamente aisladas que no tocan los usuarios, en los que no se instala apenas software y el que se instala tiene licencia, se puede instalar un antivirus “especial” que monitorice los ficheros de las carpetas compartidas en el servidor de ficheros, y los ficheros adjuntos a los mensajes en el servidor de correo.**
+     Aunque aparentemente no hace falta, ya que los servidores deberían ser máquinas físicamente aisladas que no tocan los usuarios, en los que no se instala apenas software y el que se instala tiene licencia, se puede instalar un antivirus "especial" que monitorice los ficheros de las carpetas compartidas en el servidor de ficheros, y los ficheros adjuntos a los mensajes en el servidor de correo.
