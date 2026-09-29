@@ -3,7 +3,7 @@ RAID en Linux
 
 Este texto trata de resumir el proceso de creación de RAIDs software en Linux (Ubuntu 16.04) des de la línea de comandos, pero al final del documento dedico un apartado a la creación de RAID gráficamente con un módulo de Webmin.
 
-Donde digo “disco” se podría decir “partición”. En la creación de RAID por software en Linux no estamos obligados a utilizar discos enteros para el RAID. Podemos utilizar particiones para crear el RAID, mientras otras particiones del mismo disco se utilizan para otras cosas.
+Donde digo "disco" se podría decir "partición". En la creación de RAID por software en Linux no estamos obligados a utilizar discos enteros para el RAID. Podemos utilizar particiones para crear el RAID, mientras otras particiones del mismo disco se utilizan para otras cosas.
 
 Bibliografía que deberías leer:
 
@@ -75,9 +75,9 @@ Si el disco o partición ya se utilizó en otro RAID, entonces debemos sobreescr
     # mdadm --misc --zero-superblock /dev/<disco>
     # mdadm --misc --zero-superblock /dev/<partición>
 
-Se puede llegar a crear el RAID directamente sobre discos “crudos”, sin particionar. Eso es poco recomendable, ya que será más difícil cambiarlos en caso de fallo de disco. Lo mejor es particionar dejando además un pequeño espacio libre al final por el siguiente motivo:
+Se puede llegar a crear el RAID directamente sobre discos "crudos", sin particionar. Eso es poco recomendable, ya que será más difícil cambiarlos en caso de fallo de disco. Lo mejor es particionar dejando además un pequeño espacio libre al final por el siguiente motivo:
 
-  > “When replacing a failed disk of a RAID, the new disk has to be exactly the same size as the failed disk or bigger, otherwise the array recreation process will not work. Even hard drives of the same manufacturer and model can have small size differences. By leaving a little space at the end of the disk unallocated one can compensate for the size differences between drives, which makes choosing a replacement drive model easier. Therefore, it is good practice to leave about 100 MB of unallocated space at the end of the disk.”
+  > "When replacing a failed disk of a RAID, the new disk has to be exactly the same size as the failed disk or bigger, otherwise the array recreation process will not work. Even hard drives of the same manufacturer and model can have small size differences. By leaving a little space at the end of the disk unallocated one can compensate for the size differences between drives, which makes choosing a replacement drive model easier. Therefore, it is good practice to leave about 100 MB of unallocated space at the end of the disk."
 
 Crearemos la tabla de partición. Se recomienda GPT. Una vez particionado, como tipo de partición debemos asignarle el código FD00. Pero si habíamos escogido una tabla de particiones MBR, entonces al tipo de partición debemos asignarle el código 0xDA. Podemos crear particiones con
 
@@ -132,7 +132,7 @@ Puedes consultar información breve o detallada del RAID, respectivamente, con:
 Ensamblar y utilizar el RAID
 ----------------------------
 
-Para utilizar el RAID, siempre se debe “ensamblar” antes:
+Para utilizar el RAID, siempre se debe "ensamblar" antes:
 
     # mdadm --assemble --scan
 
@@ -140,7 +140,7 @@ A continuación el RAID se debe formatear como cualquier otro disco:
 
     # mkfs -t ext4 /dev/md0
 
-Pero para el rendimiento óptimo del RAID, se debe crear con el tamaño de “chunk” correcto, y se debe formatear calculando los tamaños de “stripe” y “stride” correctos. Por favor, lee:
+Pero para el rendimiento óptimo del RAID, se debe crear con el tamaño de "chunk" correcto, y se debe formatear calculando los tamaños de "stripe" y "stride" correctos. Por favor, lee:
 
   * <https://raid.wiki.kernel.org/index.php/RAID_setup#Chunk_sizes>
   * <http://www.zdnet.com/article/chunks-the-hidden-key-to-raid-performance/>
