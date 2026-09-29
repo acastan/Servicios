@@ -42,7 +42,7 @@ Tipos de virtualización
 
 En los siguientes puntos profundizaremos en el manejo de VirtualBox. VirtualBox es un software de virtualización sencillo, gratuito y multiplataforma. Sin embargo, no es muy completo y además puede dar problemas en el sistema operativo de la máquina real.
 
-Si queremos trabajar con un software de virtualización mucho más “profesional”, con muy buen redimiento, con opciones avanzadas, y gratuito, para Linux recomiendo KVM (paquetes qemu-kvm y virt-manager).
+Si queremos trabajar con un software de virtualización mucho más "profesional", con muy buen redimiento, con opciones avanzadas, y gratuito, para Linux recomiendo KVM (paquetes qemu-kvm y virt-manager).
 
 Si además queremos montar para producción toda una plataforma de virtualización, recomiendo la distribución Linux gratuita [Proxmox](https://www.proxmox.com/en/products/proxmox-virtual-environment/overview).
 
@@ -164,7 +164,7 @@ Para la plataforma de virtualización VMWare existe una herramienta equivalente 
 Modos de trabajo en red
 -----------------------
 
-  * NAT: la máquina virtual obtiene una dirección IP de un servidor DHCP implementado en VirtualBox. Dicha IP (suele ser 10.0.x.15) no está en el rango de la red externa, pero VirtualBox hace de router. Por lo tanto desde nuestra máquina virtual se puede acceder a la red real externa, pero desde la red real externa no se puede acceder a la máquina virtual (a menos que configuremos el reenvío de puertos en las propiedades avanzadas de dicha interfaz de red). Las máquinas virtuales con NAT tampoco pueden verse entre ellas ya que VirtualBox las suele colocar en subredes diferentes, a menos que hayamos seleccionado el modo “red NAT”. (Para cambiar el comportamiento de NAT, leer en el manual de VirtualBox el capítulo [Fine-tuning the Oracle VirtualBox NAT engine](https://www.virtualbox.org/manual/topics/networkingdetails.html#changenat) ).
+  * NAT: la máquina virtual obtiene una dirección IP de un servidor DHCP implementado en VirtualBox. Dicha IP (suele ser 10.0.x.15) no está en el rango de la red externa, pero VirtualBox hace de router. Por lo tanto desde nuestra máquina virtual se puede acceder a la red real externa, pero desde la red real externa no se puede acceder a la máquina virtual (a menos que configuremos el reenvío de puertos en las propiedades avanzadas de dicha interfaz de red). Las máquinas virtuales con NAT tampoco pueden verse entre ellas ya que VirtualBox las suele colocar en subredes diferentes, a menos que hayamos seleccionado el modo "red NAT". (Para cambiar el comportamiento de NAT, leer en el manual de VirtualBox el capítulo [Fine-tuning the Oracle VirtualBox NAT engine](https://www.virtualbox.org/manual/topics/networkingdetails.html#changenat) ).
 
   * Bridge o puente: la máquina virtual obtiene una dirección IP real de un servidor DHCP de la red externa real. Por lo tanto desde nuestra máquina virtual se puede acceder a la red real externa, y desde la red real externa se puede acceder a la máquina virtual. Las máquinas virtuales con bridge pueden verse entre ellas ya que están en la misma subred. (De hecho, utilizan la tarjeta de red de la máquina real).
 
