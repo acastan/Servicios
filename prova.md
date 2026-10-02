@@ -1,5 +1,6 @@
-```shell
+```console
 $ ls -l /
+
 total 68
 drwxrwxrwx  21 acastan acastan  4096  1 d’oct.   19:42 almacen
 lrwxrwxrwx   1 root    root        7 29 d’ag.     2025 bin -> usr/bin
