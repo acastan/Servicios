@@ -1,5 +1,12 @@
-PREGUNTAS
----------
+SERVIDOR DHCP
+=============
+
+
+
+
+
+PREGUNTAS DHCP
+--------------
 
  01. ¿En qué consiste DHCP? ¿Qué puertos y protocolo en la capa de transporte utiliza?
 
@@ -25,8 +32,8 @@ PREGUNTAS
 
 
 
-DATOS DE LA PRÁCTICA LINUX Y WINDOWS
-------------------------------------
+DATOS DE LA PRÁCTICA DHCP
+-------------------------
 
 El servidor DHCP, (que en el futuro también será servidor de DNS) deberá tener la IP fija 192.168.100.2, el nombre Asterix, y los servidores de DNS 192.168.100.2 y 8.8.8.8. Nuestra red se llama mired.org.
 
@@ -50,8 +57,8 @@ Los parámetros que el servidor de DHCP servirá son:
 
 
 
-PRÁCTICA WINDOWS
-----------------
+PRÁCTICA DHCP WINDOWS
+---------------------
 
 Instalaremos DHCP para Windows Server. Exploraremos la interfície gráfica de administración del servidor DHCP, configurando los parámetros básicos.
 
@@ -61,8 +68,8 @@ Probaremos el servidor (intentando que no interfiera con el servidor de DHCP de 
 
 
 
-PRÁCTICA LINUX
---------------
+PRÁCTICA DHCP LINUX
+-------------------
 
 Instalaremos DHCP para Linux. Exploraremos el fichero de configuración.
 
@@ -72,8 +79,8 @@ Probaremos el servidor (intentando que no interfiera con el servidor de DHCP del
 
 
 
-PRÁCTICA LINUX ADICIONAL
-------------------------
+PRÁCTICA ADICIONAL LINUX VARIAS SUBREDES
+----------------------------------------
 
 Sea _tu-ip_ un número que te repartirá el profesor. En nuestro caso será el último número de la IP de tu equipo.
 
@@ -139,8 +146,8 @@ Sea _tu-ip_ un número que te repartirá el profesor. En nuestro caso será el �
 
 
 
-REFERENCIAS
------------
+REFERENCIAS DHCP
+----------------
 
   - <https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol>
 
