@@ -74,7 +74,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Servidor de DHCP (ejercicio)](dhcp/Ejercicio%202%20-%20Servidor%20DHCP.md)
 
-  * [Servidor de DHCP (solución)](dhcp/Ejercicio%202%20-%20Servidor%20DHCP%20-%20soluci%C3%B3n.pdf)
+  * [Servidor de DHCP (solución)](dhcp/Ejercicio%202%20-%20Servidor%20DHCP%20-%20soluci%C3%B3n.md)
 
 
 
