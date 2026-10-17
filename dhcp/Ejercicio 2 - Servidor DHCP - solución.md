@@ -46,7 +46,7 @@ PREGUNTAS DHCP
 
      Por ello, si existen varias subredes los routers deben estar configurados para encaminar el tráfico DHCP desde un servidor que esté en una subred diferente (DHCP Relay).
 
-     ![DHCP relay](https://upload.wikimedia.org/wikipedia/commons/f/fb/DHCP_Relay.svg)
+     ![DHCP relay](recursos/DHCP_relay.svg)
 
 
 
@@ -66,7 +66,7 @@ PREGUNTAS DHCP
 
  06. **¿Cuál es el software de servidor de DHCP más conocido para Unix/Linux?**
 
-     *ISC DHCP* y *Kea*, pero hay otros más sencillos como *udhcpd*, u otros que integran el servicio de DHCP con el de DNS, como *dnsmasq*.
+     *[ISC DHCP](https://www.isc.org/dhcp/)* y *[Kea](https://www.isc.org/kea/)*, pero hay otros más sencillos como *[udhcpd](https://busybox.net/)*, u otros que integran el servicio de DHCP con el de DNS, como *[dnsmasq](https://thekelleys.org.uk/dnsmasq/doc.html)*.
 
 
 
@@ -98,7 +98,7 @@ PREGUNTAS DHCP
 
  09. **¿Cuáles son los pasos en la comunicación entre un cliente y un servidor de DHCP? ¿Cuáles son las IPs de los paquetes?**
 
-     ![DHCP sesión](https://upload.wikimedia.org/wikipedia/commons/e/e4/DHCP_session.svg)
+     ![DHCP sesión](recursos/DHCP_session.svg)
 
      1) El cliente envía un paquete DHCPDISCOVER. Las direcciones IP origen y destino de dicho paquete serán 0.0.0.0 y 255.255.255.255 (broadcast) respectivamente.
 
@@ -265,7 +265,7 @@ Aviso, este tutorial está desactualizado pues ISC pide cambiar al nuevo servido
 
              INTERFACESv4="enp0s3"
              INTERFACESv6=""
-       
+
      A continuación reinicia el servicio:
 
          # systemctl restart isc-dhcp-server
@@ -310,13 +310,13 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
          # apt update
  
          # apt install isc-dhcp-server
-       
+
      b) El servidor DHCP tendrá tres tarjetas de red: una en modo NAT y dos en modo red interna, asignadas a redes internas diferentes, **red1** y **red2**, respectivamente. El nombre de las tarjetas de red seguramente será **enp0s3**, **enp0s8** y **enp0s9**, respectivamente.
 
      La tarjeta de red del servidor en red1 tiene IP estática 192.168._tu-ip_.1
-     
+
      La tarjeta de red del servidor en red2 tiene IP estática 192.168._tu-ip_+100.1
-     
+
          # ip addr
 
          # nano /etc/network/interfaces
@@ -341,22 +341,22 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
      Comprobación: podemos hacer correctamente ping al exterior o a otro equipo en red interna
 
          $ ping www.google.es
-       
+
      c) El servidor DHCP sólo estará asignado a las dos tarjetas en red interna.
 
          # nano /etc/default/isc-dhcp-server
 
              INTERFACESv4="enp0s8 enp0s9"
              INTERFACESv6=""
-       
+
      d) En *red1* el servidor repartirá un pool de 10 direcciones, de 192.168._tu-ip_.201 a 192.168._tu-ip_.210
 
      En *red2* el servidor repartirá las reservas: 192.168._tu-ip_+100.201 a la MAC aa:bb:cc:dd:ee:ff y 192.168._tu-ip_+100.202 a la MAC ee:ff:dd:cc:bb:aa
-     
+
      A las reservas, además, les proporcionará el nombre de host, *server* y *dns2*, respectivamente.
-     
+
      A los clientes les proporcionará como mínimo la IP, la máscara (255.255.255.0), el servidor DNS (8.8.8.8), y el dominio (*mired.org*).
-     
+
          # nano /etc/dhcp/dhcpd.conf
 
             # Opciones del ámbito "red1" (pool)
@@ -393,7 +393,7 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
 
 
  02. Pon un par de máquinas virtuales de prueba en *red1*, y comprueba que reciban parámetros de red.
-       
+
      ![DHCP concesión](recursos/DHCP_lease.png)
 
 
@@ -409,7 +409,7 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
      Por que Windows no soporta asignación de hostname vía DHCP.
 
      ¿Por qué el cliente Linux con reserva no cambia su hostname?
-     
+
      Por que hay que realizar cambios en Linux para que acepte asignación de hostname vía DHCP.
 
 
@@ -421,7 +421,7 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
      <https://IP_servidor:10000/> -> Refresh Modules
 
      <https://IP_servidor:10000/> -> Servers -> DHCP Server
-       
+
      ![DHCP Webmin](recursos/DHCP_webmin.png)
 
 
@@ -453,7 +453,7 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
              ip route add 192.168._tu-ip_.0/24     dev enp0s8
              ip route add 192.168._tu-ip_+100.0/24 dev enp0s9
              ip route add default dev enp0s3
-       
+
      b) El servidor DHCP también deberá dar puerta de salida (gateway) a los clientes. ¿Cuál será?
 
      El gateway será la IP de la tarjeta del servidor, que hace de router, conectada a esa red. Las IPs que hemos dado a las tarjetas del servidor eran: 192.168._tu-ip_.1 y 192.168._tu-ip_+100.1
