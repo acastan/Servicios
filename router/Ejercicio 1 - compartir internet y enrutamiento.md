@@ -1,3 +1,10 @@
+COMPARTIR INTERNET Y ENRUTAMIENTO
+=================================
+
+
+
+
+
 PREGUNTAS
 ---------
 
@@ -17,12 +24,12 @@ PREGUNTAS
 
  08. Una red está protegida para evitar el acceso web a páginas de piratería, pornografía, ... Comenta como funcionaría cada uno de estos métodos para sobrepasar dicha protección:
 
-     a) Algún proxy anónimo (encontraréis muchos en <http://proxy.org/> y <http://www.allproxysites.com/>).
+     a) Algún proxy anónimo (encontraréis muchos en <http://proxy.org/>).
 
      b) Algún traductor de páginas web (
         [Google Translator](http://translate.google.com/) ,
         [Bing Translator](https://www.bing.com/translator) ,
-        [InterTran](http://www.tranexp.com/win/itserver.htm) , ...).
+        [DeepL](https://www.deepl.com/en/translator) , ...).
 
      c) Navegador+Tor (por ejemplo [Tor Browser](https://www.torproject.org/)).
 
