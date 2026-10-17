@@ -58,7 +58,7 @@ tags: #FpInfor #AsixMp08 #AsirMp08 #SmxMp07 #SmrMp07
 
   * [Proxy y enrutamiento (ejercicio)](router/Ejercicio%201%20-%20compartir%20internet%20y%20enrutamiento.md)
 
-  * [Proxy y enrutamiento (solución)](router/Ejercicio%201%20-%20compartir%20internet%20y%20enrutamiento%20-%20soluci%C3%B3n.pdf)
+  * [Proxy y enrutamiento (solución)](router/Ejercicio%201%20-%20compartir%20internet%20y%20enrutamiento%20-%20soluci%C3%B3n.md)
 
 
 
