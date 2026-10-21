@@ -53,7 +53,7 @@ El ordenador o máquina virtual que haga de router deberá tener dos tarjetas de
 PRÁCTICA WINDOWS
 ----------------
 
-Instalaremos algun software de proxy para Windows (por ejemplo <http://www.analogx.com/contents/download/network/proxy.htm>). Exploraremos la interfície gráfica de administración del servicio, configurando los parámetros básicos.
+Instalaremos algún software de proxy para Windows (por ejemplo <http://www.analogx.com/contents/download/network/proxy.htm>). Exploraremos la interfaz gráfica de administración del servicio, configurando los parámetros básicos.
 
 Probaremos el servidor.
 
@@ -64,7 +64,7 @@ Probaremos el servidor.
 PRÁCTICA LINUX
 --------------
 
-Configuraremos iptables para que haga routing mediante alguna interfície gráfica (firestarter, fwbuilder, ...). Exploraremos el fichero de configuración.
+Configuraremos iptables para que haga routing mediante alguna interfaz gráfica (*firestarter*, *fwbuilder*, ...). Exploraremos el fichero de configuración.
 
 Probaremos el servidor.
 
