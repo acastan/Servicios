@@ -26,7 +26,7 @@ PREGUNTAS DNS
 
  09. ¿De qué tres maneras se puede integrar el servicio de DHCP con el de DNS para conseguir que el servidor de DNS resuelva nombres de máquinas cuya IP fue dada por un servidor de DHCP?
 
- 10. ¿Para qué sirve el fichero hosts? ¿Y el caché DNS del cliente? ¿Cómo se vacía la caché de DNS del cliente en Windows, MacOS X y Linux?
+ 10. ¿Para qué sirve el fichero *hosts*? ¿Y el caché DNS del cliente? ¿Cómo se vacía la caché de DNS del cliente en Windows, MacOS X y Linux?
 
 
 
@@ -62,7 +62,7 @@ También deberemos asegurarnos de que los servidores cuyos parámetros IP se han
 PRÁCTICA DNS WINDOWS
 --------------------
 
-Instalaremos DNS para Windows Server. Exploraremos la interfície gráfica de administración del servidor dns, configurando los parámetros básicos.
+Instalaremos DNS para Windows Server. Exploraremos la interfaz gráfica de administración del servidor dns, configurando los parámetros básicos.
 
 Configuraremos DNS para una pequeña red local y probaremos el servidor.
 
@@ -118,7 +118,7 @@ En una oficina de la empresa "mired.org" tenemos el despacho de los administrati
 
  06. Integra el servidor de DNS con el servidor de DHCP para que cuándo el servidor de DHCP conceda IPs a los equipos, el servidor de DNS actualice el fichero de zona.
 
-     Serán los clientes los que informen al servidor de DHCP de cuáĺ es su nombre, y el servidor de DHCP el que informe al servidor de DNS de las IPs concedida y del nombre del cliente.
+     Serán los clientes los que informen al servidor de DHCP de cuál es su nombre, y el servidor de DHCP el que informe al servidor de DNS de las IPs concedida y del nombre del cliente.
 
 
 
@@ -129,11 +129,11 @@ MÁS PRÁCTICAS DE DNS
 
   * Por ejemplo, gestionar y delegar subdominios.
 
-  * Por ejemplo, realizar los ejercicios anteriores con software DNSMasq en vez de con Bind.
+  * Por ejemplo, realizar los ejercicios anteriores con software *DNSMasq* en vez de con *Bind*.
 
-  * Por ejemplo, registrar dominio gratuito en FreeNom para tus máquinas virtuales en la nube, y administrar tus registros DNS con Amazon Route53, Oracle Cloud DNS, o tu propio servidor DNS en la nube.
+  * Por ejemplo, registrar dominio gratuito en *FreeNom* para tus máquinas virtuales en la nube, y administrar tus registros DNS con *Amazon Route53*, *Oracle Cloud DNS*, o tu propio servidor DNS en la nube.
 
-  * Por ejemplo, registrar dominio para red de tu casa con DynDNS / No-IP / DuckDNS y configurar para actualizar el registro DNS cuando tu proveedor cambie la IP pública de tu router doméstico.
+  * Por ejemplo, registrar dominio para red de tu casa con *DynDNS*, *No-IP* o *DuckDNS* y configurar para actualizar el registro DNS cuando tu proveedor cambie la IP pública de tu router doméstico.
 
 
 
