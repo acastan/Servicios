@@ -147,7 +147,7 @@ Este ejercicio da por supuesto que tenemos un router en 192.168.100.1 y un servi
 PRÁCTICA DHCP WINDOWS
 ---------------------
 
-Instalaremos DHCP para Windows Server. Exploraremos la interfície gráfica de administración del servidor DHCP, configurando los parámetros básicos. Probaremos el servidor (intentando que no interfiera con el servidor de DHCP del instituto).
+Instalaremos DHCP para Windows Server. Exploraremos la interfaz gráfica de administración del servidor DHCP, configurando los parámetros básicos. Probaremos el servidor (intentando que no interfiera con el servidor de DHCP del instituto).
 
 
 
@@ -398,7 +398,7 @@ Recuerdo: _tu-ip_ simboliza un número que te reparte el profesor, para que cada
 
 
 
- 03. Pon un par de máquinas virtuals de prueba en *red2*, y comprueba que reciban la dirección reservada a su MAC. (-Modifica antes su MAC en la herramienta de virtualización para que se ajuste a la de la reserva-)
+ 03. Pon un par de máquinas virtuales de prueba en *red2*, y comprueba que reciban la dirección reservada a su MAC. (-Modifica antes su MAC en la herramienta de virtualización para que se ajuste a la de la reserva-)
 
      ![DHCP reserva](recursos/DHCP_reserva.png)
 
