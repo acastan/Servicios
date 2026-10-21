@@ -60,7 +60,7 @@ Los parámetros que el servidor de DHCP servirá son:
 PRÁCTICA DHCP WINDOWS
 ---------------------
 
-Instalaremos DHCP para Windows Server. Exploraremos la interfície gráfica de administración del servidor DHCP, configurando los parámetros básicos.
+Instalaremos DHCP para Windows Server. Exploraremos la interfaz gráfica de administración del servidor DHCP, configurando los parámetros básicos.
 
 Probaremos el servidor (intentando que no interfiera con el servidor de DHCP de la escuela).
 
@@ -79,8 +79,8 @@ Probaremos el servidor (intentando que no interfiera con el servidor de DHCP del
 
 
 
-PRÁCTICA ADICIONAL LINUX VARIAS SUBREDES
-----------------------------------------
+PRÁCTICA DHCP ADICIONAL LINUX CON VARIAS SUBREDES
+-------------------------------------------------
 
 Sea _tu-ip_ un número que te repartirá el profesor. En nuestro caso será el último número de la IP de tu equipo.
 
@@ -108,7 +108,7 @@ Sea _tu-ip_ un número que te repartirá el profesor. En nuestro caso será el �
 
      Entrega capturas de pantalla donde aparezcan los parámetros de red que obtuvieron los equipos.
 
- 03. Pon un par de máquinas virtuals de prueba en "red2", y comprueba que reciban la dirección reservada a su seva MAC. (-Modifica antes su MAC en la herramienta de virtualización para que se ajuste a la de la reserva-)
+ 03. Pon un par de máquinas virtuales de prueba en "red2", y comprueba que reciban la dirección reservada a su MAC. (-Modifica antes su MAC en la herramienta de virtualización para que se ajuste a la de la reserva-)
 
      Entrega capturas de pantalla donde aparezcan los parámetros de red que obtuvieron los equipos.
 
