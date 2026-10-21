@@ -96,7 +96,7 @@ PREGUNTAS DNS
 
      c) Comprobar que la máquina des de la que probaré el servicio tiene configurado como su servidor de DNS la IP del servidor que hemos instalado, tanto si realizo las pruebas des de otra máquina cliente como si las realizo des del mismo servidor.
 
-     d) Probar diferentes registros, directos e inversos, de diferentes zonas que sirve el servidor, mediante las herramientas ping, dig o nslookup. Comprobar que las respuestas son correctas.
+     d) Probar diferentes registros, directos e inversos, de diferentes zonas que sirve el servidor, mediante las herramientas `ping`, `dig` o `nslookup`. Comprobar que las respuestas son correctas.
 
      e) Probar otras zonas que no sirve el servidor, para comprobar que reenvía las preguntas.
 
@@ -112,9 +112,9 @@ PREGUNTAS DNS
 
 
 
- 10. **¿Para qué sirve el fichero hosts? ¿Y el caché DNS del cliente? ¿Cómo se vacía la caché de DNS del cliente en Windows, MacOS X y Linux?**
+ 10. **¿Para qué sirve el fichero *hosts*? ¿Y el caché DNS del cliente? ¿Cómo se vacía la caché de DNS del cliente en Windows, MacOS X y Linux?**
 
-     El fichero de texto `hosts` se utilizaba -y todavía se utiliza- para asociar en un cliente nombres de máquinas a IP. Los clientes consultan este fichero antes de lanzar una petición a un servidor DNS. En Linux dicho archivo se encuentra en `/etc/hosts` y en Windows está en `C:\Windows\System32\drivers\etc\hosts`.
+     El fichero de texto *hosts* se utilizaba -y todavía se utiliza- para asociar en un cliente nombres de máquinas a IP. Los clientes consultan este fichero antes de lanzar una petición a un servidor DNS. En Linux dicho archivo se encuentra en `/etc/hosts` y en Windows está en `C:\Windows\System32\drivers\etc\hosts`.
 
      La caché-DNS del cliente se utiliza para guardar respuestas de peticiones DNS anteriores. Los clientes también consultan dicha caché antes de lanzar una petición a un servidor DNS.
 
@@ -510,20 +510,20 @@ MÁS PRÁCTICAS DE DNS
 
 
 
-¿Ejercicios anteriores con software DNSMasq en vez de con Bind?
+¿Ejercicios anteriores con software *DNSMasq* en vez de con *Bind*?
 
   - <https://www.howtoforge.com/how-to-set-up-local-dns-with-dnsmasq-on-debian-12/>
 
 
 
-¿Registrar dominio para red de casa con DynDNS y configurar para actualizar el registro DNS cuando tu proveedor cambia la IP pública de tu router doméstico?
+¿Registrar dominio para red de casa con *DynDNS* y configurar para actualizar el registro DNS cuando tu proveedor cambia la IP pública de tu router doméstico?
 
   - <https://www.redeszone.net/tutoriales/servidores/mejores-ddns-gratis/>
   - <https://geekland.eu/instalar-y-configurar-duck-dns-con-docker/>
 
 
 
-¿Registrar dominio gratuito en FreeNom para tus máquinas virtuales en la nube, y administrar tus DNS con Amazon Route53 , Oracle Cloud DNS , o tu propio servidor DNS en la nube?
+¿Registrar dominio gratuito en *FreeNom* para tus máquinas virtuales en la nube, y administrar tus DNS con *Amazon Route53* , *Oracle Cloud DNS* , o tu propio servidor DNS en la nube?
 
  - <https://medium.com/@kcabading/getting-a-free-domain-for-your-ec2-instance-3ac2955b0a2f>
 
